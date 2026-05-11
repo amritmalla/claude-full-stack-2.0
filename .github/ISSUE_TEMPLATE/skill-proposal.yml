@@ -1,0 +1,50 @@
+name: Skill Proposal
+description: Propose a new skill before authoring it.
+title: "[skill] <kebab-case-name>"
+labels: ["skill-proposal"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name (kebab-case)
+      placeholder: safe-migration-plan
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - product
+        - architecture
+        - backend
+        - data
+        - testing
+        - containers
+        - cicd
+        - deploy
+        - observability
+        - operations
+    validations:
+      required: true
+  - type: textarea
+    id: when-to-use
+    attributes:
+      label: When to use (one paragraph)
+      description: When should Claude invoke this skill? Be specific about the trigger.
+    validations:
+      required: true
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Expected outputs
+      description: What concrete artifacts will the skill produce?
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why this skill belongs in v0.x
+      description: Differentiation, production risk, AI leverage, pain — pick one or more.
+    validations:
+      required: true
