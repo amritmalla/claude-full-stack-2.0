@@ -1,0 +1,20 @@
+{
+  "name": "claude-full-stack-2.0",
+  "displayName": "Claude Full Stack 2.0",
+  "summary": "Production-grade Claude skills for full stack engineering and DevOps.",
+  "tags": ["full-stack", "devops", "sre", "spring-boot", "kubernetes", "production"],
+  "skills": [
+    "skills/product/prd-from-idea",
+    "skills/architecture/system-design-from-prd",
+    "skills/backend/spring-boot-service-scaffold",
+    "skills/backend/rest-api-contract-design",
+    "skills/backend/spring-security-auth-review",
+    "skills/data/postgres-schema-and-migration",
+    "skills/testing/integration-test-strategy",
+    "skills/containers/dockerfile-and-jvm-tuning",
+    "skills/cicd/github-actions-pipeline-hardened",
+    "skills/deploy/k8s-deploy-manifest-review",
+    "skills/observability/observability-readiness",
+    "skills/operations/incident-rca-and-runbook"
+  ]
+}
