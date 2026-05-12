@@ -1,0 +1,121 @@
+openapi: 3.1.0
+info:
+  title: "[API Title]"
+  version: "1.0.0"
+  description: "[API description]"
+
+# Replace before emitting. Use one entry per known environment.
+# Remove this entire block for internal-only APIs with no canonical base URL yet.
+servers:
+  - url: "https://api.example.com/v1"
+    description: "Production"
+
+# Global security default: every operation requires the primary scheme.
+# Opt out individual operations with `security: []` (e.g., /health, /actuator/*).
+security:
+  - bearerAuth: []
+
+tags:
+  # Tags follow plural resource names. Add one entry per top-level resource.
+  - name: "[resource]"
+    description: "[resource description]"
+
+paths: {}
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 50
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+  headers:
+    XRateLimitLimit:
+      description: Requests permitted in the current window.
+      schema:
+        type: integer
+    XRateLimitRemaining:
+      description: Requests remaining in the current window.
+      schema:
+        type: integer
+    XRateLimitReset:
+      description: Unix timestamp (seconds) when the window resets.
+      schema:
+        type: integer
+    RetryAfter:
+      description: Seconds to wait before retrying (or HTTP-date).
+      schema:
+        type: string
+  responses:
+    RateLimited:
+      description: Rate limit exceeded.
+      headers:
+        Retry-After:
+          $ref: "#/components/headers/RetryAfter"
+        X-RateLimit-Limit:
+          $ref: "#/components/headers/XRateLimitLimit"
+        X-RateLimit-Remaining:
+          $ref: "#/components/headers/XRateLimitRemaining"
+        X-RateLimit-Reset:
+          $ref: "#/components/headers/XRateLimitReset"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            error:
+              code: "RATE_LIMITED"
+              message: "Rate limit exceeded"
+              traceId: "abc123"
+              details: []
+  schemas:
+    ErrorEnvelope:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          $ref: "#/components/schemas/Error"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+        - traceId
+      properties:
+        code:
+          type: string
+          example: "RESOURCE_NOT_FOUND"
+        message:
+          type: string
+          example: "Resource not found"
+        traceId:
+          type: string
+          example: "abc123"
+        details:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
