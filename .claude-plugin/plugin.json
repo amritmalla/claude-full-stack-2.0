@@ -1,0 +1,11 @@
+{
+  "name": "claude-full-stack-2.0",
+  "version": "0.1.0",
+  "description": "AI-native software engineering skills from idea to production.",
+  "author": {
+    "name": "Amrit Malla",
+    "email": "amritmalla2021@gmail.com"
+  },
+  "repository": "https://github.com/amritmalla/claude-full-stack-2.0",
+  "license": "MIT"
+}
