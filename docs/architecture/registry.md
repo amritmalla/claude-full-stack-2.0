@@ -446,6 +446,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 - [spring-boot-service-scaffold](../../implementations/backend/spring-boot/spring-boot-service-scaffold/SKILL.md) — produces a production-ready service shell: package structure, profile-aware configuration, structured logging, observability, health probes, secure defaults, error handling, testing foundations, Docker packaging.
 - [spring-security-auth-review](../../implementations/backend/spring-boot/spring-security-auth-review/SKILL.md) — reviews and hardens authentication / authorization for a Spring Boot service using Spring Security, JWT, OAuth2, sessions, or service-to-service auth.
 - [observability-readiness](../../implementations/backend/spring-boot/observability-readiness/SKILL.md) — produces or audits Micrometer/Prometheus metrics, OpenTelemetry tracing, structured logs with trace correlation, SLI/SLO definitions, and multi-window multi-burn-rate alerts.
+- [spring-kafka-event-integration](../../implementations/backend/spring-boot/spring-kafka-event-integration/SKILL.md) — produces or hardens Spring Kafka producers and consumers: delivery semantics, transactional outbox, idempotency, retry and DLQ topology, observability, and integration tests against embedded or Testcontainers Kafka.
 
 ---
 
