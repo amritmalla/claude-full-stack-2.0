@@ -29,7 +29,7 @@ Technology-agnostic. Owns *how the team operates*, not the tooling.
 
 ## Skills
 
-- [incident-rca-and-runbook](incident-rca-and-runbook/SKILL.md) — produces blameless postmortems with root cause analysis and reusable runbooks for recurring alerts.
+- [operations](SKILL.md) — produces blameless postmortems, reusable runbooks, and operational handoff notes for services entering support.
 
 ## Standards this architecture domain conforms to
 

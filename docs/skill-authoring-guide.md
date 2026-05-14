@@ -4,18 +4,18 @@ A practical walkthrough for authoring a new skill. For the formal contract, see 
 
 ## 1. Pick an architecture domain or implementation, and a name
 
-Decide first whether the skill is **technology-agnostic** (lives under `architecture/<domain>/<name>/`) or **ecosystem-specific** (lives under `implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
+Decide first whether the skill is **technology-agnostic** (the parent skill at `architecture/<domain>/SKILL.md`) or **ecosystem-specific** (lives under `implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
 
 Existing architecture domains: `idea-development`, `system-design`, `backend-architecture`, `frontend-architecture`, `data-systems`, `infrastructure-platform`, `reliability`, `security`, `testing-quality`, `performance`, `operations`, `ai-native`.
 
 Existing implementation categories: `backend/`, `frontend/`, `infrastructure/`, `data/`, `ai/` — each with one or more ecosystems (e.g., `backend/spring-boot/`).
 
-Name is kebab-case, descriptive of the *job*, not the technology when in `architecture/`. Prefer `safe-migration-plan` over `flyway-migration-generator`.
+Name is kebab-case and descriptive of the job. For architecture domains, the skill name matches the domain folder, such as `testing-quality` or `operations`. For implementation skills, prefer job names over tool names: `safe-migration-plan` is better than `flyway-migration-generator`.
 
 ## 2. Create the directory and SKILL.md
 
 ```
-architecture/<domain>/<name>/SKILL.md
+architecture/<domain>/SKILL.md
 # OR
 implementations/<category>/<ecosystem>/<name>/SKILL.md
 ```
@@ -24,7 +24,7 @@ Start from this template:
 
 ```markdown
 ---
-name: <name>
+name: <domain-or-name>
 description: Use when <trigger>. <One-sentence outcome.>
 ---
 

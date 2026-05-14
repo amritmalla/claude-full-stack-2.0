@@ -7,7 +7,7 @@ Thank you for considering a contribution. This document describes how to propose
 1. **Open an issue** using the *Skill Proposal* template. Include the proposed name (kebab-case), the target architecture domain or implementation directory, when-to-use paragraph, and expected outputs.
 2. **Wait for a maintainer to claim or assign.** This avoids duplicate work.
 3. **Open a PR** that includes:
-   - For technology-agnostic skills: `architecture/<domain>/<name>/SKILL.md`.
+   - For technology-agnostic skills: `architecture/<domain>/SKILL.md`.
    - For ecosystem-specific skills: `implementations/<category>/<ecosystem>/<name>/SKILL.md`.
    - Either way, follow [`SKILL_SPEC.md`](SKILL_SPEC.md). See [`docs/architecture/research.md`](docs/architecture/research.md) for the architecture-vs-implementations distinction.
    - The skill's example output committed under `examples/spring-boot/orders-api/.skill-outputs/<name>/`.
@@ -22,7 +22,7 @@ Thank you for considering a contribution. This document describes how to propose
 See [`SKILL_SPEC.md`](SKILL_SPEC.md) for the full contract.
 
 - `description` is load-bearing. Starts with "Use when", ≤ 1024 characters.
-- `name` matches the directory name exactly.
+- `name` matches the skill directory exactly. For architecture skills, that is the domain folder.
 - Quality checks are binary-verifiable.
 - One skill = one repeatable job.
 - `SKILL.md` ≤ ~400 lines; overflow moves to `references/`.

@@ -2,7 +2,7 @@
 
 > Single source of truth for architecture↔implementation mapping, domain/ecosystem ownership, and upstream/downstream wiring. Replaces the per-directory README.md files that previously held this metadata.
 >
-> Skills are discovered by file system (architecture/<domain>/<skill>/SKILL.md and implementations/<category>/<ecosystem>/<skill>/SKILL.md). This file documents the *charter* of each domain and ecosystem.
+> Skills are discovered by file system (architecture/<domain>/SKILL.md and implementations/<category>/<ecosystem>/<skill>/SKILL.md). This file documents the *charter* of each domain and ecosystem.
 
 ## Architecture domains
 
@@ -174,7 +174,7 @@ Technology-agnostic. Owns *how the team operates*, not the tooling.
 - [workflows/incident-response](../../workflows/) (when authored) orchestrates this architecture domain's incident process end-to-end.
 
 **Skills:**
-- [incident-rca-and-runbook](../../architecture/operations/incident-rca-and-runbook/SKILL.md) — produces blameless postmortems with root cause analysis and reusable runbooks for recurring alerts.
+- [operations](../../architecture/operations/SKILL.md) — produces blameless postmortems, reusable runbooks, and operational handoff notes for services entering support.
 
 ---
 
@@ -297,7 +297,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 - [implementations/infrastructure/*](../../implementations/infrastructure/) — CI pipelines invoke the suites declared here.
 
 **Skills:**
-- [integration-test-strategy](../../architecture/testing-quality/integration-test-strategy/SKILL.md) — designs Testcontainers-backed integration test suites driven by API contracts. Currently Spring-Boot-flavored; generalization to other ecosystems is a follow-up.
+- [testing-quality](../../architecture/testing-quality/SKILL.md) — produces contract-driven test strategy, acceptance criteria, integration test planning, and CI quality gates.
 
 ---
 
@@ -425,7 +425,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 | [backend-architecture](#backend-architecture) | Service scaffold follows backend boundaries, modules, workers, controllers, DTOs, and REST contracts produced by `backend-architecture`. |
 | [security](#security) | Spring Security configuration; auth review skill enforces [security-standards](../../standards/security-standards/README.md). |
 | [reliability](#reliability) | Actuator health probes, structured logging, OpenTelemetry hooks per [observability-standards](../../standards/observability-standards/README.md). |
-| [testing-quality](#testing-quality) | Testcontainers-based integration test foundations. |
+| [testing-quality](#testing-quality) | Contract-driven test strategy and CI quality gates. |
 
 **Standards this implementation conforms to:**
 - [api-standards](../../standards/api-standards/README.md) — generated controllers respect the global REST contract.

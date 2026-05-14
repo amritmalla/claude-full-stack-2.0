@@ -18,11 +18,11 @@
 | 4 | Backend architecture | `architecture/backend-architecture` |
 | 5 | Data | `data/postgres-schema-and-migration` |
 | 6 | Security | `backend/spring-security-auth-review` |
-| 7 | Testing | `testing/integration-test-strategy` |
+| 7 | Testing | `architecture/testing-quality` |
 | 8 | Containerization | `containers/dockerfile-and-jvm-tuning` |
 | 9 | CI/CD | `cicd/github-actions-pipeline-hardened` |
 | 10 | Deploy | `deploy/k8s-deploy-manifest-review` |
 | 11 | Observability | `observability/observability-readiness` |
-| 12 | Operations | `operations/incident-rca-and-runbook` |
+| 12 | Operations | `architecture/operations` |
 
 See [`docs/superpowers/specs/2026-05-12-claude-full-stack-2.0-design.md`](docs/superpowers/specs/2026-05-12-claude-full-stack-2.0-design.md) for the full v0.1 design and rationale.

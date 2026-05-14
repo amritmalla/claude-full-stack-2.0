@@ -48,12 +48,12 @@ Twelve skills, one per lifecycle stage:
 | 4 | API | `architecture/backend-architecture` |
 | 5 | Data | `data/postgres-schema-and-migration` |
 | 6 | Security | `backend/spring-security-auth-review` |
-| 7 | Testing | `testing/integration-test-strategy` |
+| 7 | Testing | `architecture/testing-quality` |
 | 8 | Containerization | `containers/dockerfile-and-jvm-tuning` |
 | 9 | CI/CD | `cicd/github-actions-pipeline-hardened` |
 | 10 | Deploy | `deploy/k8s-deploy-manifest-review` |
 | 11 | Observability | `observability/observability-readiness` |
-| 12 | Operations | `operations/incident-rca-and-runbook` |
+| 12 | Operations | `architecture/operations` |
 
 Skill selection methodology: weighted mix scoring on (D) differentiation 40% + (B) production risk 30% + (C) AI-leverage 20% + (A) pain/frequency 10%, then biased to ensure full-lifecycle coverage to honor the "Full Stack 2.0" brand promise.
 
@@ -72,12 +72,12 @@ claude-full-stack-2.0/
 │   │   ├── backend-architecture/
 │   │   └── spring-security-auth-review/
 │   ├── data/postgres-schema-and-migration/
-│   ├── testing/integration-test-strategy/
+│   ├── architecture/testing-quality/
 │   ├── containers/dockerfile-and-jvm-tuning/
 │   ├── cicd/github-actions-pipeline-hardened/
 │   ├── deploy/k8s-deploy-manifest-review/
 │   ├── observability/observability-readiness/
-│   └── operations/incident-rca-and-runbook/
+│   └── architecture/operations/
 ├── workflows/
 │   └── idea-to-production-spring-boot/
 │       └── WORKFLOW.md

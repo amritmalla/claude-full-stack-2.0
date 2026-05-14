@@ -113,12 +113,12 @@ Note: confirm GitHub owner before merging; placeholder `<owner>` must be replace
     "architecture/backend-architecture",
     "skills/backend/spring-security-auth-review",
     "skills/data/postgres-schema-and-migration",
-    "skills/testing/integration-test-strategy",
+    "architecture/testing-quality",
     "skills/containers/dockerfile-and-jvm-tuning",
     "skills/cicd/github-actions-pipeline-hardened",
     "skills/deploy/k8s-deploy-manifest-review",
     "skills/observability/observability-readiness",
-    "skills/operations/incident-rca-and-runbook"
+    "architecture/operations"
   ]
 }
 ```
@@ -438,7 +438,7 @@ Per-skill specifics:
 - Quality checks: JWTs validated against issuer + audience + expiry + signing key; scopes enforced per endpoint; refresh tokens rotated; signing key not in source; CSRF disabled only with justification
 - Example output: auth review for `orders-api`'s JWT setup
 
-**Task 15: `testing/integration-test-strategy`**
+**Task 15: `architecture/testing-quality`**
 - Inputs: scaffolded service + OpenAPI
 - Process: design test pyramid for this service, scaffold Testcontainers Postgres setup, generate happy-path + 3 edge-case integration tests per endpoint, set up MockMvc/WebTestClient
 - Outputs: `OrderIntegrationTest.java`, `pom.xml` dependency additions, `application-test.yml`
@@ -473,7 +473,7 @@ Per-skill specifics:
 - Quality checks: each SLI has a corresponding SLO; alerts use multi-window multi-burn-rate; logs include trace_id; traces sampled at >0%; dashboards listed by name
 - Example output: full observability config for `orders-api`
 
-**Task 20: `operations/incident-rca-and-runbook`**
+**Task 20: `architecture/operations`**
 - Inputs: an incident description (timeline, logs, metrics) OR a synthetic incident for the example
 - Process: build factual timeline (UTC), identify trigger / contributing factors / resolution; produce 5-whys; write postmortem in blameless format; extract a reusable runbook for the alert/symptom
 - Outputs: `postmortem.md`, `runbooks/<symptom>.md`

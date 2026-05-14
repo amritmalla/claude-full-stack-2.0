@@ -33,8 +33,8 @@ Twelve lifecycle-spanning skills:
 | Idea | [`idea-development`](architecture/idea-development/) | Discovery, refinement, validation, PRD specification, and execution readiness |
 | Architecture | [`system-design`](architecture/system-design/) | System design + ADRs |
 | Backend architecture | [`backend-architecture`](architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
-| Testing | [`integration-test-strategy`](architecture/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
-| Operations | [`incident-rca-and-runbook`](architecture/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |
+| Testing | [`testing-quality`](architecture/testing-quality/SKILL.md) | Contract-driven test strategy, acceptance criteria, and integration test plan |
+| Operations | [`operations`](architecture/operations/SKILL.md) | Blameless postmortem, reusable runbook, and on-call handoff |
 | Backend scaffold | [`spring-boot-service-scaffold`](implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
 | Security | [`spring-security-auth-review`](implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
 | Observability | [`observability-readiness`](implementations/backend/spring-boot/observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |

@@ -27,7 +27,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ## Skills
 
-- [integration-test-strategy](integration-test-strategy/SKILL.md) — designs Testcontainers-backed integration test suites driven by API contracts. Currently Spring-Boot-flavored; generalization to other ecosystems is a follow-up.
+- [testing-quality](SKILL.md) — produces contract-driven test strategy, acceptance criteria, integration test planning, and CI quality gates.
 
 ## Standards this architecture domain conforms to
 

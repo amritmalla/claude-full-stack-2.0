@@ -4,23 +4,29 @@ A skill is a single, repeatable engineering job that Claude can execute end-to-e
 
 ## File Layout
 
-Each skill lives in a directory under either `architecture/<domain>/<skill-name>/` (technology-agnostic) or `implementations/<category>/<ecosystem>/<skill-name>/` (ecosystem-specific). See [`docs/architecture/research.md`](docs/architecture/research.md) for the architecture-vs-implementations distinction.
+Each technology-agnostic architecture domain exposes one parent skill at `architecture/<domain>/SKILL.md`. Ecosystem-specific execution skills live under `implementations/<category>/<ecosystem>/<skill-name>/SKILL.md`. See [`docs/architecture/research.md`](docs/architecture/research.md) for the architecture-vs-implementations distinction.
 
-```
-<architecture|implementations>/.../<skill-name>/
-├── SKILL.md           # required; the only file Claude reads by default
-├── references/        # optional; on-demand deep-dive docs
-├── assets/            # optional; templates and starter files the skill emits
-└── checklists/        # optional; gating checklists referenced by SKILL.md
+```text
+architecture/<domain>/
+|-- SKILL.md           # required; the only file Claude reads by default
+|-- references/        # optional; on-demand deep-dive docs
+|-- assets/            # optional; templates and starter files the skill emits
+`-- checklists/        # optional; gating checklists referenced by SKILL.md
+
+implementations/<category>/<ecosystem>/<skill-name>/
+|-- SKILL.md
+|-- references/
+|-- assets/
+`-- checklists/
 ```
 
-The directory name is the skill's identifier. It MUST be lowercase, hyphen-separated, and match the `name` field in `SKILL.md`'s frontmatter exactly.
+The skill directory name is the skill's identifier. For architecture skills, that is the domain folder. For implementation skills, that is the leaf skill folder. It MUST be lowercase, hyphen-separated, and match the `name` field in `SKILL.md`'s frontmatter exactly.
 
 ## SKILL.md Format
 
 ```markdown
 ---
-name: <kebab-case, matches directory name>
+name: <kebab-case, matches skill directory>
 description: Use when <trigger>. <One-sentence outcome.>
 ---
 
@@ -47,8 +53,8 @@ Optional links to `references/*.md` deep dives.
 
 ## Authoring Rules
 
-1. **`description` is load-bearing.** It is the only text Claude reads to decide whether to invoke. It MUST start with "Use when", be ≤ 1024 characters, be specific enough to match real triggers, and generic enough to catch reasonable variants.
-2. **`name` matches the directory name exactly.** Lowercase, hyphen-separated.
+1. **`description` is load-bearing.** It is the only text Claude reads to decide whether to invoke. It MUST start with "Use when", be <= 1024 characters, be specific enough to match real triggers, and generic enough to catch reasonable variants.
+2. **`name` matches the skill directory exactly.** Architecture skills match the domain folder; implementation skills match the leaf skill folder. Lowercase, hyphen-separated.
 3. **`SKILL.md` is the only file Claude reads by default.** Files under `references/` load on demand when the skill body instructs Claude to read them.
 4. **Skills are imperative recipes, not essays.** Every section answers "what does Claude do next?"
 5. **Quality checks are binary-verifiable.** Never "ensure it's good." Always a pass/fail condition a human or Claude can confirm.
@@ -58,8 +64,8 @@ Optional links to `references/*.md` deep dives.
 
 Every skill merged into this repository must pass:
 
-- Valid frontmatter (`name` matches directory; `description` starts with "Use when"; ≤ 1024 chars).
+- Valid frontmatter (`name` matches skill directory; `description` starts with "Use when"; <= 1024 chars).
 - Author has invoked the skill end-to-end against the reference example and committed the output under `examples/spring-boot/orders-api/.skill-outputs/<skill-name>/`.
 - Quality-checks section is concrete and binary-verifiable.
 - Author supplies 3 "should match" and 2 "should NOT match" trigger prompts in the PR description and manually verifies Claude's invocation behavior on each.
-- `SKILL.md` is ≤ ~400 lines; overflow moves to `references/`.
+- `SKILL.md` is <= ~400 lines; overflow moves to `references/`.
