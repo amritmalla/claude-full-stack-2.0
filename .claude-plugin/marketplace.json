@@ -4,17 +4,17 @@
   "summary": "Production-grade Claude skills for full stack engineering and DevOps.",
   "tags": ["full-stack", "devops", "sre", "spring-boot", "kubernetes", "production"],
   "skills": [
-    "skills/product/prd-from-idea",
-    "skills/architecture/system-design-from-prd",
-    "skills/backend/spring-boot-service-scaffold",
-    "skills/backend/rest-api-contract-design",
-    "skills/backend/spring-security-auth-review",
-    "skills/data/postgres-schema-and-migration",
-    "skills/testing/integration-test-strategy",
-    "skills/containers/dockerfile-and-jvm-tuning",
-    "skills/cicd/github-actions-pipeline-hardened",
-    "skills/deploy/k8s-deploy-manifest-review",
-    "skills/observability/observability-readiness",
-    "skills/operations/incident-rca-and-runbook"
+    "capabilities/product-planning/prd-from-idea",
+    "capabilities/system-design/system-design-from-prd",
+    "capabilities/backend-systems/rest-api-contract-design",
+    "capabilities/testing-quality/integration-test-strategy",
+    "capabilities/operations/incident-rca-and-runbook",
+    "implementations/backend/spring-boot/spring-boot-service-scaffold",
+    "implementations/backend/spring-boot/spring-security-auth-review",
+    "implementations/backend/spring-boot/observability-readiness",
+    "implementations/data/postgres/postgres-schema-and-migration",
+    "implementations/infrastructure/docker/dockerfile-and-jvm-tuning",
+    "implementations/infrastructure/github-actions/github-actions-pipeline-hardened",
+    "implementations/infrastructure/kubernetes/k8s-deploy-manifest-review"
   ]
 }

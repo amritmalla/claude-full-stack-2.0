@@ -12,24 +12,36 @@ A Claude Code plugin: a curated set of production-grade Claude Skills that take 
 
 Once installed, the skills below become invocable by Claude Code's `Skill` tool whenever their `description` matches your request.
 
+## Repository layout
+
+This repo is an AI-native engineering operating system. Skills are organized by what they own, not by topic:
+
+- **[capabilities/](capabilities/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
+- **[implementations/](implementations/)** — ecosystem-specific execution (Spring Boot, Postgres, Kubernetes, GitHub Actions, ...).
+- **[patterns/](patterns/)** — reusable architectural strategies (event-driven, hexagonal, modular-monolith, ...).
+- **[standards/](standards/)** — shared interoperability contracts that everything above conforms to.
+- **[workflows/](workflows/)** — end-to-end execution flows that chain capabilities + implementations.
+
+See the long-form rationale in [`docs/architecture/research.md`](docs/architecture/research.md).
+
 ## Skills (v0.1)
 
-Twelve lifecycle-spanning skills, organized by domain:
+Twelve lifecycle-spanning skills:
 
 | Stage | Skill | What it produces |
 |---|---|---|
-| Idea | [`prd-from-idea`](skills/product/prd-from-idea/) | One-page PRD: problem, users, scope, non-goals, metrics |
-| Architecture | [`system-design-from-prd`](skills/architecture/system-design-from-prd/) | System design + ADRs |
-| Backend scaffold | [`spring-boot-service-scaffold`](skills/backend/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
-| API | [`rest-api-contract-design`](skills/backend/rest-api-contract-design/) | OpenAPI 3.1 with idempotency, cursor pagination, error envelope |
-| Data | [`postgres-schema-and-migration`](skills/data/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
-| Security | [`spring-security-auth-review`](skills/backend/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
-| Testing | [`integration-test-strategy`](skills/testing/integration-test-strategy/) | Testcontainers-based integration suite |
-| Containers | [`dockerfile-and-jvm-tuning`](skills/containers/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
-| CI/CD | [`github-actions-pipeline-hardened`](skills/cicd/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
-| Deploy | [`k8s-deploy-manifest-review`](skills/deploy/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
-| Observability | [`observability-readiness`](skills/observability/observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
-| Operations | [`incident-rca-and-runbook`](skills/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |
+| Idea | [`prd-from-idea`](capabilities/product-planning/prd-from-idea/) | One-page PRD: problem, users, scope, non-goals, metrics |
+| Architecture | [`system-design-from-prd`](capabilities/system-design/system-design-from-prd/) | System design + ADRs |
+| API | [`rest-api-contract-design`](capabilities/backend-systems/rest-api-contract-design/) | OpenAPI 3.1 with idempotency, cursor pagination, error envelope |
+| Testing | [`integration-test-strategy`](capabilities/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
+| Operations | [`incident-rca-and-runbook`](capabilities/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |
+| Backend scaffold | [`spring-boot-service-scaffold`](implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
+| Security | [`spring-security-auth-review`](implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
+| Observability | [`observability-readiness`](implementations/backend/spring-boot/observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
+| Data | [`postgres-schema-and-migration`](implementations/data/postgres/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
+| Containers | [`dockerfile-and-jvm-tuning`](implementations/infrastructure/docker/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
+| CI/CD | [`github-actions-pipeline-hardened`](implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
+| Deploy | [`k8s-deploy-manifest-review`](implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
 
 ## Workflow
 

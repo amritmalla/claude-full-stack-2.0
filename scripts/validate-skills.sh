@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Validate frontmatter of every SKILL.md under skills/.
+# Validate frontmatter of every SKILL.md under capabilities/ and implementations/.
 # Rules:
 #   - YAML frontmatter present with name + description
 #   - name matches parent directory
@@ -8,9 +8,12 @@
 set -euo pipefail
 
 fail=0
+roots=()
+[ -d capabilities ] && roots+=("capabilities")
+[ -d implementations ] && roots+=("implementations")
 
-if [ ! -d skills ]; then
-  echo "skills/ directory not found; nothing to validate"
+if [ ${#roots[@]} -eq 0 ]; then
+  echo "No capabilities/ or implementations/ directories found; nothing to validate"
   exit 0
 fi
 
@@ -43,7 +46,7 @@ while IFS= read -r -d '' skill; do
     "Use when"*) ;;
     *) echo "FAIL $skill: description must start with 'Use when'"; fail=1 ;;
   esac
-done < <(find skills -name SKILL.md -print0 2>/dev/null)
+done < <(find "${roots[@]}" -name SKILL.md -print0 2>/dev/null)
 
 if [ "$fail" -eq 0 ]; then
   echo "All skills valid."

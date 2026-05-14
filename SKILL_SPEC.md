@@ -4,13 +4,14 @@ A skill is a single, repeatable engineering job that Claude can execute end-to-e
 
 ## File Layout
 
-Each skill lives in a directory under `skills/<domain>/<skill-name>/`:
+Each skill lives in a directory under either `capabilities/<capability>/<skill-name>/` (technology-agnostic) or `implementations/<category>/<ecosystem>/<skill-name>/` (ecosystem-specific). See [`docs/architecture/research.md`](docs/architecture/research.md) for the capabilities-vs-implementations distinction.
 
 ```
-skills/<domain>/<skill-name>/
+<capabilities|implementations>/.../<skill-name>/
 ├── SKILL.md           # required; the only file Claude reads by default
 ├── references/        # optional; on-demand deep-dive docs
-└── examples/          # optional; sample inputs/outputs
+├── assets/            # optional; templates and starter files the skill emits
+└── checklists/        # optional; gating checklists referenced by SKILL.md
 ```
 
 The directory name is the skill's identifier. It MUST be lowercase, hyphen-separated, and match the `name` field in `SKILL.md`'s frontmatter exactly.
