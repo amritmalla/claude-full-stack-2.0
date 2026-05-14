@@ -1,12 +1,12 @@
 # naming-conventions
 
-Cross-cutting naming rules. Every capability, implementation, pattern, workflow, and standard MUST conform.
+Cross-cutting naming rules. Every architecture domain, implementation, pattern, workflow, and standard MUST conform.
 
 ## Repository entities
 
 | Entity | Pattern | Example |
 |---|---|---|
-| Capability directory | `kebab-case`, noun phrase | `backend-systems` |
+| Architecture domain directory | `kebab-case`, noun phrase | `backend-systems` |
 | Implementation directory | `kebab-case`, ecosystem name | `spring-boot`, `nextjs` |
 | Pattern directory | `kebab-case`, architectural noun | `event-driven`, `cqrs` |
 | Workflow directory | `kebab-case`, outcome-oriented | `startup-mvp` |
@@ -48,12 +48,12 @@ Apply to artifacts produced *by* skills (schemas, configs, generated code):
 
 - `-schema` — declarative contract (`prd-schema`).
 - `-standards` — multi-rule normative document (`api-standards`).
-- `-template` — scaffolding starter (`capability-template`).
+- `-template` — scaffolding starter (`architecture-template`).
 - `-playbook` — operational procedure.
 
 ## Anti-patterns
 
 - `snake_case` directory names.
 - Trailing version suffixes in folder names (`api-v2/`). Version inside the artifact, not the path.
-- Tool names in capability folders (`spring-security/` inside `capabilities/`). Capabilities are ecosystem-neutral.
+- Tool names in architecture domain folders (`spring-security/` inside `architecture/`). Architecture domains are ecosystem-neutral.
 - Vague verbs in skill names (`do-stuff`, `helper`).

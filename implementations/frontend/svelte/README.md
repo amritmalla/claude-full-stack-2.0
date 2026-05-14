@@ -1,5 +1,5 @@
 # svelte
 
-Implements relevant capabilities using the svelte ecosystem.
+Implements relevant architecture domains using the svelte ecosystem.
 
 > Status: scaffold.

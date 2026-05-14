@@ -1,5 +1,5 @@
 # terraform
 
-Implements relevant capabilities using the terraform ecosystem.
+Implements relevant architecture domains using the terraform ecosystem.
 
 > Status: scaffold.

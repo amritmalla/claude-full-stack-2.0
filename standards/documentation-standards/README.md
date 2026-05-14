@@ -4,7 +4,7 @@ Documentation contract for every artifact in this repository.
 
 ## Required files per skill
 
-Every skill (capability skill, implementation skill, pattern skill, workflow skill) MUST contain:
+Every skill (architecture-domain skill, implementation skill, pattern skill, workflow skill) MUST contain:
 
 ```
 <skill>/
@@ -15,7 +15,7 @@ Every skill (capability skill, implementation skill, pattern skill, workflow ski
 └── checklists/          # gating checklists referenced by SKILL.md (when relevant)
 ```
 
-Capabilities MAY additionally contain `principles.md`, `decision-frameworks/`, `anti-patterns/`.
+Architecture domains MAY additionally contain `principles.md`, `decision-frameworks/`, `anti-patterns/`.
 
 ## SKILL.md structure
 

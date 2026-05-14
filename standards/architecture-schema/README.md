@@ -1,6 +1,6 @@
 # architecture-schema
 
-Canonical structure for system architecture documents and Architecture Decision Records (ADRs). Produced by `capabilities/system-design`; consumed by every downstream implementation capability.
+Canonical structure for system architecture documents and Architecture Decision Records (ADRs). Produced by `architecture/system-design`; consumed by every downstream implementation domain.
 
 ## File layout
 
@@ -72,7 +72,7 @@ Per-component files use this frontmatter:
 component: <kebab-case>
 owner: <team or role>
 tier: 0 | 1 | 2 | 3
-implements: [<capability-ref>, ...]
+implements: [<architecture-domain-ref>, ...]
 implementation: <impl-ref>           # e.g. implementations/backend/spring-boot
 patterns: [<pattern-ref>, ...]
 ---
@@ -121,7 +121,7 @@ Rules:
 ## Linkage contract
 
 - `system-design.md` MUST link to its source PRD in frontmatter.
-- Every component (inline subsection or breakout file) MUST list the `capabilities/` it implements.
+- Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
 - Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills.
 

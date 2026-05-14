@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Designs scalable system architecture and technical topology from an approved PRD. Defines the architectural envelope that downstream implementation capabilities fill in.
+Designs scalable system architecture and technical topology from an approved PRD. Defines the architectural envelope that downstream implementation domains fill in.
 
 Technology-agnostic. Owns *shape* and *boundaries*, not vendor or framework choices (those land in `implementations/`).
 
@@ -30,7 +30,7 @@ Technology-agnostic. Owns *shape* and *boundaries*, not vendor or framework choi
 
 - [system-design-from-prd](system-design-from-prd/SKILL.md) — turns an approved PRD into a system design and inline ADRs.
 
-## Standards this capability conforms to
+## Standards this architecture domain conforms to
 
 - [architecture-schema](../../standards/architecture-schema/README.md) — output contract.
 - [security-standards](../../standards/security-standards/README.md) — informs Security and Compliance section.
@@ -49,5 +49,5 @@ An approved `system-design.md` is the sole upstream input to scaffolding skills 
 - [implementations/frontend/*](../../implementations/frontend/)
 - [implementations/data/*](../../implementations/data/)
 - [implementations/infrastructure/*](../../implementations/infrastructure/)
-- [capabilities/backend-systems](../backend-systems/README.md) (API contracts)
-- [capabilities/data-systems](../data-systems/README.md) (schemas and migrations)
+- [architecture/backend-systems](../backend-systems/README.md) (API contracts)
+- [architecture/data-systems](../data-systems/README.md) (schemas and migrations)

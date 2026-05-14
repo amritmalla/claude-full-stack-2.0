@@ -1,5 +1,5 @@
 # elasticsearch
 
-Implements relevant capabilities using the elasticsearch ecosystem.
+Implements relevant architecture domains using the elasticsearch ecosystem.
 
 > Status: scaffold.

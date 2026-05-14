@@ -1,5 +1,5 @@
 # azure
 
-Implements relevant capabilities using the azure ecosystem.
+Implements relevant architecture domains using the azure ecosystem.
 
 > Status: scaffold.

@@ -25,7 +25,7 @@ Recommended default:
 
 ### Target directory
 
-Recommend `services/<service-name>/` for monorepos and the repository root for single-service repos. Refuse to scaffold into any directory that looks like a plugin or skill repository (contains `capabilities/`, `implementations/`, `standards/`, `patterns/`, `marketplace.json`, `.claude-plugin/`, or this skill's own tree) without an explicit user override.
+Recommend `services/<service-name>/` for monorepos and the repository root for single-service repos. Refuse to scaffold into any directory that looks like a plugin or skill repository (contains `architecture/`, `implementations/`, `standards/`, `patterns/`, `marketplace.json`, `.claude-plugin/`, or this skill's own tree) without an explicit user override.
 
 ### Java package root derivation
 

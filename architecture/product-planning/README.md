@@ -6,7 +6,7 @@
 
 Transforms raw ideas into validated, execution-ready product definitions.
 
-Technology-agnostic. This capability owns *what* gets built and *why*, not *how*.
+Technology-agnostic. This architecture domain owns *what* gets built and *why*, not *how*.
 
 ## Owns
 
@@ -32,7 +32,7 @@ Technology-agnostic. This capability owns *what* gets built and *why*, not *how*
 
 - [prd-from-idea](prd-from-idea/SKILL.md) — turns an informal idea into a decision-oriented PRD conforming to `prd-schema`.
 
-## Standards this capability conforms to
+## Standards this architecture domain conforms to
 
 - [prd-schema](../../standards/prd-schema/README.md) — output contract.
 - [documentation-standards](../../standards/documentation-standards/README.md) — skill structure.
@@ -42,9 +42,9 @@ Technology-agnostic. This capability owns *what* gets built and *why*, not *how*
 
 PRDs approved here are the sole upstream input to:
 
-- [capabilities/system-design](../system-design/README.md)
-- [capabilities/backend-systems](../backend-systems/README.md)
-- [capabilities/frontend-architecture](../frontend-architecture/README.md)
-- [capabilities/testing-quality](../testing-quality/README.md)
+- [architecture/system-design](../system-design/README.md)
+- [architecture/backend-systems](../backend-systems/README.md)
+- [architecture/frontend-architecture](../frontend-architecture/README.md)
+- [architecture/testing-quality](../testing-quality/README.md)
 
 Downstream skills MUST NOT proceed if the PRD is `draft` or `review`.

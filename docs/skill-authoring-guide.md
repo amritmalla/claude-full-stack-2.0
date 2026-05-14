@@ -2,20 +2,20 @@
 
 A practical walkthrough for authoring a new skill. For the formal contract, see [`SKILL_SPEC.md`](../SKILL_SPEC.md).
 
-## 1. Pick a capability or implementation, and a name
+## 1. Pick an architecture domain or implementation, and a name
 
-Decide first whether the skill is **technology-agnostic** (lives under `capabilities/<capability>/<name>/`) or **ecosystem-specific** (lives under `implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
+Decide first whether the skill is **technology-agnostic** (lives under `architecture/<domain>/<name>/`) or **ecosystem-specific** (lives under `implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
 
-Existing capabilities: `product-planning`, `system-design`, `backend-systems`, `frontend-architecture`, `data-systems`, `infrastructure-platform`, `reliability`, `security`, `testing-quality`, `performance`, `operations`, `ai-native`.
+Existing architecture domains: `product-planning`, `system-design`, `backend-systems`, `frontend-architecture`, `data-systems`, `infrastructure-platform`, `reliability`, `security`, `testing-quality`, `performance`, `operations`, `ai-native`.
 
 Existing implementation categories: `backend/`, `frontend/`, `infrastructure/`, `data/`, `ai/` — each with one or more ecosystems (e.g., `backend/spring-boot/`).
 
-Name is kebab-case, descriptive of the *job*, not the technology when in `capabilities/`. Prefer `safe-migration-plan` over `flyway-migration-generator`.
+Name is kebab-case, descriptive of the *job*, not the technology when in `architecture/`. Prefer `safe-migration-plan` over `flyway-migration-generator`.
 
 ## 2. Create the directory and SKILL.md
 
 ```
-capabilities/<capability>/<name>/SKILL.md
+architecture/<domain>/<name>/SKILL.md
 # OR
 implementations/<category>/<ecosystem>/<name>/SKILL.md
 ```
@@ -84,4 +84,4 @@ This is a manual check, not automated. It catches descriptions that are too narr
 
 ## 8. Open the PR
 
-Per [`CONTRIBUTING.md`](../CONTRIBUTING.md). Include the trigger prompts, the example output, and an updated entry in the parent capability's or implementation's `README.md`. Also add an **Output contract** section in `SKILL.md` linking to any [`standards/`](../standards/) the skill conforms to.
+Per [`CONTRIBUTING.md`](../CONTRIBUTING.md). Include the trigger prompts, the example output, and an updated entry in the parent architecture domain's or implementation's `README.md`. Also add an **Output contract** section in `SKILL.md` linking to any [`standards/`](../standards/) the skill conforms to.

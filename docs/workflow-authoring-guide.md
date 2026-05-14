@@ -50,7 +50,7 @@ For each phase, list:
 
 ## 4. Cross-check skill references
 
-Every skill named in `(skills: …)` must exist under `capabilities/` or `implementations/`. The CI does not enforce this in v0.1, but a maintainer will check it on review.
+Every skill named in `(skills: …)` must exist under `architecture/` or `implementations/`. The CI does not enforce this in v0.1, but a maintainer will check it on review.
 
 ## 5. Open the PR
 

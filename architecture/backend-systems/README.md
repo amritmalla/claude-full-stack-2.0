@@ -30,7 +30,7 @@ Technology-agnostic. Owns *what* a backend service exposes and *how* it behaves,
 
 - [rest-api-contract-design](rest-api-contract-design/SKILL.md) — designs OpenAPI 3.1 REST contracts with resource modeling, standardized errors, cursor pagination, idempotency semantics, versioning, and per-service conventions.
 
-## Standards this capability conforms to
+## Standards this architecture domain conforms to
 
 - [api-standards](../../standards/api-standards/README.md) — global REST/async contract rules.
 - [security-standards](../../standards/security-standards/README.md) — auth schemes, scopes, secrets.
@@ -47,4 +47,4 @@ API contracts produced here are the source of truth for:
 
 - [implementations/backend/*](../../implementations/backend/) — server scaffolds and DTOs are generated from the OpenAPI spec, not the other way around.
 - [implementations/frontend/*](../../implementations/frontend/) — client SDKs and typed fetch layers.
-- [capabilities/testing-quality](../testing-quality/README.md) — contract-driven integration tests.
+- [architecture/testing-quality](../testing-quality/README.md) — contract-driven integration tests.

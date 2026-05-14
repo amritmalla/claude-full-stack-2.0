@@ -10,13 +10,13 @@ Implements container packaging for services. Produces minimal, hardened images t
 
 - [dockerfile-and-jvm-tuning](dockerfile-and-jvm-tuning/SKILL.md) — multi-stage Dockerfile for JVM services with distroless or jlink runtime, container-aware JVM tuning, layered jars, and image scanning.
 
-## Capabilities implemented
+## Architecture domains implemented
 
-| Capability | How |
+| Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../capabilities/infrastructure-platform/README.md) | Container packaging, JVM runtime tuning. |
-| [security](../../../capabilities/security/README.md) | Non-root, minimal base, scanned images. |
-| [performance](../../../capabilities/performance/README.md) | JVM heap and GC tuning for container memory limits. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | Container packaging, JVM runtime tuning. |
+| [security](../../../architecture/security/README.md) | Non-root, minimal base, scanned images. |
+| [performance](../../../architecture/performance/README.md) | JVM heap and GC tuning for container memory limits. |
 
 ## Standards this implementation conforms to
 

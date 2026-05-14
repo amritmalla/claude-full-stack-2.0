@@ -31,13 +31,13 @@ Technology-agnostic. Owns *how the team operates*, not the tooling.
 
 - [incident-rca-and-runbook](incident-rca-and-runbook/SKILL.md) — produces blameless postmortems with root cause analysis and reusable runbooks for recurring alerts.
 
-## Standards this capability conforms to
+## Standards this architecture domain conforms to
 
-- [observability-standards](../../standards/observability-standards/README.md) — every alert has a runbook; runbooks live where this capability says they live.
+- [observability-standards](../../standards/observability-standards/README.md) — every alert has a runbook; runbooks live where this architecture domain says they live.
 - [deployment-standards](../../standards/deployment-standards/README.md) — release governance and rollback expectations.
 - [documentation-standards](../../standards/documentation-standards/README.md) — skill structure.
 
 ## Downstream consumers
 
 - All implementation skills generate alerts that require runbooks defined here.
-- [workflows/incident-response](../../workflows/) (when authored) orchestrates this capability's incident process end-to-end.
+- [workflows/incident-response](../../workflows/) (when authored) orchestrates this architecture domain's incident process end-to-end.

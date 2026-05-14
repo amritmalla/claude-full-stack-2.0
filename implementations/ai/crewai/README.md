@@ -1,5 +1,5 @@
 # crewai
 
-Implements relevant capabilities using the crewai ecosystem.
+Implements relevant architecture domains using the crewai ecosystem.
 
 > Status: scaffold.

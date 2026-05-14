@@ -6,7 +6,7 @@
 
 Validates correctness, reliability, and production readiness. Owns testing strategy, QA automation, validation pipelines, regression prevention, and contract testing.
 
-Capability-level. The *strategy* and *coverage decisions* are ecosystem-neutral; the *wiring* (specific test runners, fixtures, container libraries) lives in implementation skills under each `implementations/*` ecosystem.
+Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem-neutral; the *wiring* (specific test runners, fixtures, container libraries) lives in implementation skills under each `implementations/*` ecosystem.
 
 ## Owns
 
@@ -29,7 +29,7 @@ Capability-level. The *strategy* and *coverage decisions* are ecosystem-neutral;
 
 - [integration-test-strategy](integration-test-strategy/SKILL.md) — designs Testcontainers-backed integration test suites driven by API contracts. Currently Spring-Boot-flavored; generalization to other ecosystems is a follow-up.
 
-## Standards this capability conforms to
+## Standards this architecture domain conforms to
 
 - [api-standards](../../standards/api-standards/README.md) — contract tests verify the published spec.
 - [prd-schema](../../standards/prd-schema/README.md) — Success Metrics become acceptance criteria.

@@ -1,5 +1,5 @@
 # fastapi
 
-Implements relevant capabilities using the fastapi ecosystem.
+Implements relevant architecture domains using the fastapi ecosystem.
 
 > Status: scaffold.

@@ -4,9 +4,9 @@
 
 ## Purpose
 
-Implements `capabilities/data-systems` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
+Implements `architecture/data-systems` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
 
-Capability decisions (which bounded contexts own which data, consistency model, retention strategy) come from upstream and are taken as inputs here.
+Architecture decisions (which bounded contexts own which data, consistency model, retention strategy) come from upstream and are taken as inputs here.
 
 ## Ecosystem
 
@@ -26,12 +26,12 @@ Capability decisions (which bounded contexts own which data, consistency model, 
 
 - [postgres-schema-and-migration](postgres-schema-and-migration/SKILL.md) — produces normalized schema, integrity constraints, indexing strategy, Flyway migrations, and zero-downtime migration plans using expand / migrate / contract.
 
-## Capabilities implemented
+## Architecture domains implemented
 
-| Capability | How |
+| Architecture domain | How |
 |---|---|
-| [data-systems](../../../capabilities/data-systems/README.md) | Schema definition, migration plans, index strategy, retention rules. |
-| [reliability](../../../capabilities/reliability/README.md) | Zero-downtime migrations, backup/recovery hooks. |
+| [data-systems](../../../architecture/data-systems/README.md) | Schema definition, migration plans, index strategy, retention rules. |
+| [reliability](../../../architecture/reliability/README.md) | Zero-downtime migrations, backup/recovery hooks. |
 
 ## Standards this implementation conforms to
 
@@ -48,4 +48,4 @@ Capability decisions (which bounded contexts own which data, consistency model, 
 ## Downstream consumers
 
 - [implementations/backend/spring-boot](../../backend/spring-boot/) — Flyway migrations land in the scaffold's `db/migration/` directory.
-- [capabilities/testing-quality](../../../capabilities/testing-quality/) — integration tests run against this schema via Testcontainers.
+- [architecture/testing-quality](../../../architecture/testing-quality/) — integration tests run against this schema via Testcontainers.

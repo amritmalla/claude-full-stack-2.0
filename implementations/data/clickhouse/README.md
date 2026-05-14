@@ -1,5 +1,5 @@
 # clickhouse
 
-Implements relevant capabilities using the clickhouse ecosystem.
+Implements relevant architecture domains using the clickhouse ecosystem.
 
 > Status: scaffold.

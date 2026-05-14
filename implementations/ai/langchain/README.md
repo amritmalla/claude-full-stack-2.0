@@ -1,5 +1,5 @@
 # langchain
 
-Implements relevant capabilities using the langchain ecosystem.
+Implements relevant architecture domains using the langchain ecosystem.
 
 > Status: scaffold.

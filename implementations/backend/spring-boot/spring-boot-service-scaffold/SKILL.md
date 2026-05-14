@@ -37,7 +37,7 @@ Optional:
 - Secure by default: no hardcoded secrets, open actuator endpoints, permissive CORS, anonymous admin surfaces, or disabled protections without explanation.
 - Challenge weak service boundaries before scaffolding. CRUD-only or data-model-driven services may not justify microservice overhead.
 - Ask for confirmation with recommended defaults when a decision changes generated files. Use: "I recommend X because Y. Confirm or redirect."
-- Confirm the target directory before writing files. Recommend `services/<service-name>/` in a monorepo or repo root for a single-service repo. Refuse to write into a plugin/skill repository (any directory containing `capabilities/`, `implementations/`, `standards/`, `patterns/`, `marketplace.json`, or this skill's own tree) without explicit user override.
+- Confirm the target directory before writing files. Recommend `services/<service-name>/` in a monorepo or repo root for a single-service repo. Refuse to write into a plugin/skill repository (any directory containing `architecture/`, `implementations/`, `standards/`, `patterns/`, `marketplace.json`, or this skill's own tree) without explicit user override.
 - Derive the Java package root by stripping hyphens and trailing `-api`/`-service` from the service name (e.g., `orders-api` → `com.<org>.orders`). Hyphens are illegal in Java packages — never emit them. Recommend `com.example` when no organization name is provided.
 - A scaffold that does not build is not done. Run `mvn -q -DskipTests verify` (or Gradle equivalent) and the baseline test before declaring completion. Fix and re-run on failure.
 
@@ -51,7 +51,7 @@ The generated service shell MUST conform to:
 - [deployment-standards](../../../../standards/deployment-standards/README.md) — env-agnostic Docker image, config injected at deploy time (no baked secrets, no env-branched code), readiness/liveness probes.
 - [naming-conventions](../../../../standards/naming-conventions/README.md) — env vars in `SCREAMING_SNAKE_CASE`, container images `kebab-case`, Java package derivation from service name.
 
-Upstream contract: when an [openapi.yaml](../../../../capabilities/backend-systems/rest-api-contract-design/SKILL.md) exists for the service, the scaffold consumes it as the source of truth — do not invent endpoint shapes.
+Upstream contract: when an [openapi.yaml](../../../../architecture/backend-systems/rest-api-contract-design/SKILL.md) exists for the service, the scaffold consumes it as the source of truth — do not invent endpoint shapes.
 
 ## Progressive references
 

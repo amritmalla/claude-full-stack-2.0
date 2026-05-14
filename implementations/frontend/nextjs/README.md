@@ -1,5 +1,5 @@
 # nextjs
 
-Implements relevant capabilities using the nextjs ecosystem.
+Implements relevant architecture domains using the nextjs ecosystem.
 
 > Status: scaffold.

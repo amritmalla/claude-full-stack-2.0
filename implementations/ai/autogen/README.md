@@ -1,5 +1,5 @@
 # autogen
 
-Implements relevant capabilities using the autogen ecosystem.
+Implements relevant architecture domains using the autogen ecosystem.
 
 > Status: scaffold.

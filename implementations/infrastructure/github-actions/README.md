@@ -10,12 +10,12 @@ Implements CI/CD pipelines on GitHub Actions for any service in the repo. Pipeli
 
 - [github-actions-pipeline-hardened](github-actions-pipeline-hardened/SKILL.md) — produces build/test/scan/sign/push workflows with pinned action versions, dependency caching, SBOM generation, and provenance signing.
 
-## Capabilities implemented
+## Architecture domains implemented
 
-| Capability | How |
+| Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../capabilities/infrastructure-platform/README.md) | CI/CD pipeline definitions and runner topology. |
-| [security](../../../capabilities/security/README.md) | SAST, SCA, container scanning, secret scanning, image signing. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | CI/CD pipeline definitions and runner topology. |
+| [security](../../../architecture/security/README.md) | SAST, SCA, container scanning, secret scanning, image signing. |
 
 ## Standards this implementation conforms to
 

@@ -1,5 +1,5 @@
 # anthropic
 
-Implements relevant capabilities using the anthropic ecosystem.
+Implements relevant architecture domains using the anthropic ecosystem.
 
 > Status: scaffold.

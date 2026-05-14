@@ -1,5 +1,5 @@
 # angular
 
-Implements relevant capabilities using the angular ecosystem.
+Implements relevant architecture domains using the angular ecosystem.
 
 > Status: scaffold.

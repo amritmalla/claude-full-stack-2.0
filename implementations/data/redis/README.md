@@ -1,5 +1,5 @@
 # redis
 
-Implements relevant capabilities using the redis ecosystem.
+Implements relevant architecture domains using the redis ecosystem.
 
 > Status: scaffold.

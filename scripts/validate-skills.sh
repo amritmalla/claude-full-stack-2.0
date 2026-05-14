@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Validate frontmatter of every SKILL.md under capabilities/ and implementations/.
+# Validate frontmatter of every SKILL.md under architecture/ and implementations/.
 # Rules:
 #   - YAML frontmatter present with name + description
 #   - name matches parent directory
@@ -9,11 +9,11 @@ set -euo pipefail
 
 fail=0
 roots=()
-[ -d capabilities ] && roots+=("capabilities")
+[ -d architecture ] && roots+=("architecture")
 [ -d implementations ] && roots+=("implementations")
 
 if [ ${#roots[@]} -eq 0 ]; then
-  echo "No capabilities/ or implementations/ directories found; nothing to validate"
+  echo "No architecture/ or implementations/ directories found; nothing to validate"
   exit 0
 fi
 

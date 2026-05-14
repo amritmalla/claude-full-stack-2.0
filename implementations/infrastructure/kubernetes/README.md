@@ -10,13 +10,13 @@ Implements Kubernetes deployment topology for services: Deployment, Service, HPA
 
 - [k8s-deploy-manifest-review](k8s-deploy-manifest-review/SKILL.md) — authors or reviews Kubernetes manifests for production workloads (Deployment, Service, HPA, PDB, NetworkPolicy, security context).
 
-## Capabilities implemented
+## Architecture domains implemented
 
-| Capability | How |
+| Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../capabilities/infrastructure-platform/README.md) | Workload topology, autoscaling, disruption budgets. |
-| [reliability](../../../capabilities/reliability/README.md) | Readiness/liveness probes, PDBs, multi-replica defaults. |
-| [security](../../../capabilities/security/README.md) | NetworkPolicy, non-root containers, read-only root FS, dropped capabilities. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | Workload topology, autoscaling, disruption budgets. |
+| [reliability](../../../architecture/reliability/README.md) | Readiness/liveness probes, PDBs, multi-replica defaults. |
+| [security](../../../architecture/security/README.md) | NetworkPolicy, non-root containers, read-only root FS, dropped capabilities. |
 
 ## Standards this implementation conforms to
 

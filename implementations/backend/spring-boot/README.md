@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Implements backend capabilities using the Spring ecosystem. This is the *how* layer — framework-specific scaffolding, configuration, and hardening. Capability decisions (API shape, domain modeling, auth strategy) come from [capabilities/](../../../capabilities/) and are taken as inputs here.
+Implements backend architecture domains using the Spring ecosystem. This is the *how* layer — framework-specific scaffolding, configuration, and hardening. Architecture decisions (API shape, domain modeling, auth strategy) come from [architecture/](../../../architecture/) and are taken as inputs here.
 
 ## Ecosystem
 
@@ -31,14 +31,14 @@ Implements backend capabilities using the Spring ecosystem. This is the *how* la
 - [spring-security-auth-review](spring-security-auth-review/SKILL.md) — reviews and hardens authentication / authorization for a Spring Boot service using Spring Security, JWT, OAuth2, sessions, or service-to-service auth.
 - [observability-readiness](observability-readiness/SKILL.md) — produces or audits Micrometer/Prometheus metrics, OpenTelemetry tracing, structured logs with trace correlation, SLI/SLO definitions, and multi-window multi-burn-rate alerts.
 
-## Capabilities implemented
+## Architecture domains implemented
 
-| Capability | How |
+| Architecture domain | How |
 |---|---|
-| [backend-systems](../../../capabilities/backend-systems/README.md) | Service scaffold generates controllers, DTOs, and error handlers from the OpenAPI contract produced by `rest-api-contract-design`. |
-| [security](../../../capabilities/security/README.md) | Spring Security configuration; auth review skill enforces [security-standards](../../../standards/security-standards/README.md). |
-| [reliability](../../../capabilities/reliability/README.md) | Actuator health probes, structured logging, OpenTelemetry hooks per [observability-standards](../../../standards/observability-standards/README.md). |
-| [testing-quality](../../../capabilities/testing-quality/README.md) | Testcontainers-based integration test foundations. |
+| [backend-systems](../../../architecture/backend-systems/README.md) | Service scaffold generates controllers, DTOs, and error handlers from the OpenAPI contract produced by `rest-api-contract-design`. |
+| [security](../../../architecture/security/README.md) | Spring Security configuration; auth review skill enforces [security-standards](../../../standards/security-standards/README.md). |
+| [reliability](../../../architecture/reliability/README.md) | Actuator health probes, structured logging, OpenTelemetry hooks per [observability-standards](../../../standards/observability-standards/README.md). |
+| [testing-quality](../../../architecture/testing-quality/README.md) | Testcontainers-based integration test foundations. |
 
 ## Standards this implementation conforms to
 
@@ -51,7 +51,7 @@ Implements backend capabilities using the Spring ecosystem. This is the *how* la
 ## Upstream inputs
 
 - Approved `system-design.md` (selects Spring Boot as the runtime for one or more components).
-- Approved `openapi.yaml` + `api-conventions.md` from [rest-api-contract-design](../../../capabilities/backend-systems/rest-api-contract-design/SKILL.md) for any service exposing REST.
+- Approved `openapi.yaml` + `api-conventions.md` from [rest-api-contract-design](../../../architecture/backend-systems/rest-api-contract-design/SKILL.md) for any service exposing REST.
 
 ## Downstream consumers
 

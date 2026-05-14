@@ -1,5 +1,5 @@
 # gcp
 
-Implements relevant capabilities using the gcp ecosystem.
+Implements relevant architecture domains using the gcp ecosystem.
 
 > Status: scaffold.

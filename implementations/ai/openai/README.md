@@ -1,5 +1,5 @@
 # openai
 
-Implements relevant capabilities using the openai ecosystem.
+Implements relevant architecture domains using the openai ecosystem.
 
 > Status: scaffold.

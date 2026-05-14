@@ -1,5 +1,5 @@
 # dotnet
 
-Implements relevant capabilities using the dotnet ecosystem.
+Implements relevant architecture domains using the dotnet ecosystem.
 
 > Status: scaffold.

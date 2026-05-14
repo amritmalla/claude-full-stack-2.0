@@ -16,11 +16,11 @@ Once installed, the skills below become invocable by Claude Code's `Skill` tool 
 
 This repo is an AI-native engineering operating system. Skills are organized by what they own, not by topic:
 
-- **[capabilities/](capabilities/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
+- **[architecture/](architecture/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
 - **[implementations/](implementations/)** — ecosystem-specific execution (Spring Boot, Postgres, Kubernetes, GitHub Actions, ...).
 - **[patterns/](patterns/)** — reusable architectural strategies (event-driven, hexagonal, modular-monolith, ...).
 - **[standards/](standards/)** — shared interoperability contracts that everything above conforms to.
-- **[workflows/](workflows/)** — end-to-end execution flows that chain capabilities + implementations.
+- **[workflows/](workflows/)** — end-to-end execution flows that chain architecture + implementations.
 
 See the long-form rationale in [`docs/architecture/research.md`](docs/architecture/research.md).
 
@@ -30,11 +30,11 @@ Twelve lifecycle-spanning skills:
 
 | Stage | Skill | What it produces |
 |---|---|---|
-| Idea | [`prd-from-idea`](capabilities/product-planning/prd-from-idea/) | One-page PRD: problem, users, scope, non-goals, metrics |
-| Architecture | [`system-design-from-prd`](capabilities/system-design/system-design-from-prd/) | System design + ADRs |
-| API | [`rest-api-contract-design`](capabilities/backend-systems/rest-api-contract-design/) | OpenAPI 3.1 with idempotency, cursor pagination, error envelope |
-| Testing | [`integration-test-strategy`](capabilities/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
-| Operations | [`incident-rca-and-runbook`](capabilities/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |
+| Idea | [`prd-from-idea`](architecture/product-planning/prd-from-idea/) | One-page PRD: problem, users, scope, non-goals, metrics |
+| Architecture | [`system-design-from-prd`](architecture/system-design/system-design-from-prd/) | System design + ADRs |
+| API | [`rest-api-contract-design`](architecture/backend-systems/rest-api-contract-design/) | OpenAPI 3.1 with idempotency, cursor pagination, error envelope |
+| Testing | [`integration-test-strategy`](architecture/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
+| Operations | [`incident-rca-and-runbook`](architecture/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |
 | Backend scaffold | [`spring-boot-service-scaffold`](implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
 | Security | [`spring-security-auth-review`](implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
 | Observability | [`observability-readiness`](implementations/backend/spring-boot/observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
