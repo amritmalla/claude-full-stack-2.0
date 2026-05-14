@@ -1,14 +1,16 @@
 ---
 product: <kebab-case-slug>
 status: draft
-owner: <name or role>
+owner: <name or role; use "self" for solo/personal projects>
 version: 0.1.0
 last_reviewed: YYYY-MM-DD
 ---
 
 # PRD — <Product Name>
 
-> Conforms to [standards/prd-schema](../../../../standards/prd-schema/README.md).
+> Conforms to [standards/prd-schema](../../../standards/prd-schema/README.md).
+>
+> **Frontmatter notes:** `owner` is the human or role accountable for product decisions (use `self` for solo/personal work). `last_reviewed` is the date this PRD was last verified against current reality, not the date it was created — update it whenever scope, assumptions, or metrics are re-confirmed.
 >
 > **Required sections:** Problem, Users, JTBD, Scope, Non-goals, Constraints, Assumptions, Success Metrics, Open Questions.
 >
@@ -62,7 +64,11 @@ Omit only if neither applies.]
 
 ## Success Metrics
 
-[2-4 metrics. Each must include unit, target, and timeframe.]
+[2-4 metrics. Each must include unit, target, and timeframe. Use a table:]
+
+| Metric | Unit | Target | Timeframe |
+|---|---|---|---|
+| <what is measured> | <unit> | <numeric target> | <rolling window or deadline> |
 
 ## Open Questions
 

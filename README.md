@@ -30,7 +30,7 @@ Twelve lifecycle-spanning skills:
 
 | Stage | Skill | What it produces |
 |---|---|---|
-| Idea | [`prd-from-idea`](architecture/product-planning/prd-from-idea/) | One-page PRD: problem, users, scope, non-goals, metrics |
+| Idea | [`idea-development`](architecture/idea-development/) | Discovery, refinement, validation, PRD specification, and execution readiness |
 | Architecture | [`system-design-from-prd`](architecture/system-design/system-design-from-prd/) | System design + ADRs |
 | Backend architecture | [`backend-architecture`](architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
 | Testing | [`integration-test-strategy`](architecture/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
