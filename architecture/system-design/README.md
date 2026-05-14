@@ -50,4 +50,4 @@ An approved `system-design.md` is the sole upstream input to scaffolding skills 
 - [implementations/data/*](../../implementations/data/)
 - [implementations/infrastructure/*](../../implementations/infrastructure/)
 - [architecture/backend-architecture](../backend-architecture/README.md) (backend boundaries and contracts)
-- [architecture/data-engineering](../data-engineering/README.md) (schemas and migrations)
+- [architecture/data-architecture](../data-architecture/README.md) (schemas and migrations)

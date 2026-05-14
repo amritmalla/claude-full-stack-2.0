@@ -66,11 +66,11 @@ Backend architecture produced here is the source of truth for:
 
 ---
 
-### data-engineering
+### data-architecture
 
 **Status:** scaffold
 
-**Purpose:** Designs durable and scalable data infrastructure.
+**Purpose:** Designs the operational data layer: database engine choice, schema and consistency model, index strategy, partitioning and replication topology, caching strategy, and retention.
 
 > See [research.md](./research.md) for the target spec.
 
@@ -250,7 +250,7 @@ An approved `system-design.md` is the sole upstream input to scaffolding skills 
 - [implementations/data/*](../../implementations/data/)
 - [implementations/infrastructure/*](../../implementations/infrastructure/)
 - [architecture/backend-architecture](#backend-architecture) (backend boundaries and contracts)
-- [architecture/data-engineering](#data-engineering) (schemas and migrations)
+- [architecture/data-architecture](#data-architecture) (schemas and migrations)
 
 **Skills:**
 - [system-design](../../architecture/system-design/SKILL.md) - turns an approved PRD into a system design and inline ADRs.
@@ -483,7 +483,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 **Status:** draft
 
-**Purpose:** Implements `architecture/data-engineering` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
+**Purpose:** Implements `architecture/data-architecture` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
 
 Architecture decisions (which bounded contexts own which data, consistency model, retention strategy) come from upstream and are taken as inputs here.
 
@@ -503,7 +503,7 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 | Architecture domain | How |
 |---|---|
-| [data-engineering](#data-engineering) | Schema definition, migration plans, index strategy, retention rules. |
+| [data-architecture](#data-architecture) | Schema definition, migration plans, index strategy, retention rules. |
 | [reliability](#reliability) | Zero-downtime migrations, backup/recovery hooks. |
 
 **Standards this implementation conforms to:**
