@@ -84,4 +84,10 @@ This is a manual check, not automated. It catches descriptions that are too narr
 
 ## 8. Open the PR
 
-Per [`CONTRIBUTING.md`](../CONTRIBUTING.md). Include the trigger prompts, the example output, and an updated entry in the parent architecture domain's or implementation's `README.md`. Also add an **Output contract** section in `SKILL.md` linking to any [`standards/`](../standards/) the skill conforms to.
+Per [`CONTRIBUTING.md`](../CONTRIBUTING.md). Include the trigger prompts, the example output, and an updated entry under the corresponding domain or ecosystem in [`docs/architecture/registry.md`](architecture/registry.md). Also add an **Output contract** section in `SKILL.md` linking to any [`standards/`](../standards/) the skill conforms to.
+
+## Architecture domains and ecosystems
+
+Domain and ecosystem charter information (purpose, owns, produces, upstream/downstream, standards conformance, skill index) lives in [`docs/architecture/registry.md`](architecture/registry.md), not in per-directory `README.md` files. When adding a new skill, append it to the `Skills:` list of the relevant entry in the registry. When adding a new domain or ecosystem, add a new section to the registry following the existing schema.
+
+Per-directory `README.md` files inside `architecture/<domain>/` or `implementations/<category>/<ecosystem>/` are deprecated and should not be created.
