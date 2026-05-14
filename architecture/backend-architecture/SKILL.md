@@ -7,11 +7,11 @@ description: Use when an approved system design exists and the team needs backen
 
 ## When to use
 
-Invoke after `system-design-from-prd` has produced an approved system design and before implementation-specific skills generate code, schemas, tests, or deployment assets.
+Invoke after `system-design` has produced an approved system design and before implementation-specific skills generate code, schemas, tests, or deployment assets.
 
 Use this skill to turn high-level system architecture into backend implementation direction: service responsibilities, domain boundaries, interface contracts, execution flows, consistency rules, security touchpoints, and operational expectations.
 
-Do not use for framework scaffolding, database-specific schema design, frontend state/rendering architecture, Kubernetes manifests, CI/CD pipelines, or broad system topology decisions that still belong in `system-design-from-prd`.
+Do not use for framework scaffolding, database-specific schema design, frontend state/rendering architecture, Kubernetes manifests, CI/CD pipelines, or broad system topology decisions that still belong in `system-design`.
 
 ## Inputs
 

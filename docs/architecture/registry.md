@@ -253,7 +253,7 @@ An approved `system-design.md` is the sole upstream input to scaffolding skills 
 - [architecture/data-systems](#data-systems) (schemas and migrations)
 
 **Skills:**
-- [system-design-from-prd](../../architecture/system-design/system-design-from-prd/SKILL.md) — turns an approved PRD into a system design and inline ADRs.
+- [system-design](../../architecture/system-design/SKILL.md) - turns an approved PRD into a system design and inline ADRs.
 
 ---
 

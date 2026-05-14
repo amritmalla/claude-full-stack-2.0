@@ -43,7 +43,7 @@ Twelve skills, one per lifecycle stage:
 | # | Stage | Skill (directory under `skills/`) |
 |---|---|---|
 | 1 | Idea | `product/prd-from-idea` |
-| 2 | Architecture | `architecture/system-design-from-prd` |
+| 2 | Architecture | `architecture/system-design` |
 | 3 | Backend scaffold | `backend/spring-boot-service-scaffold` |
 | 4 | API | `architecture/backend-architecture` |
 | 5 | Data | `data/postgres-schema-and-migration` |
@@ -66,7 +66,7 @@ claude-full-stack-2.0/
 │   └── marketplace.json
 ├── skills/
 │   ├── product/prd-from-idea/
-│   ├── architecture/system-design-from-prd/
+│   ├── architecture/system-design/
 │   ├── backend/
 │   │   ├── spring-boot-service-scaffold/
 │   │   ├── backend-architecture/

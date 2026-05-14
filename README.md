@@ -31,7 +31,7 @@ Twelve lifecycle-spanning skills:
 | Stage | Skill | What it produces |
 |---|---|---|
 | Idea | [`idea-development`](architecture/idea-development/) | Discovery, refinement, validation, PRD specification, and execution readiness |
-| Architecture | [`system-design-from-prd`](architecture/system-design/system-design-from-prd/) | System design + ADRs |
+| Architecture | [`system-design`](architecture/system-design/) | System design + ADRs |
 | Backend architecture | [`backend-architecture`](architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
 | Testing | [`integration-test-strategy`](architecture/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
 | Operations | [`incident-rca-and-runbook`](architecture/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |

@@ -4,7 +4,7 @@ Load this before emitting final artifacts. Revise until each check passes or the
 
 ## Required checks
 
-- [ ] The design restates PRD elements that exist in the PRD (primary user, core workflow, constraints, success metrics, non-goals) and explicitly notes any structural gap rather than papering over it. Legitimate PRD omissions under `prd-from-idea`'s conditional-section rules (Why Now, Current Alternatives, Risks, Distribution) are not gaps.
+- [ ] The design restates PRD elements that exist in the PRD (primary user, core workflow, constraints, success metrics, non-goals) and explicitly notes any structural gap rather than papering over it. Legitimate PRD omissions under `idea-development` conditional-section rules (Why Now, Current Alternatives, Risks, Distribution) are not gaps.
 - [ ] Every bounded context has one clear business responsibility.
 - [ ] Bounded contexts use domain names, not technology names.
 - [ ] Every component has a concise responsibility statement.

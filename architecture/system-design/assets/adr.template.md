@@ -8,7 +8,7 @@ supersedes: null
 
 # ADR NNNN: <Decision Title>
 
-> Conforms to [standards/architecture-schema](../../../../standards/architecture-schema/README.md).
+> Conforms to [standards/architecture-schema](../../../standards/architecture-schema/README.md).
 >
 > Once `status: accepted`, the body MUST NOT be edited. Changes require a new ADR that `supersedes` this one.
 

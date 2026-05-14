@@ -108,7 +108,7 @@ Note: confirm GitHub owner before merging; placeholder `<owner>` must be replace
   "tags": ["full-stack", "devops", "sre", "spring-boot", "kubernetes", "production"],
   "skills": [
     "skills/product/prd-from-idea",
-    "skills/architecture/system-design-from-prd",
+    "skills/architecture/system-design",
     "skills/backend/spring-boot-service-scaffold",
     "architecture/backend-architecture",
     "skills/backend/spring-security-auth-review",
@@ -403,7 +403,7 @@ For each skill below, follow the same 6-step pattern as Task 9: write `SKILL.md`
 
 Per-skill specifics:
 
-**Task 10: `architecture/system-design-from-prd`**
+**Task 10: `architecture/system-design`**
 - Inputs: PRD.md from Task 9 output
 - Process: identify bounded contexts, choose architecture style (monolith/modular/microservice), draw component diagram, list ADRs needed, capture failure modes
 - Outputs: `system-design.md` + `adrs/0001-*.md`

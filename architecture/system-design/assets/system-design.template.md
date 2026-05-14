@@ -9,7 +9,7 @@ last_reviewed: YYYY-MM-DD
 
 # System Design — <Product Name>
 
-> Conforms to [standards/architecture-schema](../../../../standards/architecture-schema/README.md).
+> Conforms to [standards/architecture-schema](../../../standards/architecture-schema/README.md).
 >
 > **Required sections:** Overview, Architecture Style, Bounded Contexts, Components, Data Flow, Failure Modes, ADR Index.
 >
