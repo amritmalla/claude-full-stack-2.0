@@ -18,7 +18,7 @@
 | 4 | Backend architecture | `architecture/backend-architecture` |
 | 5 | Data | `data/postgres-schema-and-migration` |
 | 6 | Security | `backend/spring-security-auth-review` |
-| 7 | Testing | `architecture/testing-quality` |
+| 7 | Quality | `architecture/quality-engineering` |
 | 8 | Containerization | `containers/dockerfile-and-jvm-tuning` |
 | 9 | CI/CD | `cicd/github-actions-pipeline-hardened` |
 | 10 | Deploy | `deploy/k8s-deploy-manifest-review` |

@@ -1,12 +1,12 @@
 ---
-name: testing-quality
+name: quality-engineering
 description: Use when a service needs a production-grade testing strategy before
   merging or promoting a feature. Produces a contract-driven test plan,
   acceptance criteria from product success metrics, and an integration test
   harness plan that avoids fragile mocks of the system under test.
 ---
 
-# Testing Quality
+# Quality Engineering
 
 ## When to use
 

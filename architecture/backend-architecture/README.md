@@ -51,4 +51,4 @@ Backend architecture produced here is the source of truth for:
 - [implementations/backend/*](../../implementations/backend/) - server scaffolds, modules, controllers, DTOs, workers, and integration points follow the backend architecture.
 - [implementations/data/*](../../implementations/data/) - schema and migration skills consume ownership, transaction, and consistency decisions.
 - [implementations/frontend/*](../../implementations/frontend/) - client SDKs and typed fetch layers consume published contracts.
-- [architecture/testing-quality](../testing-quality/README.md) - contract-driven and workflow-driven integration tests.
+- [architecture/quality-engineering](../quality-engineering/README.md) - contract-driven and workflow-driven integration tests.

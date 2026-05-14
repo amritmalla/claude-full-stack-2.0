@@ -48,7 +48,7 @@ Twelve skills, one per lifecycle stage:
 | 4 | API | `architecture/backend-architecture` |
 | 5 | Data | `data/postgres-schema-and-migration` |
 | 6 | Security | `backend/spring-security-auth-review` |
-| 7 | Testing | `architecture/testing-quality` |
+| 7 | Quality | `architecture/quality-engineering` |
 | 8 | Containerization | `containers/dockerfile-and-jvm-tuning` |
 | 9 | CI/CD | `cicd/github-actions-pipeline-hardened` |
 | 10 | Deploy | `deploy/k8s-deploy-manifest-review` |
@@ -72,7 +72,7 @@ claude-full-stack-2.0/
 │   │   ├── backend-architecture/
 │   │   └── spring-security-auth-review/
 │   ├── data/postgres-schema-and-migration/
-│   ├── architecture/testing-quality/
+│   ├── architecture/quality-engineering/
 │   ├── containers/dockerfile-and-jvm-tuning/
 │   ├── cicd/github-actions-pipeline-hardened/
 │   ├── deploy/k8s-deploy-manifest-review/

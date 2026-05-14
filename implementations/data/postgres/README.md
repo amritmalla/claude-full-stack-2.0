@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Implements `architecture/data-systems` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
+Implements `architecture/data-engineering` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
 
 Architecture decisions (which bounded contexts own which data, consistency model, retention strategy) come from upstream and are taken as inputs here.
 
@@ -30,7 +30,7 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 | Architecture domain | How |
 |---|---|
-| [data-systems](../../../architecture/data-systems/README.md) | Schema definition, migration plans, index strategy, retention rules. |
+| [data-engineering](../../../architecture/data-engineering/README.md) | Schema definition, migration plans, index strategy, retention rules. |
 | [reliability](../../../architecture/reliability/README.md) | Zero-downtime migrations, backup/recovery hooks. |
 
 ## Standards this implementation conforms to
@@ -48,4 +48,4 @@ Architecture decisions (which bounded contexts own which data, consistency model
 ## Downstream consumers
 
 - [implementations/backend/spring-boot](../../backend/spring-boot/) — Flyway migrations land in the scaffold's `db/migration/` directory.
-- [architecture/testing-quality](../../../architecture/testing-quality/) — integration tests run against this schema via Testcontainers.
+- [architecture/quality-engineering](../../../architecture/quality-engineering/) — integration tests run against this schema via Testcontainers.

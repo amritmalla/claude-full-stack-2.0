@@ -7,7 +7,7 @@
     "architecture/idea-development",
     "architecture/system-design",
     "architecture/backend-architecture",
-    "architecture/testing-quality",
+    "architecture/quality-engineering",
     "architecture/operations",
     "implementations/backend/spring-boot/spring-boot-service-scaffold",
     "implementations/backend/spring-boot/spring-security-auth-review",

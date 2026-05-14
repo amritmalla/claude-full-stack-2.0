@@ -113,7 +113,7 @@ Note: confirm GitHub owner before merging; placeholder `<owner>` must be replace
     "architecture/backend-architecture",
     "skills/backend/spring-security-auth-review",
     "skills/data/postgres-schema-and-migration",
-    "architecture/testing-quality",
+    "architecture/quality-engineering",
     "skills/containers/dockerfile-and-jvm-tuning",
     "skills/cicd/github-actions-pipeline-hardened",
     "skills/deploy/k8s-deploy-manifest-review",
@@ -438,7 +438,7 @@ Per-skill specifics:
 - Quality checks: JWTs validated against issuer + audience + expiry + signing key; scopes enforced per endpoint; refresh tokens rotated; signing key not in source; CSRF disabled only with justification
 - Example output: auth review for `orders-api`'s JWT setup
 
-**Task 15: `architecture/testing-quality`**
+**Task 15: `architecture/quality-engineering`**
 - Inputs: scaffolded service + OpenAPI
 - Process: design test pyramid for this service, scaffold Testcontainers Postgres setup, generate happy-path + 3 edge-case integration tests per endpoint, set up MockMvc/WebTestClient
 - Outputs: `OrderIntegrationTest.java`, `pom.xml` dependency additions, `application-test.yml`

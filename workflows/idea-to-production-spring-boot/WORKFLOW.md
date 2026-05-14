@@ -18,7 +18,7 @@ This workflow chains every v0.1 skill into a single end-to-end lifecycle path. E
 **Exit:** `PRD.md` plus `system-design.md` and the initial `adrs/` directory committed.
 **Gate:** Stakeholder sign-off on scope, non-goals, and chosen architecture style.
 
-### Phase 2 — Build (skills: `spring-boot-service-scaffold`, `backend-architecture`, `postgres-schema-and-migration`, `spring-security-auth-review`, `testing-quality`)
+### Phase 2 — Build (skills: `spring-boot-service-scaffold`, `backend-architecture`, `postgres-schema-and-migration`, `spring-security-auth-review`, `quality-engineering`)
 
 **Entry:** Approved design from Phase 1.
 **Exit:** Service compiles; `openapi.yaml` published; Flyway migrations applied locally; auth review findings resolved; integration test suite green against Testcontainers.

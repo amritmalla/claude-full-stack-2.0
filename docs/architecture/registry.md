@@ -6,7 +6,7 @@
 
 ## Architecture domains
 
-### ai-native
+### ai-native-engineering
 
 **Status:** scaffold
 
@@ -59,14 +59,14 @@ Backend architecture produced here is the source of truth for:
 - [implementations/backend/*](../../implementations/backend/) - server scaffolds, modules, controllers, DTOs, workers, and integration points follow the backend architecture.
 - [implementations/data/*](../../implementations/data/) - schema and migration skills consume ownership, transaction, and consistency decisions.
 - [implementations/frontend/*](../../implementations/frontend/) - client SDKs and typed fetch layers consume published contracts.
-- [architecture/testing-quality](#testing-quality) - contract-driven and workflow-driven integration tests.
+- [architecture/quality-engineering](#quality-engineering) - contract-driven and workflow-driven integration tests.
 
 **Skills:**
 - [backend-architecture](../../architecture/backend-architecture/SKILL.md) — turns approved system design into backend service architecture: boundaries, domain behavior, interface strategy, transactions, consistency, security touchpoints, operations, and implementation handoff notes.
 
 ---
 
-### data-systems
+### data-engineering
 
 **Status:** scaffold
 
@@ -121,7 +121,7 @@ Backend architecture produced here is the source of truth for:
 - [architecture/system-design](#system-design)
 - [architecture/backend-architecture](#backend-architecture)
 - [architecture/frontend-architecture](#frontend-architecture)
-- [architecture/testing-quality](#testing-quality)
+- [architecture/quality-engineering](#quality-engineering)
 
 **Skills:**
 - [idea-development](../../architecture/idea-development/SKILL.md) — develops an informal product idea through discovery, refinement, validation, specification, and execution readiness; emits a decision-oriented PRD conforming to prd-schema plus a readiness note.
@@ -250,14 +250,14 @@ An approved `system-design.md` is the sole upstream input to scaffolding skills 
 - [implementations/data/*](../../implementations/data/)
 - [implementations/infrastructure/*](../../implementations/infrastructure/)
 - [architecture/backend-architecture](#backend-architecture) (backend boundaries and contracts)
-- [architecture/data-systems](#data-systems) (schemas and migrations)
+- [architecture/data-engineering](#data-engineering) (schemas and migrations)
 
 **Skills:**
 - [system-design](../../architecture/system-design/SKILL.md) - turns an approved PRD into a system design and inline ADRs.
 
 ---
 
-### testing-quality
+### quality-engineering
 
 **Status:** draft
 
@@ -297,7 +297,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 - [implementations/infrastructure/*](../../implementations/infrastructure/) — CI pipelines invoke the suites declared here.
 
 **Skills:**
-- [testing-quality](../../architecture/testing-quality/SKILL.md) — produces contract-driven test strategy, acceptance criteria, integration test planning, and CI quality gates.
+- [quality-engineering](../../architecture/quality-engineering/SKILL.md) — produces contract-driven test strategy, acceptance criteria, integration test planning, and CI quality gates.
 
 ---
 
@@ -425,7 +425,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 | [backend-architecture](#backend-architecture) | Service scaffold follows backend boundaries, modules, workers, controllers, DTOs, and REST contracts produced by `backend-architecture`. |
 | [security](#security) | Spring Security configuration; auth review skill enforces [security-standards](../../standards/security-standards/README.md). |
 | [reliability](#reliability) | Actuator health probes, structured logging, OpenTelemetry hooks per [observability-standards](../../standards/observability-standards/README.md). |
-| [testing-quality](#testing-quality) | Contract-driven test strategy and CI quality gates. |
+| [quality-engineering](#quality-engineering) | Contract-driven test strategy and CI quality gates. |
 
 **Standards this implementation conforms to:**
 - [api-standards](../../standards/api-standards/README.md) — generated controllers respect the global REST contract.
@@ -483,7 +483,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 **Status:** draft
 
-**Purpose:** Implements `architecture/data-systems` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
+**Purpose:** Implements `architecture/data-engineering` for PostgreSQL: schema design, integrity constraints, indexing strategy, migrations (Flyway / Liquibase), and zero-downtime evolution.
 
 Architecture decisions (which bounded contexts own which data, consistency model, retention strategy) come from upstream and are taken as inputs here.
 
@@ -503,7 +503,7 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 | Architecture domain | How |
 |---|---|
-| [data-systems](#data-systems) | Schema definition, migration plans, index strategy, retention rules. |
+| [data-engineering](#data-engineering) | Schema definition, migration plans, index strategy, retention rules. |
 | [reliability](#reliability) | Zero-downtime migrations, backup/recovery hooks. |
 
 **Standards this implementation conforms to:**
@@ -518,7 +518,7 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 **Downstream consumers:**
 - [implementations/backend/spring-boot](../../implementations/backend/spring-boot/) — Flyway migrations land in the scaffold's `db/migration/` directory.
-- [architecture/testing-quality](../../architecture/testing-quality/) — integration tests run against this schema via Testcontainers.
+- [architecture/quality-engineering](../../architecture/quality-engineering/) — integration tests run against this schema via Testcontainers.
 
 **Skills:**
 - [postgres-schema-and-migration](../../implementations/data/postgres/postgres-schema-and-migration/SKILL.md) — produces normalized schema, integrity constraints, indexing strategy, Flyway migrations, and zero-downtime migration plans using expand / migrate / contract.

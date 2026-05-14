@@ -1,10 +1,10 @@
-# testing-quality
+# quality-engineering
 
 > Status: draft
 
 ## Purpose
 
-Validates correctness, reliability, and production readiness. Owns testing strategy, QA automation, validation pipelines, regression prevention, and contract testing.
+Validates correctness, reliability, and production readiness. Owns quality strategy, testing strategy, QA automation, validation pipelines, regression prevention, and contract testing.
 
 Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem-neutral; the *wiring* (specific test runners, fixtures, container libraries) lives in implementation skills under each `implementations/*` ecosystem.
 
@@ -27,7 +27,7 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ## Skills
 
-- [testing-quality](SKILL.md) — produces contract-driven test strategy, acceptance criteria, integration test planning, and CI quality gates.
+- [quality-engineering](SKILL.md) - produces contract-driven test strategy, acceptance criteria, integration test planning, and CI quality gates.
 
 ## Standards this architecture domain conforms to
 

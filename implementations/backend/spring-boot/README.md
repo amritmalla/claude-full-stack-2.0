@@ -38,7 +38,7 @@ Implements backend architecture domains using the Spring ecosystem. This is the 
 | [backend-architecture](../../../architecture/backend-architecture/README.md) | Service scaffold follows backend boundaries, modules, workers, controllers, DTOs, and REST contracts produced by `backend-architecture`. |
 | [security](../../../architecture/security/README.md) | Spring Security configuration; auth review skill enforces [security-standards](../../../standards/security-standards/README.md). |
 | [reliability](../../../architecture/reliability/README.md) | Actuator health probes, structured logging, OpenTelemetry hooks per [observability-standards](../../../standards/observability-standards/README.md). |
-| [testing-quality](../../../architecture/testing-quality/README.md) | Contract-driven test strategy and Spring integration test gates. |
+| [quality-engineering](../../../architecture/quality-engineering/README.md) | Contract-driven test strategy and Spring integration test gates. |
 
 ## Standards this implementation conforms to
 
