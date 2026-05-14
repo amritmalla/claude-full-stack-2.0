@@ -110,7 +110,7 @@ Note: confirm GitHub owner before merging; placeholder `<owner>` must be replace
     "skills/product/prd-from-idea",
     "skills/architecture/system-design-from-prd",
     "skills/backend/spring-boot-service-scaffold",
-    "skills/backend/rest-api-contract-design",
+    "architecture/backend-architecture",
     "skills/backend/spring-security-auth-review",
     "skills/data/postgres-schema-and-migration",
     "skills/testing/integration-test-strategy",
@@ -417,7 +417,7 @@ Per-skill specifics:
 - Quality checks: Actuator endpoints gated by auth in non-dev profiles; `/actuator/health/liveness` returns < 50ms; no secrets in committed config; structured JSON logs outside dev
 - Example output: scaffolded `orders-api` skeleton committed under `.skill-outputs/spring-boot-service-scaffold/`
 
-**Task 12: `backend/rest-api-contract-design`**
+**Task 12: `architecture/backend-architecture`**
 - Inputs: PRD + domain model
 - Process: define resources, draft OpenAPI 3.1 spec, define error model, pagination, idempotency keys for create/cancel, versioning strategy (URI vs header)
 - Outputs: `openapi.yaml`, `api-conventions.md`

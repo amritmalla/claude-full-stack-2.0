@@ -1,6 +1,6 @@
 ---
 name: spring-boot-service-scaffold
-description: Use when creating, modernizing, or production-hardening a Spring Boot service after architecture and API direction are approved or intentionally deferred. Produces a production-ready baseline with package structure, profile-aware configuration, structured logging, observability, health probes, secure defaults, error handling, testing foundations, Docker packaging, and local run documentation. Do not use for API contract design, event schema design, or feature implementation. Generates the service shell only — endpoint shapes belong to rest-api-contract-design, schema content to postgres-schema-and-migration, container hardening to dockerfile-and-jvm-tuning. Leave Flyway migrations as an empty placeholder for the schema skill to fill.
+description: Use when creating, modernizing, or production-hardening a Spring Boot service after backend architecture is approved or intentionally deferred. Produces a production-ready baseline with package structure, profile-aware configuration, structured logging, observability, health probes, secure defaults, error handling, testing foundations, Docker packaging, and local run documentation. Do not use for backend architecture, API contract design, event schema design, or feature implementation. Generates the service shell only — backend boundaries and endpoint shapes belong to backend-architecture, schema content to postgres-schema-and-migration, container hardening to dockerfile-and-jvm-tuning. Leave Flyway migrations as an empty placeholder for the schema skill to fill.
 ---
 
 # Spring Boot Service Scaffold
@@ -51,7 +51,7 @@ The generated service shell MUST conform to:
 - [deployment-standards](../../../../standards/deployment-standards/README.md) — env-agnostic Docker image, config injected at deploy time (no baked secrets, no env-branched code), readiness/liveness probes.
 - [naming-conventions](../../../../standards/naming-conventions/README.md) — env vars in `SCREAMING_SNAKE_CASE`, container images `kebab-case`, Java package derivation from service name.
 
-Upstream contract: when an [openapi.yaml](../../../../architecture/backend-architecture/rest-api-contract-design/SKILL.md) exists for the service, the scaffold consumes it as the source of truth — do not invent endpoint shapes.
+Upstream contract: when [backend-architecture](../../../../architecture/backend-architecture/SKILL.md) output exists for the service, the scaffold consumes `backend-architecture.md` as the source of truth for modules and runtime shape. If `openapi.yaml` exists, consume it as the source of truth for endpoint shapes.
 
 ## Progressive references
 

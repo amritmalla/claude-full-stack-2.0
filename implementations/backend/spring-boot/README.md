@@ -35,7 +35,7 @@ Implements backend architecture domains using the Spring ecosystem. This is the 
 
 | Architecture domain | How |
 |---|---|
-| [backend-architecture](../../../architecture/backend-architecture/README.md) | Service scaffold generates controllers, DTOs, and error handlers from the OpenAPI contract produced by `rest-api-contract-design`. |
+| [backend-architecture](../../../architecture/backend-architecture/README.md) | Service scaffold follows backend boundaries, modules, workers, controllers, DTOs, and REST contracts produced by `backend-architecture`. |
 | [security](../../../architecture/security/README.md) | Spring Security configuration; auth review skill enforces [security-standards](../../../standards/security-standards/README.md). |
 | [reliability](../../../architecture/reliability/README.md) | Actuator health probes, structured logging, OpenTelemetry hooks per [observability-standards](../../../standards/observability-standards/README.md). |
 | [testing-quality](../../../architecture/testing-quality/README.md) | Testcontainers-based integration test foundations. |
@@ -51,7 +51,7 @@ Implements backend architecture domains using the Spring ecosystem. This is the 
 ## Upstream inputs
 
 - Approved `system-design.md` (selects Spring Boot as the runtime for one or more components).
-- Approved `openapi.yaml` + `api-conventions.md` from [rest-api-contract-design](../../../architecture/backend-architecture/rest-api-contract-design/SKILL.md) for any service exposing REST.
+- Approved `backend-architecture.md` from [backend-architecture](../../../architecture/backend-architecture/SKILL.md), plus `openapi.yaml` and `api-conventions.md` for any service exposing REST.
 
 ## Downstream consumers
 

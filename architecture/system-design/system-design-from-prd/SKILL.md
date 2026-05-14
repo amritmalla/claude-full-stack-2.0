@@ -1,6 +1,6 @@
 ---
 name: system-design-from-prd
-description: Use when an approved PRD exists and the team needs a decision-oriented system design before implementation begins. Produces bounded contexts, architecture style tradeoffs, component definitions, data flow and ownership, failure modes, security implications, operational requirements, and ADR-backed technical decisions. Do not invoke when the PRD is still unstable or requirements are unresolved; use prd-from-idea first. This skill produces the architectural envelope; downstream skills (rest-api-contract-design, spring-boot-service-scaffold, postgres-schema-and-migration) fill it with interfaces, schemas, and implementation.
+description: Use when an approved PRD exists and the team needs a decision-oriented system design before implementation begins. Produces bounded contexts, architecture style tradeoffs, component definitions, data flow and ownership, failure modes, security implications, operational requirements, and ADR-backed technical decisions. Do not invoke when the PRD is still unstable or requirements are unresolved; use prd-from-idea first. This skill produces the architectural envelope; downstream skills (backend-architecture, spring-boot-service-scaffold, postgres-schema-and-migration) fill it with interfaces, schemas, and implementation.
 ---
 
 # System Design from PRD

@@ -93,7 +93,7 @@ These tables appear across many services and should follow consistent shapes whe
 
 ### `idempotency_keys`
 
-Pairs with the `Idempotency-Key` header from `rest-api-contract-design`. Recommended shape:
+Pairs with the `Idempotency-Key` header from `backend-architecture`. Recommended shape:
 
 ```sql
 CREATE TABLE idempotency_keys (

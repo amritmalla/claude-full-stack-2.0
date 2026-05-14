@@ -40,7 +40,7 @@ Authentication-adjacent endpoints are the most-attacked surface in any service. 
 - 2FA challenge and verify,
 - account lookup endpoints that reveal whether an identity exists.
 
-Conventions (align with `rest-api-contract-design`):
+Conventions (align with `backend-architecture`):
 
 - Return `429 RATE_LIMITED` with `Retry-After`.
 - Emit `X-RateLimit-*` headers per the contract conventions.

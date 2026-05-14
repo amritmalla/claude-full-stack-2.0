@@ -15,7 +15,7 @@
 | 1 | Idea | `product/prd-from-idea` |
 | 2 | Architecture | `architecture/system-design-from-prd` |
 | 3 | Backend scaffold | `backend/spring-boot-service-scaffold` |
-| 4 | API | `backend/rest-api-contract-design` |
+| 4 | Backend architecture | `architecture/backend-architecture` |
 | 5 | Data | `data/postgres-schema-and-migration` |
 | 6 | Security | `backend/spring-security-auth-review` |
 | 7 | Testing | `testing/integration-test-strategy` |

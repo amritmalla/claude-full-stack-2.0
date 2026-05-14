@@ -11,7 +11,7 @@ Cross-cutting naming rules. Every architecture domain, implementation, pattern, 
 | Pattern directory | `kebab-case`, architectural noun | `event-driven`, `cqrs` |
 | Workflow directory | `kebab-case`, outcome-oriented | `startup-mvp` |
 | Standard directory | `kebab-case`, `-schema` or `-standards` suffix | `api-standards` |
-| Skill folder | `kebab-case`, verb-led when action | `rest-api-contract-design` |
+| Skill folder | `kebab-case`, job or domain name | `backend-architecture` |
 | Skill entry file | `SKILL.md` (uppercase) | `SKILL.md` |
 | Supporting markdown | `kebab-case.md` | `discovery-playbook.md` |
 

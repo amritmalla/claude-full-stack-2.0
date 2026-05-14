@@ -32,7 +32,7 @@ Twelve lifecycle-spanning skills:
 |---|---|---|
 | Idea | [`prd-from-idea`](architecture/product-planning/prd-from-idea/) | One-page PRD: problem, users, scope, non-goals, metrics |
 | Architecture | [`system-design-from-prd`](architecture/system-design/system-design-from-prd/) | System design + ADRs |
-| API | [`rest-api-contract-design`](architecture/backend-architecture/rest-api-contract-design/) | OpenAPI 3.1 with idempotency, cursor pagination, error envelope |
+| Backend architecture | [`backend-architecture`](architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
 | Testing | [`integration-test-strategy`](architecture/testing-quality/integration-test-strategy/) | Testcontainers-based integration suite |
 | Operations | [`incident-rca-and-runbook`](architecture/operations/incident-rca-and-runbook/) | Blameless postmortem + reusable runbook |
 | Backend scaffold | [`spring-boot-service-scaffold`](implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |

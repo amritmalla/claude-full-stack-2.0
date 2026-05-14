@@ -1,6 +1,6 @@
 ---
 name: postgres-schema-and-migration
-description: Use when designing, reviewing, or evolving a PostgreSQL schema for a production system. Produces normalized schema design, integrity constraints, indexing strategy, Flyway or Liquibase migrations, and zero-downtime migration plans using expand/migrate/contract. Do not use for schemaless databases, NoSQL stores, graph databases, analytics warehouses, or ORM-only modeling discussions. Sits downstream of system-design-from-prd (bounded contexts and ownership) and rest-api-contract-design (idempotency requirements); pairs with spring-boot-service-scaffold (Flyway directory) and integration-test-strategy (Testcontainers tests run against this schema).
+description: Use when designing, reviewing, or evolving a PostgreSQL schema for a production system. Produces normalized schema design, integrity constraints, indexing strategy, Flyway or Liquibase migrations, and zero-downtime migration plans using expand/migrate/contract. Do not use for schemaless databases, NoSQL stores, graph databases, analytics warehouses, or ORM-only modeling discussions. Sits downstream of system-design-from-prd (bounded contexts and ownership) and backend-architecture (domain ownership, transaction boundaries, consistency, and idempotency requirements); pairs with spring-boot-service-scaffold (Flyway directory) and integration-test-strategy (Testcontainers tests run against this schema).
 ---
 
 # Postgres Schema and Migration
