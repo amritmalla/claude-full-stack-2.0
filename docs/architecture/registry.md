@@ -474,9 +474,33 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ### data/mongodb
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the mongodb ecosystem.
+**Purpose:** Implements `architecture/data-architecture` for MongoDB: document modeling, schema validation, index strategy, shard-key choice, read/write concern posture, and zero-downtime evolution.
+
+Architecture decisions (which bounded contexts own which collections, consistency posture, sharding choice, replica topology) come from upstream and are taken as inputs here.
+
+**Ecosystem:**
+- MongoDB 6.0+ (replica set or sharded cluster)
+- `$jsonSchema` validators
+- mongock, mongo-migrate, or hand-rolled idempotent migration scripts
+- Testcontainers for migration dry-runs
+
+**Compatible patterns:**
+- [modular-monolith](../../patterns/modular-monolith/README.md)
+- [microservices](../../patterns/microservices/README.md)
+- [event-driven](../../patterns/event-driven/README.md) (change-stream consumers; outbox patterns)
+- [cqrs](../../patterns/cqrs/README.md) (read-model projections)
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [data-architecture](#data-architecture) | Document modeling, validation, indexing strategy, shard-key choice, retention rules, consistency posture. |
+| [reliability](#reliability) | Zero-downtime migrations, backup/restore hooks, replica-set posture. |
+
+**Skills:**
+- [mongodb-data-model-and-migration](../../implementations/data/mongodb/mongodb-data-model-and-migration/SKILL.md) — produces document modeling decisions, `$jsonSchema` validators, index strategy, shard-key choice if sharded, read/write concern posture, and zero-downtime migration plans using expand-migrate-contract or dual-write.
 
 ---
 
