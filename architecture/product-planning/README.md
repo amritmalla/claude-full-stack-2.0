@@ -43,7 +43,7 @@ Technology-agnostic. This architecture domain owns *what* gets built and *why*, 
 PRDs approved here are the sole upstream input to:
 
 - [architecture/system-design](../system-design/README.md)
-- [architecture/backend-systems](../backend-systems/README.md)
+- [architecture/backend-architecture](../backend-architecture/README.md)
 - [architecture/frontend-architecture](../frontend-architecture/README.md)
 - [architecture/testing-quality](../testing-quality/README.md)
 

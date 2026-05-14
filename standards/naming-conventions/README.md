@@ -6,7 +6,7 @@ Cross-cutting naming rules. Every architecture domain, implementation, pattern, 
 
 | Entity | Pattern | Example |
 |---|---|---|
-| Architecture domain directory | `kebab-case`, noun phrase | `backend-systems` |
+| Architecture domain directory | `kebab-case`, noun phrase | `backend-architecture` |
 | Implementation directory | `kebab-case`, ecosystem name | `spring-boot`, `nextjs` |
 | Pattern directory | `kebab-case`, architectural noun | `event-driven`, `cqrs` |
 | Workflow directory | `kebab-case`, outcome-oriented | `startup-mvp` |

@@ -1,4 +1,4 @@
-# backend-systems
+# backend-architecture
 
 > Status: draft
 

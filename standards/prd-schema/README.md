@@ -1,6 +1,6 @@
 # prd-schema
 
-Canonical structure for Product Requirement Documents produced by any `architecture/product-planning` skill. Downstream skills (`system-design`, `backend-systems`, `frontend-architecture`, `testing-quality`) consume PRDs against this schema.
+Canonical structure for Product Requirement Documents produced by any `architecture/product-planning` skill. Downstream skills (`system-design`, `backend-architecture`, `frontend-architecture`, `testing-quality`) consume PRDs against this schema.
 
 ## File location
 
@@ -57,7 +57,7 @@ Include if material; otherwise omit and add a one-line rationale under a final `
 A PRD with `status: approved` is the sole upstream input to:
 
 - [architecture/system-design](../../architecture/system-design/README.md) — consumes Problem, Scope, Non-goals, Success Metrics.
-- [architecture/backend-systems](../../architecture/backend-systems/README.md) and [architecture/frontend-architecture](../../architecture/frontend-architecture/README.md) — consume Scope, JTBD.
+- [architecture/backend-architecture](../../architecture/backend-architecture/README.md) and [architecture/frontend-architecture](../../architecture/frontend-architecture/README.md) — consume Scope, JTBD.
 - [architecture/testing-quality](../../architecture/testing-quality/README.md) — consumes Success Metrics → acceptance criteria.
 
 Downstream skills MUST NOT proceed if the PRD is `draft` or `review`.

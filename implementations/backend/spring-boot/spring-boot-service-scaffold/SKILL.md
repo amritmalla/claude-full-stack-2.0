@@ -51,7 +51,7 @@ The generated service shell MUST conform to:
 - [deployment-standards](../../../../standards/deployment-standards/README.md) — env-agnostic Docker image, config injected at deploy time (no baked secrets, no env-branched code), readiness/liveness probes.
 - [naming-conventions](../../../../standards/naming-conventions/README.md) — env vars in `SCREAMING_SNAKE_CASE`, container images `kebab-case`, Java package derivation from service name.
 
-Upstream contract: when an [openapi.yaml](../../../../architecture/backend-systems/rest-api-contract-design/SKILL.md) exists for the service, the scaffold consumes it as the source of truth — do not invent endpoint shapes.
+Upstream contract: when an [openapi.yaml](../../../../architecture/backend-architecture/rest-api-contract-design/SKILL.md) exists for the service, the scaffold consumes it as the source of truth — do not invent endpoint shapes.
 
 ## Progressive references
 

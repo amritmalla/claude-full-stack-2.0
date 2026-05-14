@@ -6,7 +6,7 @@ A practical walkthrough for authoring a new skill. For the formal contract, see 
 
 Decide first whether the skill is **technology-agnostic** (lives under `architecture/<domain>/<name>/`) or **ecosystem-specific** (lives under `implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
 
-Existing architecture domains: `product-planning`, `system-design`, `backend-systems`, `frontend-architecture`, `data-systems`, `infrastructure-platform`, `reliability`, `security`, `testing-quality`, `performance`, `operations`, `ai-native`.
+Existing architecture domains: `product-planning`, `system-design`, `backend-architecture`, `frontend-architecture`, `data-systems`, `infrastructure-platform`, `reliability`, `security`, `testing-quality`, `performance`, `operations`, `ai-native`.
 
 Existing implementation categories: `backend/`, `frontend/`, `infrastructure/`, `data/`, `ai/` — each with one or more ecosystems (e.g., `backend/spring-boot/`).
 

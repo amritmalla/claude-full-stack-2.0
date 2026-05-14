@@ -6,7 +6,7 @@
   "skills": [
     "architecture/product-planning/prd-from-idea",
     "architecture/system-design/system-design-from-prd",
-    "architecture/backend-systems/rest-api-contract-design",
+    "architecture/backend-architecture/rest-api-contract-design",
     "architecture/testing-quality/integration-test-strategy",
     "architecture/operations/incident-rca-and-runbook",
     "implementations/backend/spring-boot/spring-boot-service-scaffold",
