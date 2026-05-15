@@ -37,7 +37,7 @@ Twelve lifecycle-spanning skills:
 | Operations | [`operations`](architecture/operations/SKILL.md) | Blameless postmortem, reusable runbook, and on-call handoff |
 | Backend scaffold | [`spring-boot-service-scaffold`](implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
 | Security | [`spring-security-auth-review`](implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
-| Observability | [`observability-readiness`](implementations/backend/spring-boot/observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
+| Observability | [`spring-boot-observability-readiness`](implementations/backend/spring-boot/spring-boot-observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
 | Data | [`postgres-schema-and-migration`](implementations/data/postgres/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
 | Containers | [`dockerfile-and-jvm-tuning`](implementations/infrastructure/docker/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
 | CI/CD | [`github-actions-pipeline-hardened`](implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |

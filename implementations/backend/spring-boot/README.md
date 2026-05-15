@@ -29,8 +29,21 @@ Implements backend architecture domains using the Spring ecosystem. This is the 
 
 - [spring-boot-service-scaffold](spring-boot-service-scaffold/SKILL.md) — produces a production-ready service shell: package structure, profile-aware configuration, structured logging, observability, health probes, secure defaults, error handling, testing foundations, Docker packaging.
 - [spring-security-auth-review](spring-security-auth-review/SKILL.md) — reviews and hardens authentication / authorization for a Spring Boot service using Spring Security, JWT, OAuth2, sessions, or service-to-service auth.
-- [observability-readiness](observability-readiness/SKILL.md) — produces or audits Micrometer/Prometheus metrics, OpenTelemetry tracing, structured logs with trace correlation, SLI/SLO definitions, and multi-window multi-burn-rate alerts.
+- [spring-boot-observability-readiness](spring-boot-observability-readiness/SKILL.md) — produces or audits Micrometer/Prometheus metrics, OpenTelemetry tracing, structured logs with trace correlation, SLI/SLO definitions, and multi-window multi-burn-rate alerts.
 - [spring-kafka-event-integration](spring-kafka-event-integration/SKILL.md) — produces or hardens Spring Kafka producers and consumers: delivery semantics, transactional outbox, idempotency, retry and DLQ topology, observability, and integration tests against embedded or Testcontainers Kafka.
+- [spring-boot-performance-and-resilience](spring-boot-performance-and-resilience/SKILL.md) — produces or hardens latency/throughput posture and resilience for a Spring Boot service: timeouts, retries, circuit breakers, bulkheads, rate limiting, connection-pool and thread-pool sizing, caching, and load-test gates.
+
+## Archetypes
+
+Every Spring Boot skill maps to one of five canonical archetypes for backend implementation. The full archetype model is documented in [`implementations/backend/README.md`](../README.md).
+
+| Archetype | Skill |
+|---|---|
+| service-scaffold | [spring-boot-service-scaffold](spring-boot-service-scaffold/SKILL.md) |
+| auth-and-security-review | [spring-security-auth-review](spring-security-auth-review/SKILL.md) |
+| observability-readiness | [spring-boot-observability-readiness](spring-boot-observability-readiness/SKILL.md) |
+| async-and-event-integration | [spring-kafka-event-integration](spring-kafka-event-integration/SKILL.md) |
+| performance-and-resilience-engineering | [spring-boot-performance-and-resilience](spring-boot-performance-and-resilience/SKILL.md) |
 
 ## Architecture domains implemented
 

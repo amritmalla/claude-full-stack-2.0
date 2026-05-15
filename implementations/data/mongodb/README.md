@@ -22,9 +22,32 @@ Architecture decisions (which bounded contexts own which collections, consistenc
 - [event-driven](../../../patterns/event-driven/README.md) (change-stream consumers; outbox patterns)
 - [cqrs](../../../patterns/cqrs/README.md) (read-model projections)
 
+## Engine family
+
+MongoDB belongs to **Family B — Document** in the data layer model. See [`implementations/data/README.md`](../README.md) for the full archetype set and philosophy.
+
 ## Skills
 
+### Authored
+
 - [mongodb-data-model-and-migration](mongodb-data-model-and-migration/SKILL.md) — produces document modeling decisions (embed vs reference), `$jsonSchema` validators, index strategy (compound, multikey, text, geo, TTL, partial), shard-key choice if sharded, read/write concern posture, and zero-downtime migration plans using expand-migrate-contract or dual-write.
+
+### Archetype coverage
+
+| # | Archetype | Skill | Status |
+|---|---|---|---|
+| 1 | data-model-and-migration | [`mongodb-data-model-and-migration`](mongodb-data-model-and-migration/SKILL.md) | authored |
+| 2 | indexing-and-query-optimization | `mongodb-indexing-and-query-optimization` | planned |
+| 3 | replication-and-ha-readiness | `mongodb-replication-and-ha-readiness` | planned |
+| 4 | backup-and-operational-readiness | `mongodb-backup-and-operational-readiness` | planned |
+| 5 | security-and-data-access-hardening | `mongodb-security-and-data-access-hardening` | planned |
+
+### Planned skill scope (future work)
+
+- **`mongodb-indexing-and-query-optimization`** — `explain("executionStats")`-driven query review, index audit (compound, multikey, text, geo, TTL, partial, wildcard), aggregation pipeline cost review, projection and collation posture, shard-key effectiveness analysis, hot-collection identification via the profiler.
+- **`mongodb-replication-and-ha-readiness`** — replica-set topology and election behavior, read-preference routing (`primary`, `secondaryPreferred`, `nearest`), write-concern selection (`majority`, `w: N`, `j: true`), arbiter posture, oplog window sizing, change-stream availability, multi-region replica placement.
+- **`mongodb-backup-and-operational-readiness`** — backup strategy (`mongodump`, filesystem snapshot, Cloud Manager, Atlas continuous backup), oplog-based PITR, restore drills with documented RPO/RTO, oplog-window and replication-lag observability, runbook inputs for primary loss, oplog rollover, and chunk-balancer issues.
+- **`mongodb-security-and-data-access-hardening`** — authentication mechanism (SCRAM, x.509, LDAP, Kerberos), RBAC roles and built-in vs custom grants, field-level redaction posture, client-side field-level encryption (CSFLE) for PII, TLS, IP allowlists, and audit-log configuration.
 
 ## Architecture domains implemented
 

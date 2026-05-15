@@ -14,7 +14,7 @@ Every skill is exercised against a single reference service (`orders-api` on Spr
 
 ## Composable, not monolithic
 
-Skills are independent units. Workflows sequence them. If you only need observability work, invoke `observability-readiness` alone. If you are taking a service from idea to production, run the capstone workflow that chains all 12. There is no orchestration framework — Claude reads the workflow and invokes the skills.
+Skills are independent units. Workflows sequence them. If you only need observability work, invoke `spring-boot-observability-readiness` alone. If you are taking a service from idea to production, run the capstone workflow that chains all 12. There is no orchestration framework — Claude reads the workflow and invokes the skills.
 
 ## Quality bar over volume
 

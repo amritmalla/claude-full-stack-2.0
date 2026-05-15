@@ -30,7 +30,7 @@ This workflow chains every v0.1 skill into a single end-to-end lifecycle path. E
 **Exit:** Container image built, signed with cosign, and pushed; Kubernetes manifests reviewed and applied to staging; staging deployment healthy.
 **Gate:** Staging smoke tests pass and rollout completed without errors.
 
-### Phase 4 — Operate (skills: `observability-readiness`, `operations`)
+### Phase 4 — Operate (skills: `spring-boot-observability-readiness`, `operations`)
 
 **Entry:** Service is running in staging or production.
 **Exit:** SLIs and SLOs defined; multi-window multi-burn-rate alerts firing into the on-call channel; at least one runbook drafted from a real or synthetic incident.

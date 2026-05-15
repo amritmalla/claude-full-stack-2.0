@@ -1,5 +1,5 @@
 ---
-name: observability-readiness
+name: spring-boot-observability-readiness
 description: Use when preparing a service for production observability or auditing
   an existing service for gaps. Produces Micrometer/Prometheus metrics,
   OpenTelemetry tracing, structured logs with trace correlation, defined SLIs and

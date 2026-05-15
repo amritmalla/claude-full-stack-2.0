@@ -22,9 +22,32 @@ Architecture decisions (which bounded contexts own which data, consistency model
 - [event-driven](../../../patterns/event-driven/README.md) (outbox tables live here)
 - [cqrs](../../../patterns/cqrs/README.md) (read-model projections)
 
+## Engine family
+
+PostgreSQL belongs to **Family A — OLTP relational** in the data layer model. See [`implementations/data/README.md`](../README.md) for the full archetype set and philosophy.
+
 ## Skills
 
+### Authored
+
 - [postgres-schema-and-migration](postgres-schema-and-migration/SKILL.md) — produces normalized schema, integrity constraints, indexing strategy, Flyway migrations, and zero-downtime migration plans using expand / migrate / contract.
+
+### Archetype coverage
+
+| # | Archetype | Skill | Status |
+|---|---|---|---|
+| 1 | schema-modeling-and-migration | [`postgres-schema-and-migration`](postgres-schema-and-migration/SKILL.md) | authored |
+| 2 | indexing-and-query-optimization | `postgres-indexing-and-query-optimization` | planned |
+| 3 | replication-and-ha-readiness | `postgres-replication-and-ha-readiness` | planned |
+| 4 | backup-and-operational-readiness | `postgres-backup-and-operational-readiness` | planned |
+| 5 | security-and-data-access-hardening | `postgres-security-and-data-access-hardening` | planned |
+
+### Planned skill scope (future work)
+
+- **`postgres-indexing-and-query-optimization`** — index audit (B-tree, hash, GIN, GiST, BRIN, partial, expression, covering), `EXPLAIN (ANALYZE, BUFFERS)`-driven query review, `pg_stat_statements` hot-query identification, partitioning validation (range/list/hash), N+1 and join-order remediation, autovacuum and bloat posture.
+- **`postgres-replication-and-ha-readiness`** — streaming and logical replication topology, synchronous vs asynchronous trade-offs, replica lag monitoring, Patroni or RDS Multi-AZ failover behavior, read-replica routing strategy, split-brain prevention, multi-region posture.
+- **`postgres-backup-and-operational-readiness`** — `pg_basebackup` and WAL archiving for PITR, restore drills with documented RPO/RTO, retention/cost posture, observability for replication lag, storage health, and connection saturation; runbook inputs for failover, vacuum-freeze emergencies, and connection exhaustion.
+- **`postgres-security-and-data-access-hardening`** — TLS configuration, role and grant model, row-level security policies for tenant isolation, column-level grants for PII, `pgcrypto` and TDE posture, `pgaudit` configuration, secret rotation, and network exposure review.
 
 ## Architecture domains implemented
 
