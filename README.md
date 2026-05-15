@@ -43,6 +43,15 @@ Twelve lifecycle-spanning skills:
 | CI/CD | [`github-actions-pipeline-hardened`](implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
 | Deploy | [`k8s-deploy-manifest-review`](implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
 
+## AI implementation plan
+
+AI architecture is owned by [`ai-native-engineering`](architecture/ai-native-engineering/SKILL.md).
+Provider and framework execution skills are authored (pre-promotion) under
+[`implementations/ai`](implementations/ai/), starting with OpenAI structured
+outputs, tool calling, RAG runtime, evals/observability, and a LangChain agent
+runtime. These are written but not yet registered for invocation; see
+[`implementations/ai`](implementations/ai/) for the promotion criteria.
+
 ## Workflow
 
 [`idea-to-production-spring-boot`](workflows/idea-to-production-spring-boot/) chains all 12 skills with explicit Entry/Exit/Gate checkpoints across four phases: Define → Build → Ship → Operate.
