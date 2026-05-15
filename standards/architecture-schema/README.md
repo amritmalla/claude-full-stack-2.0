@@ -7,6 +7,7 @@ Canonical structure for system architecture documents and Architecture Decision 
 ```
 docs/architecture/<product-slug>/
 ├── system-design.md           # primary artifact, always present
+├── data-architecture.md       # OPTIONAL — only when the design has a non-trivial data layer (see "data-architecture.md")
 ├── ai-architecture.md         # OPTIONAL — only when the design has an AI surface (see "ai-architecture.md")
 ├── adrs/
 │   └── NNNN-<slug>.md         # one per non-obvious decision, monotonic numbering
@@ -52,6 +53,53 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 | `## Persistence Strategy` | Multiple stores, or non-trivial caching / retention / migration concerns. Omit when a single store with an obvious mapping suffices — fold one paragraph into Components instead. |
 | `## Security and Compliance` | Always for external products and any system handling user data. Conforms to [security-standards](../security-standards/README.md). May be omitted with one-line rationale for purely internal reference workloads. |
 | `## Operational Considerations` | When the design introduces durable operational burden (observability vendor choice, feature flag system, backfill machinery). May fold into Failure Modes if the design has one runtime topology and no durable operational decisions. Conforms to [observability-standards](../observability-standards/README.md) and [deployment-standards](../deployment-standards/README.md). |
+
+## `data-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` includes a non-trivial operational data layer (multiple stores, cross-context read models, sharding, replication, or caching concerns). Produced by [`architecture/data-architecture`](../../architecture/data-architecture/SKILL.md); consumed by `implementations/data/<engine>`. One file per system.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | Datasets and engines present, owning contexts, dominant access patterns, what it optimizes for and intentionally does not. |
+| `## Dataset Inventory & Ownership` | Table: Dataset, Owning Context, Authoritative Write Path, Engine, Consumers, Consumption Mechanism. |
+| `## Access Patterns` | Per dataset: read/write shapes, hot keys, read:write ratio, latency target, transactional grouping. |
+| `## Engine Selection` | Per dataset: engine class, engine, justification, rejected alternatives. |
+| `## Consistency & Concurrency Model` | Per write path: consistency guarantee, isolation/concurrency, conflict resolution, enforcement mechanism. |
+| `## Schema Strategy` | Normalization posture, aggregate boundaries, key design, tenant isolation, soft-delete, referential integrity, audit/immutability. |
+| `## Indexing Strategy` | Per access pattern: serving index, index type, write cost, cardinality assumption. No "just in case" indexes. |
+| `## Retention & Deletion` | Per dataset: retention period, deletion mechanism, archival, PII handling, audit/legal-hold. |
+| `## Migration Strategy` | Tooling, expand/migrate/contract phasing, online constraints, dual-write/shadow-read, backfill, rollback, compatibility. |
+| `## Operational Readiness` | Backup cadence and restore validation, monitoring signals, query-performance monitoring, runbook hooks. |
+| `## Implementation Handoffs` | Explicit handoffs to `implementations/data/<engine>`, `backend-architecture`, `security`, `reliability`, `operations`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Partitioning & Sharding` | A measured constraint (throughput, size, tenancy, blast radius, region) demands it. Must name the partition key and triggering constraint. |
+| `## Replication & High Availability` | Replication/HA topology is non-trivial. Must state failover RTO/RPO and replica lag tolerance; replicas are not backups. |
+| `## Cache Architecture` | One or more cache layers exist. Each layer names source of truth, invalidation rule, and staleness budget. |
+
+`data-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
 
 ## `ai-architecture.md`
 
@@ -173,8 +221,8 @@ Rules:
 - `system-design.md` MUST link to its source PRD in frontmatter.
 - Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
-- `ai-architecture.md`, when present, MUST link to its source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
-- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
+- `data-architecture.md` and `ai-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
+- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
 
 ## Versioning
 
