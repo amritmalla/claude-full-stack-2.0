@@ -83,34 +83,34 @@ show up across many AI-backed products.
 
 ## Status and promotion criteria
 
-The v0.1 skills are **authored, pre-promotion**: the `SKILL.md` files are written
-and upstream-correct, but they are deliberately not registered in
-`.claude-plugin/marketplace.json`, so they are not yet invocable as plugin skills.
+The v0.1 skills are **authored, pre-promotion**: the `SKILL.md` files are written,
+upstream-correct, and at template parity, but they are deliberately not yet
+registered in `.claude-plugin/marketplace.json`, so they are not yet invocable as
+plugin skills. Registration is the remaining promotion step and is a separate
+decision from authoring.
 
-A skill is promoted (registered for invocation) when it reaches parity with the
-canonical implementation template (e.g. `spring-kafka-event-integration`,
-`spring-boot-performance-and-resilience`). The known parity gaps below are the
-promotion checklist.
+A skill is eligible for promotion (registration for invocation) once it reaches
+parity with the canonical implementation template (e.g.
+`spring-kafka-event-integration`, `spring-boot-performance-and-resilience`).
 
-## Known follow-up (v0.2 hardening)
+## Template parity (closed)
 
-The five authored skills sit at a lower rigor tier than the canonical template.
-These gaps are tracked, not accidental, and must close before promotion:
+The five authored skills now match the canonical template. The gaps tracked
+during v0.1 are closed:
 
-1. **No `## Output contract` section.** Canonical skills enumerate the standards
-   the output MUST conform to (security, observability, deployment, naming) plus
-   an explicit upstream-contract statement. The AI skills currently only carry a
-   minimal `## References` line. This is the highest-priority gap.
-2. **No `## Operating rules` section.** Canonical skills consolidate
-   non-negotiables in a dedicated section; the AI skills scatter them into
-   `## Process` steps ("Refuse to implement…"). Extract into a first-class
-   section.
-3. **Thin `## References`.** Add sibling-skill links (e.g. `openai-rag-runtime`
-   ↔ `openai-structured-output-runtime`, all → `openai-evals-and-observability`)
-   and compatible patterns, matching the canonical template.
+1. **`## Output contract` — closed.** Every skill enumerates the standards its
+   output MUST conform to (api, security, observability, deployment, naming;
+   architecture-schema where tiering applies) plus an explicit upstream-contract
+   statement that pauses for an ADR candidate when the architecture is silent.
+2. **`## Operating rules` — closed.** Non-negotiables are consolidated in a
+   first-class section in every skill, no longer scattered into `## Process`.
+3. **`## References` — closed.** Each skill links its upstream domain, related
+   architecture domains, sibling AI implementation skills, and compatible
+   patterns, matching the canonical template.
 
-Until these close, the AI layer is intentionally one tier below the backend and
-infrastructure layers.
+The AI layer is now at the same rigor tier as the backend and infrastructure
+layers. The only remaining step before these skills become invocable is
+marketplace registration.
 
 ## Standards this implementation category conforms to
 

@@ -30,6 +30,28 @@ Optional:
 - Rate limits and retry budgets.
 - Human-in-the-loop requirements.
 
+## Operating rules
+
+- Implement only tools approved in `ai-architecture.md`. An unlisted tool is a defect, not an enhancement.
+- Every tool has a side-effect class, authorization scope, and idempotency rule defined before code is written. Any missing → refuse and raise an ADR candidate.
+- Authorization and input validation precede side effects, always. The model proposing a call is never sufficient justification to execute it.
+- Side-effecting tools are idempotent or guarded by an idempotency key or correlation id supplied by the caller, not the model.
+- Tool failures are explicit states. Timeout, denied-authorization, malformed-arguments, and downstream-failure each have defined handling and a defined model-visible result.
+- Audit before mutate. Tool name, actor, correlation id, redacted arguments, outcome, and side-effect class are recorded before the side effect commits.
+- No secret or PII leakage through tool arguments, results, or logs.
+
+## Output contract
+
+The implementation MUST conform to:
+
+- [api-standards](../../../../standards/api-standards/README.md) — tool schemas are a contract surface; argument shape and versioning policy apply.
+- [security-standards](../../../../standards/security-standards/README.md) — authorization enforced before side effects, audit trail, no credential or PII leakage, provider and downstream credentials injected at deploy time.
+- [observability-standards](../../../../standards/observability-standards/README.md) — audit logs, per-tool metrics, and trace propagation across the tool-call boundary.
+- [deployment-standards](../../../../standards/deployment-standards/README.md) — tool endpoints and credentials are deploy-time configuration, never baked into prompts or code.
+- [naming-conventions](../../../../standards/naming-conventions/README.md) — tool names and audit field names follow project rules.
+
+Upstream contract: `ai-architecture.md` is the source of truth for the tool surface, schemas, side-effect classes, authorization scopes, and idempotency rules; `architecture/security` is the source of truth for the authorization model. If either is silent, this skill pauses and raises an ADR candidate rather than inventing the decision.
+
 ## Process
 
 1. Load `ai-architecture.md` and identify each approved tool, schema, side-effect class, and authorization scope.
@@ -60,5 +82,7 @@ Optional:
 
 ## References
 
-- Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md).
-- Related: [`architecture/security`](../../../../architecture/security/SKILL.md).
+- Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md) — tool surface, schemas, side-effect classes, idempotency rules.
+- Related architecture: [`architecture/security`](../../../../architecture/security/SKILL.md) — authorization model and trust boundaries for tool execution.
+- Related implementation skills: [`openai-structured-output-runtime`](../openai-structured-output-runtime/SKILL.md) (tool arguments are structured output), [`openai-evals-and-observability`](../openai-evals-and-observability/SKILL.md) (tool-failure and denial regression gates), [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) (agent tool registry builds on this provider mechanic).
+- Compatible patterns: [`event-driven`](../../../../patterns/event-driven/README.md) (tool side effects as domain events).

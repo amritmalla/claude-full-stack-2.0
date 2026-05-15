@@ -29,6 +29,28 @@ Optional:
 - Cost and latency budgets.
 - Runbook or dashboard template.
 
+## Operating rules
+
+- Every shipping AI capability has at least one regression gate. No gate → block promotion and emit the gap explicitly.
+- Eval datasets encode expected behavior and sensitive-data handling. Production user data is not used as eval data without an approved policy.
+- Scoring method matches the claim. Deterministic checks for deterministic contracts; model-graded or human review only where justified, with documented rater criteria.
+- Regression thresholds and promotion gates are explicit numbers tied to the architecture's success criteria, not subjective judgement.
+- Prompt and model versions are first-class metadata on every runtime call and eval run. An unversioned call is unobservable and fails this skill.
+- Telemetry never records unredacted secrets, credentials, or sensitive user payloads.
+- Every alert names an owner, a condition, and a first response action, handed off to `operations` as a runbook input.
+
+## Output contract
+
+The implementation MUST conform to:
+
+- [security-standards](../../../../standards/security-standards/README.md) — redaction in eval data, traces, and logs; approved handling for any real user data used in evaluation.
+- [observability-standards](../../../../standards/observability-standards/README.md) — AI RED-equivalent (latency, tokens, cost, error/fallback rate), traces, structured logs, and mandatory model/prompt version metadata.
+- [deployment-standards](../../../../standards/deployment-standards/README.md) — eval gates sit in the promotion ladder; prompt and model versions are deploy-time artifacts.
+- [naming-conventions](../../../../standards/naming-conventions/README.md) — metric, eval-dataset, and gate names follow project rules.
+- [architecture-schema](../../../../standards/architecture-schema/README.md) — capability tier drives regression-gate strictness and alert severity.
+
+Upstream contract: `ai-architecture.md` (or a `quality-engineering` handoff) is the source of truth for success criteria, regression thresholds, and budgets; `operations` is the source of truth for alert ownership and runbook structure. If either is silent, this skill pauses and raises an ADR candidate rather than inventing the threshold.
+
 ## Process
 
 1. Identify capability success criteria, failure modes, latency budget, cost budget, and model/prompt versions.
@@ -59,5 +81,6 @@ Optional:
 
 ## References
 
-- Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md).
-- Related: [`architecture/quality-engineering`](../../../../architecture/quality-engineering/SKILL.md), [`architecture/operations`](../../../../architecture/operations/SKILL.md).
+- Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md) — success criteria, evaluation plan, regression thresholds, budgets.
+- Related architecture: [`architecture/quality-engineering`](../../../../architecture/quality-engineering/SKILL.md) (regression policy, acceptance criteria), [`architecture/operations`](../../../../architecture/operations/SKILL.md) (alert ownership, runbooks).
+- Related implementation skills: gates and observes [`openai-structured-output-runtime`](../openai-structured-output-runtime/SKILL.md), [`openai-tool-calling-runtime`](../openai-tool-calling-runtime/SKILL.md), [`openai-rag-runtime`](../openai-rag-runtime/SKILL.md), and [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) — every runtime job routes its regression gate here.

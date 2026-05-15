@@ -29,6 +29,27 @@ Optional:
 - Latency, cost, and retry budgets.
 - Sample successful and failed outputs.
 
+## Operating rules
+
+- Preserve the model contract and output schema from `ai-architecture.md`. Do not widen, narrow, or reinterpret the schema. If the schema is missing a field, type, or nullability decision, raise an ADR candidate instead of inventing it.
+- Validation fails closed. A response that does not satisfy the schema is an error, never a best-effort partial returned downstream.
+- Retries are bounded and explicit. Schema-repair retries have a maximum attempt count and a deadline; exhaustion routes to the degradation behavior declared in the architecture.
+- Provider features serve the contract, not the reverse. OpenAI structured-output / JSON-schema / response-format modes are a means to satisfy the approved schema, not a reason to change it.
+- Decoding is a decision. Temperature, seed, and any determinism settings the contract requires are set explicitly, never left to provider defaults.
+- No sensitive data in telemetry. Prompt and model version and validation outcomes are logged; raw payloads, secrets, and PII are redacted.
+
+## Output contract
+
+The implementation MUST conform to:
+
+- [api-standards](../../../../standards/api-standards/README.md) — the output schema is an external contract surface; versioning and breaking-change policy apply.
+- [security-standards](../../../../standards/security-standards/README.md) — no secrets or PII in prompts, logs, or stored outputs without redaction; provider credentials injected at deploy time, never committed.
+- [observability-standards](../../../../standards/observability-standards/README.md) — structured logs and metrics for latency, token usage, validation failures, and model/prompt version; trace propagation through the call.
+- [deployment-standards](../../../../standards/deployment-standards/README.md) — prompt and model versions are deploy-time configuration, not hardcoded.
+- [naming-conventions](../../../../standards/naming-conventions/README.md) — capability, metric, and schema names follow project rules.
+
+Upstream contract: `ai-architecture.md` is the source of truth for the capability, output schema, model tier, degradation behavior, and latency/cost budgets. If it is silent on any of these, this skill pauses and raises an ADR candidate rather than inventing the decision.
+
 ## Process
 
 1. Load `ai-architecture.md` and identify the capability, output schema, success criteria, and failure modes.
@@ -59,4 +80,6 @@ Optional:
 
 ## References
 
-- Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md).
+- Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md) — capability, model contract, output schema, degradation behavior, budgets.
+- Related architecture: [`architecture/quality-engineering`](../../../../architecture/quality-engineering/SKILL.md) — malformed-output and contract coverage.
+- Related implementation skills: [`openai-tool-calling-runtime`](../openai-tool-calling-runtime/SKILL.md) (when the schema is a tool argument), [`openai-rag-runtime`](../openai-rag-runtime/SKILL.md) (when the grounded answer is schema-bound), [`openai-evals-and-observability`](../openai-evals-and-observability/SKILL.md) (regression gates for output quality), [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) (when structured output is an agent step).
