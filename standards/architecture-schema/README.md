@@ -10,6 +10,7 @@ docs/architecture/<product-slug>/
 ├── data-architecture.md       # OPTIONAL — only when the design has a non-trivial data layer (see "data-architecture.md")
 ├── frontend-architecture.md   # OPTIONAL — only when the design has a user-facing frontend (see "frontend-architecture.md")
 ├── platform-architecture.md   # OPTIONAL — only when the design needs dedicated platform/infra architecture (see "platform-architecture.md")
+├── security-architecture.md   # OPTIONAL — only when the design handles sensitive data or crosses trust/tenant boundaries (see "security-architecture.md")
 ├── ai-architecture.md         # OPTIONAL — only when the design has an AI surface (see "ai-architecture.md")
 ├── adrs/
 │   └── NNNN-<slug>.md         # one per non-obvious decision, monotonic numbering
@@ -200,6 +201,55 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 `platform-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
 
+## `security-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` handles sensitive or regulated data, crosses trust or tenant boundaries, integrates third parties, or sits under a regulatory regime. Produced by [`architecture/security`](../../architecture/security/SKILL.md); consumed by security-relevant work across `implementations/*`. One file per system. Conforms to this schema for structure and to [security-standards](../security-standards/README.md) for security content.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | Sensitive assets, the trust boundaries that matter most, what the security architecture optimizes for and intentionally does not cover. |
+| `## Security Surface Inventory` | APIs, user/admin flows, jobs, integrations, datastore boundaries, ops interfaces, with sensitive assets and trust assumptions. |
+| `## Data Classification` | Per dataset/payload: classification, storage, transmission, logging, retention, non-prod handling. |
+| `## Trust Boundary Map` | Per boundary: what changes, authentication, authorization, encryption, audit. |
+| `## Threat Model` | Threats tied to named components/flows/actors with category, impact, mitigation, residual risk. |
+| `## Identity Architecture` | Per actor class: authentication, federation/MFA, credential lifecycle, session/recovery. |
+| `## Authorization Architecture` | Policy model, enforcement points, default-deny posture, cross-tenant/delegated rules, audit signal. |
+| `## Secrets & Key Management` | Storage, issuance, rotation, scoping, revocation, key hierarchy, ownership, break-glass. |
+| `## Data Protection Rules` | Per classification: in-transit, at-rest, logs, backups, non-prod, deletion; field-level encryption/minimization. |
+| `## Input & Output Protection` | Validation, encoding, deserialization, uploads, rendering boundaries, SSRF/untrusted content. |
+| `## Logging & Audit Architecture` | Security-relevant events, redaction, retention, tamper-evidence. Pipeline details handed to `operations`. |
+| `## Supply-Chain Security` | Dependency provenance/pinning, signing, SBOM, CI/CD trust, promotion controls, third-party trust. |
+| `## Implementation Handoffs` | Explicit handoffs to backend/frontend/data architecture, `infrastructure-platform`, `operations`, `reliability`, `quality-engineering`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Tenant Isolation Strategy` | The system is multi-tenant. Must state isolation pattern, failure mode if broken, detection, and blast radius. |
+| `## Abuse & Rate Protection` | Internet-facing or untrusted-actor surfaces exist. Defines actor-specific limits and enforcement points. |
+| `## Compliance Mapping` | A regulatory regime applies (SOC 2, GDPR, HIPAA, PCI DSS, ISO 27001, residency). Maps controls with gaps and owners. |
+
+`security-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
+
 ## `ai-architecture.md`
 
 Secondary artifact. Present only when `system-design.md` includes an AI surface (LLM, agent, retrieval, classifier, extractor, or model-driven automation). Produced by [`architecture/ai-native-engineering`](../../architecture/ai-native-engineering/SKILL.md); consumed by `implementations/ai/<vendor>`. One file per system.
@@ -320,8 +370,8 @@ Rules:
 - `system-design.md` MUST link to its source PRD in frontmatter.
 - Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
-- `data-architecture.md`, `frontend-architecture.md`, `platform-architecture.md`, and `ai-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
-- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `implementations/infrastructure/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
+- `data-architecture.md`, `frontend-architecture.md`, `platform-architecture.md`, `security-architecture.md`, and `ai-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
+- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `implementations/infrastructure/*`; when the system handles sensitive data or crosses trust boundaries, an `approved` `security-architecture.md` constrains security-relevant work across `implementations/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
 
 ## Versioning
 
