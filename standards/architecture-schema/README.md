@@ -7,6 +7,7 @@ Canonical structure for system architecture documents and Architecture Decision 
 ```
 docs/architecture/<product-slug>/
 ├── system-design.md           # primary artifact, always present
+├── ai-architecture.md         # OPTIONAL — only when the design has an AI surface (see "ai-architecture.md")
 ├── adrs/
 │   └── NNNN-<slug>.md         # one per non-obvious decision, monotonic numbering
 └── components/                # OPTIONAL — only when escalated (see "Per-component breakout")
@@ -51,6 +52,55 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 | `## Persistence Strategy` | Multiple stores, or non-trivial caching / retention / migration concerns. Omit when a single store with an obvious mapping suffices — fold one paragraph into Components instead. |
 | `## Security and Compliance` | Always for external products and any system handling user data. Conforms to [security-standards](../security-standards/README.md). May be omitted with one-line rationale for purely internal reference workloads. |
 | `## Operational Considerations` | When the design introduces durable operational burden (observability vendor choice, feature flag system, backfill machinery). May fold into Failure Modes if the design has one runtime topology and no durable operational decisions. Conforms to [observability-standards](../observability-standards/README.md) and [deployment-standards](../deployment-standards/README.md). |
+
+## `ai-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` includes an AI surface (LLM, agent, retrieval, classifier, extractor, or model-driven automation). Produced by [`architecture/ai-native-engineering`](../../architecture/ai-native-engineering/SKILL.md); consumed by `implementations/ai/<vendor>`. One file per system.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | AI capabilities present, user tasks served, what it optimizes for and intentionally does not, highest escalation level reached and why. |
+| `## AI Capability Inventory` | Table: Capability, Consumer, User Task, Business Objective, Acceptance Criteria, Risk Profile, Dependencies. |
+| `## Capability Classification` | Per capability: escalation level, why that level, why lower levels were rejected. |
+| `## Model Contracts` | Per capability: purpose, inputs, output schema, validation, success criteria, confidence handling, failure/retry/fallback/degradation, observability signals. |
+| `## Context Architecture` | System prompt scope, instruction hierarchy, retrieval inclusion, prioritization/truncation, context budget, authoritative sources, explicit exclusions. |
+| `## Failure Taxonomy` | Table: Failure Class, Detection, Mitigation, Observability Signal, Degradation, User-facing Response. Specific to *this* design. |
+| `## Evaluation Strategy` | Per user-visible capability: offline datasets, online metrics, regression gate, ownership, edge/adversarial coverage, drift detection. |
+| `## Guardrails & Trust Boundaries` | Explicit trust boundaries with sanitization rules; input filtering, output validation, PII/redaction, prompt-injection posture. |
+| `## Cost & Latency Budgets` | Per capability: token/request/latency budget, throughput/concurrency, retrieval depth, tool-call ceiling, mapped to model tier and context size. |
+| `## Observability & Operations` | Telemetry, logging/redaction, replay/trace retention, prompt/model versioning, rollback, deployment promotion criteria. |
+| `## Implementation Handoffs` | Explicit handoffs to `implementations/ai/<vendor>`, `backend-architecture`, `data-architecture`, `security`, `operations`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## State & Memory Design` | Conversational or adaptive behavior exists. Omit for stateless capabilities. |
+| `## Retrieval Architecture` | Retrieval is in scope. Must classify retrieval as authoritative, assistive, or advisory; hand mechanics to `data-architecture`. |
+| `## Tool & Action Surface` | The model can call tools or take actions. Each tool names schema, side-effect class, idempotency, authorization scope, and risk level. |
+| `## Agent Control Flow` | The agent suitability test passes. Omit with the suitability rationale when deterministic workflows suffice. |
+| `## Model Routing Strategy` | Multiple models or providers exist. Omit for single-model designs. |
+
+`ai-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
 
 ## Diagrams
 
@@ -123,7 +173,8 @@ Rules:
 - `system-design.md` MUST link to its source PRD in frontmatter.
 - Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
-- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills.
+- `ai-architecture.md`, when present, MUST link to its source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
+- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
 
 ## Versioning
 
