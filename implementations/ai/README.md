@@ -42,11 +42,11 @@ show up across many AI-backed products.
 
 | Ecosystem | Skill | Archetype | Status |
 |---|---|---|---|
-| [openai](openai/) | [`openai-structured-output-runtime`](openai/openai-structured-output-runtime/SKILL.md) | `structured-output-runtime` | authored, pre-promotion |
-| [openai](openai/) | [`openai-tool-calling-runtime`](openai/openai-tool-calling-runtime/SKILL.md) | `tool-calling-runtime` | authored, pre-promotion |
-| [openai](openai/) | [`openai-rag-runtime`](openai/openai-rag-runtime/SKILL.md) | `rag-runtime` | authored, pre-promotion |
-| [openai](openai/) | [`openai-evals-and-observability`](openai/openai-evals-and-observability/SKILL.md) | `evals-and-observability` | authored, pre-promotion |
-| [langchain](langchain/) | [`langchain-agent-runtime`](langchain/langchain-agent-runtime/SKILL.md) | `agent-runtime` | authored, pre-promotion |
+| [openai](openai/) | [`openai-structured-output-runtime`](openai/openai-structured-output-runtime/SKILL.md) | `structured-output-runtime` | registered |
+| [openai](openai/) | [`openai-tool-calling-runtime`](openai/openai-tool-calling-runtime/SKILL.md) | `tool-calling-runtime` | registered |
+| [openai](openai/) | [`openai-rag-runtime`](openai/openai-rag-runtime/SKILL.md) | `rag-runtime` | registered |
+| [openai](openai/) | [`openai-evals-and-observability`](openai/openai-evals-and-observability/SKILL.md) | `evals-and-observability` | registered |
+| [langchain](langchain/) | [`langchain-agent-runtime`](langchain/langchain-agent-runtime/SKILL.md) | `agent-runtime` | registered |
 
 ### v0.2: likely next
 
@@ -83,15 +83,14 @@ show up across many AI-backed products.
 
 ## Status and promotion criteria
 
-The v0.1 skills are **authored, pre-promotion**: the `SKILL.md` files are written,
-upstream-correct, and at template parity, but they are deliberately not yet
-registered in `.claude-plugin/marketplace.json`, so they are not yet invocable as
-plugin skills. Registration is the remaining promotion step and is a separate
-decision from authoring.
+The v0.1 skills are **registered**: the `SKILL.md` files are written,
+upstream-correct, at canonical template parity, and registered in
+`.claude-plugin/marketplace.json`, so they are invocable as plugin skills.
 
 A skill is eligible for promotion (registration for invocation) once it reaches
 parity with the canonical implementation template (e.g.
 `spring-kafka-event-integration`, `spring-boot-performance-and-resilience`).
+The v0.1 set met this bar and was registered together.
 
 ## Template parity (closed)
 

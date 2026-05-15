@@ -46,11 +46,11 @@ Twelve lifecycle-spanning skills:
 ## AI implementation plan
 
 AI architecture is owned by [`ai-native-engineering`](architecture/ai-native-engineering/SKILL.md).
-Provider and framework execution skills are authored (pre-promotion) under
-[`implementations/ai`](implementations/ai/), starting with OpenAI structured
-outputs, tool calling, RAG runtime, evals/observability, and a LangChain agent
-runtime. These are written but not yet registered for invocation; see
-[`implementations/ai`](implementations/ai/) for the promotion criteria.
+Provider and framework execution skills are registered under
+[`implementations/ai`](implementations/ai/): OpenAI structured outputs, tool
+calling, RAG runtime, evals/observability, and a LangChain agent runtime — all
+at canonical template parity and invocable. See
+[`implementations/ai`](implementations/ai/) for the archetype model and roadmap.
 
 ## Workflow
 

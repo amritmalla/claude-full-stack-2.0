@@ -18,6 +18,11 @@
     "implementations/data/postgres/postgres-schema-and-migration",
     "implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning",
     "implementations/infrastructure/github-actions/github-actions-pipeline-hardened",
-    "implementations/infrastructure/kubernetes/k8s-deploy-manifest-review"
+    "implementations/infrastructure/kubernetes/k8s-deploy-manifest-review",
+    "implementations/ai/openai/openai-structured-output-runtime",
+    "implementations/ai/openai/openai-tool-calling-runtime",
+    "implementations/ai/openai/openai-rag-runtime",
+    "implementations/ai/openai/openai-evals-and-observability",
+    "implementations/ai/langchain/langchain-agent-runtime"
   ]
 }
