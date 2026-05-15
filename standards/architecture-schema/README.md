@@ -8,6 +8,8 @@ Canonical structure for system architecture documents and Architecture Decision 
 docs/architecture/<product-slug>/
 ├── system-design.md           # primary artifact, always present
 ├── data-architecture.md       # OPTIONAL — only when the design has a non-trivial data layer (see "data-architecture.md")
+├── frontend-architecture.md   # OPTIONAL — only when the design has a user-facing frontend (see "frontend-architecture.md")
+├── platform-architecture.md   # OPTIONAL — only when the design needs dedicated platform/infra architecture (see "platform-architecture.md")
 ├── ai-architecture.md         # OPTIONAL — only when the design has an AI surface (see "ai-architecture.md")
 ├── adrs/
 │   └── NNNN-<slug>.md         # one per non-obvious decision, monotonic numbering
@@ -100,6 +102,103 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 | `## Cache Architecture` | One or more cache layers exist. Each layer names source of truth, invalidation rule, and staleness budget. |
 
 `data-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
+
+## `frontend-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` includes a user-facing web frontend. Produced by [`architecture/frontend-architecture`](../../architecture/frontend-architecture/SKILL.md); consumed by `implementations/frontend/<framework>`. One file per system.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | Frontend surfaces present, primary user tasks, API/BFF boundary, what it optimizes for and intentionally does not. |
+| `## Application Shell` | Number of apps, deployment boundaries, shared-shell strategy, micro-frontend posture, shared cross-cutting concerns. |
+| `## Routing Model` | Route hierarchy, layouts, dynamic segments, route ownership, not-found/loading/error behavior, access constraints. |
+| `## Rendering Strategy` | Per route/group: rendering mode, hydration, freshness, SEO posture, justification. |
+| `## Data Fetching & Caching` | Per dependency: fetch location, owner, cache layer, invalidation trigger, retry/stale behavior, mutation flow. |
+| `## State Architecture` | All four tiers (server-cache, URL, ephemeral UI, durable client): ownership, mechanism, sync, persistence, invalidation. Unused tiers stated. |
+| `## Auth & Session Handling` | Token/session storage, refresh, route guards, RBAC, unauthenticated rendering, CSRF/XSS posture, session/multi-tab behavior. |
+| `## Design System Boundary` | What the design system owns vs the app, theming/token propagation, component-extension contract. |
+| `## Accessibility Posture` | WCAG target, keyboard/focus model, screen-reader expectations, semantic structure, testing posture. |
+| `## Performance Budgets` | Numeric targets (LCP, INP, CLS, JS bundle, image, third-party) with breach actions and regression monitoring. |
+| `## Client Observability` | Error reporting, RUM, session-replay posture, tracing correlation, sampling, PII redaction. |
+| `## Implementation Handoffs` | Explicit handoffs to `implementations/frontend/<framework>`, `backend-architecture`, `security`, `performance`, `quality-engineering`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Internationalization & Localization` | Multi-locale or RTL is in scope. Defines locale routing, translation loading, and formatting/timezone handling. |
+| `## Real-time, Offline & Resilience` | Realtime or offline features exist. Must define failure fallback, reconnect, and reconciliation behavior. |
+
+`frontend-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
+
+## `platform-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` needs dedicated platform and infrastructure architecture (cloud/account topology, runtime substrate, network trust zones, deployment substrate). Produced by [`architecture/infrastructure-platform`](../../architecture/infrastructure-platform/SKILL.md); consumed by `implementations/infrastructure/<vendor>`. One file per system.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | Workloads hosted, cloud/runtime substrate, what it optimizes for and intentionally does not. |
+| `## Workload Inventory` | Per workload: class, runtime expectation, scaling shape, criticality, deployment frequency. |
+| `## Cloud & Account Topology` | Provider(s), account/project structure, region strategy, single/multi-account and single/multi-cloud posture with drivers. |
+| `## Environment Architecture` | Per environment: purpose, isolation level, data posture, parity, promotion flow, owner. |
+| `## Runtime Substrate Selection` | Per workload class: substrate, justification, rejected alternatives. |
+| `## Network & Trust-Boundary Architecture` | Per component: trust zone, ingress/egress policy, internet exposure; VPC/subnet/DNS/east-west posture. |
+| `## Identity & Access Architecture` | Workload identity, human access, service-to-service auth, admin boundaries, break-glass, audit. |
+| `## Secrets & Configuration Strategy` | Store, issuance, rotation cadence, injection mechanism, config-vs-secret boundary. |
+| `## Packaging & Artifact Strategy` | Base images, provenance/signing, scanning, registry topology, SBOM, immutability. |
+| `## Deployment & Release Architecture` | Per workload class: deployment substrate, release strategy, gating signals, rollback, blast-radius control. |
+| `## Infrastructure-as-Code Strategy` | Tool, repo layout, platform-vs-service module boundaries, policy-as-code, state management, drift detection. |
+| `## CI/CD Platform Architecture` | Build trust model, artifact/environment promotion, secrets in CI, policy gates, provenance, deployment authorization. |
+| `## Cost & FinOps Posture` | Tagging, budget ownership, autoscaling defaults, reserved capacity, egress risk, budget-breach response. |
+| `## Disaster & Resilience Posture` | Backup substrate, failover topology, RTO/RPO, restore testing, regional isolation. |
+| `## Implementation Handoffs` | Explicit handoffs to `implementations/infrastructure/<vendor>`, `security`, `reliability`, `operations`, `quality-engineering`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Cross-Cutting Platform Services` | Shared platform services exist (observability backend, mesh, certs, feature flags). Names ownership and tenant isolation. |
+| `## Multi-Region & Tenancy` | Multi-region, multi-cluster, or multi-tenant complexity is opted in. Must name the business driver and the ADR. |
+
+`platform-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
 
 ## `ai-architecture.md`
 
@@ -221,8 +320,8 @@ Rules:
 - `system-design.md` MUST link to its source PRD in frontmatter.
 - Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
-- `data-architecture.md` and `ai-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
-- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
+- `data-architecture.md`, `frontend-architecture.md`, `platform-architecture.md`, and `ai-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
+- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `implementations/infrastructure/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
 
 ## Versioning
 

@@ -1,13 +1,13 @@
 ---
 name: infrastructure-platform
-description: Use when an approved system design exists and the team needs platform and infrastructure architecture before IaC implementation. Produces environment topology, cloud and runtime substrate selection, network and trust-boundary layout, compute and packaging strategy, secrets and identity model, deployment substrate and release mechanics, IaC ownership and module boundaries, cost posture, and implementation handoff notes. Do not use for application code, in-cluster service tuning, runbook authoring, or vendor-specific Terraform or Kubernetes manifest writing; use the relevant implementations/infrastructure/<vendor> skill instead.
+description: Use when an approved system design exists and the team needs production-grade platform and infrastructure architecture before IaC implementation. Produces cloud and account topology, environment model, runtime substrate selection, network and trust-boundary architecture, identity and secrets strategy, deployment and release substrate, IaC ownership boundaries, CI/CD posture, operational platform services, cost strategy, disaster posture, and implementation handoff guidance. Do not use for Terraform authoring, Kubernetes manifests, CI/CD YAML, application runtime tuning, incident response, or service runbooks; use the relevant implementations/infrastructure/<vendor> skill instead.
 ---
 
 # Infrastructure Platform
 
 ## When to use
 
-Invoke after `system-design` has approved a design and before `implementations/infrastructure/*` skills generate Terraform, Kubernetes manifests, Helm charts, Dockerfiles, or CI/CD pipelines.
+Invoke after `system-design` has approved a design and before `implementations/infrastructure/*` skills generate Terraform, Kubernetes manifests, Helm charts, container images, or CI/CD pipelines.
 
 Do not use for application-level configuration, in-cluster service tuning, runbook or oncall workflow design (use `operations`), incident response (use `reliability`), or vendor-specific resource code (use the relevant implementation skill).
 
@@ -15,7 +15,7 @@ Do not use for application-level configuration, in-cluster service tuning, runbo
 
 Required:
 
-- Approved `system-design.md`.
+- Approved `system-design.md` and the relevant ADRs.
 - The platform scope in question: greenfield platform, new environment, new tenant or region, or platform evolution.
 - Workload inventory: services, jobs, datastores, and external integrations the platform must host.
 
@@ -29,65 +29,91 @@ Optional:
 
 ## Operating rules
 
-- Separate the platform from the applications running on it. The platform exposes contracts (deploy, ingress, secrets, identity, telemetry); applications consume them.
-- Choose the runtime substrate from workload needs, not vendor enthusiasm. Containers on Kubernetes, serverless functions, managed app platforms, and VMs have different operational costs.
-- Environments are a contract: name them, state what they isolate, and state how parity is maintained. Avoid ad-hoc environments.
-- Network architecture starts from trust boundaries: internet edge, DMZ, internal, restricted, and data-plane segments. Every component sits in a named zone with stated ingress and egress rules.
-- Identity is the new perimeter. Define workload identity, human access, service-to-service auth, and the secrets lifecycle from issuance to rotation.
-- Deployment is a substrate decision, not a script. Choose the release mechanism (rolling, blue-green, canary, progressive delivery) per workload class and state the rollback path.
-- IaC is owned in modules with explicit boundaries: platform modules vs service modules, who can change what, and what is policy-enforced.
-- Multi-region, multi-account, multi-tenant complexity is opt-in. Each requires a measured driver (residency, blast radius, isolation) recorded in an ADR.
-- Cost is an architectural concern. Reserve, autoscale, and shutdown policies are decided at design time, not after the first bill.
+- Separate platform concerns from application concerns. The platform exposes contracts (deployability, networking, identity, secrets, telemetry, runtime guarantees); applications consume them. Reject ad hoc app-team ownership of foundational primitives and platform logic leaking into services.
+- Runtime substrate follows workload shape, not vendor enthusiasm. Choose against workload behavior, scaling, operational maturity, compliance, and deployment frequency. Reject Kubernetes-by-default and serverless-by-trend; every substrate has operational cost, scaling tradeoffs, and failure modes.
+- Environment topology is explicit. Every environment names its purpose, isolation boundary, data posture, parity expectations, promotion flow, and ownership. Reject ad hoc staging and environment sprawl without lifecycle governance.
+- Network architecture starts with trust boundaries. Every workload sits in a named trust zone with explicit ingress, egress, and connectivity assumptions. Reject flat networks, unrestricted east-west traffic, and implicit trust.
+- Identity is the new perimeter. Define workload identity, human access, service-to-service authentication, and secrets lifecycle. Reject static credentials, shared admin accounts, and long-lived machine secrets; prefer federated/workload identity, short-lived credentials, and centralized policy.
+- Deployment is architecture, not scripting. Each workload class names its rollout mechanism, rollback behavior, blast-radius expectations, and deployment gating signals. Reject one deployment strategy for all workloads.
+- Infrastructure ownership boundaries are explicit. IaC defines platform-owned vs service-owned modules, policy-enforced boundaries, and state ownership. Reject giant monolithic Terraform repos and unrestricted infrastructure mutation.
+- Complexity is opt-in. Multi-region, multi-account, multi-cluster, and multi-tenant architecture each require a measurable business driver, operational ownership, and an ADR. Reject speculative geo-distribution and future-proofing through uncontrolled complexity.
+- Cost is a first-class architectural constraint. Decisions consider idle cost, autoscaling behavior, storage growth, network egress, reserved capacity, and operational staffing. Reject "optimize later" cost posture.
+- Challenge weak platform assumptions directly and operationally: unnecessary Kubernetes, flat networks, shared credentials, CI/CD trust gaps, operational over-complexity.
 - When a platform decision changes a regulatory, residency, or trust boundary, raise an ADR candidate against `system-design`.
+
+## Output contract
+
+`platform-architecture.md` MUST conform to [standards/architecture-schema](../../standards/architecture-schema/README.md), which is authoritative for its frontmatter, required and conditional sections, conditional-section omission rules, and linkage back to `system-design.md` and its ADRs.
+
+Security, observability, and operational content additionally conforms to [security-standards](../../standards/security-standards/README.md), [observability-standards](../../standards/observability-standards/README.md), and [deployment-standards](../../standards/deployment-standards/README.md). Skill structure conforms to [documentation-standards](../../standards/documentation-standards/README.md).
+
+Use `assets/platform-architecture.template.md` as the scaffold; it implements the schema. No vendor-specific Terraform, manifests, or pipeline YAML appear in the architecture unless they materially change architecture behavior.
+
+## Progressive references
+
+- Read `references/platform-architecture-playbook.md` when inventorying workloads, choosing cloud/account topology, environment model, runtime substrate, network and trust-boundary architecture, identity and secrets strategy, packaging, deployment and IaC strategy, CI/CD posture, cross-cutting platform services, cost/FinOps posture, or disaster posture, and to check the anti-pattern list.
+- Read `references/platform-architecture-quality-rubric.md` before finalizing and use it as the validation checklist.
+- Use `assets/platform-architecture.template.md` for `platform-architecture.md`.
 
 ## Process
 
-1. Load `system-design.md` and inventory every workload that needs a runtime home: services, batch jobs, scheduled jobs, datastores, queues, edge functions, and third-party integrations.
-2. Choose the cloud and account topology: provider(s), account or project structure, organizational boundaries, and the rationale (blast radius, billing, compliance).
-3. Define environments: their names, purpose, isolation level, data posture, parity rules with production, and promotion flow between them.
-4. Choose the runtime substrate per workload class: containers/Kubernetes, serverless, managed app platform, VM, or managed service. Justify against operational cost, scaling shape, and team maturity.
-5. Define the network architecture: VPC/VNet layout, subnet tiers, trust zones, ingress and egress controls, private connectivity, DNS strategy, and inter-region or inter-account links.
-6. Define the identity model: workload identity (instance profiles, workload identity federation), human access (SSO, just-in-time elevation), service-to-service authentication, and audit expectations.
-7. Define the secrets and configuration model: secret store, issuance, rotation cadence, mounting or injection mechanism, and configuration-vs-secret boundary.
-8. Define the packaging and image strategy: base images, image provenance and signing, registry topology, vulnerability scanning policy, and SBOM expectations.
-9. Define the deployment substrate: GitOps vs push, release mechanism per workload class (rolling, blue-green, canary, progressive), gating signals, and rollback path.
-10. Define the IaC strategy: tool choice, repo layout, module boundaries between platform and service, state management, policy-as-code surface, and drift detection.
-11. Define the CI/CD substrate: build trust model, artifact provenance, environment promotion path, secrets in CI, and policy gates between stages.
-12. Define cross-cutting platform services: observability backends, log routing, metrics and trace pipelines, certificate management, service mesh posture, and feature-flag substrate. Note that detailed observability instrumentation belongs to `operations`.
-13. Define cost posture: tagging strategy, budget alerts, autoscaling defaults, off-hours shutdown, and reserved or committed-spend strategy.
-14. Define disaster posture at the platform level: backup substrates, region failover topology, and RTO/RPO inputs that downstream `reliability` work will refine.
-15. Produce `platform-architecture.md` with explicit handoffs to `implementations/infrastructure/<vendor>`, `operations`, `reliability`, `security`, and `quality-engineering`.
+Progress:
+
+ADR candidates are drafted inline as decisions are made (steps 2, 4, 5, 9, 14). Step 15 only consolidates them; it does not retrofit ADRs from prose.
+
+- [ ] Step 1: Load `system-design.md` and relevant ADRs. Inventory every workload that needs a runtime home (APIs, background jobs, scheduled workloads, queues, streaming, databases, edge services, third-party integrations) with runtime expectations, scaling shape, criticality, and deployment frequency.
+- [ ] Step 2: Choose cloud and account topology: provider(s), account/project structure, organizational boundaries, region strategy. Justify against blast radius, billing isolation, compliance, ownership, and residency. Draft an ADR candidate for multi-account/multi-cloud decisions. See `references/platform-architecture-playbook.md`.
+- [ ] Step 3: Define environment architecture: environment list, lifecycle, promotion flow, parity expectations; per environment isolation level, production parity, data posture, and deployment gating. Reject shared mutable staging.
+- [ ] Step 4: Choose the runtime substrate per workload class (Kubernetes, serverless, managed app platform, VM, edge, batch). Justify against scaling, deployment frequency, startup latency, operational maturity, and observability. Draft an ADR candidate for the substrate decision.
+- [ ] Step 5: Define network and trust-boundary architecture: VPC/VNet layout, subnet segmentation, ingress model, egress controls, DNS topology, private connectivity, east-west posture. Every component names its trust zone, ingress/egress policy, and internet exposure. Draft an ADR candidate for trust-boundary decisions.
+- [ ] Step 6: Define identity and access architecture: workload identity, human access model, service authentication, audit posture, admin boundaries, break-glass, and privileged-session handling. Reject static cloud credentials and shared operational identities.
+- [ ] Step 7: Define secrets and configuration strategy: secrets store, issuance path, rotation cadence, injection mechanism, and config-vs-secret boundary. Reject secrets in Git or images and manual rotation.
+- [ ] Step 8: Define packaging and artifact strategy: base-image strategy, artifact provenance, image signing, vulnerability scanning, registry topology, SBOM, and immutable-artifact expectations. Reject mutable production artifacts and unscanned images.
+- [ ] Step 9: Define deployment and release architecture: deployment substrate (GitOps/push), release strategy per workload class (rolling, blue-green, canary, progressive), gating signals, rollback, and blast-radius controls. Draft an ADR candidate for the deployment-mechanism decision. Reject direct production mutation.
+- [ ] Step 10: Define IaC strategy: tool selection, repo layout, module boundaries (platform-owned vs service-owned), policy-as-code posture, state management, drift detection, module versioning, and approval workflow. Reject unbounded state and no-ownership repos.
+- [ ] Step 11: Define CI/CD platform architecture: build trust model, artifact promotion path, environment promotion flow, secrets handling in CI, policy gates, provenance, supply-chain integrity, ephemeral runners, and deployment authorization. Reject CI with unrestricted production credentials.
+- [ ] Step 12: Define cross-cutting platform services: observability backend, metrics/logging/tracing pipelines, certificate management, service-mesh posture, feature-flag infrastructure, with ownership boundaries and tenant isolation. Detailed instrumentation belongs to `operations`.
+- [ ] Step 13: Define cost and FinOps posture: tagging standards, budget ownership, autoscaling defaults, reserved-capacity posture, off-hours policies, egress-risk areas, storage growth, cost-allocation visibility, and budget-breach response.
+- [ ] Step 14: Define disaster and resilience posture: backup substrate, region-failover topology, DR posture, RTO/RPO assumptions, active-passive vs active-active, restore testing, and regional isolation behavior. Draft an ADR candidate for region-topology/DR decisions. Reject backups without restore drills.
+- [ ] Step 15: Generate `platform-architecture.md` from `assets/platform-architecture.template.md`. Consolidate ADR candidates (numbering, status, alternatives, downsides). Validate against [standards/architecture-schema](../../standards/architecture-schema/README.md) and `references/platform-architecture-quality-rubric.md`; revise until both pass or explicitly note any unresolved gap.
 
 ## Outputs
 
 Required:
 
-- `platform-architecture.md` covering account/cloud topology, environment model, runtime substrate per workload class, network and trust zones, identity model, secrets model, packaging strategy, deployment substrate, IaC strategy, CI/CD substrate, cross-cutting services, cost posture, and handoff notes.
+- `platform-architecture.md` at `docs/architecture/<product-slug>/platform-architecture.md`, with frontmatter and sections per [standards/architecture-schema](../../standards/architecture-schema/README.md).
 
 Optional, when applicable:
 
-- Account/project topology diagram.
-- Network diagram with trust zones.
-- Workload-to-substrate mapping table.
-- IaC module boundary table.
+- Account topology, network/trust-zone, or deployment topology diagrams.
+- Workload-to-substrate mapping table; IaC ownership matrix; cost allocation model.
 - ADR drafts for substrate, region topology, IaC tool, or deployment mechanism decisions.
+
+Output rules:
+
+- Keep the architecture decision-oriented and operationally grounded, not vendor-decorative.
+- Document tradeoffs and the rejected alternative, not only the chosen path.
+- Name workloads and zones by role and trust posture, not by vendor product.
+- Treat cost, disaster posture, and operational ownership as part of the design, not later implementation detail.
 
 ## Quality checks
 
+- [ ] `references/platform-architecture-quality-rubric.md` was loaded before finalizing.
+- [ ] `platform-architecture.md` validates against [standards/architecture-schema](../../standards/architecture-schema/README.md): frontmatter complete; required sections present; conditional sections present with content or listed under `## Omitted sections` with rationale.
 - [ ] Every workload class names its runtime substrate and the justification.
 - [ ] Environment list states isolation level, data posture, and parity rules.
 - [ ] Every component sits in a named trust zone with stated ingress and egress rules.
 - [ ] Workload identity, human access, and service-to-service auth are each explicitly defined.
-- [ ] Secrets model names the store, issuance path, rotation cadence, and mounting mechanism.
+- [ ] Secrets model names the store, issuance path, rotation cadence, and injection mechanism.
 - [ ] Image strategy covers base images, signing, scanning, and registry topology.
 - [ ] Each workload class names its release mechanism and rollback path.
 - [ ] IaC strategy names the module boundary between platform and service ownership.
 - [ ] Multi-region, multi-account, or multi-tenant complexity, if present, is justified by a stated driver and has an ADR.
-- [ ] Cost posture states tagging, autoscaling defaults, and a budget-breach action.
-- [ ] No vendor-specific Terraform, manifests, or pipeline YAML appear in the architecture unless they materially change behavior.
+- [ ] Cost posture states tagging, autoscaling defaults, and a budget-breach action; disaster posture states RTO/RPO.
+- [ ] No vendor-specific Terraform, manifests, or pipeline YAML appear unless they materially change architecture behavior.
 
 ## References
 
 - Upstream: [`architecture/system-design`](../system-design/SKILL.md).
-- Downstream implementation skills: `implementations/infrastructure/aws`, `implementations/infrastructure/gcp`, `implementations/infrastructure/azure`, `implementations/infrastructure/kubernetes`, `implementations/infrastructure/terraform`, `implementations/infrastructure/docker`, `implementations/infrastructure/github-actions`.
-- Related architecture skills: `operations`, `reliability`, `security`, `performance`.
+- Downstream implementation skills: `implementations/infrastructure/aws`, `implementations/infrastructure/gcp`, `implementations/infrastructure/azure`, `implementations/infrastructure/kubernetes`, `implementations/infrastructure/terraform`, `implementations/infrastructure/github-actions`.
+- Related architecture skills: [`operations`](../operations/SKILL.md), [`reliability`](../reliability/SKILL.md), [`security`](../security/SKILL.md), [`performance`](../performance/SKILL.md).
