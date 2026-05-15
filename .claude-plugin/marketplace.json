@@ -23,6 +23,7 @@
     "implementations/ai/openai/openai-tool-calling-runtime",
     "implementations/ai/openai/openai-rag-runtime",
     "implementations/ai/openai/openai-evals-and-observability",
-    "implementations/ai/langchain/langchain-agent-runtime"
+    "implementations/ai/langchain/langchain-agent-runtime",
+    "implementations/ai/anthropic/anthropic-structured-output-runtime"
   ]
 }

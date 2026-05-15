@@ -47,16 +47,23 @@ show up across many AI-backed products.
 | [openai](openai/) | [`openai-rag-runtime`](openai/openai-rag-runtime/SKILL.md) | `rag-runtime` | registered |
 | [openai](openai/) | [`openai-evals-and-observability`](openai/openai-evals-and-observability/SKILL.md) | `evals-and-observability` | registered |
 | [langchain](langchain/) | [`langchain-agent-runtime`](langchain/langchain-agent-runtime/SKILL.md) | `agent-runtime` | registered |
+| [anthropic](anthropic/) | [`anthropic-structured-output-runtime`](anthropic/anthropic-structured-output-runtime/SKILL.md) | `structured-output-runtime` | registered |
 
 ### v0.2: likely next
 
 | Ecosystem | Proposed skill | Archetype |
 |---|---|---|
-| anthropic | `anthropic-structured-output-runtime` | `structured-output-runtime` |
 | anthropic | `anthropic-tool-use-runtime` | `tool-calling-runtime` |
 | anthropic | `anthropic-rag-runtime` | `rag-runtime` |
+| anthropic | `anthropic-evals-and-observability` | `evals-and-observability` |
+| anthropic | `anthropic-prompt-caching-and-context-runtime` | `model-runtime` |
 | langchain | `langchain-rag-pipeline` | `rag-runtime` |
 | langchain | `langchain-eval-harness` | `evals-and-observability` |
+
+The `anthropic` stack mirrors `openai`'s archetype boundaries; see the
+[anthropic stack README](anthropic/README.md) for per-skill scope and where
+Anthropic-specific features (prompt caching, extended thinking, Citations API,
+Message Batches, MCP connector tools) are folded in.
 
 ### Deferred until a reference workflow exists
 
