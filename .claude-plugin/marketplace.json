@@ -16,7 +16,7 @@
     "implementations/backend/spring-boot/spring-kafka-event-integration",
     "implementations/data/mongodb/mongodb-data-model-and-migration",
     "implementations/data/postgres/postgres-schema-and-migration",
-    "implementations/infrastructure/docker/dockerfile-and-jvm-tuning",
+    "implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning",
     "implementations/infrastructure/github-actions/github-actions-pipeline-hardened",
     "implementations/infrastructure/kubernetes/k8s-deploy-manifest-review"
   ]

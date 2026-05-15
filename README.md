@@ -39,7 +39,7 @@ Twelve lifecycle-spanning skills:
 | Security | [`spring-security-auth-review`](implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
 | Observability | [`spring-boot-observability-readiness`](implementations/backend/spring-boot/spring-boot-observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
 | Data | [`postgres-schema-and-migration`](implementations/data/postgres/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
-| Containers | [`dockerfile-and-jvm-tuning`](implementations/infrastructure/docker/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
+| Containers | [`dockerfile-and-jvm-tuning`](implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
 | CI/CD | [`github-actions-pipeline-hardened`](implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
 | Deploy | [`k8s-deploy-manifest-review`](implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
 

@@ -627,30 +627,6 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 ---
 
-### infrastructure/docker
-
-**Status:** draft
-
-**Purpose:** Implements container packaging for services. Produces minimal, hardened images that conform to [deployment-standards](../../standards/deployment-standards/README.md) (env-agnostic, immutable, signed) and [security-standards](../../standards/security-standards/README.md) (no secrets baked, non-root, scanned).
-
-**Architecture domains implemented:**
-
-| Architecture domain | How |
-|---|---|
-| [infrastructure-platform](#infrastructure-platform) | Container packaging, JVM runtime tuning. |
-| [security](#security) | Non-root, minimal base, scanned images. |
-| [performance](#performance) | JVM heap and GC tuning for container memory limits. |
-
-**Standards this implementation conforms to:**
-- [deployment-standards](../../standards/deployment-standards/README.md) — env-agnostic image, config at deploy time, signed artifacts.
-- [security-standards](../../standards/security-standards/README.md) — no baked secrets, container scan as a required gate.
-- [naming-conventions](../../standards/naming-conventions/README.md) — `kebab-case` image names, registry-prefixed.
-
-**Skills:**
-- [dockerfile-and-jvm-tuning](../../implementations/infrastructure/docker/dockerfile-and-jvm-tuning/SKILL.md) — multi-stage Dockerfile for JVM services with distroless or jlink runtime, container-aware JVM tuning, layered jars, and image scanning.
-
----
-
 ### infrastructure/gcp
 
 **Status:** scaffold
@@ -704,6 +680,7 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 **Skills:**
 - [k8s-deploy-manifest-review](../../implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/SKILL.md) — authors or reviews Kubernetes manifests for production workloads (Deployment, Service, HPA, PDB, NetworkPolicy, security context).
+- [dockerfile-and-jvm-tuning](../../implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning/SKILL.md) — multi-stage Dockerfile for JVM services with distroless or jlink runtime, container-aware JVM tuning, layered jars, and image scanning. *(Container packaging is now folded into the kubernetes stack as a sub-skill of `workload-packaging-and-manifest`; the former `infrastructure/docker` stack has been retired.)*
 
 ---
 

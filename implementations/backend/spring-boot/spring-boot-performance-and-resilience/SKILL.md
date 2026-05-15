@@ -9,7 +9,7 @@ description: Use when tuning or hardening a Spring Boot service for latency, thr
 
 Invoke when a Spring Boot service must hit a stated latency, throughput, or availability target and the SLOs, dependency criticality, degradation behavior, and retry/timeout budgets have been decided by `performance`, `reliability`, and `backend-architecture`. Use it for new services entering load, for hardening an existing service before scale-up, or for review when production is page-prone, slow, or failing under partial outages.
 
-Do not use for picking SLOs (use `reliability`), for capacity modelling or scaling strategy across components (use `performance`), for designing service boundaries or async contracts (use `backend-architecture`), for choosing the cache substrate or queue (use `data-architecture` or `backend-architecture`), for cluster-level autoscaling, PDBs, or HPA (use `infrastructure-platform` and `implementations/infrastructure/kubernetes`), or for image-level JVM packaging (use `implementations/infrastructure/docker`).
+Do not use for picking SLOs (use `reliability`), for capacity modelling or scaling strategy across components (use `performance`), for designing service boundaries or async contracts (use `backend-architecture`), for choosing the cache substrate or queue (use `data-architecture` or `backend-architecture`), for cluster-level autoscaling, PDBs, or HPA (use `infrastructure-platform` and `implementations/infrastructure/kubernetes`), or for image-level JVM packaging (use `implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning`).
 
 ## Inputs
 
