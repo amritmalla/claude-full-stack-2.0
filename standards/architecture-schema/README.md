@@ -12,6 +12,8 @@ docs/architecture/<product-slug>/
 ├── platform-architecture.md   # OPTIONAL — only when the design needs dedicated platform/infra architecture (see "platform-architecture.md")
 ├── security-architecture.md   # OPTIONAL — only when the design handles sensitive data or crosses trust/tenant boundaries (see "security-architecture.md")
 ├── ai-architecture.md         # OPTIONAL — only when the design has an AI surface (see "ai-architecture.md")
+├── reliability-architecture.md # OPTIONAL — only when the design has externally meaningful availability commitments (see "reliability-architecture.md")
+├── performance-architecture.md # OPTIONAL — only when user-visible latency, throughput, or cost-per-request materially constrains the design (see "performance-architecture.md")
 ├── adrs/
 │   └── NNNN-<slug>.md         # one per non-obvious decision, monotonic numbering
 └── components/                # OPTIONAL — only when escalated (see "Per-component breakout")
@@ -299,6 +301,99 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 `ai-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
 
+## `reliability-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` has externally meaningful availability commitments, multi-component failure interactions, or stateful dependencies whose loss requires a recovery plan. Produced by [`architecture/reliability`](../../architecture/reliability/SKILL.md); consumed by reliability-relevant work in `implementations/infrastructure/<vendor>` and `implementations/data/<engine>`. One file per system.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | Reliability scope, critical user journeys, what the reliability architecture optimizes for and intentionally does not cover. |
+| `## Service-Level Objectives` | Table: Journey/Workflow, SLI, Measurement Point, Target, Time Window, Owner. SLOs are user-visible, not infrastructure vanity metrics. |
+| `## Error-Budget Policy` | Per SLO: budget, burn-rate thresholds, alert posture, and the operational response (deploy freeze, focus shift, escalation). |
+| `## Dependency Criticality` | Per dependency: class (critical / degradable / optional), outage impact, fallback posture, detection signal. No hidden hard dependencies. |
+| `## Failure Modes` | Table: Component, Failure Shape, Trigger, Blast Radius, Detection, Mitigation, Recovery. Specific to *this* design — no generic checklists. |
+| `## Graceful Degradation` | Per critical journey: degraded behavior, user-visible signal, fallback mechanism, recovery path, acceptable degradation window. |
+| `## Redundancy & High Availability` | Per component: strategy, placement topology, failover trigger, failover time, the failure mode it addresses, consistency tradeoff. |
+| `## Blast-Radius Isolation` | Isolation unit, containment boundary, saturation controls, trip and recovery thresholds. |
+| `## Disaster Recovery` | Per critical datastore/workflow: backup strategy, restore tooling, failover topology, RTO, RPO, rehearsal cadence, last validated date. |
+| `## Release Safety` | Deploy gating signals, rollback path, progressive-delivery posture, feature-flag fallbacks, automatic-rollback triggers. |
+| `## Implementation Handoffs` | Explicit handoffs to `operations`, `infrastructure-platform`, `performance`, `security`, `backend-architecture`, `data-architecture`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Chaos & Game-Day Validation` | Failover, degradation, or restore paths exist that must be exercised. Must name exercises, cadence, success criterion, and operational ownership. |
+| `## Incident Posture` | Reliability seeds severity/paging inputs that `operations` refines. Defines severity model, page-worthy symptom set, customer-impact threshold. Omit when `operations` fully owns the incident model. |
+| `## Multi-Region Strategy` | Multi-region or active-active topology is opted in. Must name the business driver, the ADR, and the consistency tradeoff. |
+
+`reliability-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
+
+## `performance-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` has user-visible paths whose latency, throughput, concurrency, or cost-per-request materially constrains the design, or when a scale event is anticipated. Produced by [`architecture/performance`](../../architecture/performance/SKILL.md); consumed by performance-relevant work in `implementations/backend/<framework>`, `implementations/frontend/<framework>`, `implementations/data/<engine>`, and `implementations/infrastructure/<vendor>`. One file per system.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Overview` | Performance scope, the user-visible paths that matter, what the architecture optimizes for and intentionally does not. |
+| `## Workload Shape` | Per workload: class (interactive/streaming/background/batch/event-driven), steady-state and peak RPS, concurrency, burst shape, growth horizon, worst plausible spike. |
+| `## Performance Budgets` | Per user-visible path: p50/p95/p99 latency, throughput, concurrency, timeout posture, cost-per-request/user/job, measurement point, owner. Numerical, not "fast". |
+| `## Critical & Hot Paths` | Per journey: synchronous critical path (drives latency), hot path (drives cost), fan-out and serialization points. The two may diverge. |
+| `## Capacity Model` | Per workload: CPU, memory, IOPS, network, connections, queue depth, payload size, cache memory at peak and worst plausible spike; headroom factor and exhaustion threshold. |
+| `## Scaling Posture` | Per workload: vertical/horizontal/autoscaled/queue-buffered/partitioned, trigger, scaling lag, ceiling, and ceiling behavior (queue/degrade/shed/fail). |
+| `## Backpressure & Load Shedding` | Per saturable dependency: queue posture, retry/timeout posture, concurrency cap, circuit-breaker behavior, shed behavior, user-visible symptom, recovery condition. |
+| `## Performance Testing` | Load/stress/soak/spike/failover tests: workload simulated, production likeness, budgets validated, pass/fail criteria, environment parity. |
+| `## Regression Gating` | Which metrics block release, which alert, which are informational; CI/release/canary gates, rollback thresholds, measurement source of truth, ownership. |
+| `## Cost-Performance Tradeoffs` | Hard limits vs negotiable budgets, elasticity posture, cost-escalation triggers, which paths justify higher spend, which degrade under cost pressure. |
+| `## Implementation Handoffs` | Explicit handoffs to `backend-architecture`, `frontend-architecture`, `data-architecture`, `infrastructure-platform`, `reliability`, `operations`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Caching & Precomputation` | One or more cache, read-model, or precomputation layers exist. Each names source of truth, cached entity, invalidation trigger, TTL/staleness budget, warm-up, stampede protection, and the budget delta it buys. |
+| `## Geographic Distribution` | Users or workloads span regions and latency/correctness is region-sensitive. Names region topology and the synchronous cross-region cost. |
+
+`performance-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`. Cache mechanics, when in scope, are decided here in budget terms and handed to `data-architecture` and `backend-architecture` for implementation.
+
 ## Diagrams
 
 Use Mermaid (`graph`, `flowchart`, `sequenceDiagram`) inline. PNG/SVG only when Mermaid is insufficient; place under `assets/diagrams/`.
@@ -370,8 +465,8 @@ Rules:
 - `system-design.md` MUST link to its source PRD in frontmatter.
 - Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
-- `data-architecture.md`, `frontend-architecture.md`, `platform-architecture.md`, `security-architecture.md`, and `ai-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
-- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `implementations/infrastructure/*`; when the system handles sensitive data or crosses trust boundaries, an `approved` `security-architecture.md` constrains security-relevant work across `implementations/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`.
+- `data-architecture.md`, `frontend-architecture.md`, `platform-architecture.md`, `security-architecture.md`, `ai-architecture.md`, `reliability-architecture.md`, and `performance-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
+- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `implementations/infrastructure/*`; when the system handles sensitive data or crosses trust boundaries, an `approved` `security-architecture.md` constrains security-relevant work across `implementations/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`; when the system has externally meaningful availability commitments, an `approved` `reliability-architecture.md` is the upstream input to reliability-relevant work in `implementations/infrastructure/*` and `implementations/data/*`; when user-visible latency, throughput, or cost-per-request materially constrains the design, an `approved` `performance-architecture.md` is the upstream input to performance-relevant work across `implementations/backend/*`, `implementations/frontend/*`, `implementations/data/*`, and `implementations/infrastructure/*`.
 
 ## Versioning
 
