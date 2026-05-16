@@ -9,6 +9,7 @@ docs/architecture/<product-slug>/
 ├── system-design.md           # primary artifact, always present
 ├── data-architecture.md       # OPTIONAL — only when the design has a non-trivial data layer (see "data-architecture.md")
 ├── frontend-architecture.md   # OPTIONAL — only when the design has a user-facing frontend (see "frontend-architecture.md")
+├── mobile-architecture.md     # OPTIONAL — only when the design has a native or cross-platform-native mobile app (see "mobile-architecture.md")
 ├── platform-architecture.md   # OPTIONAL — only when the design needs dedicated platform/infra architecture (see "platform-architecture.md")
 ├── security-architecture.md   # OPTIONAL — only when the design handles sensitive data or crosses trust/tenant boundaries (see "security-architecture.md")
 ├── ai-architecture.md         # OPTIONAL — only when the design has an AI surface (see "ai-architecture.md")
@@ -152,6 +153,56 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 | `## Real-time, Offline & Resilience` | Realtime or offline features exist. Must define failure fallback, reconnect, and reconciliation behavior. |
 
 `frontend-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`.
+
+## `mobile-architecture.md`
+
+Secondary artifact. Present only when `system-design.md` includes a native or cross-platform-native mobile application. Produced by [`architecture/mobile-architecture`](../../architecture/mobile-architecture/SKILL.md); consumed by `implementations/mobile/<ecosystem>`. One file per system. Mobile-web and PWA are not in scope here — those remain in `frontend-architecture.md`.
+
+### Frontmatter (required)
+
+```yaml
+---
+product: <kebab-case slug>         # matches the system-design slug
+status: draft | review | approved | superseded
+owner: <name or role>
+system_design: <relative path to source system-design.md>
+prd: <relative path to source PRD, or null>
+version: <semver, starts at 0.1.0>
+last_reviewed: YYYY-MM-DD
+---
+```
+
+### Required sections
+
+| Section | Purpose |
+|---|---|
+| `## Executive Summary` | Mobile app(s) and platforms present, primary user journeys, API boundary, what it optimizes for and intentionally does not. |
+| `## Platform Strategy` | Native vs cross-platform-native vs hybrid with rationale, trade-offs, rejected alternatives, minimum OS, device classes. |
+| `## Application Architecture` | Layers, module boundaries, state ownership, side effects, concurrency, lifecycle, dependency injection. |
+| `## Navigation Architecture` | Hierarchy, route ownership, deep links, modals, auth transitions, tab/shell, back-navigation and restoration. |
+| `## State Management Strategy` | Local/session/cached/persistent state: ownership, mechanism, sync, persistence, invalidation; optimistic updates and conflict resolution. |
+| `## Offline & Synchronization Design` | Offline capabilities, sync model, queueing, retry, conflict resolution, authoritative sources, reconciliation, degraded-mode per journey. |
+| `## Device Capability Integration` | Per capability: permission strategy, fallback, privacy, battery impact, failure handling, platform limits. |
+| `## Performance & Battery Budgets` | Measurable targets (start, latency, memory, background, battery, network, storage) with degradation behavior. |
+| `## Security & Privacy Callouts` | Callout only — mobile-specific security/privacy concerns summarized as ADR candidates; ownership belongs to `security`. |
+| `## Accessibility & Localization` | Screen-reader support, dynamic text, reduced motion, contrast, RTL, font scaling, internationalization. |
+| `## Error Handling & Recovery` | Global error strategy, retry ceilings, crash recovery, interrupted-session handling, degraded-mode UX. |
+| `## Observability & Analytics` | Crash, performance, network, journey/screen, startup/battery telemetry, release monitoring, PII redaction, sampling, retention. |
+| `## Testing Strategy` | Unit/integration/UI-automation/offline/device-compat/accessibility/perf-regression scope, release gating, rollback validation. |
+| `## Release & Operations Callouts` | Callout only — release channels, staged rollout, store submission, forced-upgrade, deprecation as ADR candidates; ownership belongs to `operations`/`infrastructure-platform`. |
+| `## Failure Taxonomy` | Per failure: detection, mitigation, recovery, observability, user-facing behavior. |
+| `## Implementation Handoffs` | Explicit handoffs to `implementations/mobile/<ecosystem>`, `backend-architecture`, `security`, `operations`/`infrastructure-platform`, `quality-engineering`. |
+| `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
+
+### Conditional sections
+
+Include if material; otherwise omit and add a one-line rationale under `## Omitted sections`.
+
+| Section | When to include |
+|---|---|
+| `## Notifications & Background Behavior` | Push notifications or background work exist. Defines push types, delivery, priority, opt-in, rate-limiting, and silent-notification handling. |
+
+`mobile-architecture.md` shares the system's ADR numbering, immutability rule, and supersede chain (see "ADRs"). It does not redefine bounded contexts, components, or data flow — those remain owned by `system-design.md`. It does not own security/privacy or release/operations design — those are callouts whose decisions are owned by `security` and `operations`/`infrastructure-platform`. Cross-references to a product's `frontend-architecture.md` are optional and non-binding; `mobile-architecture.md` is independently valid without one.
 
 ## `platform-architecture.md`
 
