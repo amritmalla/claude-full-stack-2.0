@@ -17,15 +17,17 @@ Skills are scoped, not monolithic. Each `SKILL.md`:
 
 ## Archetypes
 
+The five archetypes are derived mobile-first, not copied from the frontend layer. They survive a from-scratch decomposition of what a production mobile app actually needs: a runtime shell, a navigation graph, a data/state engine, a presentation system, and a runtime-budget gate. Three of them carry native-surface weight that has no web equivalent — navigation absorbs deep links and OS-interruption state restoration, data-and-state absorbs push delivery and background sync, design-system absorbs permission-request UX. The native device surface is therefore **distributed across these five** rather than given its own archetype (see below). Security, release, and observability *policy* stay upstream in the `architecture/*` domains; the implementation skills consume those decisions cross-cuttingly.
+
 Every mobile implementation stack is expected to provide skills drawn from these five archetypes. Only those archetypes the architecture layer actually demands for that stack are produced — there is no fixed baseline.
 
 | # | Archetype | What the skill produces | Primary upstream |
 |---|---|---|---|
 | 1 | **app-scaffold-and-runtime** | Production-ready app shell: project layout, platform configuration, flavor/environment handling, layered error handling, structured logging client, observability seams, DI and session provider baseline, CI signing scaffolding. Sets the **DI and session provider baseline** that downstream skills extend. | `mobile-architecture` |
-| 2 | **navigation-and-routing** | Navigation hierarchy, route ownership, deep-link handling, back-stack behavior, auth-gate routing, state restoration after interruption. | `mobile-architecture` (navigation architecture) |
-| 3 | **state-and-data-fetching** | State management wiring (per `mobile-architecture.md` decision), network layer, caching and revalidation, offline queue, mutation and optimistic-update posture, **auth-token plumbing and refresh**. | `mobile-architecture` (state model, offline/sync design) |
-| 4 | **design-system-and-accessibility** | Design-system integration (tokens, theming, component library), accessibility posture (screen-reader, dynamic text, reduced motion, contrast, RTL), internationalization seam. | `mobile-architecture` (a11y posture, design-system seam) |
-| 5 | **performance-and-battery** | Startup and frame budgets, memory and battery telemetry, profiling gates, background execution discipline, performance regression CI gates. | `performance` + `mobile-architecture` (performance and battery budgets) |
+| 2 | **navigation-and-routing** | Navigation hierarchy, route ownership, **deep-link / app-link handling**, back-stack behavior, auth-gate routing, **OS-interruption state restoration** (process death, backgrounding). Heavier than its frontend analogue: it owns the distributed device-navigation surface. | `mobile-architecture` (navigation architecture) |
+| 3 | **state-and-data-fetching** | State management wiring (per `mobile-architecture.md` decision), network layer, caching and revalidation, offline queue, mutation and optimistic-update posture, **auth-token plumbing and refresh**, **push-notification delivery wiring, background sync**. | `mobile-architecture` (state model, offline/sync design) |
+| 4 | **design-system-and-accessibility** | Design-system integration (tokens, theming, component library), accessibility posture (screen-reader, dynamic text, reduced motion, contrast, RTL), internationalization seam, **permission-request UX**. | `mobile-architecture` (a11y posture, design-system seam) |
+| 5 | **performance-and-reliability** | Startup and frame budgets, memory and battery/power telemetry, profiling gates, background-execution discipline, performance-regression CI gates, **plus crash-free-rate, ANR/watchdog budgets, and graceful-degradation posture as gated runtime metrics** (error-handling *code* stays in app-scaffold-and-runtime). | `performance` + `mobile-architecture` (performance, battery, and reliability budgets) |
 
 ### Auth is cross-cutting
 
@@ -37,6 +39,18 @@ There is no dedicated auth archetype for mobile. Auth surface area is split acro
 - **design-system-and-accessibility** — accessible auth UIs (login, MFA, recovery flows).
 
 Each mobile `SKILL.md` that touches an auth concern names the upstream `architecture/security` decisions it implements and pauses for an ADR candidate if those decisions are missing.
+
+### Device & platform integration is distributed
+
+There is no dedicated device/platform archetype. Native-bridge surface area — camera, GPS, BLE, NFC, sensors, biometrics, push, background workers, permissions, platform channels, deep linking — is split across the existing five by the concern it actually serves:
+
+- **navigation-and-routing** — deep linking, app links, OS-interruption state restoration.
+- **state-and-data-fetching** — push-notification delivery wiring, background sync, background workers feeding the data layer.
+- **design-system-and-accessibility** — permission-request UX (rationale prompts, denied/blocked states).
+- **app-scaffold-and-runtime** — platform-channel plumbing and capability registration that the shell installs once.
+- **cross-cutting (security)** — biometrics, secure storage, jailbreak/root detection: threaded into the touching archetype with policy from `architecture/security`.
+
+A skill that implements a distributed device concern names the archetype boundary it is honoring and defers cleanly to the owning archetype rather than re-implementing it.
 
 ## Stacks
 

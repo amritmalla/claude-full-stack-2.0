@@ -9,7 +9,7 @@ description: Use when creating, modernizing, or production-hardening a Flutter m
 
 Invoke when starting a new Flutter application, standardizing an existing Flutter app baseline, modernizing a project that lacks flavor separation or observability, or preparing a Flutter app for store or enterprise distribution.
 
-Do not use for: navigation topology and deep-link wiring (use `flutter-navigation-and-routing`), state management and data-fetching implementation (use `flutter-state-and-data-fetching`), design-system and accessibility integration (use `flutter-design-system-and-accessibility`), or performance budget enforcement (use `flutter-performance-and-battery`).
+Do not use for: navigation topology and deep-link wiring (use `flutter-navigation-and-routing`), state management and data-fetching implementation (use `flutter-state-and-data-fetching`), design-system and accessibility integration (use `flutter-design-system-and-accessibility`), or performance budget enforcement (use `flutter-performance-and-reliability`).
 
 ## Inputs
 
@@ -103,5 +103,5 @@ Output rules:
 ## References
 
 - Upstream: [`architecture/mobile-architecture`](../../../../architecture/mobile-architecture/SKILL.md), [`architecture/security`](../../../../architecture/security/SKILL.md).
-- Related Flutter archetype skills (extend this baseline): `flutter-navigation-and-routing`, `flutter-state-and-data-fetching`, `flutter-design-system-and-accessibility`, `flutter-performance-and-battery`.
+- Related Flutter archetype skills (extend this baseline): `flutter-navigation-and-routing`, `flutter-state-and-data-fetching`, `flutter-design-system-and-accessibility`, `flutter-performance-and-reliability`.
 - Standards: [`security-standards`](../../../../standards/security-standards/README.md), [`observability-standards`](../../../../standards/observability-standards/README.md), [`deployment-standards`](../../../../standards/deployment-standards/README.md).

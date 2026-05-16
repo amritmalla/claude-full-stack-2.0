@@ -16,17 +16,17 @@ Skills map to exactly one archetype. Skills are additive — each extends the ba
 | 2 | navigation-and-routing | flutter-navigation-and-routing | planned |
 | 3 | state-and-data-fetching | flutter-state-and-data-fetching | planned |
 | 4 | design-system-and-accessibility | flutter-design-system-and-accessibility | planned |
-| 5 | performance-and-battery | flutter-performance-and-battery | planned |
+| 5 | performance-and-reliability | flutter-performance-and-reliability | planned |
 
 ## What each archetype owns
 
 | Archetype | Owns | Defers |
 |---|---|---|
-| app-scaffold-and-runtime | Project layout, flavors, layered error handling, observability seams, DI/session shell, CI signing scaffolding | Auth flow and token logic → state-and-data-fetching |
-| navigation-and-routing | Route hierarchy, deep links, back stack, auth-gate routing, state restoration | Token refresh → state-and-data-fetching |
-| state-and-data-fetching | State wiring, network layer, caching, offline queue, token storage and refresh | Route-level auth gates → navigation-and-routing |
-| design-system-and-accessibility | Tokens, theming, components, a11y posture, i18n seam | Layout decisions → navigation-and-routing |
-| performance-and-battery | Startup/frame budgets, memory/battery telemetry, profiling, CI gates | Observability vendor → mobile-architecture.md |
+| app-scaffold-and-runtime | Project layout, flavors, layered error handling, observability seams, DI/session shell, CI signing scaffolding, platform-channel plumbing the shell installs once | Auth flow and token logic → state-and-data-fetching |
+| navigation-and-routing | Route hierarchy, deep links / app links, back stack, auth-gate routing, OS-interruption state restoration | Token refresh → state-and-data-fetching |
+| state-and-data-fetching | State wiring, network layer, caching, offline queue, token storage and refresh, push-notification delivery wiring, background sync | Route-level auth gates → navigation-and-routing |
+| design-system-and-accessibility | Tokens, theming, components, a11y posture, i18n seam, permission-request UX | Layout decisions → navigation-and-routing |
+| performance-and-reliability | Startup/frame budgets, memory/battery telemetry, profiling, crash-free-rate / ANR / graceful-degradation gates, CI gates | Observability vendor → mobile-architecture.md; error-handling code → app-scaffold-and-runtime |
 
 ## Upstream
 

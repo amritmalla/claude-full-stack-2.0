@@ -154,7 +154,7 @@ Document these explicitly in the local-run README:
 | Token storage and refresh | `core/di/injection.dart` (TODO comment) | `flutter-state-and-data-fetching` |
 | Protected-route gates | `app/app.dart` (TODO comment) | `flutter-navigation-and-routing` |
 | Design tokens and theming | `app/app.dart` (ThemeData placeholder) | `flutter-design-system-and-accessibility` |
-| Performance budget CI gates | CI configuration | `flutter-performance-and-battery` |
+| Performance budget CI gates | CI configuration | `flutter-performance-and-reliability` |
 
 ## .gitignore additions (signing and secrets)
 
