@@ -42,13 +42,14 @@ Each frontend `SKILL.md` that touches an auth concern names the upstream `archit
 
 ### Implemented
 
-_None._
+| Stack | Strategy | Archetype coverage |
+|---|---|---|
+| [react](react/) | Base — owns all 5 archetypes | 5/5 (all archetypes authored) |
 
 ### Planned (future scope)
 
 | Stack | Strategy | Archetype coverage |
 |---|---|---|
-| [react](react/) | Base — owns all 5 archetypes | 0/5 |
 | [nextjs](nextjs/) | Delta over React — 4 own skills + 1 inherited from react | 0/4 own + inherits design-system |
 | [vue](vue/) | Base — owns all 5 archetypes | 0/5 |
 | [svelte](svelte/) | Base — owns all 5 archetypes | 0/5 |

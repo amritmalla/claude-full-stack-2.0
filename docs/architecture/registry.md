@@ -587,9 +587,26 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 ### frontend/react
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the react ecosystem.
+**Purpose:** Implements `architecture/frontend-architecture` using React as a standalone SPA or as the base for a meta-framework. Base stack owning all 5 frontend archetypes; meta-frameworks (e.g. nextjs) inherit where their surface does not meaningfully diverge.
+
+Architecture decisions (rendering strategy per route, state-tier model, design-system seam, perf budgets, auth flow) come from upstream and are taken as inputs here.
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [frontend-architecture](#frontend-architecture) | App shell, routing, rendering, state, design-system seam, a11y. |
+| [performance](#performance) | Per-route Web Vitals budgets and CI gates. |
+| [security](#security) | Auth provider wiring, CSP, token storage discipline, no secrets in bundles. |
+
+**Skills:**
+- [react-app-scaffold-and-runtime](../../implementations/frontend/react/react-app-scaffold-and-runtime/SKILL.md) — Vite/Webpack project layout, env/profile handling, layered error boundaries, structured logging client, RUM + error-reporting wiring, auth provider/wrapper baseline (seam only), CSP/security headers, container or static-CDN packaging.
+- [react-routing-and-rendering-strategy](../../implementations/frontend/react/react-routing-and-rendering-strategy/SKILL.md) — React Router 6 data-router topology, CSR-only posture, per-route loading/error UI, suspense/transition boundaries, route-level metadata, protected-route gates and redirect flows wired to the scaffold auth seam.
+- [react-state-management-and-data-fetching](../../implementations/frontend/react/react-state-management-and-data-fetching/SKILL.md) — 4-tier state discipline (URL/server/global/local), TanStack Query server-state layer, query/mutation conventions, optimistic-update posture, and the auth-token storage/refresh/CSRF/logout lifecycle the scaffold and routing skills deferred.
+- [react-design-system-and-accessibility](../../implementations/frontend/react/react-design-system-and-accessibility/SKILL.md) — design-token wiring, accessible primitive composition (Radix/React Aria/Headless UI), theming/dark-mode, WCAG 2.2 AA posture, focus/keyboard/ARIA discipline, i18n seam, accessible auth UIs. Inherited by meta-frameworks.
+- [react-performance-and-delivery-optimization](../../implementations/frontend/react/react-performance-and-delivery-optimization/SKILL.md) — per-route Web Vitals budgets, code-splitting topology, image/font posture, third-party-script audit, LCP/CLS/INP/TTFB instrumentation, Lighthouse and bundle CI gates, CDN cache-control posture.
 
 ---
 

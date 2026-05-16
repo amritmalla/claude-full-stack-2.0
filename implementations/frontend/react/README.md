@@ -33,25 +33,21 @@ React is a **base** stack in the frontend layer model. It owns all 5 archetypes;
 
 ### Authored
 
-_None._
+- [react-app-scaffold-and-runtime](react-app-scaffold-and-runtime/SKILL.md) — Vite/Webpack project layout, env/profile handling, layered error boundaries, structured logging client, RUM + error-reporting wiring, auth provider/wrapper baseline (seam only), CSP/security headers, container or static-CDN packaging.
+- [react-routing-and-rendering-strategy](react-routing-and-rendering-strategy/SKILL.md) — React Router 6 data-router topology, CSR-only posture, per-route loading/error UI, suspense/transition boundaries, route-level metadata, protected-route gates and redirect flows wired to the scaffold auth seam.
+- [react-state-management-and-data-fetching](react-state-management-and-data-fetching/SKILL.md) — 4-tier state discipline (URL/server/global/local), TanStack Query server-state layer, query/mutation conventions, optimistic-update posture, and the auth-token storage/refresh/CSRF/logout lifecycle the scaffold and routing skills deferred.
+- [react-design-system-and-accessibility](react-design-system-and-accessibility/SKILL.md) — design-token wiring, accessible primitive composition (Radix/React Aria/Headless UI), theming/dark-mode, WCAG 2.2 AA posture, focus/keyboard/ARIA discipline, i18n seam, accessible auth UIs. Inherited by meta-frameworks.
+- [react-performance-and-delivery-optimization](react-performance-and-delivery-optimization/SKILL.md) — per-route Web Vitals budgets, code-splitting topology, image/font posture, third-party-script audit, LCP/CLS/INP/TTFB instrumentation, Lighthouse and bundle CI gates, CDN cache-control posture.
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | app-scaffold-and-runtime | `react-app-scaffold-and-runtime` | planned |
-| 2 | routing-and-rendering-strategy | `react-routing-and-rendering-strategy` | planned |
-| 3 | state-management-and-data-fetching | `react-state-management-and-data-fetching` | planned |
-| 4 | design-system-and-accessibility | `react-design-system-and-accessibility` | planned |
-| 5 | performance-and-delivery-optimization | `react-performance-and-delivery-optimization` | planned |
-
-### Planned skill scope (future work)
-
-- **`react-app-scaffold-and-runtime`** — Vite (or Webpack) project layout, env/profile handling, error boundaries (top-level + route-level), structured logging client, RUM + error-reporting wiring, auth provider/wrapper baseline (`AuthProvider`/`SessionContext`), CSP and security headers via host config, container or static-CDN packaging.
-- **`react-routing-and-rendering-strategy`** — React Router 6 topology (data routers, nested routes, loaders/actions), CSR-only posture (SSR is meta-framework territory), suspense boundaries, loading/error UI per route, route-level metadata, protected-route gates and redirect flows tied to the auth provider from scaffold.
-- **`react-state-management-and-data-fetching`** — 4-tier state discipline (URL via Router, server via TanStack Query, global via Zustand/RTK, local via `useState`/`useReducer`), query/mutation conventions, cache and revalidation policy, optimistic updates, auth-token storage and refresh, authorization headers, logout state propagation, CSRF token wiring.
-- **`react-design-system-and-accessibility`** — design tokens (CSS variables / Tailwind theme / vanilla-extract), primitive composition (Radix / React Aria / Headless UI), theming and dark-mode strategy, WCAG 2.2 AA conformance posture, keyboard navigation and focus-management discipline, ARIA usage rules, screen-reader testing, i18n seam (react-i18next / FormatJS).
-- **`react-performance-and-delivery-optimization`** — per-route perf budgets, code-splitting via `lazy`/`Suspense`, route-level chunking, third-party-script audit, image (`<img loading="lazy">`, `srcset`) and font posture (`font-display: swap`, preload, self-host), Web Vitals (LCP/CLS/INP/TTFB) via `web-vitals`, Lighthouse CI and bundle-analyzer gates, CDN cache-control posture.
+| 1 | app-scaffold-and-runtime | [`react-app-scaffold-and-runtime`](react-app-scaffold-and-runtime/SKILL.md) | authored |
+| 2 | routing-and-rendering-strategy | [`react-routing-and-rendering-strategy`](react-routing-and-rendering-strategy/SKILL.md) | authored |
+| 3 | state-management-and-data-fetching | [`react-state-management-and-data-fetching`](react-state-management-and-data-fetching/SKILL.md) | authored |
+| 4 | design-system-and-accessibility | [`react-design-system-and-accessibility`](react-design-system-and-accessibility/SKILL.md) | authored |
+| 5 | performance-and-delivery-optimization | [`react-performance-and-delivery-optimization`](react-performance-and-delivery-optimization/SKILL.md) | authored |
 
 ## Architecture domains implemented
 
