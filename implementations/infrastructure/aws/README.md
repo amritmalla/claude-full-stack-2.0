@@ -24,26 +24,29 @@ AWS belongs to **Family F — Cloud platforms** in the infrastructure layer mode
 
 ## Skills
 
+### Skill tier
+
+The four archetype-scoped skills (2–5) are authored at **mature tier** — each is a directory of `SKILL.md` + `references/<name>-playbook.md` + `references/<name>-quality-rubric.md` + `assets/<name>.template.md`, following the `implementations/mobile/flutter` mature-tier exemplar. This is a **deliberate divergence** from the lean single-file convention used elsewhere in the infrastructure tier (terraform, archetype 1). The aws stack is therefore mixed-tier by design: the network/runtime/observability/DR successors are mature; `aws-account-and-organization-topology` remains lean.
+
 ### Authored
 
-- [aws-account-and-organization-topology](aws-account-and-organization-topology/SKILL.md) — AWS Organizations OU structure, landing-zone approach (Control Tower or custom), SCP guardrails mapped to security rationale, environment-isolated account layout, centralized audit (CloudTrail/Config/GuardDuty), and mandatory tagging/cost-allocation policy.
+- [aws-account-and-organization-topology](aws-account-and-organization-topology/SKILL.md) — *archetype 1, lean*. AWS Organizations OU structure, landing-zone approach, SCP guardrails mapped to security rationale, environment-isolated account layout, centralized audit, and mandatory tagging/cost-allocation policy.
+- [aws-network-and-identity-foundation](aws-network-and-identity-foundation/SKILL.md) — *archetype 2, mature*. Per-env tiered multi-AZ VPC, TGW/peering/PrivateLink, IAM Identity Center federation, bounded least-privilege roles, KMS CMK strategy, rotated Secrets Manager, Route 53.
+- [aws-workload-runtime-and-deployment](aws-workload-runtime-and-deployment/SKILL.md) — *archetype 3, mature*. Compute-primitive selection by workload class, ALB/NLB, autoscaling, blue-green/canary/rolling deploy with automated rollback (EKS in-cluster manifests handed to Family G).
+- [aws-observability-and-cost-readiness](aws-observability-and-cost-readiness/SKILL.md) — *archetype 4, mature*. CloudWatch/ADOT/X-Ray, SLO dashboards and alarms, AWS Budgets/Cost Anomaly Detection, FinOps discipline consuming the org tag policy, Savings Plans/RI posture.
+- [aws-dr-and-multi-region-readiness](aws-dr-and-multi-region-readiness/SKILL.md) — *archetype 5, mature*. Multi-AZ baseline, tier-driven multi-region topology, cross-region replication, Route 53 failover with fail-back, AWS Backup, and a **rehearsed** drill with measured RPO/RTO.
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | account-and-organization-topology | [`aws-account-and-organization-topology`](aws-account-and-organization-topology/SKILL.md) | authored |
-| 2 | network-and-identity-foundation | `aws-network-and-identity-foundation` | planned |
-| 3 | workload-runtime-and-deployment | `aws-workload-runtime-and-deployment` | planned |
-| 4 | observability-and-cost-readiness | `aws-observability-and-cost-readiness` | planned |
-| 5 | dr-and-multi-region-readiness | `aws-dr-and-multi-region-readiness` | planned |
+| 1 | account-and-organization-topology | [`aws-account-and-organization-topology`](aws-account-and-organization-topology/SKILL.md) *(lean)* | ✓ authored |
+| 2 | network-and-identity-foundation | [`aws-network-and-identity-foundation`](aws-network-and-identity-foundation/SKILL.md) *(mature)* | ✓ authored |
+| 3 | workload-runtime-and-deployment | [`aws-workload-runtime-and-deployment`](aws-workload-runtime-and-deployment/SKILL.md) *(mature)* | ✓ authored |
+| 4 | observability-and-cost-readiness | [`aws-observability-and-cost-readiness`](aws-observability-and-cost-readiness/SKILL.md) *(mature)* | ✓ authored |
+| 5 | dr-and-multi-region-readiness | [`aws-dr-and-multi-region-readiness`](aws-dr-and-multi-region-readiness/SKILL.md) *(mature)* | ✓ authored |
 
-### Planned skill scope (future work)
-
-- **`aws-network-and-identity-foundation`** — VPC topology (per-env, per-tier subnets, multi-AZ), Transit Gateway or VPC peering for inter-account connectivity, PrivateLink for service-to-service, IAM Identity Center (SSO) federated to IdP, IAM role assumption patterns, permission boundaries, KMS CMK strategy (per-tenant, per-env), Secrets Manager with rotation, Route 53 zone strategy.
-- **`aws-workload-runtime-and-deployment`** — compute primitive selection per workload (Lambda for ephemeral/event-driven, Fargate for managed containers, EKS for orchestrated containers, EC2/ASG for legacy, RDS/Aurora for relational, DynamoDB for KV), Application Load Balancer / Network Load Balancer posture, autoscaling configuration, deployment mechanics (CodeDeploy, blue/green for ALB, rolling for ECS).
-- **`aws-observability-and-cost-readiness`** — CloudWatch Logs/Metrics/Alarms, AWS Distro for OpenTelemetry, X-Ray for tracing, dashboards per SLO, Cost Explorer + AWS Budgets + Cost Anomaly Detection, FinOps tagging discipline (`Environment`, `Workload`, `CostCenter`, `Owner`), savings-plan and RI posture.
-- **`aws-dr-and-multi-region-readiness`** — multi-AZ default for tier-0 and tier-1, multi-region active-passive or active-active for tier-0 where architecture demands, RDS cross-region replicas, S3 cross-region replication, DynamoDB Global Tables, Route 53 health-check-based failover, AWS Backup posture, documented and rehearsed failover drills with RPO/RTO validation.
+All five Family F archetypes are authored. Cross-archetype handoffs are named in each skill; IaC module/state mechanics remain the `terraform` Family H skills' ownership.
 
 ## Architecture domains implemented
 

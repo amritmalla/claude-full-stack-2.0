@@ -83,12 +83,12 @@ For GitHub Actions.
 | [kubernetes](kubernetes/) | G — Runtime/orchestration | all 5 archetypes authored at **mature tier** (`k8s-workload-packaging-and-manifest`, `k8s-network-and-identity-policy`, `k8s-scaling-and-resilience-topology`, `k8s-observability-and-operations-readiness`, `k8s-supply-chain-and-image-hardening`) + [`k8s-deploy-manifest-review`](kubernetes/k8s-deploy-manifest-review/SKILL.md) *(omnibus, lean)* + [`dockerfile-and-jvm-tuning`](kubernetes/dockerfile-and-jvm-tuning/SKILL.md) *(JVM sub-skill, lean)* |
 | [github-actions](github-actions/) | I — CI/CD | [`github-actions-pipeline-hardened`](github-actions/github-actions-pipeline-hardened/SKILL.md) *(omnibus)* |
 | [terraform](terraform/) | H — IaC | all 5 archetypes authored (`module-and-repository-scaffold`, `state-and-secret-management`, `plan-gate-and-policy-as-code`, `apply-and-promotion-mechanics`, `module-reuse-and-supply-chain`) |
+| [aws](aws/) | F — Cloud platforms | all 5 archetypes authored — `aws-account-and-organization-topology` *(lean)* + archetypes 2–5 at **mature tier** (`aws-network-and-identity-foundation`, `aws-workload-runtime-and-deployment`, `aws-observability-and-cost-readiness`, `aws-dr-and-multi-region-readiness`) |
 
 ### Planned (future scope)
 
 | Stack | Family | Status |
 |---|---|---|
-| [aws](aws/) | F — Cloud | 1/5 (`account-and-organization-topology`) |
 | [gcp](gcp/) | F — Cloud | 0/5 |
 | [azure](azure/) | F — Cloud | 0/5 |
 | [kubernetes](kubernetes/) | G — Runtime | 5/5 archetype-scoped authored; non-JVM packaging sub-skills still planned |
