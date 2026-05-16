@@ -720,8 +720,24 @@ Architecture decisions (rendering strategy per route, state-tier model, design-s
 
 ### infrastructure/terraform
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the terraform ecosystem.
+**Purpose:** Implements `architecture/infrastructure-platform`, `architecture/security`, `architecture/reliability`, and `architecture/operations` as Terraform code. Family H — Infrastructure-as-code. Architecture decisions (env ladder, blast-radius tiers, module boundaries, secrets handling, promotion gates) come from upstream and are taken as inputs here.
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [infrastructure-platform](#infrastructure-platform) | Module boundaries, env ladder, deployment mechanics. |
+| [security](#security) | State secret discipline, policy-as-code, no plaintext credentials. |
+| [reliability](#reliability) | Drift detection, rollback procedure, lock management. |
+| [operations](#operations) | Promotion gates, runbook inputs for apply failures. |
+
+**Skills:**
+- [terraform-module-and-repository-scaffold](../../implementations/infrastructure/terraform/terraform-module-and-repository-scaffold/SKILL.md) — repo layout (root + `modules/` + `environments/<env>/`), provider and `required_version` pinning, typed input/output conventions, per-module `README` + `examples/`, and blast-radius-tiered CODEOWNERS/review rules.
+- [terraform-state-and-secret-management](../../implementations/infrastructure/terraform/terraform-state-and-secret-management/SKILL.md) — remote backend selection (S3+DynamoDB / GCS / Azure / TFC), state encryption at rest, locking, per-environment state isolation, secret-manager references, `sensitive` discipline, and backend-migration procedure.
+- [terraform-plan-gate-and-policy-as-code](../../implementations/infrastructure/terraform/terraform-plan-gate-and-policy-as-code/SKILL.md) — blocking pre-merge gate (`fmt`/`validate`/`plan` diff to PR), policy-as-code (OPA/Conftest, Checkov, tfsec, Sentinel) with tier-scaled strictness, secret scan, and scheduled drift detection.
+- [terraform-apply-and-promotion-mechanics](../../implementations/infrastructure/terraform/terraform-apply-and-promotion-mechanics/SKILL.md) — apply orchestration across the env ladder, manual-vs-auto-apply per tier, reviewed-plan apply, blast-radius control, rollback procedure, drift-remediation playbook, and apply-failure/lock-recovery runbook inputs.
+- [terraform-module-reuse-and-supply-chain](../../implementations/infrastructure/terraform/terraform-module-reuse-and-supply-chain/SKILL.md) — versioned module registry strategy, semantic versioning, consumer pinning + committed lockfile, provenance review for community modules/providers, SBOM-equivalent of the dependency tree, and breaking-change deprecation policy.
 
 ---

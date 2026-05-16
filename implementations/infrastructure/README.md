@@ -82,6 +82,7 @@ For GitHub Actions.
 |---|---|---|
 | [kubernetes](kubernetes/) | G — Runtime/orchestration | [`k8s-deploy-manifest-review`](kubernetes/k8s-deploy-manifest-review/SKILL.md) *(omnibus)*, [`dockerfile-and-jvm-tuning`](kubernetes/dockerfile-and-jvm-tuning/SKILL.md) *(sub-skill of archetype 1, JVM-specific)* |
 | [github-actions](github-actions/) | I — CI/CD | [`github-actions-pipeline-hardened`](github-actions/github-actions-pipeline-hardened/SKILL.md) *(omnibus)* |
+| [terraform](terraform/) | H — IaC | all 5 archetypes authored (`module-and-repository-scaffold`, `state-and-secret-management`, `plan-gate-and-policy-as-code`, `apply-and-promotion-mechanics`, `module-reuse-and-supply-chain`) |
 
 ### Planned (future scope)
 
@@ -91,7 +92,6 @@ For GitHub Actions.
 | [gcp](gcp/) | F — Cloud | 0/5 |
 | [azure](azure/) | F — Cloud | 0/5 |
 | [kubernetes](kubernetes/) | G — Runtime | 2 authored, archetype-aligned splits planned |
-| [terraform](terraform/) | H — IaC | 0/5 |
 | [github-actions](github-actions/) | I — CI/CD | 1 authored, archetype-aligned splits planned |
 
 ## Omnibus skills and the split plan

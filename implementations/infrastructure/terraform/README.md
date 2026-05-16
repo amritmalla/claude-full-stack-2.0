@@ -25,25 +25,21 @@ Terraform is the sole member of **Family H — Infrastructure-as-code** in the i
 
 ### Authored
 
-_None._
+- [terraform-module-and-repository-scaffold](terraform-module-and-repository-scaffold/SKILL.md) — repo layout (root + `modules/` + `environments/<env>/`), provider and `required_version` pinning, typed input/output conventions, per-module `README` + `examples/`, and blast-radius-tiered CODEOWNERS/review rules.
+- [terraform-state-and-secret-management](terraform-state-and-secret-management/SKILL.md) — remote backend selection (S3+DynamoDB / GCS / Azure / TFC), state encryption at rest, locking, per-environment state isolation, secret-manager references, `sensitive` discipline, and backend-migration procedure.
+- [terraform-plan-gate-and-policy-as-code](terraform-plan-gate-and-policy-as-code/SKILL.md) — blocking pre-merge gate (`fmt`/`validate`/`plan` diff to PR), policy-as-code (OPA/Conftest, Checkov, tfsec, Sentinel) with tier-scaled strictness, secret scan, and scheduled drift detection.
+- [terraform-apply-and-promotion-mechanics](terraform-apply-and-promotion-mechanics/SKILL.md) — apply orchestration across the env ladder, manual-vs-auto-apply per tier, reviewed-plan apply, blast-radius control, rollback procedure, drift-remediation playbook, and apply-failure/lock-recovery runbook inputs.
+- [terraform-module-reuse-and-supply-chain](terraform-module-reuse-and-supply-chain/SKILL.md) — versioned module registry strategy, semantic versioning, consumer pinning + committed lockfile, provenance review for community modules/providers, SBOM-equivalent of the dependency tree, and breaking-change deprecation policy.
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | module-and-repository-scaffold | `terraform-module-and-repository-scaffold` | planned |
-| 2 | state-and-secret-management | `terraform-state-and-secret-management` | planned |
-| 3 | plan-gate-and-policy-as-code | `terraform-plan-gate-and-policy-as-code` | planned |
-| 4 | apply-and-promotion-mechanics | `terraform-apply-and-promotion-mechanics` | planned |
-| 5 | module-reuse-and-supply-chain | `terraform-module-reuse-and-supply-chain` | planned |
-
-### Planned skill scope (future work)
-
-- **`terraform-module-and-repository-scaffold`** — repo layout (root + `modules/` + `environments/<env>/`), provider version constraints, `required_version` discipline, input/output conventions, `README.md` per module, `examples/` directory for module consumers, code-owner and review rules tied to env and blast-radius tier.
-- **`terraform-state-and-secret-management`** — remote state backend selection (S3 + DynamoDB / GCS / Azure Storage / Terraform Cloud), state encryption at rest, state locking, workspace strategy (env-per-directory vs `terraform workspace`), `sensitive = true` on outputs containing secrets, secret references to AWS Secrets Manager / GCP Secret Manager / Azure Key Vault rather than plaintext, no secrets in `.tfvars` committed to source.
-- **`terraform-plan-gate-and-policy-as-code`** — pre-merge gates (`terraform fmt`, `terraform validate`, `terraform plan` diff posted to PR), policy-as-code (OPA/Conftest / Checkov / tfsec / Sentinel) with blast-radius-tiered policy strictness, drift detection on a schedule, required-reviewer rules per env, prohibited resources or providers per env.
-- **`terraform-apply-and-promotion-mechanics`** — apply orchestration across env ladder (dev → staging → prod), manual approval gates for prod, targeted apply discipline for blast-radius control, `terraform refresh` and drift remediation playbook, rollback procedure (revert + apply, or restore prior state version), runbook inputs for partial-apply failures and lock-recovery.
-- **`terraform-module-reuse-and-supply-chain`** — versioned module registry (private Terraform Cloud registry or Git tags), semantic versioning of modules (`MAJOR.MINOR.PATCH`), dependency pinning of providers and modules in consumers, provenance review for community modules, SBOM-equivalent for the module dependency tree, deprecation policy for breaking-change releases.
+| 1 | module-and-repository-scaffold | [`terraform-module-and-repository-scaffold`](terraform-module-and-repository-scaffold/SKILL.md) | authored |
+| 2 | state-and-secret-management | [`terraform-state-and-secret-management`](terraform-state-and-secret-management/SKILL.md) | authored |
+| 3 | plan-gate-and-policy-as-code | [`terraform-plan-gate-and-policy-as-code`](terraform-plan-gate-and-policy-as-code/SKILL.md) | authored |
+| 4 | apply-and-promotion-mechanics | [`terraform-apply-and-promotion-mechanics`](terraform-apply-and-promotion-mechanics/SKILL.md) | authored |
+| 5 | module-reuse-and-supply-chain | [`terraform-module-reuse-and-supply-chain`](terraform-module-reuse-and-supply-chain/SKILL.md) | authored |
 
 ## Architecture domains implemented
 
