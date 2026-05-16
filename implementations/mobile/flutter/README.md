@@ -1,0 +1,42 @@
+# implementations/mobile/flutter
+
+Technology-specific execution skills for Flutter.
+
+## Philosophy
+
+Each Flutter skill speaks as a **senior Flutter engineer**. It generates production-ready code and configuration — it does not invent architectural decisions. [`architecture/mobile-architecture`](../../../architecture/mobile-architecture/SKILL.md) is the source of truth for platform strategy, DI container, state management approach, navigation hierarchy, offline behavior, and observability vendor. If a `mobile-architecture.md` is silent on a decision a skill needs, the skill pauses and raises an ADR candidate rather than guessing.
+
+Skills map to exactly one archetype. Skills are additive — each extends the baseline the scaffold installs.
+
+## Archetypes
+
+| # | Archetype | Skill | Status |
+|---|---|---|---|
+| 1 | app-scaffold-and-runtime | [flutter-app-scaffold-and-runtime/SKILL.md](flutter-app-scaffold-and-runtime/SKILL.md) | ✓ authored |
+| 2 | navigation-and-routing | flutter-navigation-and-routing | planned |
+| 3 | state-and-data-fetching | flutter-state-and-data-fetching | planned |
+| 4 | design-system-and-accessibility | flutter-design-system-and-accessibility | planned |
+| 5 | performance-and-battery | flutter-performance-and-battery | planned |
+
+## What each archetype owns
+
+| Archetype | Owns | Defers |
+|---|---|---|
+| app-scaffold-and-runtime | Project layout, flavors, layered error handling, observability seams, DI/session shell, CI signing scaffolding | Auth flow and token logic → state-and-data-fetching |
+| navigation-and-routing | Route hierarchy, deep links, back stack, auth-gate routing, state restoration | Token refresh → state-and-data-fetching |
+| state-and-data-fetching | State wiring, network layer, caching, offline queue, token storage and refresh | Route-level auth gates → navigation-and-routing |
+| design-system-and-accessibility | Tokens, theming, components, a11y posture, i18n seam | Layout decisions → navigation-and-routing |
+| performance-and-battery | Startup/frame budgets, memory/battery telemetry, profiling, CI gates | Observability vendor → mobile-architecture.md |
+
+## Upstream
+
+All Flutter skills consume [`architecture/mobile-architecture`](../../../architecture/mobile-architecture/SKILL.md) as the primary upstream. [`architecture/security`](../../../architecture/security/SKILL.md) is the authority on auth provider, session model, and token strategy.
+
+## Standards
+
+All Flutter skills conform to:
+
+- [security-standards](../../../standards/security-standards/README.md) — no secrets in bundle or committed config.
+- [observability-standards](../../../standards/observability-standards/README.md) — crash, logging, and tracing seam wired.
+- [deployment-standards](../../../standards/deployment-standards/README.md) — env-agnostic build via Flutter flavor mechanism.
+- [naming-conventions](../../../standards/naming-conventions/README.md) — package, feature, and file naming.
