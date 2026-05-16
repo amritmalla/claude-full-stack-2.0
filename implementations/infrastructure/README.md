@@ -87,7 +87,7 @@ For GitHub Actions.
 
 | Stack | Family | Status |
 |---|---|---|
-| [aws](aws/) | F — Cloud | 0/5 |
+| [aws](aws/) | F — Cloud | 1/5 (`account-and-organization-topology`) |
 | [gcp](gcp/) | F — Cloud | 0/5 |
 | [azure](azure/) | F — Cloud | 0/5 |
 | [kubernetes](kubernetes/) | G — Runtime | 2 authored, archetype-aligned splits planned |

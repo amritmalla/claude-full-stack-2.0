@@ -634,9 +634,22 @@ Architecture decisions (rendering strategy per route, state-tier model, design-s
 
 ### infrastructure/aws
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the aws ecosystem.
+**Purpose:** Implements `architecture/infrastructure-platform`, `architecture/security`, `architecture/reliability`, and `architecture/operations` on AWS. Family F — Cloud platforms. Architecture decisions (org structure, environment ladder, trust zones, compute primitive per workload, RPO/RTO) come from upstream and are taken as inputs here.
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [infrastructure-platform](#infrastructure-platform) | Account topology, network, compute primitives, deployment. |
+| [security](#security) | IAM model, KMS, Secrets Manager, SCPs, trust zones. |
+| [reliability](#reliability) | Multi-AZ/region posture, backups, failover. |
+| [operations](#operations) | CloudWatch alarms, runbook inputs, audit. |
+| [performance](#performance) | Compute right-sizing, cost monitoring, anomaly detection. |
+
+**Skills:**
+- [aws-account-and-organization-topology](../../implementations/infrastructure/aws/aws-account-and-organization-topology/SKILL.md) — AWS Organizations OU structure, landing-zone approach, SCP guardrails mapped to security rationale, environment-isolated account layout, centralized audit (CloudTrail/Config/GuardDuty), and mandatory tagging/cost-allocation policy.
 
 ---
 

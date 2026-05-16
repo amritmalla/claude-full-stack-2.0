@@ -26,13 +26,13 @@ AWS belongs to **Family F — Cloud platforms** in the infrastructure layer mode
 
 ### Authored
 
-_None._
+- [aws-account-and-organization-topology](aws-account-and-organization-topology/SKILL.md) — AWS Organizations OU structure, landing-zone approach (Control Tower or custom), SCP guardrails mapped to security rationale, environment-isolated account layout, centralized audit (CloudTrail/Config/GuardDuty), and mandatory tagging/cost-allocation policy.
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | account-and-organization-topology | `aws-account-and-organization-topology` | planned |
+| 1 | account-and-organization-topology | [`aws-account-and-organization-topology`](aws-account-and-organization-topology/SKILL.md) | authored |
 | 2 | network-and-identity-foundation | `aws-network-and-identity-foundation` | planned |
 | 3 | workload-runtime-and-deployment | `aws-workload-runtime-and-deployment` | planned |
 | 4 | observability-and-cost-readiness | `aws-observability-and-cost-readiness` | planned |
@@ -40,7 +40,6 @@ _None._
 
 ### Planned skill scope (future work)
 
-- **`aws-account-and-organization-topology`** — AWS Organizations structure (management + log-archive + audit + workload OUs), Control Tower or custom landing zone, SCPs for guardrails (deny regions, deny root, require encryption), env-isolated accounts per environment ladder, central billing and cost-allocation tags, baseline AWS Config rules.
 - **`aws-network-and-identity-foundation`** — VPC topology (per-env, per-tier subnets, multi-AZ), Transit Gateway or VPC peering for inter-account connectivity, PrivateLink for service-to-service, IAM Identity Center (SSO) federated to IdP, IAM role assumption patterns, permission boundaries, KMS CMK strategy (per-tenant, per-env), Secrets Manager with rotation, Route 53 zone strategy.
 - **`aws-workload-runtime-and-deployment`** — compute primitive selection per workload (Lambda for ephemeral/event-driven, Fargate for managed containers, EKS for orchestrated containers, EC2/ASG for legacy, RDS/Aurora for relational, DynamoDB for KV), Application Load Balancer / Network Load Balancer posture, autoscaling configuration, deployment mechanics (CodeDeploy, blue/green for ALB, rolling for ECS).
 - **`aws-observability-and-cost-readiness`** — CloudWatch Logs/Metrics/Alarms, AWS Distro for OpenTelemetry, X-Ray for tracing, dashboards per SLO, Cost Explorer + AWS Budgets + Cost Anomaly Detection, FinOps tagging discipline (`Environment`, `Workload`, `CostCenter`, `Owner`), savings-plan and RI posture.
