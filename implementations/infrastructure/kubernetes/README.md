@@ -27,28 +27,33 @@ Kubernetes is the sole member of **Family G — Runtime / orchestration / packag
 
 ## Skills
 
+### Skill tier
+
+The five archetype-scoped skills are authored at **mature tier** — each is a directory of `SKILL.md` + `references/<name>-playbook.md` + `references/<name>-quality-rubric.md` + `assets/<name>.template.md`, following the `implementations/mobile/flutter` mature-tier exemplar. This is a **deliberate divergence** from the lean single-file convention used elsewhere in the infrastructure tier (terraform, the omnibus, the JVM sub-skill). The kubernetes stack is therefore mixed-tier by design: the archetype-scoped successors are mature; the omnibus review pass and the language sub-skills remain lean.
+
 ### Authored
 
-- [k8s-deploy-manifest-review](k8s-deploy-manifest-review/SKILL.md) — *omnibus production-readiness review* covering Deployment, Service, HPA, PDB, NetworkPolicy, ServiceAccount, security context, probes, resource bounds, and rollout strategy. Touches archetypes 1, 2, 3, and 5; kept as the holistic review entry point.
-- [dockerfile-and-jvm-tuning](dockerfile-and-jvm-tuning/SKILL.md) — *sub-skill of archetype 1*, scoped to JVM containerization: multi-stage Dockerfile, distroless or jlink runtime, non-root user, container-aware JVM flags, healthcheck, `.dockerignore`. (Moved from the former `infrastructure/docker` stack, which has been retired.)
+- [k8s-workload-packaging-and-manifest](k8s-workload-packaging-and-manifest/SKILL.md) — *archetype 1, mature tier*. Deployment/StatefulSet/DaemonSet/Job/CronJob, Service, Ingress, baseline HPA/PDB, probes, resource bounds, rollout parameters. Authoring successor to the omnibus manifest slice.
+- [k8s-network-and-identity-policy](k8s-network-and-identity-policy/SKILL.md) — *archetype 2, mature tier*. Default-deny NetworkPolicy, least-privilege ServiceAccount/RBAC, ingress/Gateway posture, mTLS/mesh wiring, registry auth, PSS namespace floor.
+- [k8s-scaling-and-resilience-topology](k8s-scaling-and-resilience-topology/SKILL.md) — *archetype 3, mature tier*. HPA/VPA/KEDA selection and tuning, tier-correct PDB sizing, anti-affinity, topology spread, graceful shutdown, rollout budgets.
+- [k8s-observability-and-operations-readiness](k8s-observability-and-operations-readiness/SKILL.md) — *archetype 4, mature tier*. ServiceMonitor/PodMonitor, kube-state-metrics/cAdvisor coverage, log shipping, OTel tracing, SLO alerts, scoped audit collection, runbook inputs.
+- [k8s-supply-chain-and-image-hardening](k8s-supply-chain-and-image-hardening/SKILL.md) — *archetype 5, mature tier*. Minimal non-root read-only-root-FS images, cosign signing, SBOM, scan-as-gate, Kyverno/Gatekeeper admission policy (extends the PSS floor).
+- [k8s-deploy-manifest-review](k8s-deploy-manifest-review/SKILL.md) — *omnibus production-readiness review (lean)* covering Deployment, Service, HPA, PDB, NetworkPolicy, ServiceAccount, security context, probes, resource bounds, and rollout strategy. Touches archetypes 1, 2, 3, and 5; kept as the holistic cross-archetype review entry point.
+- [dockerfile-and-jvm-tuning](dockerfile-and-jvm-tuning/SKILL.md) — *sub-skill of archetype 1 (lean)*, scoped to JVM containerization: multi-stage Dockerfile, distroless or jlink runtime, non-root user, container-aware JVM flags, healthcheck, `.dockerignore`. (Moved from the former `infrastructure/docker` stack, which has been retired.)
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | workload-packaging-and-manifest | [`dockerfile-and-jvm-tuning`](dockerfile-and-jvm-tuning/SKILL.md) *(JVM sub-skill)* + [`k8s-deploy-manifest-review`](k8s-deploy-manifest-review/SKILL.md) *(omnibus)* | partial (JVM-only image, omnibus manifests) |
-| 2 | network-and-identity-policy | covered partially by `k8s-deploy-manifest-review` *(omnibus)* | split planned |
-| 3 | scaling-and-resilience-topology | covered partially by `k8s-deploy-manifest-review` *(omnibus)* | split planned |
-| 4 | observability-and-operations-readiness | _none_ | planned |
-| 5 | supply-chain-and-image-hardening | covered partially by `k8s-deploy-manifest-review` *(omnibus)* + `dockerfile-and-jvm-tuning` | split planned |
+| 1 | workload-packaging-and-manifest | [`k8s-workload-packaging-and-manifest`](k8s-workload-packaging-and-manifest/SKILL.md) *(mature)* + [`dockerfile-and-jvm-tuning`](dockerfile-and-jvm-tuning/SKILL.md) *(JVM sub-skill)* | ✓ authored (non-JVM packaging siblings still planned) |
+| 2 | network-and-identity-policy | [`k8s-network-and-identity-policy`](k8s-network-and-identity-policy/SKILL.md) *(mature)* | ✓ authored |
+| 3 | scaling-and-resilience-topology | [`k8s-scaling-and-resilience-topology`](k8s-scaling-and-resilience-topology/SKILL.md) *(mature)* | ✓ authored |
+| 4 | observability-and-operations-readiness | [`k8s-observability-and-operations-readiness`](k8s-observability-and-operations-readiness/SKILL.md) *(mature)* | ✓ authored |
+| 5 | supply-chain-and-image-hardening | [`k8s-supply-chain-and-image-hardening`](k8s-supply-chain-and-image-hardening/SKILL.md) *(mature)* | ✓ authored |
 
-### Planned skill scope (future work)
+### Remaining planned scope
 
-- **`k8s-workload-packaging-and-manifest`** *(archetype 1, archetype-scoped successor to the omnibus)* — Deployment / StatefulSet / Job / CronJob / Service / Ingress / HPA / PDB authoring, probe configuration, resource requests/limits, rolling-update parameters. Plus non-JVM container packaging variants (`python-image-and-runtime`, `node-image-and-runtime`, `go-image-and-runtime`, `dotnet-image-and-runtime`, `static-binary-image`) as sibling sub-skills of `dockerfile-and-jvm-tuning`.
-- **`k8s-network-and-identity-policy`** *(archetype 2)* — NetworkPolicy authoring (default-deny, namespace-scoped, label-selected), ServiceAccount and RBAC (least-privilege Role/ClusterRole), Ingress/Gateway API posture, mTLS or service-mesh wiring (Istio/Linkerd) where adopted, image-pull secrets, registry auth, Pod Security Standards enforcement.
-- **`k8s-scaling-and-resilience-topology`** *(archetype 3)* — HPA / VPA / KEDA selection, PDB sizing per tier, pod anti-affinity and topology-spread constraints, multi-zone placement, `terminationGracePeriodSeconds` and preStop hooks for graceful shutdown, surge and `maxUnavailable` budgets per workload tier.
-- **`k8s-observability-and-operations-readiness`** *(archetype 4)* — kube-state-metrics, cAdvisor metrics, Prometheus scrape via ServiceMonitor/PodMonitor, log shipping (Fluent Bit / Vector / Loki / cloud-native), distributed tracing wiring (OTel collector), audit-log configuration, runbook inputs for pod-eviction storms, ImagePullBackOff sprees, and node-pressure incidents.
-- **`k8s-supply-chain-and-image-hardening`** *(archetype 5, archetype-scoped successor to the security-context slice of the omnibus)* — minimal base images, non-root user, read-only root FS, dropped capabilities, image signing (cosign), SBOM (Syft), vulnerability scanning (Trivy/Grype) as a required gate, admission control via Kyverno/Gatekeeper for policy enforcement.
+- Non-JVM container-packaging sub-skills of archetype 1 (`python-image-and-runtime`, `node-image-and-runtime`, `go-image-and-runtime`, `dotnet-image-and-runtime`, `static-binary-image`) as siblings of `dockerfile-and-jvm-tuning`.
 
 ## Omnibus skill posture
 

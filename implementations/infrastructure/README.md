@@ -80,7 +80,7 @@ For GitHub Actions.
 
 | Stack | Family | Authored skills |
 |---|---|---|
-| [kubernetes](kubernetes/) | G — Runtime/orchestration | [`k8s-deploy-manifest-review`](kubernetes/k8s-deploy-manifest-review/SKILL.md) *(omnibus)*, [`dockerfile-and-jvm-tuning`](kubernetes/dockerfile-and-jvm-tuning/SKILL.md) *(sub-skill of archetype 1, JVM-specific)* |
+| [kubernetes](kubernetes/) | G — Runtime/orchestration | all 5 archetypes authored at **mature tier** (`k8s-workload-packaging-and-manifest`, `k8s-network-and-identity-policy`, `k8s-scaling-and-resilience-topology`, `k8s-observability-and-operations-readiness`, `k8s-supply-chain-and-image-hardening`) + [`k8s-deploy-manifest-review`](kubernetes/k8s-deploy-manifest-review/SKILL.md) *(omnibus, lean)* + [`dockerfile-and-jvm-tuning`](kubernetes/dockerfile-and-jvm-tuning/SKILL.md) *(JVM sub-skill, lean)* |
 | [github-actions](github-actions/) | I — CI/CD | [`github-actions-pipeline-hardened`](github-actions/github-actions-pipeline-hardened/SKILL.md) *(omnibus)* |
 | [terraform](terraform/) | H — IaC | all 5 archetypes authored (`module-and-repository-scaffold`, `state-and-secret-management`, `plan-gate-and-policy-as-code`, `apply-and-promotion-mechanics`, `module-reuse-and-supply-chain`) |
 
@@ -91,14 +91,14 @@ For GitHub Actions.
 | [aws](aws/) | F — Cloud | 1/5 (`account-and-organization-topology`) |
 | [gcp](gcp/) | F — Cloud | 0/5 |
 | [azure](azure/) | F — Cloud | 0/5 |
-| [kubernetes](kubernetes/) | G — Runtime | 2 authored, archetype-aligned splits planned |
+| [kubernetes](kubernetes/) | G — Runtime | 5/5 archetype-scoped authored; non-JVM packaging sub-skills still planned |
 | [github-actions](github-actions/) | I — CI/CD | 1 authored, archetype-aligned splits planned |
 
 ## Omnibus skills and the split plan
 
 Two existing skills predate the archetype model and span four archetypes each. They are kept as **production-readiness review** entry points — useful when reviewing a workload or pipeline holistically before promotion — and will be supplemented (not replaced immediately) by archetype-scoped successors.
 
-- **[`k8s-deploy-manifest-review`](kubernetes/k8s-deploy-manifest-review/SKILL.md)** — touches archetypes G.1 (Deployment/Service/HPA/PDB), G.2 (NetworkPolicy/ServiceAccount), G.3 (HPA/PDB/rolling-update), and G.5 (security context). Future archetype-scoped k8s skills will own each slice; this skill remains the holistic review pass.
+- **[`k8s-deploy-manifest-review`](kubernetes/k8s-deploy-manifest-review/SKILL.md)** — touches archetypes G.1 (Deployment/Service/HPA/PDB), G.2 (NetworkPolicy/ServiceAccount), G.3 (HPA/PDB/rolling-update), and G.5 (security context). The archetype-scoped successors (`k8s-workload-packaging-and-manifest`, `k8s-network-and-identity-policy`, `k8s-scaling-and-resilience-topology`, `k8s-supply-chain-and-image-hardening`) now own the *authoring* of each slice; this skill remains the holistic cross-archetype review pass.
 - **[`github-actions-pipeline-hardened`](github-actions/github-actions-pipeline-hardened/SKILL.md)** — touches archetypes I.1 (workflow scaffold), I.2 (OIDC + minimal permissions), I.3 (CI gates), and I.5 (SBOM + cosign + pinned SHAs). Future archetype-scoped GHA skills will own each slice; this skill remains the holistic review pass.
 
 This is a **planned exception** to the one-skill-per-archetype rule, documented so it does not propagate.
