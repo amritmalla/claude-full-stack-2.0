@@ -83,7 +83,7 @@ Unlike the backend layer (one archetype set across all stacks), the data layer d
 
 | Stack | Family | Archetype coverage |
 |---|---|---|
-| [postgres](postgres/) | A — OLTP relational | 1/5 (`schema-modeling-and-migration` only) |
+| [postgres](postgres/) | A — OLTP relational | 5/5 (all archetypes authored) |
 | [mongodb](mongodb/) | B — Document | 1/5 (`data-model-and-migration` only) |
 
 ### Planned (future scope)

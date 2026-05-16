@@ -548,6 +548,10 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 **Skills:**
 - [postgres-schema-and-migration](../../implementations/data/postgres/postgres-schema-and-migration/SKILL.md) — produces normalized schema, integrity constraints, indexing strategy, Flyway migrations, and zero-downtime migration plans using expand / migrate / contract.
+- [postgres-indexing-and-query-optimization](../../implementations/data/postgres/postgres-indexing-and-query-optimization/SKILL.md) — index audit, `EXPLAIN (ANALYZE, BUFFERS)`-driven query review, `pg_stat_statements` hot-query identification, partitioning validation, N+1 and join-order remediation, autovacuum and bloat posture.
+- [postgres-replication-and-ha-readiness](../../implementations/data/postgres/postgres-replication-and-ha-readiness/SKILL.md) — streaming/logical replication topology, sync vs async RPO trade-off, automated failover (Patroni/repmgr/Multi-AZ), replica-lag thresholds, read-replica routing, split-brain prevention, multi-region posture.
+- [postgres-backup-and-operational-readiness](../../implementations/data/postgres/postgres-backup-and-operational-readiness/SKILL.md) — backup strategy (pgBackRest/WAL archiving for PITR), rehearsed restore drills with measured RPO/RTO, retention and cost posture, day-2 observability (bloat, wraparound, connection saturation), and runbook inputs.
+- [postgres-security-and-data-access-hardening](../../implementations/data/postgres/postgres-security-and-data-access-hardening/SKILL.md) — TLS and connection security, least-privilege role/grant model, RLS tenant isolation, column grants and encryption for PII, `pgaudit` configuration, secret rotation posture, and network-exposure review.
 
 ---
 

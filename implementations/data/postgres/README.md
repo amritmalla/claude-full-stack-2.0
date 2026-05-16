@@ -31,23 +31,20 @@ PostgreSQL belongs to **Family A — OLTP relational** in the data layer model. 
 ### Authored
 
 - [postgres-schema-and-migration](postgres-schema-and-migration/SKILL.md) — produces normalized schema, integrity constraints, indexing strategy, Flyway migrations, and zero-downtime migration plans using expand / migrate / contract.
+- [postgres-indexing-and-query-optimization](postgres-indexing-and-query-optimization/SKILL.md) — index audit, `EXPLAIN (ANALYZE, BUFFERS)`-driven query review, `pg_stat_statements` hot-query identification, partitioning validation, N+1 and join-order remediation, autovacuum and bloat posture.
+- [postgres-replication-and-ha-readiness](postgres-replication-and-ha-readiness/SKILL.md) — streaming/logical replication topology, sync vs async RPO trade-off, automated failover (Patroni/repmgr/Multi-AZ), replica-lag thresholds, read-replica routing, split-brain prevention, multi-region posture.
+- [postgres-backup-and-operational-readiness](postgres-backup-and-operational-readiness/SKILL.md) — backup strategy (pgBackRest/WAL archiving for PITR), rehearsed restore drills with measured RPO/RTO, retention and cost posture, day-2 observability (bloat, wraparound, connection saturation), and runbook inputs.
+- [postgres-security-and-data-access-hardening](postgres-security-and-data-access-hardening/SKILL.md) — TLS and connection security, least-privilege role/grant model, RLS tenant isolation, column grants and encryption for PII, `pgaudit` configuration, secret rotation posture, and network-exposure review.
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
 | 1 | schema-modeling-and-migration | [`postgres-schema-and-migration`](postgres-schema-and-migration/SKILL.md) | authored |
-| 2 | indexing-and-query-optimization | `postgres-indexing-and-query-optimization` | planned |
-| 3 | replication-and-ha-readiness | `postgres-replication-and-ha-readiness` | planned |
-| 4 | backup-and-operational-readiness | `postgres-backup-and-operational-readiness` | planned |
-| 5 | security-and-data-access-hardening | `postgres-security-and-data-access-hardening` | planned |
-
-### Planned skill scope (future work)
-
-- **`postgres-indexing-and-query-optimization`** — index audit (B-tree, hash, GIN, GiST, BRIN, partial, expression, covering), `EXPLAIN (ANALYZE, BUFFERS)`-driven query review, `pg_stat_statements` hot-query identification, partitioning validation (range/list/hash), N+1 and join-order remediation, autovacuum and bloat posture.
-- **`postgres-replication-and-ha-readiness`** — streaming and logical replication topology, synchronous vs asynchronous trade-offs, replica lag monitoring, Patroni or RDS Multi-AZ failover behavior, read-replica routing strategy, split-brain prevention, multi-region posture.
-- **`postgres-backup-and-operational-readiness`** — `pg_basebackup` and WAL archiving for PITR, restore drills with documented RPO/RTO, retention/cost posture, observability for replication lag, storage health, and connection saturation; runbook inputs for failover, vacuum-freeze emergencies, and connection exhaustion.
-- **`postgres-security-and-data-access-hardening`** — TLS configuration, role and grant model, row-level security policies for tenant isolation, column-level grants for PII, `pgcrypto` and TDE posture, `pgaudit` configuration, secret rotation, and network exposure review.
+| 2 | indexing-and-query-optimization | [`postgres-indexing-and-query-optimization`](postgres-indexing-and-query-optimization/SKILL.md) | authored |
+| 3 | replication-and-ha-readiness | [`postgres-replication-and-ha-readiness`](postgres-replication-and-ha-readiness/SKILL.md) | authored |
+| 4 | backup-and-operational-readiness | [`postgres-backup-and-operational-readiness`](postgres-backup-and-operational-readiness/SKILL.md) | authored |
+| 5 | security-and-data-access-hardening | [`postgres-security-and-data-access-hardening`](postgres-security-and-data-access-hardening/SKILL.md) | authored |
 
 ## Architecture domains implemented
 
