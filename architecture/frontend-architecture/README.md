@@ -6,7 +6,7 @@
 
 Defines frontend application architecture from an approved system design: application-shell structure, routing and rendering strategy, state and data-flow architecture, auth and session handling, design-system boundaries, accessibility posture, performance budgets, resilience behavior, and client observability.
 
-Technology-agnostic and framework-agnostic first. Owns *how the application is structured and behaves*, not the visual design or the framework that renders it. Visual and component design lives in the `frontend-design` skill; framework-specific scaffolding lives under [implementations/frontend](../../implementations/frontend/).
+Technology-agnostic and framework-agnostic first. Owns *how the application is structured and behaves*, not the visual design or the framework that renders it. Visual and component design lives in the [`frontend-design`](../../implementations/frontend/frontend-design/SKILL.md) skill; framework-specific scaffolding lives under [implementations/frontend](../../implementations/frontend/).
 
 ## Owns
 

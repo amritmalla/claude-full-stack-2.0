@@ -9,7 +9,7 @@ description: Use when an approved system design exists and the team needs produc
 
 Invoke after `system-design` has approved a design that includes a user-facing web frontend, and before `implementations/frontend/<framework>` skills generate components, routes, or build configuration.
 
-Do not use when only visual or component design is needed (use `frontend-design`), when scaffolding a known framework with a known architecture (go directly to the implementation skill), when the surface is a single static marketing page, or when the question is purely about backend APIs (use `backend-architecture`).
+Do not use when only visual or component design is needed (use [`frontend-design`](../../implementations/frontend/frontend-design/SKILL.md)), when scaffolding a known framework with a known architecture (go directly to the implementation skill), when the surface is a single static marketing page, or when the question is purely about backend APIs (use `backend-architecture`).
 
 ## Inputs
 
@@ -115,4 +115,4 @@ Output rules:
 
 - Upstream: [`architecture/system-design`](../system-design/SKILL.md).
 - Downstream implementation skills: `implementations/frontend/nextjs`, `implementations/frontend/react`, `implementations/frontend/angular`, `implementations/frontend/vue`, `implementations/frontend/svelte`.
-- Related architecture skills: [`backend-architecture`](../backend-architecture/SKILL.md), [`security`](../security/SKILL.md), [`performance`](../performance/SKILL.md), [`quality-engineering`](../quality-engineering/SKILL.md). Visual and component design lives in the `frontend-design` skill.
+- Related architecture skills: [`backend-architecture`](../backend-architecture/SKILL.md), [`security`](../security/SKILL.md), [`performance`](../performance/SKILL.md), [`quality-engineering`](../quality-engineering/SKILL.md). Visual and component design lives in the [`frontend-design`](../../implementations/frontend/frontend-design/SKILL.md) skill.
