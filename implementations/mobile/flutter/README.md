@@ -13,10 +13,10 @@ Skills map to exactly one archetype. Skills are additive — each extends the ba
 | # | Archetype | Skill | Status |
 |---|---|---|---|
 | 1 | app-scaffold-and-runtime | [flutter-app-scaffold-and-runtime/SKILL.md](flutter-app-scaffold-and-runtime/SKILL.md) | ✓ authored |
-| 2 | navigation-and-routing | flutter-navigation-and-routing | planned |
-| 3 | state-and-data-fetching | flutter-state-and-data-fetching | planned |
-| 4 | design-system-and-accessibility | flutter-design-system-and-accessibility | planned |
-| 5 | performance-and-reliability | flutter-performance-and-reliability | planned |
+| 2 | navigation-and-routing | [flutter-navigation-and-routing/SKILL.md](flutter-navigation-and-routing/SKILL.md) | ✓ authored |
+| 3 | state-and-data-fetching | [flutter-state-and-data-fetching/SKILL.md](flutter-state-and-data-fetching/SKILL.md) | ✓ authored |
+| 4 | design-system-and-accessibility | [flutter-design-system-and-accessibility/SKILL.md](flutter-design-system-and-accessibility/SKILL.md) | ✓ authored |
+| 5 | performance-and-reliability | [flutter-performance-and-reliability/SKILL.md](flutter-performance-and-reliability/SKILL.md) | ✓ authored |
 
 ## What each archetype owns
 

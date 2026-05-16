@@ -58,7 +58,7 @@ A skill that implements a distributed device concern names the archetype boundar
 
 | Stack | Strategy | Archetype coverage |
 |---|---|---|
-| [flutter](flutter/) | Base — owns all 5 archetypes | 1/5 (scaffold authored) |
+| [flutter](flutter/) | Base — owns all 5 archetypes | 5/5 (all archetypes authored) |
 
 ### Planned (future scope)
 
