@@ -1,6 +1,6 @@
 # Claude Full Stack 2.0
 
-> **AI-native software engineering skills from idea to production.**
+> **AI-augmented software engineering skills from idea to production.**
 
 A Claude Code plugin: a curated set of production-grade Claude Skills that take a software project from idea to production. Positioned as AI-native software engineering — not a prompt collection — with primary differentiation in DevOps, SRE, and production operations.
 
