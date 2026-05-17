@@ -25,23 +25,7 @@ Phases for the v0.1 capstone workflow `idea-to-production-spring-boot`: Define �
 
 ## 3. Fill the WORKFLOW.md template
 
-```markdown
----
-name: <kebab-case>
-description: Use when <trigger>. Sequences <N> skills covering <stages>.
----
-
-# <Title>
-
-## Phases
-
-### Phase N — <Name> (skills: a, b, c)
-**Entry:** <required input artifacts>
-**Exit:** <produced artifacts>
-**Gate:** <human or automated checkpoint required before next phase>
-```
-
-For each phase, list:
+Use the `WORKFLOW.md` frontmatter and phase structure defined in [`WORKFLOW_SPEC.md`](../WORKFLOW_SPEC.md) — that is the single source of truth for the format. For each phase, list:
 
 - **Skills** invoked in this phase, by name (matching their directory names).
 - **Entry** — what must exist before this phase starts (concrete artifacts).

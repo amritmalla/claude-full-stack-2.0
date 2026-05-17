@@ -22,7 +22,7 @@ This repo is an AI-native engineering operating system. Skills are organized by 
 - **[standards/](standards/)** — shared interoperability contracts that everything above conforms to.
 - **[workflows/](workflows/)** — end-to-end execution flows that chain architecture + implementations.
 
-See the long-form rationale in [`docs/architecture/research.md`](docs/architecture/research.md).
+See the long-form rationale in [`docs/architecture/research.md`](docs/architecture/research.md) and the guiding beliefs in [`docs/philosophy/`](docs/philosophy/README.md).
 
 ## Skills (v0.1)
 
@@ -65,8 +65,6 @@ Every skill is exercised against [`orders-api`](examples/spring-boot/orders-api/
 **In:** the production-ops half of "Full Stack 2.0" — DevOps, SRE, security, observability, plus the architecture and backend depth needed to make those skills land on real systems. Spring Boot as the single reference stack.
 
 **Out:** frontend skills (Next.js production readiness lands in v0.2), a second reference stack (v0.3), and an MCP server (v0.4 if a real need emerges).
-
-See [`ROADMAP.md`](ROADMAP.md) for the full release plan.
 
 ## Contributing
 

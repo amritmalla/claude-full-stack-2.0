@@ -9,6 +9,7 @@ AI-native engineering uses AI systems as active collaborators across planning, i
 - Keep humans responsible for judgment, risk, and accountability.
 - Use AI to explore alternatives, accelerate execution, and improve documentation.
 - Design systems so agent-generated changes can be reviewed, tested, and traced.
+- Ship skills as invocable recipes with defined inputs and verifiable outputs, not prose prompts an agent merely reads.
 
 ## Practical Focus
 

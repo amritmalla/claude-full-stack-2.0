@@ -7,7 +7,7 @@
 - [ ] `SKILL.md` present with valid frontmatter (`name` matches directory, `description` starts with "Use when").
 - [ ] Example output committed under `examples/spring-boot/orders-api/.skill-outputs/<name>/`.
 - [ ] Domain `README.md` index updated.
-- [ ] `./scripts/validate-skills.sh` passes locally.
+- [ ] `python scripts/validate_skills.py` passes locally.
 - [ ] 5 trigger prompts listed below and manually verified.
 
 ## Trigger prompts (skills only)

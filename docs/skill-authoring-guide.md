@@ -20,25 +20,7 @@ architecture/<domain>/SKILL.md
 implementations/<category>/<ecosystem>/<name>/SKILL.md
 ```
 
-Start from this template:
-
-```markdown
----
-name: <domain-or-name>
-description: Use when <trigger>. <One-sentence outcome.>
----
-
-# <Title Case Name>
-
-## When to use
-## Inputs
-## Process
-## Outputs
-## Quality checks
-## References
-```
-
-Fill each section. Process steps are imperative ("Identify X", "Emit Y") — not narrative.
+Use the `SKILL.md` frontmatter and section structure defined in [`SKILL_SPEC.md`](../SKILL_SPEC.md) — that is the single source of truth for the format. Fill each section; Process steps are imperative ("Identify X", "Emit Y") — not narrative.
 
 ## 3. Write the description
 
@@ -62,7 +44,7 @@ Good: `- [ ] Every FK column has an index.`
 ## 5. Run the validator
 
 ```bash
-./scripts/validate-skills.sh
+python scripts/validate_skills.py
 ```
 
 Fix any failures. The validator enforces: frontmatter present, `name` matches directory, `description` starts with "Use when" and is ≤ 1024 chars.

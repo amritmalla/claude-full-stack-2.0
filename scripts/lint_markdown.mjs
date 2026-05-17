@@ -33,7 +33,6 @@ for (const file of [
   "README.md",
   "SKILL_SPEC.md",
   "WORKFLOW_SPEC.md",
-  "ROADMAP.md",
   "CONTRIBUTING.md",
   "CONVENTIONS.md",
   "SECURITY.md",
