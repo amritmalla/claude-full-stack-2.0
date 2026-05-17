@@ -2,7 +2,7 @@
 
 > **AI-augmented software engineering skills from idea to production.**
 
-A Claude Code plugin: a curated set of production-grade Claude Skills that take a software project from idea to production. Positioned as AI-native software engineering — not a prompt collection — with primary differentiation in DevOps, SRE, and production operations.
+A Claude Code plugin: a curated set of production-grade Claude Skills that take a software project from idea to production. Positioned as AI-augmented software engineering — not a prompt collection — with primary differentiation in DevOps, SRE, and production operations.
 
 ## Install
 
@@ -14,7 +14,7 @@ Once installed, the skills below become invocable by Claude Code's `Skill` tool 
 
 ## Repository layout
 
-This repo is an AI-native engineering operating system. Skills are organized by what they own, not by topic:
+This repo is an AI-augmented engineering operating system. Skills are organized by what they own, not by topic:
 
 - **[skills/architecture/](skills/architecture/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
 - **[skills/implementations/](skills/implementations/)** — ecosystem-specific execution (Spring Boot, Postgres, Kubernetes, GitHub Actions, ...).
