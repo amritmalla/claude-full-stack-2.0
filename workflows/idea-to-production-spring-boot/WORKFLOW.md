@@ -8,7 +8,7 @@ description: Use when taking a new service from concept to production on
 
 # Idea to Production — Spring Boot
 
-This workflow chains every v0.1 skill into a single end-to-end lifecycle path. Each phase has an explicit Entry artifact, Exit artifact, and Gate. Do not advance to the next phase until the Gate is satisfied.
+This workflow is the Spring Boot capstone: it chains the idea-to-production skill path for a Spring Boot + Postgres + Kubernetes service. Each phase has an explicit Entry artifact, Exit artifact, and Gate. Do not advance to the next phase until the Gate is satisfied.
 
 ## Phases
 
