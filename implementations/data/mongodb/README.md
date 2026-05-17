@@ -28,26 +28,29 @@ MongoDB belongs to **Family B — Document** in the data layer model. See [`impl
 
 ## Skills
 
+### Skill tier
+
+The four archetype-scoped skills (2–5) are authored at **mature tier** — each is a directory of `SKILL.md` + `references/<name>-playbook.md` + `references/<name>-quality-rubric.md` + `assets/<name>.template.md`, following the `implementations/mobile/flutter` mature-tier exemplar. This is a **deliberate divergence** from the mostly-lean single-file convention used elsewhere in the data tier (the postgres archetypes 2–5 are lean; only `postgres-schema-and-migration` is mature). The mongodb stack is therefore mixed-tier by design: `mongodb-data-model-and-migration` is lean; the indexing/replication/backup/security successors are mature.
+
 ### Authored
 
-- [mongodb-data-model-and-migration](mongodb-data-model-and-migration/SKILL.md) — produces document modeling decisions (embed vs reference), `$jsonSchema` validators, index strategy (compound, multikey, text, geo, TTL, partial), shard-key choice if sharded, read/write concern posture, and zero-downtime migration plans using expand-migrate-contract or dual-write.
+- [mongodb-data-model-and-migration](mongodb-data-model-and-migration/SKILL.md) — *archetype 1, lean*. Document modeling (embed vs reference), `$jsonSchema` validators, index strategy, shard-key choice, read/write concern posture, zero-downtime migrations (expand-migrate-contract / dual-write).
+- [mongodb-indexing-and-query-optimization](mongodb-indexing-and-query-optimization/SKILL.md) — *archetype 2, mature*. `explain("executionStats")`-driven review, index audit, ESR, aggregation cost review, collation/projection posture, shard-key effectiveness — tunes the engine, hands model changes back to archetype 1.
+- [mongodb-replication-and-ha-readiness](mongodb-replication-and-ha-readiness/SKILL.md) — *archetype 3, mature*. Member topology and elections, concern survivability, read-preference routing, oplog-window sizing, change-stream availability, multi-region placement, rehearsed failover.
+- [mongodb-backup-and-operational-readiness](mongodb-backup-and-operational-readiness/SKILL.md) — *archetype 4, mature*. Backup mechanism, oplog-based PITR, a **rehearsed** restore drill with measured RPO/RTO, oplog/lag/backup-age observability, concrete runbook inputs.
+- [mongodb-security-and-data-access-hardening](mongodb-security-and-data-access-hardening/SKILL.md) — *archetype 5, mature*. Auth mechanism, least-privilege RBAC, TLS, CSFLE for classification-marked PII, role-scoped redaction, network exposure, audit logging, negative-tested.
 
 ### Archetype coverage
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | data-model-and-migration | [`mongodb-data-model-and-migration`](mongodb-data-model-and-migration/SKILL.md) | authored |
-| 2 | indexing-and-query-optimization | `mongodb-indexing-and-query-optimization` | planned |
-| 3 | replication-and-ha-readiness | `mongodb-replication-and-ha-readiness` | planned |
-| 4 | backup-and-operational-readiness | `mongodb-backup-and-operational-readiness` | planned |
-| 5 | security-and-data-access-hardening | `mongodb-security-and-data-access-hardening` | planned |
+| 1 | data-model-and-migration | [`mongodb-data-model-and-migration`](mongodb-data-model-and-migration/SKILL.md) *(lean)* | ✓ authored |
+| 2 | indexing-and-query-optimization | [`mongodb-indexing-and-query-optimization`](mongodb-indexing-and-query-optimization/SKILL.md) *(mature)* | ✓ authored |
+| 3 | replication-and-ha-readiness | [`mongodb-replication-and-ha-readiness`](mongodb-replication-and-ha-readiness/SKILL.md) *(mature)* | ✓ authored |
+| 4 | backup-and-operational-readiness | [`mongodb-backup-and-operational-readiness`](mongodb-backup-and-operational-readiness/SKILL.md) *(mature)* | ✓ authored |
+| 5 | security-and-data-access-hardening | [`mongodb-security-and-data-access-hardening`](mongodb-security-and-data-access-hardening/SKILL.md) *(mature)* | ✓ authored |
 
-### Planned skill scope (future work)
-
-- **`mongodb-indexing-and-query-optimization`** — `explain("executionStats")`-driven query review, index audit (compound, multikey, text, geo, TTL, partial, wildcard), aggregation pipeline cost review, projection and collation posture, shard-key effectiveness analysis, hot-collection identification via the profiler.
-- **`mongodb-replication-and-ha-readiness`** — replica-set topology and election behavior, read-preference routing (`primary`, `secondaryPreferred`, `nearest`), write-concern selection (`majority`, `w: N`, `j: true`), arbiter posture, oplog window sizing, change-stream availability, multi-region replica placement.
-- **`mongodb-backup-and-operational-readiness`** — backup strategy (`mongodump`, filesystem snapshot, Cloud Manager, Atlas continuous backup), oplog-based PITR, restore drills with documented RPO/RTO, oplog-window and replication-lag observability, runbook inputs for primary loss, oplog rollover, and chunk-balancer issues.
-- **`mongodb-security-and-data-access-hardening`** — authentication mechanism (SCRAM, x.509, LDAP, Kerberos), RBAC roles and built-in vs custom grants, field-level redaction posture, client-side field-level encryption (CSFLE) for PII, TLS, IP allowlists, and audit-log configuration.
+All five Family B archetypes are authored. Cross-archetype handoffs are named in each skill; ODM/repository code remains the backend implementation skill's ownership.
 
 ## Architecture domains implemented
 
