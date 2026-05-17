@@ -8,11 +8,50 @@
 
 ### ai-native-engineering
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Augments engineering workflows using AI-native systems.
+**Purpose:** Defines AI system architecture from an approved system design: capability classification, model contracts, context and memory strategy, retrieval and grounding topology, tool and action surface, agent control flow, failure taxonomy, evaluation and guardrail plans, cost and latency budgets, model routing, and observability requirements.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic. Owns *what* AI capabilities the system exposes and *how* they behave, not the SDK or framework that runs them. Vendor-specific runtime scaffolding lives under [skills/implementations/ai](../../skills/implementations/ai/).
+
+**Owns:**
+- AI capability boundaries and escalation-ladder classification
+- Model contracts (inputs, outputs, success criteria, degradation)
+- Context architecture, state, and memory strategy
+- Retrieval topology and grounding authority (mechanics handed to data-architecture)
+- Tool and action contract surface and autonomy ceilings
+- Agent suitability test and control flow
+- Failure taxonomy, guardrails, and trust boundaries
+- Evaluation strategy and regression gates
+- Cost/latency budgets, model routing, and AI observability
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `ai-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (capability, retrieval authority, autonomy, memory, routing) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) - `ai-architecture.md` artifact structure and system-design traceability.
+- [security-standards](../../standards/security-standards/README.md) - guardrails, PII handling, trust boundaries.
+- [observability-standards](../../standards/observability-standards/README.md) - AI telemetry and operational signals.
+- [deployment-standards](../../standards/deployment-standards/README.md) - rollback and promotion criteria.
+- [documentation-standards](../../standards/documentation-standards/README.md) - skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md) whose design includes an AI surface. Bounded contexts, component interfaces, data ownership, and ADRs shape the AI architecture produced here.
+
+**Downstream consumers:**
+
+AI architecture produced here is the source of truth for:
+
+- [skills/implementations/ai/*](../../skills/implementations/ai/) - vendor runtimes (Anthropic, OpenAI, LangChain, AutoGen, CrewAI) follow model contracts, tool surfaces, and evaluation gates.
+- [backend-architecture](#backend-architecture) - orchestration ownership and request-path touchpoints.
+- [data-architecture](#data-architecture) - retrieval corpora ownership, ingestion, indexing, and embedding lifecycle.
+- [security](#security) - trust boundaries, prompt-injection posture, and audit needs.
+
+**Skills:**
+- [ai-native-engineering](../../skills/architecture/ai-native-engineering/SKILL.md) — turns an approved system design with an AI surface into AI system architecture: capability classification, model contracts, context/memory, retrieval, tools, agent control flow, failure taxonomy, evaluation, guardrails, budgets, routing, observability, and implementation handoffs.
 
 ---
 
@@ -68,21 +107,99 @@ Backend architecture produced here is the source of truth for:
 
 ### data-architecture
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Designs the operational data layer: database engine choice, schema and consistency model, index strategy, partitioning and replication topology, caching strategy, and retention.
+**Purpose:** Defines the operational data layer from an approved system design: data ownership boundaries, engine selection, consistency model, schema strategy, indexing posture, partitioning and replication topology, cache architecture, retention and deletion policy, and migration strategy.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic and operationally focused. Owns *which* datasets exist, *who* owns them, and *how* they behave operationally, not the engine-specific DDL that implements them. Engine-specific schema and migration work lives under [skills/implementations/data](../../skills/implementations/data/).
+
+**Owns:**
+- Dataset ownership boundaries and authoritative write paths
+- Engine selection justified by access patterns
+- Consistency and concurrency model per write path
+- Schema, key design, and tenant isolation strategy
+- Indexing posture mapped to named access patterns
+- Partitioning/sharding posture and replication/HA topology
+- Cache architecture and invalidation contracts
+- Retention, deletion, and compliance policy
+- Migration strategy and operational readiness
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `data-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (engine, consistency, partitioning, replication, retention) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) - `data-architecture.md` artifact structure and system-design traceability.
+- [security-standards](../../standards/security-standards/README.md) - tenant isolation, PII handling, encryption, audit.
+- [observability-standards](../../standards/observability-standards/README.md) - data-layer monitoring signals.
+- [deployment-standards](../../standards/deployment-standards/README.md) - migration phasing and rollback.
+- [documentation-standards](../../standards/documentation-standards/README.md) - skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md) whose design declares bounded contexts and data ownership. Those boundaries, component interfaces, and ADRs shape the data architecture produced here.
+
+**Downstream consumers:**
+
+Data architecture produced here is the source of truth for:
+
+- [skills/implementations/data/*](../../skills/implementations/data/) - Postgres, MongoDB, Redis, Elasticsearch, and ClickHouse schema and migration skills follow ownership, consistency, and indexing decisions.
+- [backend-architecture](#backend-architecture) - transactional boundaries and consistency expectations.
+- [ai-native-engineering](#ai-native-engineering) - retrieval corpora ownership and ingestion lifecycle.
+- [security](#security) - tenant isolation, retention, and audit boundaries.
+
+**Skills:**
+- [data-architecture](../../skills/architecture/data-architecture/SKILL.md) — turns an approved system design into operational data architecture: ownership boundaries, engine selection, consistency, schema, indexing, partitioning, replication, cache, retention, migration, operations, and implementation handoffs.
 
 ---
 
 ### frontend-architecture
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Designs scalable frontend application systems.
+**Purpose:** Defines frontend application architecture from an approved system design: application-shell structure, routing and rendering strategy, state and data-flow architecture, auth and session handling, design-system boundaries, accessibility posture, performance budgets, resilience behavior, and client observability.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic and framework-agnostic first. Owns *how the application is structured and behaves*, not the visual design or the framework that renders it. Visual and component design lives in the [frontend-design](../../skills/implementations/frontend/frontend-design/SKILL.md) skill; framework-specific scaffolding lives under [skills/implementations/frontend](../../skills/implementations/frontend/).
+
+**Owns:**
+- Application shell and micro-frontend posture
+- Routing model and route-level rendering strategy
+- State tiers (server-cache, URL, ephemeral UI, durable client)
+- Data fetching and caching contracts
+- Client auth and session handling
+- Design-system seam and theming propagation
+- Accessibility posture and testing expectations
+- Performance budgets and breach actions
+- Real-time/offline resilience and client observability
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `frontend-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (framework, rendering, token storage, performance budget) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) - `frontend-architecture.md` artifact structure and system-design traceability.
+- [security-standards](../../standards/security-standards/README.md) - token storage, CSRF/XSS posture, PII rendering.
+- [observability-standards](../../standards/observability-standards/README.md) - client telemetry and RUM signals.
+- [deployment-standards](../../standards/deployment-standards/README.md) - performance-budget gates and rollout.
+- [documentation-standards](../../standards/documentation-standards/README.md) - skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md) whose design includes a user-facing web frontend. Bounded contexts, component interfaces, API/BFF boundaries, and ADRs shape the frontend architecture produced here.
+
+**Downstream consumers:**
+
+Frontend architecture produced here is the source of truth for:
+
+- [skills/implementations/frontend/*](../../skills/implementations/frontend/) - Next.js, React, Angular, Vue, and Svelte skills follow routing, rendering, state, and data-layer decisions.
+- [backend-architecture](#backend-architecture) - BFF/API and streaming contract expectations.
+- [security](#security) - token storage, CSRF/XSS, embedding, and PII-rendering boundaries.
+- [performance](#performance) - performance-budget enforcement and regression gates.
+
+**Skills:**
+- [frontend-architecture](../../skills/architecture/frontend-architecture/SKILL.md) — turns an approved system design into frontend application architecture: shell, routing, rendering, state, data flow, auth, design-system seam, accessibility, performance, resilience, observability, and implementation handoffs.
 
 ---
 
@@ -130,11 +247,49 @@ Backend architecture produced here is the source of truth for:
 
 ### infrastructure-platform
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Productionizes systems across cloud and runtime environments.
+**Purpose:** Defines platform and infrastructure architecture from an approved system design: cloud and account topology, environment model, runtime substrate selection, network and trust-boundary architecture, identity and secrets strategy, deployment and release substrate, IaC ownership boundaries, CI/CD posture, operational platform services, cost strategy, and disaster posture.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic and platform-oriented. Owns *what platform contracts exist and how workloads are isolated, deployed, and operated*, not the Terraform/manifests that implement them. Vendor-specific IaC and pipeline code lives under [skills/implementations/infrastructure](../../skills/implementations/infrastructure/).
+
+**Owns:**
+- Cloud/account topology and environment model
+- Runtime substrate selection per workload class
+- Network architecture and named trust boundaries
+- Workload/human/service identity and secrets lifecycle
+- Packaging, deployment, and release substrate
+- IaC ownership boundaries and CI/CD trust model
+- Cross-cutting platform services posture
+- Cost/FinOps posture and disaster/resilience posture
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `platform-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (substrate, region topology, IaC tool, deployment mechanism) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) - `platform-architecture.md` artifact structure and system-design traceability.
+- [security-standards](../../standards/security-standards/README.md) - trust zones, identity, secrets, supply-chain posture.
+- [observability-standards](../../standards/observability-standards/README.md) - platform telemetry substrate.
+- [deployment-standards](../../standards/deployment-standards/README.md) - release substrate, gating, rollback.
+- [documentation-standards](../../standards/documentation-standards/README.md) - skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md) whose design needs dedicated platform/infrastructure architecture. Workload inventory, component boundaries, and ADRs shape the platform architecture produced here.
+
+**Downstream consumers:**
+
+Platform architecture produced here is the source of truth for:
+
+- [skills/implementations/infrastructure/*](../../skills/implementations/infrastructure/) - AWS, GCP, Azure, Kubernetes, Terraform, and GitHub Actions skills follow topology, substrate, and trust-boundary decisions.
+- [security](#security) - trust zones, identity, secrets, and supply-chain boundaries.
+- [reliability](#reliability) - failover topology and RTO/RPO inputs.
+- [operations](#operations) - observability substrate and runbook hooks.
+
+**Skills:**
+- [infrastructure-platform](../../skills/architecture/infrastructure-platform/SKILL.md) — turns an approved system design into platform architecture: topology, environments, runtime substrate, network/trust zones, identity, secrets, deployment, IaC, CI/CD, cost, disaster posture, and implementation handoffs.
 
 ---
 
@@ -234,31 +389,148 @@ Technology-agnostic. Owns *how the team operates*, not the tooling.
 
 ### performance
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Optimizes scalability, efficiency, and operational cost.
+**Purpose:** Turns an approved system design into performance architecture before implementation or scale events: explicit latency, throughput, concurrency, and cost budgets per user-visible path, a capacity and headroom model, scaling and backpressure posture, hot-path and critical-path analysis, caching and precomputation strategy, and performance-regression gating.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic and budget-driven. Owns *what "fast enough" means*, *where performance matters*, and *how the system behaves under saturation* — not the framework, query plan, or runtime flags that implement it. Implementation-level optimization lives under [skills/implementations/backend](../../skills/implementations/backend/), [skills/implementations/frontend](../../skills/implementations/frontend/), [skills/implementations/data](../../skills/implementations/data/), and [skills/implementations/infrastructure](../../skills/implementations/infrastructure/).
+
+**Owns:**
+- Latency, throughput, concurrency, and cost budgets per user-visible path
+- Workload classification and load-shape modeling
+- Capacity and headroom model
+- Critical-path and hot-path analysis
+- Scaling, partitioning, and saturation-ceiling posture
+- Caching and precomputation strategy in budget terms
+- Backpressure and load-shedding posture
+- Performance testing and regression-gating policy
+- Cost-performance tradeoff levers
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `performance-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (budget, scaling, partitioning, caching) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) - `performance-architecture.md` artifact structure and system-design traceability.
+- [deployment-standards](../../standards/deployment-standards/README.md) - release/canary gates and rollback align with the promotion flow.
+- [observability-standards](../../standards/observability-standards/README.md) - perf SLIs and saturation indicators map to user-impacting symptoms.
+- [security-standards](../../standards/security-standards/README.md) - cache-reuse decisions crossing tenant boundaries.
+- [documentation-standards](../../standards/documentation-standards/README.md) - skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md) whose design has user-visible paths constrained by latency, throughput, concurrency, or cost-per-request, or an anticipated scale event. Bounded contexts, service interactions, data flows, and ADRs in the system design shape the performance architecture produced here; they are consumed, not redefined.
+
+**Downstream consumers:**
+
+Performance architecture produced here is the source of truth for:
+
+- [skills/implementations/backend/*](../../skills/implementations/backend/) - latency budgets, concurrency posture, timeout and async boundaries.
+- [skills/implementations/frontend/*](../../skills/implementations/frontend/) - rendering, asset-loading, hydration, and interaction-latency budgets.
+- [skills/implementations/data/*](../../skills/implementations/data/) - query latency budgets, cache ownership, partitioning pressure.
+- [skills/implementations/infrastructure/*](../../skills/implementations/infrastructure/) - autoscaling, capacity assumptions, queueing posture.
+- [reliability](#reliability) - degradation posture, saturation behavior, load-shedding policy.
+- [operations](#operations) - regression gates, perf alerts, SLI measurement expectations.
+
+**Skills:**
+- [performance](../../skills/architecture/performance/SKILL.md) — turns an approved system design into performance architecture: workload shape, budgets, critical/hot paths, capacity model, scaling and backpressure posture, caching strategy, performance testing, regression gating, cost-performance tradeoffs, and implementation handoffs.
 
 ---
 
 ### reliability
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Ensures resilience, observability, and operational recovery.
+**Purpose:** Turns an approved system design into production-grade reliability architecture before implementation and platform hardening: service-level objectives and error-budget policy, dependency criticality, failure-mode architecture, graceful degradation, blast-radius isolation, redundancy and failover posture, disaster recovery with RTO/RPO, chaos validation, and release safety.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic and failure-oriented. Owns *what* reliability the system commits to and *how* it fails, degrades, and recovers — not the vendor failover tooling or telemetry pipeline that implements it. Vendor-specific failover, backup, and rollout mechanics live under [skills/implementations/infrastructure](../../skills/implementations/infrastructure/) and [skills/implementations/data](../../skills/implementations/data/).
+
+**Owns:**
+- Service-level objectives mapped to user journeys
+- Error-budget policy and release/escalation consequences
+- Dependency criticality classification
+- Failure-mode architecture and blast-radius containment
+- Graceful-degradation behavior per critical journey
+- Redundancy and high-availability posture
+- Disaster-recovery strategy with RTO/RPO and rehearsal
+- Release-safety mechanisms and rollback posture
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `reliability-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (redundancy, region topology, isolation, DR) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) - `reliability-architecture.md` artifact structure and system-design traceability.
+- [observability-standards](../../standards/observability-standards/README.md) - alerts map to user-impacting symptoms.
+- [deployment-standards](../../standards/deployment-standards/README.md) - release gating and rollback align with the promotion flow.
+- [security-standards](../../standards/security-standards/README.md) - failover and DR decisions crossing trust/tenant boundaries.
+- [documentation-standards](../../standards/documentation-standards/README.md) - skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md) whose design has externally meaningful availability commitments, multi-component failure interactions, or stateful dependencies requiring a recovery plan. Component boundaries, data ownership, and ADRs in the system design shape the reliability architecture produced here; they are consumed, not redefined.
+
+**Downstream consumers:**
+
+Reliability architecture produced here is the source of truth for:
+
+- [skills/implementations/infrastructure/*](../../skills/implementations/infrastructure/) - redundancy placement, failover mechanics, region topology, and rollout safety.
+- [skills/implementations/data/*](../../skills/implementations/data/) - backup/restore, replication failover, and RTO/RPO expectations.
+- [operations](#operations) - severity inputs, page-worthy symptoms, and runbook hooks.
+- [performance](#performance) - latency-as-error-budget interaction and saturation thresholds.
+
+**Skills:**
+- [reliability](../../skills/architecture/reliability/SKILL.md) — turns an approved system design into reliability architecture: SLOs, error budgets, dependency criticality, failure modes, degradation, redundancy, isolation, disaster recovery, chaos validation, release safety, and implementation handoffs.
 
 ---
 
 ### security
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Protects systems, users, infrastructure, and organizational assets.
+**Purpose:** Defines security architecture from an approved system design: threat models, trust-boundary analysis, data classification, identity and authorization architecture, tenant-isolation strategy, secrets and key-management posture, abuse protections, supply-chain posture, audit requirements, and compliance mapping.
 
-> See [research.md](./research.md) for the target spec.
+Technology-agnostic and threat-oriented. Owns *the security model* — trust boundaries, classification, identity, authorization, isolation — not the scanners, code fixes, or runtime hardening that enforce it. Tooling and remediation live in `skills/implementations/*` and `operations`.
+
+**Owns:**
+- Data classification and handling rules
+- Trust-boundary analysis and threat models
+- Identity and authorization architecture
+- Tenant-isolation strategy
+- Secrets and key-management posture
+- Input/output, abuse, and rate protections
+- Audit posture and supply-chain trust
+- Compliance control mapping
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `security-architecture.md` | [architecture-schema](../../standards/architecture-schema/README.md) (structure), [security-standards](../../standards/security-standards/README.md) (content), [documentation-standards](../../standards/documentation-standards/README.md) |
+| ADR drafts (identity, isolation, encryption, supply-chain) | [architecture-schema](../../standards/architecture-schema/README.md) |
+
+**Standards this architecture domain conforms to:**
+- [architecture-schema](../../standards/architecture-schema/README.md) — `security-architecture.md` artifact structure and system-design traceability.
+- [security-standards](../../standards/security-standards/README.md) — auth schemes, scopes, secrets (security content).
+- [observability-standards](../../standards/observability-standards/README.md) — security-event telemetry and audit signals.
+- [deployment-standards](../../standards/deployment-standards/README.md) — supply-chain and artifact-promotion controls.
+- [documentation-standards](../../standards/documentation-standards/README.md) — skill structure.
+
+**Upstream inputs:** Requires an approved `system-design.md` per [architecture-schema](../../standards/architecture-schema/README.md). Components, data flows, trust boundaries, and ADRs in the system design shape the security architecture produced here. Platform topology from `infrastructure-platform` informs trust zones when available.
+
+**Downstream consumers:**
+
+Security architecture produced here constrains:
+
+- Security-relevant work across [skills/implementations/*](../../skills/implementations/) (e.g. `spring-security-auth-review`, `k8s-deploy-manifest-review`, `github-actions-pipeline-hardened`).
+- [backend-architecture](#backend-architecture) and [data-architecture](#data-architecture) — authorization, classification, and data-protection decisions.
+- [infrastructure-platform](#infrastructure-platform) — workload identity, secrets substrate, supply-chain controls.
+- [operations](#operations) — audit pipeline and security-incident clauses.
+
+**Skills:**
+- [security](../../skills/architecture/security/SKILL.md) — turns an approved system design into security architecture: classification, trust boundaries, threat model, identity, authorization, isolation, secrets, audit, supply chain, compliance, and implementation handoffs.
 
 ---
 
@@ -365,9 +637,9 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ### ai/anthropic
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the anthropic ecosystem.
+**Purpose:** Implements relevant architecture domains using the anthropic ecosystem. 1 of 5 archetypes authored (`anthropic-structured-output-runtime`); remaining mirror the openai archetype boundaries.
 
 ---
 
@@ -389,17 +661,17 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ### ai/langchain
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the langchain ecosystem.
+**Purpose:** Implements relevant architecture domains using the langchain ecosystem. 1 framework-orchestration skill authored (`langchain-agent-runtime`); RAG and eval-harness skills planned.
 
 ---
 
 ### ai/openai
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the openai ecosystem.
+**Purpose:** Implements relevant architecture domains using the openai ecosystem. 4 archetypes authored: structured-output, tool-calling, RAG runtime, and evals/observability.
 
 ---
 
@@ -623,6 +895,17 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 ---
 
+### frontend/frontend-design
+
+**Status:** draft
+
+**Purpose:** Visual and interaction design execution for web frontends. A router skill that injects repository context and delegates to the external superpowers frontend-design skill or Google Stitch via its official MCP. Turns an approved `frontend-architecture` into concrete visual and interaction design.
+
+**Skills:**
+- [frontend-design](../../skills/implementations/frontend/frontend-design/SKILL.md) — visual, UI, component, interaction, and UX design work from an approved frontend architecture.
+
+---
+
 ### frontend/angular
 
 **Status:** scaffold
@@ -793,5 +1076,26 @@ Architecture decisions (rendering strategy per route, state-tier model, design-s
 - [terraform-plan-gate-and-policy-as-code](../../skills/implementations/infrastructure/terraform/terraform-plan-gate-and-policy-as-code/SKILL.md) — blocking pre-merge gate (`fmt`/`validate`/`plan` diff to PR), policy-as-code (OPA/Conftest, Checkov, tfsec, Sentinel) with tier-scaled strictness, secret scan, and scheduled drift detection.
 - [terraform-apply-and-promotion-mechanics](../../skills/implementations/infrastructure/terraform/terraform-apply-and-promotion-mechanics/SKILL.md) — apply orchestration across the env ladder, manual-vs-auto-apply per tier, reviewed-plan apply, blast-radius control, rollback procedure, drift-remediation playbook, and apply-failure/lock-recovery runbook inputs.
 - [terraform-module-reuse-and-supply-chain](../../skills/implementations/infrastructure/terraform/terraform-module-reuse-and-supply-chain/SKILL.md) — versioned module registry strategy, semantic versioning, consumer pinning + committed lockfile, provenance review for community modules/providers, SBOM-equivalent of the dependency tree, and breaking-change deprecation policy.
+
+---
+
+### mobile (category)
+
+**Purpose:** Technology-specific execution skills for mobile.
+
+---
+
+### mobile/flutter
+
+**Status:** draft
+
+**Purpose:** Implements `mobile-architecture` using Flutter. All 5 archetypes authored at mature tier (SKILL.md + playbook + quality rubric + template).
+
+**Skills:**
+- [flutter-app-scaffold-and-runtime](../../skills/implementations/mobile/flutter/flutter-app-scaffold-and-runtime/SKILL.md) — project layout, flavors, layered error handling, observability seams, DI/session shell, CI signing scaffolding.
+- [flutter-navigation-and-routing](../../skills/implementations/mobile/flutter/flutter-navigation-and-routing/SKILL.md) — route hierarchy, deep links, back stack, auth-gate routing, OS-interruption state restoration.
+- [flutter-state-and-data-fetching](../../skills/implementations/mobile/flutter/flutter-state-and-data-fetching/SKILL.md) — state wiring, network layer, caching, offline queue, token storage/refresh, background sync.
+- [flutter-design-system-and-accessibility](../../skills/implementations/mobile/flutter/flutter-design-system-and-accessibility/SKILL.md) — tokens, theming, components, accessibility posture, i18n seam, permission-request UX.
+- [flutter-performance-and-reliability](../../skills/implementations/mobile/flutter/flutter-performance-and-reliability/SKILL.md) — startup/frame budgets, memory/battery telemetry, crash-free-rate / ANR gates, CI gates.
 
 ---
