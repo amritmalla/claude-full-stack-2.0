@@ -8,7 +8,7 @@ orders-api is the system of record for customer-owned orders in an e-commerce pl
 
 ## Architecture Style
 
-**Modular monolith on Spring Boot, single Postgres, synchronous HTTP.** Justified by: one primary persona, one core workflow, a single team, no independent-scale profile in the PRD, and explicit deferral of Kafka to v2. Simpler alternatives considered: a serverless function-per-endpoint design (rejected — local debugging, transactional boundaries with Postgres, and Flyway migrations all favor a single deployable). Microservices considered and rejected: no PRD constraint creates independent scale, ownership, or fault-isolation needs. See [ADR 0001](adrs/0001-modular-monolith-on-spring-boot.md).
+**Modular monolith on Spring Boot, single Postgres, synchronous HTTP.** Justified by: one primary persona, one core workflow, a single team, no independent-scale profile in the PRD, and explicit deferral of Kafka to v2. Simpler alternatives considered: a serverless function-per-endpoint design (rejected — local debugging, transactional boundaries with Postgres, and Flyway migrations all favor a single deployable). Microservices considered and rejected: no PRD constraint creates independent scale, ownership, or fault-isolation needs. See [ADR 0001](adr.example.md).
 
 ## Bounded Contexts
 
@@ -31,13 +31,13 @@ One context is correct here. Splitting "Order Read" and "Order Write" was consid
 - **Interfaces:** internal module called from Order API.
 - **Persistence:** Postgres via Flyway-managed schema. `orders` is the source of truth. `idempotency_keys` table stores `(key, customer_id, response_hash, created_at)` with 24h TTL.
 - **Consistency:** transactional within a single Postgres write.
-- **Scaling:** vertical for v1; horizontal stateless replicas behind Postgres if needed. See [ADR 0002](adrs/0002-postgres-as-system-of-record.md).
+- **Scaling:** vertical for v1; horizontal stateless replicas behind Postgres if needed. See [ADR 0002](adr.example.md).
 
 ### Event Emitter
 - **Responsibility:** emit `order.created` to the event sink.
 - **Interfaces:** stdout in v1, Kafka topic in v2.
 - **Persistence:** none.
-- **Consistency:** best-effort in v1 (logs are not a durable contract); transactional outbox in v2. See [ADR 0003](adrs/0003-stdout-events-defer-kafka.md).
+- **Consistency:** best-effort in v1 (logs are not a durable contract); transactional outbox in v2. See [ADR 0003](adr.example.md).
 
 ## Data Flow
 
@@ -59,11 +59,11 @@ One context is correct here. Splitting "Order Read" and "Order Write" was consid
 | Auth | JWT verification fails (expired / invalid signature) | 401 to customer | Standard Spring Security metrics | Customer re-authenticates | None |
 | Upstream state advancer (payments / fulfillment) | Calls `advance-state` with illegal transition | 409 to caller | Server-side state-machine guard | Caller surfaces error; state stays correct | None — illegal transitions are rejected |
 
-Operational notes folded in: Spring Boot Actuator for liveness/readiness, structured JSON logs, p99 latency + Postgres connection-pool metrics, Flyway runs on startup, no feature flags in v1. See [ADR 0004](adrs/0004-jwt-auth-with-customer-scope.md) for the auth decision.
+Operational notes folded in: Spring Boot Actuator for liveness/readiness, structured JSON logs, p99 latency + Postgres connection-pool metrics, Flyway runs on startup, no feature flags in v1. See [ADR 0004](adr.example.md) for the auth decision.
 
 ## Security and Compliance
 
-- **Auth:** JWT issued by upstream auth service, claim `sub` = `customerId`. No admin scope in v1. See [ADR 0004](adrs/0004-jwt-auth-with-customer-scope.md).
+- **Auth:** JWT issued by upstream auth service, claim `sub` = `customerId`. No admin scope in v1. See [ADR 0004](adr.example.md).
 - **Authorization:** every read and write is filtered by `customerId` derived from the JWT. Cross-customer reads are impossible by construction, not by check.
 - **Sensitive data:** no PCI — payment is upstream. Line items are pre-priced and contain no card data. Customer PII limited to `customerId` (opaque) and shipping address (out of scope for v1; address resolution is an upstream concern).
 - **Retention:** orders retained indefinitely in v1. Archival policy is an open question deferred from the PRD.

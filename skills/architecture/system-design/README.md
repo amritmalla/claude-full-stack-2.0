@@ -28,7 +28,7 @@ Technology-agnostic. Owns *shape* and *boundaries*, not vendor or framework choi
 
 ## Skills
 
-- [system-design-from-prd](system-design-from-prd/SKILL.md) — turns an approved PRD into a system design and inline ADRs.
+- [system-design](SKILL.md) — turns an approved PRD into a system design and inline ADRs.
 
 ## Standards this architecture domain conforms to
 
