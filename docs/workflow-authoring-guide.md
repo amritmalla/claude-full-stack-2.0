@@ -34,7 +34,7 @@ Use the `WORKFLOW.md` frontmatter and phase structure defined in [`WORKFLOW_SPEC
 
 ## 4. Cross-check skill references
 
-Every skill named in `(skills: …)` must exist under `architecture/` or `implementations/`. The CI does not enforce this in v0.1, but a maintainer will check it on review.
+Every skill named in `(skills: …)` must exist under `skills/architecture/` or `skills/implementations/`. The CI does not enforce this in v0.1, but a maintainer will check it on review.
 
 ## 5. Open the PR
 

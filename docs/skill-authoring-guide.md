@@ -4,7 +4,7 @@ A practical walkthrough for authoring a new skill. For the formal contract, see 
 
 ## 1. Pick an architecture domain or implementation, and a name
 
-Decide first whether the skill is **technology-agnostic** (the parent skill at `architecture/<domain>/SKILL.md`) or **ecosystem-specific** (lives under `implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
+Decide first whether the skill is **technology-agnostic** (the parent skill at `skills/architecture/<domain>/SKILL.md`) or **ecosystem-specific** (lives under `skills/implementations/<category>/<ecosystem>/<name>/`). See [`../docs/architecture/research.md`](../docs/architecture/research.md) for the distinction.
 
 Existing architecture domains: `idea-development`, `system-design`, `backend-architecture`, `frontend-architecture`, `data-architecture`, `infrastructure-platform`, `reliability`, `security`, `quality-engineering`, `performance`, `operations`, `ai-native-engineering`.
 
@@ -15,9 +15,9 @@ Name is kebab-case and descriptive of the job. For architecture domains, the ski
 ## 2. Create the directory and SKILL.md
 
 ```
-architecture/<domain>/SKILL.md
+skills/architecture/<domain>/SKILL.md
 # OR
-implementations/<category>/<ecosystem>/<name>/SKILL.md
+skills/implementations/<category>/<ecosystem>/<name>/SKILL.md
 ```
 
 Use the `SKILL.md` frontmatter and section structure defined in [`SKILL_SPEC.md`](../SKILL_SPEC.md) — that is the single source of truth for the format. Fill each section; Process steps are imperative ("Identify X", "Emit Y") — not narrative.

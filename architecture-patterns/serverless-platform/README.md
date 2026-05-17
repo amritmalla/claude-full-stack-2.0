@@ -44,5 +44,5 @@ Gain: no server ops, automatic elastic scaling, pay-per-use, fast iteration. Pay
 
 ## Related skills & patterns
 
-- Skills: [`infrastructure-platform`](../../architecture/infrastructure-platform/SKILL.md), [`backend-architecture`](../../architecture/backend-architecture/SKILL.md), [`performance`](../../architecture/performance/SKILL.md)
+- Skills: [`infrastructure-platform`](../../skills/architecture/infrastructure-platform/SKILL.md), [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md), [`performance`](../../skills/architecture/performance/SKILL.md)
 - Patterns: [`event-driven`](../event-driven/README.md) (natural trigger model), [`microservices`](../microservices/README.md), [`multi-tenant-saas`](../multi-tenant-saas/README.md)

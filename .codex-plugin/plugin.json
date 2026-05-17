@@ -10,8 +10,8 @@
   "repository": "https://github.com/amritmalla/claude-full-stack-2.0",
   "license": "MIT",
   "skills": [
-    "./architecture",
-    "./implementations"
+    "./skills/architecture",
+    "./skills/implementations"
   ],
   "interface": {
     "type": "cli",

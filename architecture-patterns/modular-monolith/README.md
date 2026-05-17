@@ -45,5 +45,5 @@ Gain: one deploy/test/observability surface, in-process calls (no network), free
 
 ## Related skills & patterns
 
-- Skills: [`system-design`](../../architecture/system-design/SKILL.md), [`backend-architecture`](../../architecture/backend-architecture/SKILL.md)
+- Skills: [`system-design`](../../skills/architecture/system-design/SKILL.md), [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md)
 - Patterns: [`microservices`](../microservices/README.md) (the migration target when seams stabilize), [`domain-driven-design`](../domain-driven-design/README.md) (defines the module boundaries), [`hexagonal-architecture`](../hexagonal-architecture/README.md)

@@ -25,7 +25,7 @@ Every pattern doc has exactly these H2 sections, in order:
 4. `## Structure` — components, boundaries, and data/control flow. Include a small fenced text diagram.
 5. `## Key tradeoffs` — what you gain versus what you pay (complexity, operational cost, consistency, latency).
 6. `## Failure modes & mitigations` — common ways the pattern goes wrong and how to prevent each.
-7. `## Related skills & patterns` — links to relevant `architecture/` skills and composing or conflicting `architecture-patterns/`.
+7. `## Related skills & patterns` — links to relevant `skills/architecture/` skills and composing or conflicting `architecture-patterns/`.
 
 ## Rules
 

@@ -53,7 +53,7 @@ When a product handles regulated data, the PRD MUST name the regime (`SOC 2`, `H
 ## Incident response
 
 - Every production service has a named on-call owner (see `architecture-schema` component frontmatter).
-- Security incidents follow the playbook at `architecture/operations` / `workflows/incident-response`.
+- Security incidents follow the playbook at `skills/architecture/operations` / `workflows/incident-response`.
 - Post-incident review is mandatory; output is a public-to-org write-up.
 
 ## Anti-patterns

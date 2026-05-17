@@ -45,5 +45,5 @@ Gain: independently optimized/scaled reads, simpler write invariants, multiple t
 
 ## Related skills & patterns
 
-- Skills: [`backend-architecture`](../../architecture/backend-architecture/SKILL.md), [`data-architecture`](../../architecture/data-architecture/SKILL.md), [`performance`](../../architecture/performance/SKILL.md)
+- Skills: [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md), [`data-architecture`](../../skills/architecture/data-architecture/SKILL.md), [`performance`](../../skills/architecture/performance/SKILL.md)
 - Patterns: [`event-driven`](../event-driven/README.md) (the usual propagation mechanism), [`domain-driven-design`](../domain-driven-design/README.md), [`microservices`](../microservices/README.md)

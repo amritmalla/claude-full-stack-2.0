@@ -44,5 +44,5 @@ Gain: grounded, attributable, fresh answers without retraining; access-controlla
 
 ## Related skills & patterns
 
-- Skills: [`ai-native-engineering`](../../architecture/ai-native-engineering/SKILL.md), [`data-architecture`](../../architecture/data-architecture/SKILL.md), [`security`](../../architecture/security/SKILL.md)
+- Skills: [`ai-native-engineering`](../../skills/architecture/ai-native-engineering/SKILL.md), [`data-architecture`](../../skills/architecture/data-architecture/SKILL.md), [`security`](../../skills/architecture/security/SKILL.md)
 - Patterns: [`event-driven`](../event-driven/README.md) (ingestion/re-index pipeline), [`microservices`](../microservices/README.md), [`serverless-platform`](../serverless-platform/README.md)

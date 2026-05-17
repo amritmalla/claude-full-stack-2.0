@@ -1,6 +1,6 @@
 # api-standards
 
-Normative rules for REST APIs produced by `architecture/backend-architecture` and any `implementations/backend/*` skill. GraphQL and async messaging have their own sections.
+Normative rules for REST APIs produced by `skills/architecture/backend-architecture` and any `skills/implementations/backend/*` skill. GraphQL and async messaging have their own sections.
 
 ## REST conventions
 

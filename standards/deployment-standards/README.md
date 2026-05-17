@@ -1,6 +1,6 @@
 # deployment-standards
 
-Contract for how artifacts are built, promoted, and released. Every `implementations/infrastructure/*` and CI/CD-producing skill MUST conform.
+Contract for how artifacts are built, promoted, and released. Every `skills/implementations/infrastructure/*` and CI/CD-producing skill MUST conform.
 
 ## Build artifacts
 

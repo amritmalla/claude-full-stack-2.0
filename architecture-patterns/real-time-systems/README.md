@@ -42,5 +42,5 @@ Gain: low-latency push, efficient fan-out, live UX. Pay: stateful connection man
 
 ## Related skills & patterns
 
-- Skills: [`backend-architecture`](../../architecture/backend-architecture/SKILL.md), [`performance`](../../architecture/performance/SKILL.md), [`reliability`](../../architecture/reliability/SKILL.md)
+- Skills: [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md), [`performance`](../../skills/architecture/performance/SKILL.md), [`reliability`](../../skills/architecture/reliability/SKILL.md)
 - Patterns: [`event-driven`](../event-driven/README.md) (the transport for changes), [`cqrs`](../cqrs/README.md) (subscription-fed read models), [`microservices`](../microservices/README.md)

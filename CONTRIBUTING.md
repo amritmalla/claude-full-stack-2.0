@@ -7,8 +7,8 @@ Thank you for considering a contribution. This document describes how to propose
 1. **Open an issue** using the *Skill Proposal* template. Include the proposed name (kebab-case), the target architecture domain or implementation directory, when-to-use paragraph, and expected outputs.
 2. **Wait for a maintainer to claim or assign.** This avoids duplicate work.
 3. **Open a PR** that includes:
-   - For technology-agnostic skills: `architecture/<domain>/SKILL.md`.
-   - For ecosystem-specific skills: `implementations/<category>/<ecosystem>/<name>/SKILL.md`.
+   - For technology-agnostic skills: `skills/architecture/<domain>/SKILL.md`.
+   - For ecosystem-specific skills: `skills/implementations/<category>/<ecosystem>/<name>/SKILL.md`.
    - Either way, follow [`SKILL_SPEC.md`](SKILL_SPEC.md) and [`CONVENTIONS.md`](CONVENTIONS.md). See [`docs/architecture/research.md`](docs/architecture/research.md) for the architecture-vs-implementations distinction.
    - An entry added to the parent architecture domain's or implementation's `README.md` Skills list.
    - An Output contract section in `SKILL.md` linking to any [`standards/`](standards/) the skill conforms to.

@@ -40,5 +40,5 @@ description: Use when <trigger>. Sequences <N> skills covering <stages>.
 
 - Frontmatter valid (`name` matches directory; `description` starts with "Use when").
 - Every phase lists its skills, Entry, Exit, and Gate.
-- Each referenced skill exists under `architecture/` or `implementations/`.
+- Each referenced skill exists under `skills/architecture/` or `skills/implementations/`.
 - No procedural content duplicates a skill's body.

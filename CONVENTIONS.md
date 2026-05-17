@@ -7,13 +7,13 @@ Mandatory conventions for `claude-full-stack-2.0`. These rules apply to human an
 Technology-agnostic skills live at:
 
 ```text
-architecture/<domain>/SKILL.md
+skills/architecture/<domain>/SKILL.md
 ```
 
 Technology-specific execution skills live at:
 
 ```text
-implementations/<category>/<ecosystem>/<skill-name>/SKILL.md
+skills/implementations/<category>/<ecosystem>/<skill-name>/SKILL.md
 ```
 
 Each skill directory may include:

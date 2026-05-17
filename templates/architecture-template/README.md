@@ -1,6 +1,6 @@
 # architecture-template
 
-Starter for a new technology-agnostic architecture domain at `architecture/<domain>/SKILL.md`. Conforms to [`SKILL_SPEC.md`](../../SKILL_SPEC.md). The `name` matches the domain directory exactly. Copy the skeleton below into `architecture/<domain>/SKILL.md`, fill every section, and delete this paragraph.
+Starter for a new technology-agnostic architecture domain at `skills/architecture/<domain>/SKILL.md`. Conforms to [`SKILL_SPEC.md`](../../SKILL_SPEC.md). The `name` matches the domain directory exactly. Copy the skeleton below into `skills/architecture/<domain>/SKILL.md`, fill every section, and delete this paragraph.
 
 ---
 

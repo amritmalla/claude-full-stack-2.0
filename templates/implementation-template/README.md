@@ -1,6 +1,6 @@
 # implementation-template
 
-Starter for a new ecosystem-specific execution skill at `implementations/<category>/<ecosystem>/<skill-name>/SKILL.md`. Conforms to [`SKILL_SPEC.md`](../../SKILL_SPEC.md). The `name` matches the leaf skill directory exactly and is a job name, not a tool name (`safe-migration-plan`, not `flyway-runner`). Copy the skeleton below, fill every section, and delete this paragraph.
+Starter for a new ecosystem-specific execution skill at `skills/implementations/<category>/<ecosystem>/<skill-name>/SKILL.md`. Conforms to [`SKILL_SPEC.md`](../../SKILL_SPEC.md). The `name` matches the leaf skill directory exactly and is a job name, not a tool name (`safe-migration-plan`, not `flyway-runner`). Copy the skeleton below, fill every section, and delete this paragraph.
 
 ---
 

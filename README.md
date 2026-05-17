@@ -16,8 +16,8 @@ Once installed, the skills below become invocable by Claude Code's `Skill` tool 
 
 This repo is an AI-native engineering operating system. Skills are organized by what they own, not by topic:
 
-- **[architecture/](architecture/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
-- **[implementations/](implementations/)** — ecosystem-specific execution (Spring Boot, Postgres, Kubernetes, GitHub Actions, ...).
+- **[skills/architecture/](skills/architecture/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
+- **[skills/implementations/](skills/implementations/)** — ecosystem-specific execution (Spring Boot, Postgres, Kubernetes, GitHub Actions, ...).
 - **[architecture-patterns/](architecture-patterns/)** — reusable architectural strategies (event-driven, hexagonal, modular-monolith, ...).
 - **[standards/](standards/)** — shared interoperability contracts that everything above conforms to.
 - **[workflows/](workflows/)** — end-to-end execution flows that chain architecture + implementations.
@@ -26,33 +26,33 @@ See the long-form rationale in [`docs/architecture/research.md`](docs/architectu
 
 ## Skills
 
-The repository ships 60+ skills across the architecture decision domains and ecosystem implementations (Spring Boot, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, ...). Browse the full catalog under [`architecture/`](architecture/) and [`implementations/`](implementations/).
+The repository ships 60+ skills across the architecture decision domains and ecosystem implementations (Spring Boot, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
 
 A representative end-to-end lifecycle path on the Spring Boot reference stack:
 
 | Stage | Skill | What it produces |
 |---|---|---|
-| Idea | [`idea-development`](architecture/idea-development/) | Discovery, refinement, validation, PRD specification, and execution readiness |
-| Architecture | [`system-design`](architecture/system-design/) | System design + ADRs |
-| Backend architecture | [`backend-architecture`](architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
-| Quality | [`quality-engineering`](architecture/quality-engineering/SKILL.md) | Contract-driven test strategy, acceptance criteria, and integration test plan |
-| Operations | [`operations`](architecture/operations/SKILL.md) | Blameless postmortem, reusable runbook, and on-call handoff |
-| Backend scaffold | [`spring-boot-service-scaffold`](implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
-| Security | [`spring-security-auth-review`](implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
-| Observability | [`spring-boot-observability-readiness`](implementations/backend/spring-boot/spring-boot-observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
-| Data | [`postgres-schema-and-migration`](implementations/data/postgres/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
-| Containers | [`dockerfile-and-jvm-tuning`](implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
-| CI/CD | [`github-actions-pipeline-hardened`](implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
-| Deploy | [`k8s-deploy-manifest-review`](implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
+| Idea | [`idea-development`](skills/architecture/idea-development/) | Discovery, refinement, validation, PRD specification, and execution readiness |
+| Architecture | [`system-design`](skills/architecture/system-design/) | System design + ADRs |
+| Backend architecture | [`backend-architecture`](skills/architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
+| Quality | [`quality-engineering`](skills/architecture/quality-engineering/SKILL.md) | Contract-driven test strategy, acceptance criteria, and integration test plan |
+| Operations | [`operations`](skills/architecture/operations/SKILL.md) | Blameless postmortem, reusable runbook, and on-call handoff |
+| Backend scaffold | [`spring-boot-service-scaffold`](skills/implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
+| Security | [`spring-security-auth-review`](skills/implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
+| Observability | [`spring-boot-observability-readiness`](skills/implementations/backend/spring-boot/spring-boot-observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
+| Data | [`postgres-schema-and-migration`](skills/implementations/data/postgres/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
+| Containers | [`dockerfile-and-jvm-tuning`](skills/implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
+| CI/CD | [`github-actions-pipeline-hardened`](skills/implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
+| Deploy | [`k8s-deploy-manifest-review`](skills/implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
 
 ## AI implementation plan
 
-AI architecture is owned by [`ai-native-engineering`](architecture/ai-native-engineering/SKILL.md).
+AI architecture is owned by [`ai-native-engineering`](skills/architecture/ai-native-engineering/SKILL.md).
 Provider and framework execution skills are registered under
-[`implementations/ai`](implementations/ai/): OpenAI structured outputs, tool
+[`skills/implementations/ai`](skills/implementations/ai/): OpenAI structured outputs, tool
 calling, RAG runtime, evals/observability, and a LangChain agent runtime — all
 at canonical template parity and invocable. See
-[`implementations/ai`](implementations/ai/) for the archetype model and roadmap.
+[`skills/implementations/ai`](skills/implementations/ai/) for the archetype model and roadmap.
 
 ## Workflows
 

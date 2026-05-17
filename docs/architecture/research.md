@@ -6,7 +6,7 @@ This repository separates skills by ownership instead of by topic.
 
 Architecture skills are technology-agnostic. They define durable decisions, contracts, boundaries, quality gates, and handoff artifacts that implementation skills must obey.
 
-Use `architecture/` when the output should remain true across frameworks, clouds, databases, and delivery tooling.
+Use `skills/architecture/` when the output should remain true across frameworks, clouds, databases, and delivery tooling.
 
 Examples:
 
@@ -19,7 +19,7 @@ Examples:
 
 Implementation skills are ecosystem-specific. They turn approved architecture decisions into concrete code, configuration, manifests, migrations, pipelines, or review artifacts.
 
-Use `implementations/` when the answer depends on a framework, runtime, cloud, datastore, or delivery platform.
+Use `skills/implementations/` when the answer depends on a framework, runtime, cloud, datastore, or delivery platform.
 
 Examples:
 

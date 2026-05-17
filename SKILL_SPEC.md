@@ -4,16 +4,16 @@ A skill is a single, repeatable engineering job that Claude can execute end-to-e
 
 ## File Layout
 
-Each technology-agnostic architecture domain exposes one parent skill at `architecture/<domain>/SKILL.md`. Ecosystem-specific execution skills live under `implementations/<category>/<ecosystem>/<skill-name>/SKILL.md`. See [`docs/architecture/research.md`](docs/architecture/research.md) for the architecture-vs-implementations distinction.
+Each technology-agnostic architecture domain exposes one parent skill at `skills/architecture/<domain>/SKILL.md`. Ecosystem-specific execution skills live under `skills/implementations/<category>/<ecosystem>/<skill-name>/SKILL.md`. See [`docs/architecture/research.md`](docs/architecture/research.md) for the architecture-vs-implementations distinction.
 
 ```text
-architecture/<domain>/
+skills/architecture/<domain>/
 |-- SKILL.md           # required; the only file Claude reads by default
 |-- references/        # optional; on-demand deep-dive docs
 |-- assets/            # optional; templates and starter files the skill emits
 `-- checklists/        # optional; gating checklists referenced by SKILL.md
 
-implementations/<category>/<ecosystem>/<skill-name>/
+skills/implementations/<category>/<ecosystem>/<skill-name>/
 |-- SKILL.md
 |-- references/
 |-- assets/

@@ -42,5 +42,5 @@ Gain: shared language reduces miscommunication, clear context boundaries enable 
 
 ## Related skills & patterns
 
-- Skills: [`system-design`](../../architecture/system-design/SKILL.md), [`backend-architecture`](../../architecture/backend-architecture/SKILL.md)
+- Skills: [`system-design`](../../skills/architecture/system-design/SKILL.md), [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md)
 - Patterns: [`microservices`](../microservices/README.md) and [`modular-monolith`](../modular-monolith/README.md) (boundaries derive from contexts), [`hexagonal-architecture`](../hexagonal-architecture/README.md), [`event-driven`](../event-driven/README.md) (domain events)

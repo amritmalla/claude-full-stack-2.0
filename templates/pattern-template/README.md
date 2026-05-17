@@ -42,5 +42,5 @@ What you gain versus what you pay (complexity, operational cost, consistency, la
 
 ## Related skills & patterns
 
-- Skills: [`<architecture-skill>`](../../architecture/<skill>/SKILL.md)
+- Skills: [`<architecture-skill>`](../../skills/architecture/<skill>/SKILL.md)
 - Patterns: [`<other-pattern>`](../<other-pattern>/README.md)

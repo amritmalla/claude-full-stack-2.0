@@ -1,6 +1,6 @@
 # operational-artifacts
 
-Canonical structure for operational artifacts produced by `architecture/operations`: blameless postmortems, reusable runbooks, and on-call handoff notes. Consumed by on-call engineers, incident responders, and every implementation skill whose alerts require a runbook.
+Canonical structure for operational artifacts produced by `skills/architecture/operations`: blameless postmortems, reusable runbooks, and on-call handoff notes. Consumed by on-call engineers, incident responders, and every implementation skill whose alerts require a runbook.
 
 ## File layout
 

@@ -45,5 +45,5 @@ Gain: producer/consumer decoupling, load buffering, fan-out, replayability. Pay:
 
 ## Related skills & patterns
 
-- Skills: [`backend-architecture`](../../architecture/backend-architecture/SKILL.md), [`data-architecture`](../../architecture/data-architecture/SKILL.md), [`reliability`](../../architecture/reliability/SKILL.md)
+- Skills: [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md), [`data-architecture`](../../skills/architecture/data-architecture/SKILL.md), [`reliability`](../../skills/architecture/reliability/SKILL.md)
 - Patterns: [`cqrs`](../cqrs/README.md) (events feed read models), [`microservices`](../microservices/README.md), [`real-time-systems`](../real-time-systems/README.md), [`ai-rag-platform`](../ai-rag-platform/README.md) (event-driven indexing)

@@ -55,5 +55,5 @@ Apply to artifacts produced *by* skills (schemas, configs, generated code):
 
 - `snake_case` directory names.
 - Trailing version suffixes in folder names (`api-v2/`). Version inside the artifact, not the path.
-- Tool names in architecture domain folders (`spring-security/` inside `architecture/`). Architecture domains are ecosystem-neutral.
+- Tool names in architecture domain folders (`spring-security/` inside `skills/architecture/`). Architecture domains are ecosystem-neutral.
 - Vague verbs in skill names (`do-stuff`, `helper`).

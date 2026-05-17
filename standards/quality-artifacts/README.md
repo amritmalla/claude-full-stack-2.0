@@ -1,6 +1,6 @@
 # quality-artifacts
 
-Canonical structure for the quality artifacts produced by `architecture/quality-engineering`: the risk-based testing strategy and its optional supporting matrices. Consumed by every `implementations/*` skill that wires the strategy into a concrete test runner, and by CI/CD pipelines that enforce its gates.
+Canonical structure for the quality artifacts produced by `skills/architecture/quality-engineering`: the risk-based testing strategy and its optional supporting matrices. Consumed by every `skills/implementations/*` skill that wires the strategy into a concrete test runner, and by CI/CD pipelines that enforce its gates.
 
 `testing-strategy.md` is a quality/process artifact, not a `*-architecture.md`. It does not live under `docs/architecture/` and is not governed by [architecture-schema](../architecture-schema/README.md). It consumes the architecture documents; it does not redefine them.
 
@@ -49,7 +49,7 @@ last_reviewed: YYYY-MM-DD
 | `## Authorization & Security Validation` | Tests for unauthenticated (401), authenticated-but-forbidden (403), insufficient scope, and cross-tenant denial where applicable. | 401 and 403 covered for protected surfaces |
 | `## Observability Validation` | Validation of logs, metrics, traces, alerts, correlation IDs, and secret/token redaction. | Redaction is asserted; no test output leaks secrets |
 | `## CI/CD Quality Gates` | Per suite: trigger, runtime budget, flake policy, blocking vs advisory, merge-gating vs release-gating, artifact retention. | Merge and release requirements are explicit |
-| `## Implementation Handoffs` | Explicit handoffs to `implementations/*`, `backend-architecture`, `frontend-architecture`, `data-architecture`, `security`, `reliability`, `operations`. | Each handoff is concrete and addressed to a named consumer |
+| `## Implementation Handoffs` | Explicit handoffs to `skills/implementations/*`, `backend-architecture`, `frontend-architecture`, `data-architecture`, `security`, `reliability`, `operations`. | Each handoff is concrete and addressed to a named consumer |
 | `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. | Every testing/tooling ADR referenced |
 
 ### Conditional sections
@@ -83,7 +83,7 @@ Testing and tooling decisions that are non-obvious (test-pyramid balance, contra
 - Authorization validation MUST conform to [security-standards](../security-standards/README.md): unauthenticated, forbidden, and insufficient-scope cases where applicable.
 - Observability validation MUST conform to [observability-standards](../observability-standards/README.md): structured signals emitted, secrets redacted.
 - CI/CD gates MUST align with the promotion flow in [deployment-standards](../deployment-standards/README.md): the strategy declares which suites gate `dev → staging → production`.
-- Once `testing-strategy.md` is `approved`, it is the upstream input to the test-implementation work in `implementations/*`; those skills wire it into a runner but do not redefine its layering or gate contract.
+- Once `testing-strategy.md` is `approved`, it is the upstream input to the test-implementation work in `skills/implementations/*`; those skills wire it into a runner but do not redefine its layering or gate contract.
 
 ## Anti-patterns
 

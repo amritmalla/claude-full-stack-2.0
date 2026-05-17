@@ -42,5 +42,5 @@ Gain: shared infrastructure cost efficiency, one deploy serves all, centralized 
 
 ## Related skills & patterns
 
-- Skills: [`system-design`](../../architecture/system-design/SKILL.md), [`security`](../../architecture/security/SKILL.md), [`data-architecture`](../../architecture/data-architecture/SKILL.md)
+- Skills: [`system-design`](../../skills/architecture/system-design/SKILL.md), [`security`](../../skills/architecture/security/SKILL.md), [`data-architecture`](../../skills/architecture/data-architecture/SKILL.md)
 - Patterns: [`microservices`](../microservices/README.md), [`modular-monolith`](../modular-monolith/README.md), [`serverless-platform`](../serverless-platform/README.md)

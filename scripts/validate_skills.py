@@ -12,7 +12,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILL_ROOTS = ("architecture", "implementations")
+SKILL_ROOTS = ("skills/architecture", "skills/implementations")
 WORKFLOW_ROOT = "workflows"
 SKILLS_REF_RE = re.compile(r"\(\s*skills:\s*([^)]*)\)")
 BACKTICK_RE = re.compile(r"`([^`]+)`")

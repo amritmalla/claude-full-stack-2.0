@@ -42,5 +42,5 @@ Gain: domain testable in isolation, infrastructure swappable, framework lock-in 
 
 ## Related skills & patterns
 
-- Skills: [`backend-architecture`](../../architecture/backend-architecture/SKILL.md), [`quality-engineering`](../../architecture/quality-engineering/SKILL.md)
+- Skills: [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md), [`quality-engineering`](../../skills/architecture/quality-engineering/SKILL.md)
 - Patterns: [`domain-driven-design`](../domain-driven-design/README.md) (defines what the domain is), [`modular-monolith`](../modular-monolith/README.md), [`microservices`](../microservices/README.md)

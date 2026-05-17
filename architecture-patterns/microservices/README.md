@@ -45,5 +45,5 @@ Gain: independent deploy/scale, fault isolation, team autonomy. Pay: network fai
 
 ## Related skills & patterns
 
-- Skills: [`system-design`](../../architecture/system-design/SKILL.md), [`backend-architecture`](../../architecture/backend-architecture/SKILL.md), [`reliability`](../../architecture/reliability/SKILL.md)
+- Skills: [`system-design`](../../skills/architecture/system-design/SKILL.md), [`backend-architecture`](../../skills/architecture/backend-architecture/SKILL.md), [`reliability`](../../skills/architecture/reliability/SKILL.md)
 - Patterns: [`modular-monolith`](../modular-monolith/README.md) (the cheaper default to start from), [`event-driven`](../event-driven/README.md), [`domain-driven-design`](../domain-driven-design/README.md)

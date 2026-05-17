@@ -1,6 +1,6 @@
 # architecture-schema
 
-Canonical structure for system architecture documents and Architecture Decision Records (ADRs). Produced by `architecture/system-design`; consumed by every downstream implementation domain.
+Canonical structure for system architecture documents and Architecture Decision Records (ADRs). Produced by `skills/architecture/system-design`; consumed by every downstream implementation domain.
 
 ## File layout
 
@@ -62,7 +62,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `data-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` includes a non-trivial operational data layer (multiple stores, cross-context read models, sharding, replication, or caching concerns). Produced by [`architecture/data-architecture`](../../architecture/data-architecture/SKILL.md); consumed by `implementations/data/<engine>`. One file per system.
+Secondary artifact. Present only when `system-design.md` includes a non-trivial operational data layer (multiple stores, cross-context read models, sharding, replication, or caching concerns). Produced by [`skills/architecture/data-architecture`](../../skills/architecture/data-architecture/SKILL.md); consumed by `skills/implementations/data/<engine>`. One file per system.
 
 ### Frontmatter (required)
 
@@ -92,7 +92,7 @@ last_reviewed: YYYY-MM-DD
 | `## Retention & Deletion` | Per dataset: retention period, deletion mechanism, archival, PII handling, audit/legal-hold. |
 | `## Migration Strategy` | Tooling, expand/migrate/contract phasing, online constraints, dual-write/shadow-read, backfill, rollback, compatibility. |
 | `## Operational Readiness` | Backup cadence and restore validation, monitoring signals, query-performance monitoring, runbook hooks. |
-| `## Implementation Handoffs` | Explicit handoffs to `implementations/data/<engine>`, `backend-architecture`, `security`, `reliability`, `operations`. |
+| `## Implementation Handoffs` | Explicit handoffs to `skills/implementations/data/<engine>`, `backend-architecture`, `security`, `reliability`, `operations`. |
 | `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
 
 ### Conditional sections
@@ -109,7 +109,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `frontend-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` includes a user-facing web frontend. Produced by [`architecture/frontend-architecture`](../../architecture/frontend-architecture/SKILL.md); consumed by `implementations/frontend/<framework>`. One file per system.
+Secondary artifact. Present only when `system-design.md` includes a user-facing web frontend. Produced by [`skills/architecture/frontend-architecture`](../../skills/architecture/frontend-architecture/SKILL.md); consumed by `skills/implementations/frontend/<framework>`. One file per system.
 
 ### Frontmatter (required)
 
@@ -140,7 +140,7 @@ last_reviewed: YYYY-MM-DD
 | `## Accessibility Posture` | WCAG target, keyboard/focus model, screen-reader expectations, semantic structure, testing posture. |
 | `## Performance Budgets` | Numeric targets (LCP, INP, CLS, JS bundle, image, third-party) with breach actions and regression monitoring. |
 | `## Client Observability` | Error reporting, RUM, session-replay posture, tracing correlation, sampling, PII redaction. |
-| `## Implementation Handoffs` | Explicit handoffs to `implementations/frontend/<framework>`, `backend-architecture`, `security`, `performance`, `quality-engineering`. |
+| `## Implementation Handoffs` | Explicit handoffs to `skills/implementations/frontend/<framework>`, `backend-architecture`, `security`, `performance`, `quality-engineering`. |
 | `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
 
 ### Conditional sections
@@ -156,7 +156,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `mobile-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` includes a native or cross-platform-native mobile application. Produced by [`architecture/mobile-architecture`](../../architecture/mobile-architecture/SKILL.md); consumed by `implementations/mobile/<ecosystem>`. One file per system. Mobile-web and PWA are not in scope here — those remain in `frontend-architecture.md`.
+Secondary artifact. Present only when `system-design.md` includes a native or cross-platform-native mobile application. Produced by [`skills/architecture/mobile-architecture`](../../skills/architecture/mobile-architecture/SKILL.md); consumed by `skills/implementations/mobile/<ecosystem>`. One file per system. Mobile-web and PWA are not in scope here — those remain in `frontend-architecture.md`.
 
 ### Frontmatter (required)
 
@@ -191,7 +191,7 @@ last_reviewed: YYYY-MM-DD
 | `## Testing Strategy` | Unit/integration/UI-automation/offline/device-compat/accessibility/perf-regression scope, release gating, rollback validation. |
 | `## Release & Operations Callouts` | Callout only — release channels, staged rollout, store submission, forced-upgrade, deprecation as ADR candidates; ownership belongs to `operations`/`infrastructure-platform`. |
 | `## Failure Taxonomy` | Per failure: detection, mitigation, recovery, observability, user-facing behavior. |
-| `## Implementation Handoffs` | Explicit handoffs to `implementations/mobile/<ecosystem>`, `backend-architecture`, `security`, `operations`/`infrastructure-platform`, `quality-engineering`. |
+| `## Implementation Handoffs` | Explicit handoffs to `skills/implementations/mobile/<ecosystem>`, `backend-architecture`, `security`, `operations`/`infrastructure-platform`, `quality-engineering`. |
 | `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
 
 ### Conditional sections
@@ -206,7 +206,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `platform-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` needs dedicated platform and infrastructure architecture (cloud/account topology, runtime substrate, network trust zones, deployment substrate). Produced by [`architecture/infrastructure-platform`](../../architecture/infrastructure-platform/SKILL.md); consumed by `implementations/infrastructure/<vendor>`. One file per system.
+Secondary artifact. Present only when `system-design.md` needs dedicated platform and infrastructure architecture (cloud/account topology, runtime substrate, network trust zones, deployment substrate). Produced by [`skills/architecture/infrastructure-platform`](../../skills/architecture/infrastructure-platform/SKILL.md); consumed by `skills/implementations/infrastructure/<vendor>`. One file per system.
 
 ### Frontmatter (required)
 
@@ -240,7 +240,7 @@ last_reviewed: YYYY-MM-DD
 | `## CI/CD Platform Architecture` | Build trust model, artifact/environment promotion, secrets in CI, policy gates, provenance, deployment authorization. |
 | `## Cost & FinOps Posture` | Tagging, budget ownership, autoscaling defaults, reserved capacity, egress risk, budget-breach response. |
 | `## Disaster & Resilience Posture` | Backup substrate, failover topology, RTO/RPO, restore testing, regional isolation. |
-| `## Implementation Handoffs` | Explicit handoffs to `implementations/infrastructure/<vendor>`, `security`, `reliability`, `operations`, `quality-engineering`. |
+| `## Implementation Handoffs` | Explicit handoffs to `skills/implementations/infrastructure/<vendor>`, `security`, `reliability`, `operations`, `quality-engineering`. |
 | `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
 
 ### Conditional sections
@@ -256,7 +256,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `security-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` handles sensitive or regulated data, crosses trust or tenant boundaries, integrates third parties, or sits under a regulatory regime. Produced by [`architecture/security`](../../architecture/security/SKILL.md); consumed by security-relevant work across `implementations/*`. One file per system. Conforms to this schema for structure and to [security-standards](../security-standards/README.md) for security content.
+Secondary artifact. Present only when `system-design.md` handles sensitive or regulated data, crosses trust or tenant boundaries, integrates third parties, or sits under a regulatory regime. Produced by [`skills/architecture/security`](../../skills/architecture/security/SKILL.md); consumed by security-relevant work across `skills/implementations/*`. One file per system. Conforms to this schema for structure and to [security-standards](../security-standards/README.md) for security content.
 
 ### Frontmatter (required)
 
@@ -305,7 +305,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `ai-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` includes an AI surface (LLM, agent, retrieval, classifier, extractor, or model-driven automation). Produced by [`architecture/ai-native-engineering`](../../architecture/ai-native-engineering/SKILL.md); consumed by `implementations/ai/<vendor>`. One file per system.
+Secondary artifact. Present only when `system-design.md` includes an AI surface (LLM, agent, retrieval, classifier, extractor, or model-driven automation). Produced by [`skills/architecture/ai-native-engineering`](../../skills/architecture/ai-native-engineering/SKILL.md); consumed by `skills/implementations/ai/<vendor>`. One file per system.
 
 ### Frontmatter (required)
 
@@ -335,7 +335,7 @@ last_reviewed: YYYY-MM-DD
 | `## Guardrails & Trust Boundaries` | Explicit trust boundaries with sanitization rules; input filtering, output validation, PII/redaction, prompt-injection posture. |
 | `## Cost & Latency Budgets` | Per capability: token/request/latency budget, throughput/concurrency, retrieval depth, tool-call ceiling, mapped to model tier and context size. |
 | `## Observability & Operations` | Telemetry, logging/redaction, replay/trace retention, prompt/model versioning, rollback, deployment promotion criteria. |
-| `## Implementation Handoffs` | Explicit handoffs to `implementations/ai/<vendor>`, `backend-architecture`, `data-architecture`, `security`, `operations`. |
+| `## Implementation Handoffs` | Explicit handoffs to `skills/implementations/ai/<vendor>`, `backend-architecture`, `data-architecture`, `security`, `operations`. |
 | `## ADR Index` | Table: ADR number, Title, Status, Summary. Links to `adrs/NNNN-<slug>.md`. Shares the system's monotonic ADR numbering. |
 
 ### Conditional sections
@@ -354,7 +354,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `reliability-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` has externally meaningful availability commitments, multi-component failure interactions, or stateful dependencies whose loss requires a recovery plan. Produced by [`architecture/reliability`](../../architecture/reliability/SKILL.md); consumed by reliability-relevant work in `implementations/infrastructure/<vendor>` and `implementations/data/<engine>`. One file per system.
+Secondary artifact. Present only when `system-design.md` has externally meaningful availability commitments, multi-component failure interactions, or stateful dependencies whose loss requires a recovery plan. Produced by [`skills/architecture/reliability`](../../skills/architecture/reliability/SKILL.md); consumed by reliability-relevant work in `skills/implementations/infrastructure/<vendor>` and `skills/implementations/data/<engine>`. One file per system.
 
 ### Frontmatter (required)
 
@@ -401,7 +401,7 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 ## `performance-architecture.md`
 
-Secondary artifact. Present only when `system-design.md` has user-visible paths whose latency, throughput, concurrency, or cost-per-request materially constrains the design, or when a scale event is anticipated. Produced by [`architecture/performance`](../../architecture/performance/SKILL.md); consumed by performance-relevant work in `implementations/backend/<framework>`, `implementations/frontend/<framework>`, `implementations/data/<engine>`, and `implementations/infrastructure/<vendor>`. One file per system.
+Secondary artifact. Present only when `system-design.md` has user-visible paths whose latency, throughput, concurrency, or cost-per-request materially constrains the design, or when a scale event is anticipated. Produced by [`skills/architecture/performance`](../../skills/architecture/performance/SKILL.md); consumed by performance-relevant work in `skills/implementations/backend/<framework>`, `skills/implementations/frontend/<framework>`, `skills/implementations/data/<engine>`, and `skills/implementations/infrastructure/<vendor>`. One file per system.
 
 ### Frontmatter (required)
 
@@ -466,7 +466,7 @@ component: <kebab-case>
 owner: <team or role>
 tier: 0 | 1 | 2 | 3
 implements: [<architecture-domain-ref>, ...]
-implementation: <impl-ref>           # e.g. implementations/backend/spring-boot
+implementation: <impl-ref>           # e.g. skills/implementations/backend/spring-boot
 patterns: [<pattern-ref>, ...]
 ---
 ```
@@ -514,10 +514,10 @@ Rules:
 ## Linkage contract
 
 - `system-design.md` MUST link to its source PRD in frontmatter.
-- Every component (inline subsection or breakout file) MUST list the `architecture/` it implements.
+- Every component (inline subsection or breakout file) MUST list the `skills/architecture/` it implements.
 - Every ADR MUST be referenced from `system-design.md`'s ADR Index.
 - `data-architecture.md`, `frontend-architecture.md`, `platform-architecture.md`, `security-architecture.md`, `ai-architecture.md`, `reliability-architecture.md`, and `performance-architecture.md`, when present, MUST link to their source `system-design.md` in frontmatter and MUST NOT redefine bounded contexts, components, or data flow.
-- Once `system-design.md` is `approved`, it is the sole upstream input to `implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `implementations/infrastructure/*`; when the system handles sensitive data or crosses trust boundaries, an `approved` `security-architecture.md` constrains security-relevant work across `implementations/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `implementations/ai/*`; when the system has externally meaningful availability commitments, an `approved` `reliability-architecture.md` is the upstream input to reliability-relevant work in `implementations/infrastructure/*` and `implementations/data/*`; when user-visible latency, throughput, or cost-per-request materially constrains the design, an `approved` `performance-architecture.md` is the upstream input to performance-relevant work across `implementations/backend/*`, `implementations/frontend/*`, `implementations/data/*`, and `implementations/infrastructure/*`.
+- Once `system-design.md` is `approved`, it is the sole upstream input to `skills/implementations/*` scaffolding skills; when a non-trivial data layer exists, an `approved` `data-architecture.md` is the upstream input to `skills/implementations/data/*`; when a user-facing frontend exists, an `approved` `frontend-architecture.md` is the upstream input to `skills/implementations/frontend/*`; when dedicated platform/infra architecture exists, an `approved` `platform-architecture.md` is the upstream input to `skills/implementations/infrastructure/*`; when the system handles sensitive data or crosses trust boundaries, an `approved` `security-architecture.md` constrains security-relevant work across `skills/implementations/*`; when an AI surface exists, an `approved` `ai-architecture.md` is the upstream input to `skills/implementations/ai/*`; when the system has externally meaningful availability commitments, an `approved` `reliability-architecture.md` is the upstream input to reliability-relevant work in `skills/implementations/infrastructure/*` and `skills/implementations/data/*`; when user-visible latency, throughput, or cost-per-request materially constrains the design, an `approved` `performance-architecture.md` is the upstream input to performance-relevant work across `skills/implementations/backend/*`, `skills/implementations/frontend/*`, `skills/implementations/data/*`, and `skills/implementations/infrastructure/*`.
 
 ## Versioning
 
