@@ -699,9 +699,53 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ### backend/fastapi
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the fastapi ecosystem.
+**Purpose:** Implements backend architecture domains using the FastAPI (Python) ecosystem. This is the *how* layer — framework-specific scaffolding, configuration, and hardening. Architecture decisions (domain modeling, auth strategy, SLOs, budgets) come from [skills/architecture/](../../skills/architecture/) and are taken as inputs here. FastAPI is a single framework — there is no framework branching.
+
+**Ecosystem:**
+- FastAPI (Python 3.11+), Pydantic v2, Starlette
+- Uvicorn/Gunicorn with `uvicorn.workers`, ASGI lifespan
+- SQLAlchemy 2.x + Alembic (or the data layer declared by architecture)
+- Celery / RQ / arq (or Kafka per architecture)
+- OpenTelemetry Python SDK, structlog, prometheus-client
+- pytest + httpx + Testcontainers
+
+**Compatible patterns:**
+- [microservices](../../architecture-patterns/microservices/README.md)
+- [modular-monolith](../../architecture-patterns/modular-monolith/README.md)
+- [event-driven](../../architecture-patterns/event-driven/README.md)
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [backend-architecture](#backend-architecture) | Service scaffold follows backend boundaries, contracts, and async integration. |
+| [security](#security) | OAuth2/OIDC + API-key flows, default-deny authz, OWASP review per [security-standards](../../standards/security-standards/README.md). |
+| [reliability](#reliability) | SLO/burn-rate alerts, retries, degradation behavior per [observability-standards](../../standards/observability-standards/README.md). |
+| [performance](#performance) | Async-path discipline, pool sizing, caching, load-test gates. |
+
+**Standards this implementation conforms to:**
+- [api-standards](../../standards/api-standards/README.md) — contract, error shape, and status semantics.
+- [security-standards](../../standards/security-standards/README.md) — no secrets in source/settings/image; default-deny authorization; fail-fast settings.
+- [observability-standards](../../standards/observability-standards/README.md) — correlated structured logging, RED metrics, multi-burn-rate alerts.
+- [deployment-standards](../../standards/deployment-standards/README.md) — env-agnostic non-root image; runtime config not baked.
+- [naming-conventions](../../standards/naming-conventions/README.md) — service, module, and file naming.
+
+**Upstream inputs:**
+- Approved `backend-architecture.md` from [backend-architecture](../../skills/architecture/backend-architecture/SKILL.md) (domain boundaries, data layer, API/event contracts).
+- Approved `architecture/security` (auth provider, session model, secret handling), `architecture/reliability` (SLO targets), `architecture/performance` (budgets, pool sizing).
+
+**Downstream consumers:**
+- [skills/implementations/data/postgres](../../skills/implementations/data/postgres/) — Alembic migrations land in the scaffold's data layer.
+- [skills/implementations/infrastructure/*](../../skills/implementations/infrastructure/) — built non-root images are deployed through the platform stack.
+
+**Skills:**
+- [fastapi-service-scaffold](../../skills/implementations/backend/fastapi/fastapi-service-scaffold/SKILL.md) — produces a production-ready service shell: Pydantic Settings, structlog + request context, health probes, layered error handling, ASGI lifespan, `Depends` DI and principal seam, non-root container packaging.
+- [fastapi-auth-and-security-review](../../skills/implementations/backend/fastapi/fastapi-auth-and-security-review/SKILL.md) — fills the principal seam with OAuth2/OIDC or API-key auth, adds default-deny authz, secure headers, boundary validation, secret handling, OWASP review, and a security test suite.
+- [fastapi-observability-readiness](../../skills/implementations/backend/fastapi/fastapi-observability-readiness/SKILL.md) — replaces the telemetry seam with OpenTelemetry tracing, prometheus-client RED metrics, trace-correlated structlog, SLI/SLO definitions, and multi-burn-rate alerts.
+- [fastapi-async-and-task-integration](../../skills/implementations/backend/fastapi/fastapi-async-and-task-integration/SKILL.md) — wires Celery/RQ/arq or Kafka producers and consumers: delivery semantics, transactional outbox, idempotent consumers, retry/DLQ, and Testcontainers integration tests.
+- [fastapi-performance-and-resilience](../../skills/implementations/backend/fastapi/fastapi-performance-and-resilience/SKILL.md) — enforces async-path discipline, the worker model, connection-pool sizing, caching posture, circuit breakers/bulkheads, retry budgets, and a CI load-test gate.
 
 ---
 
@@ -715,9 +759,53 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ### backend/nodejs
 
-**Status:** scaffold
+**Status:** draft
 
-**Purpose:** Implements relevant architecture domains using the nodejs ecosystem.
+**Purpose:** Implements backend architecture domains using the Node.js (TypeScript) ecosystem. This is the *how* layer — framework-specific scaffolding, configuration, and hardening. Architecture decisions (domain modeling, auth strategy, SLOs, budgets) come from [skills/architecture/](../../skills/architecture/) and are taken as inputs here. One scaffold branches across Express, Fastify, and NestJS per the framework declared in `backend-architecture.md` — there is no per-framework split.
+
+**Ecosystem:**
+- Node.js 20+ LTS, TypeScript (`strict`)
+- Express / Fastify / NestJS (framework-aware scaffold per architecture)
+- Prisma / Drizzle / TypeORM (or the data layer declared by architecture)
+- BullMQ / KafkaJS / SQS for async work
+- pino logging, OpenTelemetry JS SDK, prom-client
+- Vitest/Jest + supertest + Testcontainers
+
+**Compatible patterns:**
+- [microservices](../../architecture-patterns/microservices/README.md)
+- [modular-monolith](../../architecture-patterns/modular-monolith/README.md)
+- [event-driven](../../architecture-patterns/event-driven/README.md)
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [backend-architecture](#backend-architecture) | Service scaffold follows backend boundaries, contracts, and async integration. |
+| [security](#security) | Passport/JWT/OAuth flows, default-deny authz, OWASP review per [security-standards](../../standards/security-standards/README.md). |
+| [reliability](#reliability) | SLO/burn-rate alerts, retries, degradation behavior per [observability-standards](../../standards/observability-standards/README.md). |
+| [performance](#performance) | Event-loop discipline, clustering, backpressure, load-test gates. |
+
+**Standards this implementation conforms to:**
+- [api-standards](../../standards/api-standards/README.md) — contract, error shape, and status semantics.
+- [security-standards](../../standards/security-standards/README.md) — no secrets in source/config/image; default-deny authorization; fail-fast config.
+- [observability-standards](../../standards/observability-standards/README.md) — correlated structured logging, RED metrics, multi-burn-rate alerts.
+- [deployment-standards](../../standards/deployment-standards/README.md) — env-agnostic non-root image; runtime config not baked.
+- [naming-conventions](../../standards/naming-conventions/README.md) — service, module, and file naming.
+
+**Upstream inputs:**
+- Approved `backend-architecture.md` from [backend-architecture](../../skills/architecture/backend-architecture/SKILL.md) (framework choice, domain boundaries, data layer, API/event contracts).
+- Approved `architecture/security` (auth provider, session model, secret handling), `architecture/reliability` (SLO targets), `architecture/performance` (budgets).
+
+**Downstream consumers:**
+- [skills/implementations/data/postgres](../../skills/implementations/data/postgres/) — migrations land in the scaffold's data layer.
+- [skills/implementations/infrastructure/*](../../skills/implementations/infrastructure/) — built non-root images are deployed through the platform stack.
+
+**Skills:**
+- [nodejs-service-scaffold](../../skills/implementations/backend/nodejs/nodejs-service-scaffold/SKILL.md) — produces a framework-aware service shell: validated config, structured pino logging + request context, health probes, layered error handling, DI and principal seam, non-root container packaging.
+- [nodejs-auth-and-security-review](../../skills/implementations/backend/nodejs/nodejs-auth-and-security-review/SKILL.md) — fills the principal seam with Passport/JWT/OAuth auth, adds default-deny authz, secure headers, boundary validation, secret handling, OWASP review, and a security test suite.
+- [nodejs-observability-readiness](../../skills/implementations/backend/nodejs/nodejs-observability-readiness/SKILL.md) — replaces the telemetry seam with OpenTelemetry tracing, prom-client RED metrics, trace-correlated logs, SLI/SLO definitions, and multi-burn-rate alerts.
+- [nodejs-queue-and-event-integration](../../skills/implementations/backend/nodejs/nodejs-queue-and-event-integration/SKILL.md) — wires BullMQ/KafkaJS/SQS producers and consumers: delivery semantics, transactional outbox, idempotent consumers, retry/DLQ, and Testcontainers integration tests.
+- [nodejs-performance-and-resilience](../../skills/implementations/backend/nodejs/nodejs-performance-and-resilience/SKILL.md) — enforces event-loop discipline, the clustering/worker-thread model, backpressure, circuit breakers/bulkheads, retry budgets, and a CI load-test gate.
 
 ---
 

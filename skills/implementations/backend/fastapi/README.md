@@ -1,21 +1,22 @@
-# fastapi
+# implementations/backend/fastapi
 
-> Status: scaffold.
+Technology-specific execution skills for FastAPI (Python) backend services.
 
-## Purpose
+## Philosophy
 
-Implements `architecture/backend-architecture`, `architecture/security`, `architecture/reliability`, and `architecture/performance` using FastAPI (Python). Owns the canonical backend surface for this stack: service scaffold, auth and security review, observability readiness, async/task integration, and performance and resilience.
+Each FastAPI skill speaks as a **senior FastAPI/Python engineer**. It generates production-ready code and configuration — it does not invent architectural decisions. [`architecture/backend-architecture`](../../../architecture/backend-architecture/SKILL.md) is the source of truth for domain boundaries, data layer, and API/event contracts; [`architecture/security`](../../../architecture/security/SKILL.md), [`architecture/reliability`](../../../architecture/reliability/SKILL.md), and [`architecture/performance`](../../../architecture/performance/SKILL.md) own auth/secret, SLO, and budget decisions respectively. If an upstream artifact is silent on a decision a skill needs, the skill pauses and raises an ADR candidate rather than guessing.
 
-Architecture decisions (domain boundaries, idempotency and retry strategy, SLO targets, degradation behavior) come from upstream and are taken as inputs here. If an upstream artifact is silent on a needed decision, the skill pauses and raises an ADR candidate rather than guessing.
+FastAPI is a single framework — there is no framework branching. Skills map to exactly one archetype and are additive: each extends the baseline `fastapi-service-scaffold` installs.
 
-## Ecosystem (target)
+## Ecosystem
 
 - FastAPI (Python 3.11+), Pydantic v2, Starlette
 - Uvicorn/Gunicorn with `uvicorn.workers`, ASGI lifespan
 - SQLAlchemy 2.x + Alembic, or the data layer declared by architecture
 - Celery / RQ / arq (or Kafka per architecture) for async work
-- OpenTelemetry Python SDK, structured logging (structlog), Prometheus client
+- OpenTelemetry Python SDK, structlog, prometheus-client
 - pytest + httpx + Testcontainers for testing
+- pinned deps with a hashed lockfile; `ruff` + `mypy`
 
 ## Compatible patterns
 
@@ -23,50 +24,36 @@ Architecture decisions (domain boundaries, idempotency and retry strategy, SLO t
 - [modular-monolith](../../../../architecture-patterns/modular-monolith/README.md)
 - [event-driven](../../../../architecture-patterns/event-driven/README.md)
 
-## Skills
-
-### Authored
-
-_None._
-
-### Archetype coverage
+## Archetypes
 
 | # | Archetype | Skill | Status |
 |---|---|---|---|
-| 1 | service-scaffold | `fastapi-service-scaffold` | planned |
-| 2 | auth-and-security-review | `fastapi-auth-and-security-review` | planned |
-| 3 | observability-readiness | `fastapi-observability-readiness` | planned |
-| 4 | async-and-event-integration | `fastapi-async-and-task-integration` | planned |
-| 5 | performance-and-resilience-engineering | `fastapi-performance-and-resilience` | planned |
+| 1 | service-scaffold | [fastapi-service-scaffold/SKILL.md](fastapi-service-scaffold/SKILL.md) | ✓ authored |
+| 2 | auth-and-security-review | [fastapi-auth-and-security-review/SKILL.md](fastapi-auth-and-security-review/SKILL.md) | ✓ authored |
+| 3 | observability-readiness | [fastapi-observability-readiness/SKILL.md](fastapi-observability-readiness/SKILL.md) | ✓ authored |
+| 4 | async-and-event-integration | [fastapi-async-and-task-integration/SKILL.md](fastapi-async-and-task-integration/SKILL.md) | ✓ authored |
+| 5 | performance-and-resilience-engineering | [fastapi-performance-and-resilience/SKILL.md](fastapi-performance-and-resilience/SKILL.md) | ✓ authored |
 
-### Planned skill scope (future work)
+## What each archetype owns
 
-- **`fastapi-service-scaffold`** — project layout, profile-aware settings (Pydantic Settings), structured logging, health/readiness probes, error handling, ASGI lifespan, container packaging.
-- **`fastapi-auth-and-security-review`** — OAuth2/OIDC and API-key flows, dependency-based authz, secret handling, OWASP review, security tests.
-- **`fastapi-observability-readiness`** — OTel tracing, RED metrics, trace-correlated logs, SLI/SLO definitions, multi-burn-rate alerts.
-- **`fastapi-async-and-task-integration`** — Celery/RQ/arq or Kafka wiring, delivery semantics, transactional outbox, idempotency, retry/DLQ, integration tests.
-- **`fastapi-performance-and-resilience`** — timeouts, retries with budgets, circuit breakers, connection-pool sizing, caching posture, load-test gates.
+| Archetype | Owns | Defers |
+|---|---|---|
+| service-scaffold | Project layout, Pydantic Settings config, structlog seam + request context, liveness/readiness probes, layered error handling, ASGI lifespan, `Depends` DI shell + principal seam, non-root container | Auth flow → auth-and-security-review; observability vendor → observability-readiness; task wiring → async-and-task-integration; perf gates → performance-and-resilience; data client → data layer |
+| auth-and-security-review | OAuth2/OIDC + API-key flows, dependency-based default-deny authz, secure headers, Pydantic boundary validation, secret handling, OWASP review, security tests | Service shell → service-scaffold; auth *provider* decision → `architecture/security` |
+| observability-readiness | OpenTelemetry tracing, prometheus-client RED metrics, trace-correlated structlog, SLI/SLO definitions, multi-burn-rate alert rules | SLO *targets* → `architecture/reliability`; logger/error code → service-scaffold |
+| async-and-event-integration | Celery/RQ/arq or Kafka producers and consumers, transactional outbox, idempotent tasks, retry/DLQ, Testcontainers tests | Broker/contract choice → `backend-architecture.md`; business domain logic |
+| performance-and-resilience-engineering | Async-path discipline, worker model, connection-pool sizing, caching posture, circuit breakers/bulkheads, retry budgets, CI load-test gate | Budget/SLO numbers → `architecture/performance` & `architecture/reliability`; observability vendor → observability-readiness |
 
-## Architecture domains implemented
+## Upstream
 
-| Architecture domain | How |
-|---|---|
-| [backend-architecture](../../../architecture/backend-architecture/SKILL.md) | Service shell, contracts, async integration. |
-| [security](../../../architecture/security/SKILL.md) | Auth flows, secret handling, trust boundaries. |
-| [reliability](../../../architecture/reliability/SKILL.md) | SLOs, retries, degradation behavior. |
-| [performance](../../../architecture/performance/SKILL.md) | Pool sizing, caching, load-test gates. |
-| [operations](../../../architecture/operations/SKILL.md) | Alerts, runbook inputs. |
+All FastAPI skills consume [`architecture/backend-architecture`](../../../architecture/backend-architecture/SKILL.md) as the primary upstream (domain boundaries, data layer, contracts). [`architecture/security`](../../../architecture/security/SKILL.md) owns auth provider, session model, and secret handling; [`architecture/reliability`](../../../architecture/reliability/SKILL.md) owns SLO targets and the error budget; [`architecture/performance`](../../../architecture/performance/SKILL.md) owns latency/throughput budgets and pool sizing. Skills 2–5 also consume the `fastapi-service-scaffold` baseline. Operational alerts and runbooks feed [`architecture/operations`](../../../architecture/operations/SKILL.md).
 
-## Standards this implementation conforms to
+## Standards
 
-- [api-standards](../../../../standards/api-standards/README.md)
-- [security-standards](../../../../standards/security-standards/README.md)
-- [observability-standards](../../../../standards/observability-standards/README.md)
-- [deployment-standards](../../../../standards/deployment-standards/README.md)
-- [naming-conventions](../../../../standards/naming-conventions/README.md)
+All FastAPI skills conform to the applicable subset of:
 
-## Upstream inputs
-
-- Approved `backend-architecture.md` declaring domain boundaries, API/event contracts, idempotency and retry strategy.
-- Approved `architecture/security` decisions on auth provider, session model, and secret handling.
-- Approved `architecture/reliability` decisions on SLOs and degradation behavior.
+- [api-standards](../../../../standards/api-standards/README.md) — contract, error shape, and status semantics.
+- [security-standards](../../../../standards/security-standards/README.md) — no secrets in source/settings/image; default-deny authorization; fail-fast settings.
+- [observability-standards](../../../../standards/observability-standards/README.md) — correlated structured logging; RED metrics; multi-burn-rate alerts.
+- [deployment-standards](../../../../standards/deployment-standards/README.md) — env-agnostic non-root image; runtime config not baked.
+- [naming-conventions](../../../../standards/naming-conventions/README.md) — service, module, and file naming.
