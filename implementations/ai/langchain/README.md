@@ -1,6 +1,6 @@
 # langchain
 
-> Status: scaffold
+> Status: in progress — 1 archetype authored, 2 planned.
 
 ## Purpose
 

@@ -24,9 +24,11 @@ This repo is an AI-native engineering operating system. Skills are organized by 
 
 See the long-form rationale in [`docs/architecture/research.md`](docs/architecture/research.md) and the guiding beliefs in [`docs/philosophy/`](docs/philosophy/README.md).
 
-## Skills (v0.1)
+## Skills
 
-Twelve lifecycle-spanning skills:
+The repository ships 60+ skills across the architecture decision domains and ecosystem implementations (Spring Boot, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, ...). Browse the full catalog under [`architecture/`](architecture/) and [`implementations/`](implementations/).
+
+A representative end-to-end lifecycle path on the Spring Boot reference stack:
 
 | Stage | Skill | What it produces |
 |---|---|---|
@@ -65,11 +67,11 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 
 Every skill is exercised against [`orders-api`](examples/spring-boot/orders-api/) — a minimal e-commerce order service. Skill outputs land under `examples/spring-boot/orders-api/.skill-outputs/<skill-name>/`.
 
-## What's in v0.1, what's not
+## Scope
 
-**In:** the production-ops half of "Full Stack 2.0" — DevOps, SRE, security, observability, plus the architecture and backend depth needed to make those skills land on real systems. Spring Boot as the single reference stack.
+**In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain), composed by end-to-end workflows.
 
-**Out:** frontend skills (Next.js production readiness lands in v0.2), a second reference stack (v0.3), and an MCP server (v0.4 if a real need emerges).
+**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. FastAPI, Go, Node, Vue, Azure, GCP), committed per-skill example outputs under `examples/`, and an MCP server (only if a real need emerges).
 
 ## Contributing
 

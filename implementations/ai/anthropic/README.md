@@ -1,6 +1,6 @@
 # anthropic
 
-> Status: scaffold (1 of 5 archetypes authored).
+> Status: in progress — 1 of 5 archetypes authored.
 
 ## Purpose
 

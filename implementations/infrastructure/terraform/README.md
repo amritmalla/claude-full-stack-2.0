@@ -1,6 +1,6 @@
 # terraform
 
-> Status: scaffold.
+> Status: active — all 5 archetypes authored.
 
 ## Purpose
 

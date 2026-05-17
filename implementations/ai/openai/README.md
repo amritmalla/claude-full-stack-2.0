@@ -1,6 +1,6 @@
 # openai
 
-> Status: scaffold
+> Status: active — all 4 archetypes authored.
 
 ## Purpose
 
