@@ -62,7 +62,7 @@ Every non-2xx response MUST use this shape:
 }
 ```
 
-`code` values live in a per-service **error code registry** (see `shared/schemas/error-codes.md` once authored). Codes are `SCREAMING_SNAKE_CASE`, namespaced when ambiguous (`BILLING_CARD_DECLINED`).
+`code` values live in a per-service **error code registry** owned by that service. Codes are `SCREAMING_SNAKE_CASE`, namespaced when ambiguous (`BILLING_CARD_DECLINED`).
 
 ## Rate limiting
 
@@ -101,7 +101,7 @@ Responses include `RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset` he
 ## Async / event APIs
 
 - Topic naming per `naming-conventions` (`domain.entity.event`).
-- Every event has a schema in `shared/schemas/events/` and a version field.
+- Every event has a versioned schema owned by the producing service.
 - Producers MUST guarantee at-least-once delivery; consumers MUST be idempotent.
 - See `patterns/event-driven` once authored.
 
