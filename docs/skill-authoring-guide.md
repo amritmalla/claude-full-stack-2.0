@@ -49,11 +49,9 @@ python scripts/validate_skills.py
 
 Fix any failures. The validator enforces: frontmatter present, `name` matches directory, `description` starts with "Use when" and is ≤ 1024 chars.
 
-## 6. Execute the skill against `orders-api`
+## 6. Sanity-check the skill
 
-Open Claude Code in this repository. Trigger the skill with a realistic prompt. Commit the output it produces under `examples/spring-boot/orders-api/.skill-outputs/<name>/`.
-
-If the skill produces something that does not match its declared Outputs section, fix the skill until it does.
+Trigger the skill in Claude Code with a realistic prompt and confirm it runs end-to-end and the result matches its declared Outputs section. Fix the skill until it does. No artifact is committed — there is no reference-output gate.
 
 ## 7. Write 5 trigger prompts
 
@@ -66,4 +64,4 @@ This is a manual check, not automated. It catches descriptions that are too narr
 
 ## 8. Open the PR
 
-Per [`CONTRIBUTING.md`](../CONTRIBUTING.md). Include the trigger prompts, the example output, and an updated entry in the parent architecture domain's or implementation's `README.md`. Also add an **Output contract** section in `SKILL.md` linking to any [`standards/`](../standards/) the skill conforms to.
+Per [`CONTRIBUTING.md`](../CONTRIBUTING.md). Include the trigger prompts and an updated entry in the parent architecture domain's or implementation's `README.md`. Also add an **Output contract** section in `SKILL.md` linking to any [`standards/`](../standards/) the skill conforms to.

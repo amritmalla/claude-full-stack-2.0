@@ -60,7 +60,6 @@ Upstream contract: bounded contexts and data ownership come from the approved `s
 - Read `references/schema-deliverables-and-rubric.md` before finalizing and use it as the deliverable checklist and quality rubric.
 - Use `assets/flyway-migration.template.sql` for migration SQL files such as `V1__init.sql`.
 - Use `assets/migration-plan.template.md` for `migration-plan.md`.
-- The canonical worked example for this skill lives at `examples/spring-boot/orders-api/.skill-outputs/postgres-schema-and-migration/` in the plugin repo. Consult it for index-justification style, expand/migrate/contract phasing, and cross-cutting table shapes before generating.
 
 ## Process
 

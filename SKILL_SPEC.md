@@ -65,7 +65,6 @@ Optional links to `references/*.md` deep dives.
 Every skill merged into this repository must pass:
 
 - Valid frontmatter (`name` matches skill directory; `description` starts with "Use when"; <= 1024 chars).
-- Author has invoked the skill end-to-end against the reference example and committed the output under `examples/spring-boot/orders-api/.skill-outputs/<skill-name>/`.
 - Quality-checks section is concrete and binary-verifiable.
 - Author supplies 3 "should match" and 2 "should NOT match" trigger prompts in the PR description and manually verifies Claude's invocation behavior on each.
 - `SKILL.md` is <= ~400 lines; overflow moves to `references/`.

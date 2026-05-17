@@ -22,7 +22,7 @@ Approved upstream artifacts (e.g. the relevant `*-architecture.md`), contracts, 
 Numbered, imperative steps producing production-ready code/configuration. Each step has a concrete, verifiable output.
 
 ## Outputs
-The concrete artifacts produced and where they are written, including the example output under `examples/spring-boot/orders-api/.skill-outputs/<skill-name>/`.
+The concrete artifacts produced and where they are written.
 
 ## Quality checks
 Binary-verifiable conditions (build passes, gate enforced, no secret committed, etc.).

@@ -63,10 +63,6 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 - [`production-readiness-review`](workflows/production-readiness-review/) — a non-build hardening pass (reliability → security → performance → operations) for an existing service.
 - [`cloud-foundation-on-aws`](workflows/cloud-foundation-on-aws/) — an infrastructure-only AWS landing zone and Terraform delivery foundation.
 
-## Reference example
-
-Every skill is exercised against [`orders-api`](examples/spring-boot/orders-api/) — a minimal e-commerce order service. Skill outputs land under `examples/spring-boot/orders-api/.skill-outputs/<skill-name>/`.
-
 ## Scope
 
 **In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain), composed by end-to-end workflows.

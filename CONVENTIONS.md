@@ -44,16 +44,6 @@ checklists/   # optional quality gates
 - Markdown links to local files must stay valid.
 - Templates must be usable as starting points, not placeholders full of TODOs.
 
-## Examples
-
-Every new skill should be exercised against the reference project under:
-
-```text
-examples/spring-boot/orders-api/.skill-outputs/<skill-name>/
-```
-
-The output should prove the skill can run end-to-end without inventing missing upstream decisions.
-
 ## Scripts
 
 - Prefer standard-library Python for repository validation and deterministic helper tools.

@@ -62,7 +62,6 @@ Findings reference the specific clause in `security-standards` they violate. Aut
 - Read `references/auth-review-quality-rubric.md` before finalizing and use it as the validation checklist.
 - Use `assets/auth-review.template.md` for `auth-review.md`.
 - Use `assets/security-config.template.java` when emitting or recommending `SecurityConfig.java`.
-- The canonical worked example for this skill lives at `examples/spring-boot/orders-api/.skill-outputs/spring-security-auth-review/` in the plugin repo. Consult it for finding-row style (severity, confidence, evidence with file:line), and what a "conditionally ready" verdict reads like before generating.
 
 ## Process
 

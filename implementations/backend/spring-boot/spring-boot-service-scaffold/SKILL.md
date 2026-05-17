@@ -62,7 +62,6 @@ Upstream contract: when [backend-architecture](../../../../architecture/backend-
 - Read `references/scaffold-quality-rubric.md` before finalizing and use it as the validation checklist.
 - Use `assets/README.template.md` for the generated service `README.md`.
 - Use `assets/package-structure.template.md` when choosing the baseline package layout.
-- The canonical worked example for this skill lives at `examples/spring-boot/orders-api/.skill-outputs/spring-boot-service-scaffold/` in the plugin repo. Consult it for cross-file conventions (package root derivation, profile naming, env-var-to-config-to-README alignment) before generating.
 
 ## Process
 
