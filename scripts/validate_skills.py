@@ -13,6 +13,9 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILL_ROOTS = ("architecture", "implementations")
+WORKFLOW_ROOT = "workflows"
+SKILLS_REF_RE = re.compile(r"\(\s*skills:\s*([^)]*)\)")
+BACKTICK_RE = re.compile(r"`([^`]+)`")
 REQUIRED_SECTIONS = (
     "When to use",
     "Inputs",
@@ -136,6 +139,55 @@ def validate_skill(skill_file: Path) -> list[Finding]:
     return findings
 
 
+def collect_skill_names() -> set[str]:
+    return {skill_file.parent.name for skill_file in find_skill_files()}
+
+
+def find_workflow_files() -> list[Path]:
+    root = REPO_ROOT / WORKFLOW_ROOT
+    return sorted(root.rglob("WORKFLOW.md")) if root.exists() else []
+
+
+def validate_workflow(workflow_file: Path, valid_skills: set[str]) -> list[Finding]:
+    findings: list[Finding] = []
+    text = workflow_file.read_text(encoding="utf-8")
+    frontmatter, body = parse_frontmatter(text)
+
+    if frontmatter is None:
+        return [Finding(rel(workflow_file), "missing YAML frontmatter")]
+
+    name = frontmatter.get("name", "")
+    description = frontmatter.get("description", "")
+    expected_name = workflow_file.parent.name
+    if name != expected_name:
+        findings.append(
+            Finding(rel(workflow_file), f"name '{name}' != directory '{expected_name}'")
+        )
+    if not description.startswith("Use when"):
+        findings.append(
+            Finding(rel(workflow_file), "description must start with 'Use when'")
+        )
+
+    referenced = False
+    for group in SKILLS_REF_RE.findall(body):
+        for skill_name in BACKTICK_RE.findall(group):
+            referenced = True
+            if skill_name not in valid_skills:
+                findings.append(
+                    Finding(
+                        rel(workflow_file),
+                        f"references unknown skill: {skill_name!r}",
+                    )
+                )
+    if not referenced:
+        findings.append(
+            Finding(rel(workflow_file), "no skill references found in any phase")
+        )
+
+    findings.extend(validate_local_links(workflow_file, body))
+    return findings
+
+
 def validate_plugin(path: Path) -> list[Finding]:
     if not path.exists():
         return [Finding(rel(path), "missing plugin metadata")]
@@ -173,6 +225,9 @@ def validate_repository() -> list[Finding]:
         findings.append(Finding(".", "no SKILL.md files found under architecture/ or implementations/"))
     for skill_file in skills:
         findings.extend(validate_skill(skill_file))
+    valid_skills = collect_skill_names()
+    for workflow_file in find_workflow_files():
+        findings.extend(validate_workflow(workflow_file, valid_skills))
     findings.extend(validate_plugin(REPO_ROOT / ".claude-plugin" / "plugin.json"))
     findings.extend(validate_plugin(REPO_ROOT / ".codex-plugin" / "plugin.json"))
     return findings

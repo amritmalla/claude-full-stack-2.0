@@ -12,7 +12,7 @@ This workflow chains every v0.1 skill into a single end-to-end lifecycle path. E
 
 ## Phases
 
-### Phase 1 — Define (skills: `prd-from-idea`, `system-design-from-prd`)
+### Phase 1 — Define (skills: `idea-development`, `system-design`)
 
 **Entry:** A 1–5 sentence informal idea.
 **Exit:** `PRD.md` plus `system-design.md` and the initial `adrs/` directory committed.
