@@ -9,10 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Validate skill frontmatter
-        run: ./scripts/validate-skills.sh
+      - name: Install test dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Validate repository standards
+        run: python scripts/validate_skills.py
+      - name: Run repository integrity tests
+        run: python -m pytest
       - name: Lint markdown
-        run: ./scripts/lint-markdown.sh
+        run: node scripts/lint_markdown.mjs

@@ -69,3 +69,4 @@ Every skill merged into this repository must pass:
 - Quality-checks section is concrete and binary-verifiable.
 - Author supplies 3 "should match" and 2 "should NOT match" trigger prompts in the PR description and manually verifies Claude's invocation behavior on each.
 - `SKILL.md` is <= ~400 lines; overflow moves to `references/`.
+- `python scripts/validate_skills.py` and `python -m pytest` pass locally.

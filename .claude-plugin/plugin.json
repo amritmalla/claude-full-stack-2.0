@@ -6,6 +6,11 @@
     "name": "Amrit Malla",
     "email": "amritmalla2021@gmail.com"
   },
+  "homepage": "https://github.com/amritmalla/claude-full-stack-2.0",
   "repository": "https://github.com/amritmalla/claude-full-stack-2.0",
-  "license": "MIT"
+  "license": "MIT",
+  "skills": [
+    "./architecture",
+    "./implementations"
+  ]
 }

@@ -1,0 +1,36 @@
+{
+  "name": "claude-full-stack-2.0",
+  "version": "0.1.0",
+  "description": "AI-native software engineering skills from idea to production.",
+  "author": {
+    "name": "Amrit Malla",
+    "email": "amritmalla2021@gmail.com"
+  },
+  "homepage": "https://github.com/amritmalla/claude-full-stack-2.0",
+  "repository": "https://github.com/amritmalla/claude-full-stack-2.0",
+  "license": "MIT",
+  "skills": [
+    "./architecture",
+    "./implementations"
+  ],
+  "interface": {
+    "type": "cli",
+    "displayName": "Claude Full Stack 2.0",
+    "shortDescription": "AI-native engineering skills from idea to production",
+    "longDescription": "Production-grade skills for product discovery, system design, backend architecture, quality, security, observability, data, infrastructure, CI/CD, and operations.",
+    "developerName": "Amrit Malla",
+    "category": "Coding",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/amritmalla/claude-full-stack-2.0",
+    "defaultPrompt": [
+      "Turn this product idea into an execution-ready PRD",
+      "Design the backend architecture for this approved system design",
+      "Review my Kubernetes manifests for production readiness",
+      "Create a hardened GitHub Actions pipeline"
+    ],
+    "brandColor": "#2563eb"
+  }
+}

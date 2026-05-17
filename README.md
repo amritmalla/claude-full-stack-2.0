@@ -70,7 +70,7 @@ See [`ROADMAP.md`](ROADMAP.md) for the full release plan.
 
 ## Contributing
 
-Read [`CONTRIBUTING.md`](CONTRIBUTING.md). New skills follow [`SKILL_SPEC.md`](SKILL_SPEC.md). New workflows follow [`WORKFLOW_SPEC.md`](WORKFLOW_SPEC.md).
+Read [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`CONVENTIONS.md`](CONVENTIONS.md). New skills follow [`SKILL_SPEC.md`](SKILL_SPEC.md). New workflows follow [`WORKFLOW_SPEC.md`](WORKFLOW_SPEC.md).
 
 ## License
 
