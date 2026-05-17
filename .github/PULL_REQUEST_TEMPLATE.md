@@ -5,7 +5,7 @@
 ## Skill / workflow checklist (delete if not applicable)
 
 - [ ] `SKILL.md` present with valid frontmatter (`name` matches directory, `description` starts with "Use when").
-- [ ] Domain `README.md` index updated.
+- [ ] Index updated: `docs/architecture/registry.md` (architecture domains) or the parent stack `README.md` (implementation skills).
 - [ ] `python scripts/validate_skills.py` passes locally.
 - [ ] 5 trigger prompts listed below and manually verified.
 

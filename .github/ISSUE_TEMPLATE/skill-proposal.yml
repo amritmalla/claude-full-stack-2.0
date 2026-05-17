@@ -13,18 +13,27 @@ body:
   - type: dropdown
     id: domain
     attributes:
-      label: Domain
+      label: Domain or implementation category
       options:
-        - product
-        - architecture
-        - backend
-        - data
-        - testing
-        - containers
-        - cicd
-        - deploy
-        - observability
-        - operations
+        - architecture/idea-development
+        - architecture/system-design
+        - architecture/backend-architecture
+        - architecture/frontend-architecture
+        - architecture/mobile-architecture
+        - architecture/data-architecture
+        - architecture/ai-native-engineering
+        - architecture/infrastructure-platform
+        - architecture/reliability
+        - architecture/security
+        - architecture/performance
+        - architecture/quality-engineering
+        - architecture/operations
+        - implementations/backend
+        - implementations/frontend
+        - implementations/mobile
+        - implementations/data
+        - implementations/infrastructure
+        - implementations/ai
     validations:
       required: true
   - type: textarea
@@ -44,7 +53,7 @@ body:
   - type: textarea
     id: rationale
     attributes:
-      label: Why this skill belongs in v0.x
+      label: Why this skill belongs in the repository
       description: Differentiation, production risk, AI leverage, pain — pick one or more.
     validations:
       required: true
