@@ -32,27 +32,18 @@ A representative end-to-end lifecycle path on the Spring Boot reference stack:
 
 | Stage | Skill | What it produces |
 |---|---|---|
-| Idea | [`idea-development`](skills/architecture/idea-development/) | Discovery, refinement, validation, PRD specification, and execution readiness |
-| Architecture | [`system-design`](skills/architecture/system-design/) | System design + ADRs |
-| Backend architecture | [`backend-architecture`](skills/architecture/backend-architecture/) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
+| Idea | [`idea-development`](skills/architecture/idea-development/SKILL.md) | Discovery, refinement, validation, PRD specification, and execution readiness |
+| Architecture | [`system-design`](skills/architecture/system-design/SKILL.md) | System design + ADRs |
+| Backend architecture | [`backend-architecture`](skills/architecture/backend-architecture/SKILL.md) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |
 | Quality | [`quality-engineering`](skills/architecture/quality-engineering/SKILL.md) | Contract-driven test strategy, acceptance criteria, and integration test plan |
 | Operations | [`operations`](skills/architecture/operations/SKILL.md) | Blameless postmortem, reusable runbook, and on-call handoff |
-| Backend scaffold | [`spring-boot-service-scaffold`](skills/implementations/backend/spring-boot/spring-boot-service-scaffold/) | Production-ready Spring Boot layout |
-| Security | [`spring-security-auth-review`](skills/implementations/backend/spring-boot/spring-security-auth-review/) | JWT/OAuth2 review and hardening |
-| Observability | [`spring-boot-observability-readiness`](skills/implementations/backend/spring-boot/spring-boot-observability-readiness/) | SLIs/SLOs + multi-burn-rate alerts |
-| Data | [`postgres-schema-and-migration`](skills/implementations/data/postgres/postgres-schema-and-migration/) | Schema + zero-downtime migration plan |
-| Containers | [`dockerfile-and-jvm-tuning`](skills/implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning/) | Multi-stage Dockerfile + container-aware JVM flags |
-| CI/CD | [`github-actions-pipeline-hardened`](skills/implementations/infrastructure/github-actions/github-actions-pipeline-hardened/) | OIDC, pinned SHAs, SBOM, cosign |
-| Deploy | [`k8s-deploy-manifest-review`](skills/implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/) | Hardened Kubernetes manifests |
-
-## AI implementation plan
-
-AI architecture is owned by [`ai-native-engineering`](skills/architecture/ai-native-engineering/SKILL.md).
-Provider and framework execution skills are registered under
-[`skills/implementations/ai`](skills/implementations/ai/): OpenAI structured outputs, tool
-calling, RAG runtime, evals/observability, and a LangChain agent runtime — all
-at canonical template parity and invocable. See
-[`skills/implementations/ai`](skills/implementations/ai/) for the archetype model and roadmap.
+| Backend scaffold | [`spring-boot-service-scaffold`](skills/implementations/backend/spring-boot/spring-boot-service-scaffold/SKILL.md) | Production-ready Spring Boot layout |
+| Security | [`spring-security-auth-review`](skills/implementations/backend/spring-boot/spring-security-auth-review/SKILL.md) | JWT/OAuth2 review and hardening |
+| Observability | [`spring-boot-observability-readiness`](skills/implementations/backend/spring-boot/spring-boot-observability-readiness/SKILL.md) | SLIs/SLOs + multi-burn-rate alerts |
+| Data | [`postgres-schema-and-migration`](skills/implementations/data/postgres/postgres-schema-and-migration/SKILL.md) | Schema + zero-downtime migration plan |
+| Containers | [`dockerfile-and-jvm-tuning`](skills/implementations/infrastructure/kubernetes/dockerfile-and-jvm-tuning/SKILL.md) | Multi-stage Dockerfile + container-aware JVM flags |
+| CI/CD | [`github-actions-pipeline-hardened`](skills/implementations/infrastructure/github-actions/github-actions-pipeline-hardened/SKILL.md) | OIDC, pinned SHAs, SBOM, cosign |
+| Deploy | [`k8s-deploy-manifest-review`](skills/implementations/infrastructure/kubernetes/k8s-deploy-manifest-review/SKILL.md) | Hardened Kubernetes manifests |
 
 ## Workflows
 
@@ -67,7 +58,7 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 
 **In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain), composed by end-to-end workflows.
 
-**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. FastAPI, Go, Node, Vue, Azure, GCP), committed per-skill example outputs under `examples/`, and an MCP server (only if a real need emerges).
+**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. FastAPI, Go, Node, Vue, Azure, GCP), and an MCP server (only if a real need emerges).
 
 ## Contributing
 
