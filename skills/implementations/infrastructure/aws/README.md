@@ -52,11 +52,11 @@ All five Family F archetypes are authored. Cross-archetype handoffs are named in
 
 | Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | Account topology, network, compute primitives, deployment. |
-| [security](../../../architecture/security/README.md) | IAM model, KMS, Secrets Manager, SCPs, trust zones. |
-| [reliability](../../../architecture/reliability/README.md) | Multi-AZ/region posture, backups, failover. |
-| [operations](../../../architecture/operations/README.md) | CloudWatch alarms, runbook inputs, audit. |
-| [performance](../../../architecture/performance/README.md) | Compute right-sizing, cost monitoring, anomaly detection. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/SKILL.md) | Account topology, network, compute primitives, deployment. |
+| [security](../../../architecture/security/SKILL.md) | IAM model, KMS, Secrets Manager, SCPs, trust zones. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Multi-AZ/region posture, backups, failover. |
+| [operations](../../../architecture/operations/SKILL.md) | CloudWatch alarms, runbook inputs, audit. |
+| [performance](../../../architecture/performance/SKILL.md) | Compute right-sizing, cost monitoring, anomaly detection. |
 
 ## Standards this implementation conforms to
 

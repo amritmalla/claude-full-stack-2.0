@@ -58,9 +58,9 @@ _None._
 
 | Architecture domain | How |
 |---|---|
-| [frontend-architecture](../../../architecture/frontend-architecture/README.md) | App shell, routing, rendering (CSR/SSR), state, design-system seam, a11y. |
-| [performance](../../../architecture/performance/README.md) | Per-route Web Vitals budgets, deferrable views, change-detection cost. |
-| [security](../../../architecture/security/README.md) | Auth provider wiring, CSP, interceptor-based token handling, no secrets in bundles. |
+| [frontend-architecture](../../../architecture/frontend-architecture/SKILL.md) | App shell, routing, rendering (CSR/SSR), state, design-system seam, a11y. |
+| [performance](../../../architecture/performance/SKILL.md) | Per-route Web Vitals budgets, deferrable views, change-detection cost. |
+| [security](../../../architecture/security/SKILL.md) | Auth provider wiring, CSP, interceptor-based token handling, no secrets in bundles. |
 
 ## Standards this implementation conforms to
 

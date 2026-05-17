@@ -55,10 +55,10 @@ _None._
 
 | Architecture domain | How |
 |---|---|
-| [data-architecture](../../../architecture/data-architecture/README.md) | Engine choice, partitioning, ordering, retention via TTL. |
-| [reliability](../../../architecture/reliability/README.md) | Replication topology, Keeper/ZooKeeper posture, backup/restore. |
-| [performance](../../../architecture/performance/README.md) | Materialized views, projections, skip-indexes, JOIN posture. |
-| [security](../../../architecture/security/README.md) | Roles, row policies, column grants, quotas, audit. |
+| [data-architecture](../../../architecture/data-architecture/SKILL.md) | Engine choice, partitioning, ordering, retention via TTL. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Replication topology, Keeper/ZooKeeper posture, backup/restore. |
+| [performance](../../../architecture/performance/SKILL.md) | Materialized views, projections, skip-indexes, JOIN posture. |
+| [security](../../../architecture/security/SKILL.md) | Roles, row policies, column grants, quotas, audit. |
 
 ## Standards this implementation conforms to
 

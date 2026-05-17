@@ -50,8 +50,8 @@ PostgreSQL belongs to **Family A — OLTP relational** in the data layer model. 
 
 | Architecture domain | How |
 |---|---|
-| [data-architecture](../../../architecture/data-architecture/README.md) | Schema definition, migration plans, index strategy, retention rules. |
-| [reliability](../../../architecture/reliability/README.md) | Zero-downtime migrations, backup/recovery hooks. |
+| [data-architecture](../../../architecture/data-architecture/SKILL.md) | Schema definition, migration plans, index strategy, retention rules. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Zero-downtime migrations, backup/recovery hooks. |
 
 ## Standards this implementation conforms to
 

@@ -26,7 +26,7 @@ Generated instrumentation MUST conform to [observability-standards](../../../../
 - Metrics: RED per endpoint, USE per significant resource; metric naming `<domain>_<entity>_<action>_<unit>`.
 - Traces: OpenTelemetry, W3C `traceparent` propagation, head-based sampling (100% for errors and tier-0).
 - SLOs declared in the component file per [architecture-schema](../../../../../standards/architecture-schema/README.md); multi-window multi-burn-rate alerts defend SLOs, not raw thresholds.
-- Every alert has a runbook (see [architecture/operations](../../../../architecture/operations/README.md)).
+- Every alert has a runbook (see [architecture/operations](../../../../architecture/operations/SKILL.md)).
 
 Component tier (from architecture-schema) drives instrumentation depth and sampling rate.
 

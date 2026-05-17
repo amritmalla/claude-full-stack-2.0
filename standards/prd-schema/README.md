@@ -56,9 +56,9 @@ Include if material; otherwise omit and add a one-line rationale under a final `
 
 A PRD with `status: approved` is the sole upstream input to:
 
-- [skills/architecture/system-design](../../skills/architecture/system-design/README.md) — consumes Problem, Scope, Non-goals, Success Metrics.
-- [skills/architecture/backend-architecture](../../skills/architecture/backend-architecture/README.md) and [skills/architecture/frontend-architecture](../../skills/architecture/frontend-architecture/README.md) — consume Scope, JTBD.
-- [skills/architecture/quality-engineering](../../skills/architecture/quality-engineering/README.md) — consumes Success Metrics → acceptance criteria.
+- [skills/architecture/system-design](../../skills/architecture/system-design/SKILL.md) — consumes Problem, Scope, Non-goals, Success Metrics.
+- [skills/architecture/backend-architecture](../../skills/architecture/backend-architecture/SKILL.md) and [skills/architecture/frontend-architecture](../../skills/architecture/frontend-architecture/SKILL.md) — consume Scope, JTBD.
+- [skills/architecture/quality-engineering](../../skills/architecture/quality-engineering/SKILL.md) — consumes Success Metrics → acceptance criteria.
 
 Downstream skills MUST NOT proceed if the PRD is `draft` or `review`.
 

@@ -53,9 +53,9 @@ React is a **base** stack in the frontend layer model. It owns all 5 archetypes;
 
 | Architecture domain | How |
 |---|---|
-| [frontend-architecture](../../../architecture/frontend-architecture/README.md) | App shell, routing, rendering, state, design-system seam, a11y. |
-| [performance](../../../architecture/performance/README.md) | Per-route Web Vitals budgets and CI gates. |
-| [security](../../../architecture/security/README.md) | Auth provider wiring, CSP, token storage discipline, no secrets in bundles. |
+| [frontend-architecture](../../../architecture/frontend-architecture/SKILL.md) | App shell, routing, rendering, state, design-system seam, a11y. |
+| [performance](../../../architecture/performance/SKILL.md) | Per-route Web Vitals budgets and CI gates. |
+| [security](../../../architecture/security/SKILL.md) | Auth provider wiring, CSP, token storage discipline, no secrets in bundles. |
 
 ## Standards this implementation conforms to
 

@@ -74,9 +74,9 @@ _None._
 
 | Architecture domain | How |
 |---|---|
-| [frontend-architecture](../../../architecture/frontend-architecture/README.md) | App Router scaffold, rendering per route, state across server/client, delivery. |
-| [performance](../../../architecture/performance/README.md) | Web Vitals per route, edge runtime, route-segment caching, PPR. |
-| [security](../../../architecture/security/README.md) | Middleware-based auth gating, CSP headers, server-side session checks. |
+| [frontend-architecture](../../../architecture/frontend-architecture/SKILL.md) | App Router scaffold, rendering per route, state across server/client, delivery. |
+| [performance](../../../architecture/performance/SKILL.md) | Web Vitals per route, edge runtime, route-segment caching, PPR. |
+| [security](../../../architecture/security/SKILL.md) | Middleware-based auth gating, CSP headers, server-side session checks. |
 
 ## Standards this implementation conforms to
 

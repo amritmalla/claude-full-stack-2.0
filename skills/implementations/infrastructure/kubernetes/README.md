@@ -63,11 +63,11 @@ The five archetype-scoped skills are authored at **mature tier** — each is a d
 
 | Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | Workload topology, autoscaling, disruption budgets, container packaging. |
-| [reliability](../../../architecture/reliability/README.md) | Readiness/liveness probes, PDBs, multi-replica defaults, topology spread. |
-| [security](../../../architecture/security/README.md) | NetworkPolicy, non-root, read-only root FS, dropped caps, image signing. |
-| [operations](../../../architecture/operations/README.md) | Cluster and pod observability, runbook inputs, admission control. |
-| [performance](../../../architecture/performance/README.md) | Resource requests/limits, HPA/VPA, JVM container-aware tuning. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/SKILL.md) | Workload topology, autoscaling, disruption budgets, container packaging. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Readiness/liveness probes, PDBs, multi-replica defaults, topology spread. |
+| [security](../../../architecture/security/SKILL.md) | NetworkPolicy, non-root, read-only root FS, dropped caps, image signing. |
+| [operations](../../../architecture/operations/SKILL.md) | Cluster and pod observability, runbook inputs, admission control. |
+| [performance](../../../architecture/performance/SKILL.md) | Resource requests/limits, HPA/VPA, JVM container-aware tuning. |
 
 ## Standards this implementation conforms to
 

@@ -50,11 +50,11 @@ _None._
 
 | Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | Org topology, network, compute primitives, deployment. |
-| [security](../../../architecture/security/README.md) | IAM, VPC SC, KMS, Secret Manager, Workload Identity. |
-| [reliability](../../../architecture/reliability/README.md) | Regional/multi-regional posture, backups, failover. |
-| [operations](../../../architecture/operations/README.md) | Cloud Monitoring alerting, runbook inputs. |
-| [performance](../../../architecture/performance/README.md) | Right-sizing via Recommender, cost monitoring. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/SKILL.md) | Org topology, network, compute primitives, deployment. |
+| [security](../../../architecture/security/SKILL.md) | IAM, VPC SC, KMS, Secret Manager, Workload Identity. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Regional/multi-regional posture, backups, failover. |
+| [operations](../../../architecture/operations/SKILL.md) | Cloud Monitoring alerting, runbook inputs. |
+| [performance](../../../architecture/performance/SKILL.md) | Right-sizing via Recommender, cost monitoring. |
 
 ## Standards this implementation conforms to
 

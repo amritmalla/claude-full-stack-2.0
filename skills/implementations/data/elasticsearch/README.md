@@ -54,10 +54,10 @@ _None._
 
 | Architecture domain | How |
 |---|---|
-| [data-architecture](../../../architecture/data-architecture/README.md) | Mapping, analyzer design, index topology, retention via ILM. |
-| [reliability](../../../architecture/reliability/README.md) | Shard topology, replica counts, snapshot/restore posture. |
-| [performance](../../../architecture/performance/README.md) | Query review, relevance tuning, aggregation cost control. |
-| [security](../../../architecture/security/README.md) | Roles, DLS/FLS, TLS, audit, network exposure. |
+| [data-architecture](../../../architecture/data-architecture/SKILL.md) | Mapping, analyzer design, index topology, retention via ILM. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Shard topology, replica counts, snapshot/restore posture. |
+| [performance](../../../architecture/performance/SKILL.md) | Query review, relevance tuning, aggregation cost control. |
+| [security](../../../architecture/security/SKILL.md) | Roles, DLS/FLS, TLS, audit, network exposure. |
 
 ## Standards this implementation conforms to
 

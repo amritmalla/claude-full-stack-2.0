@@ -56,8 +56,8 @@ All five Family B archetypes are authored. Cross-archetype handoffs are named in
 
 | Architecture domain | How |
 |---|---|
-| [data-architecture](../../../architecture/data-architecture/README.md) | Document modeling, validation, indexing strategy, shard-key choice, retention rules, consistency posture. |
-| [reliability](../../../architecture/reliability/README.md) | Zero-downtime migrations, backup/restore hooks, replica-set posture. |
+| [data-architecture](../../../architecture/data-architecture/SKILL.md) | Document modeling, validation, indexing strategy, shard-key choice, retention rules, consistency posture. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Zero-downtime migrations, backup/restore hooks, replica-set posture. |
 
 ## Standards this implementation conforms to
 

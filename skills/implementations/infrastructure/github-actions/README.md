@@ -54,10 +54,10 @@ GitHub Actions is the sole member of **Family I — CI/CD** in the infrastructur
 
 | Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | CI/CD pipeline definitions, runner topology, env ladder. |
-| [security](../../../architecture/security/README.md) | OIDC federation, signed artifacts, SAST/SCA/secret scanning, pinned actions. |
-| [operations](../../../architecture/operations/README.md) | Promotion gates, environment protection, runbook inputs for failed releases. |
-| [reliability](../../../architecture/reliability/README.md) | Rollback workflow, canary/blue-green deployment hooks. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/SKILL.md) | CI/CD pipeline definitions, runner topology, env ladder. |
+| [security](../../../architecture/security/SKILL.md) | OIDC federation, signed artifacts, SAST/SCA/secret scanning, pinned actions. |
+| [operations](../../../architecture/operations/SKILL.md) | Promotion gates, environment protection, runbook inputs for failed releases. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Rollback workflow, canary/blue-green deployment hooks. |
 
 ## Standards this implementation conforms to
 

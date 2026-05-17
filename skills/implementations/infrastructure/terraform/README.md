@@ -45,10 +45,10 @@ Terraform is the sole member of **Family H — Infrastructure-as-code** in the i
 
 | Architecture domain | How |
 |---|---|
-| [infrastructure-platform](../../../architecture/infrastructure-platform/README.md) | Module boundaries, env ladder, deployment mechanics. |
-| [security](../../../architecture/security/README.md) | State secret discipline, policy-as-code, no plaintext credentials. |
-| [reliability](../../../architecture/reliability/README.md) | Drift detection, rollback procedure, lock management. |
-| [operations](../../../architecture/operations/README.md) | Promotion gates, runbook inputs for apply failures. |
+| [infrastructure-platform](../../../architecture/infrastructure-platform/SKILL.md) | Module boundaries, env ladder, deployment mechanics. |
+| [security](../../../architecture/security/SKILL.md) | State secret discipline, policy-as-code, no plaintext credentials. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Drift detection, rollback procedure, lock management. |
+| [operations](../../../architecture/operations/SKILL.md) | Promotion gates, runbook inputs for apply failures. |
 
 ## Standards this implementation conforms to
 

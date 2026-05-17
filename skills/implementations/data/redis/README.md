@@ -54,10 +54,10 @@ _None._
 
 | Architecture domain | How |
 |---|---|
-| [data-architecture](../../../architecture/data-architecture/README.md) | Key design, eviction, caching patterns, persistence posture. |
-| [reliability](../../../architecture/reliability/README.md) | Sentinel/Cluster topology, persistence trade-offs, failover. |
-| [performance](../../../architecture/performance/README.md) | Caching patterns, stampede protection, hot-key remediation. |
-| [security](../../../architecture/security/README.md) | ACLs, TLS, command hardening, no-PII discipline. |
+| [data-architecture](../../../architecture/data-architecture/SKILL.md) | Key design, eviction, caching patterns, persistence posture. |
+| [reliability](../../../architecture/reliability/SKILL.md) | Sentinel/Cluster topology, persistence trade-offs, failover. |
+| [performance](../../../architecture/performance/SKILL.md) | Caching patterns, stampede protection, hot-key remediation. |
+| [security](../../../architecture/security/SKILL.md) | ACLs, TLS, command hardening, no-PII discipline. |
 
 ## Standards this implementation conforms to
 
