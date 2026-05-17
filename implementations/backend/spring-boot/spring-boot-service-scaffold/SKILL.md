@@ -37,7 +37,7 @@ Optional:
 - Secure by default: no hardcoded secrets, open actuator endpoints, permissive CORS, anonymous admin surfaces, or disabled protections without explanation.
 - Challenge weak service boundaries before scaffolding. CRUD-only or data-model-driven services may not justify microservice overhead.
 - Ask for confirmation with recommended defaults when a decision changes generated files. Use: "I recommend X because Y. Confirm or redirect."
-- Confirm the target directory before writing files. Recommend `services/<service-name>/` in a monorepo or repo root for a single-service repo. Refuse to write into a plugin/skill repository (any directory containing `architecture/`, `implementations/`, `standards/`, `patterns/`, `marketplace.json`, or this skill's own tree) without explicit user override.
+- Confirm the target directory before writing files. Recommend `services/<service-name>/` in a monorepo or repo root for a single-service repo. Refuse to write into a plugin/skill repository (any directory containing `architecture/`, `implementations/`, `standards/`, `architecture-patterns/`, `marketplace.json`, or this skill's own tree) without explicit user override.
 - Derive the Java package root by stripping hyphens and trailing `-api`/`-service` from the service name (e.g., `orders-api` → `com.<org>.orders`). Hyphens are illegal in Java packages — never emit them. Recommend `com.example` when no organization name is provided.
 - A scaffold that does not build is not done. Run `mvn -q -DskipTests verify` (or Gradle equivalent) and the baseline test before declaring completion. Fix and re-run on failure.
 

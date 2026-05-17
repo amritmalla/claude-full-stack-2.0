@@ -103,4 +103,4 @@ Output rules:
 - Upstream: [`architecture/security`](../../../../architecture/security/SKILL.md), [`architecture/infrastructure-platform`](../../../../architecture/infrastructure-platform/SKILL.md).
 - Builds on: [`terraform-module-and-repository-scaffold`](../terraform-module-and-repository-scaffold/SKILL.md) (env-per-directory layout backed by state here).
 - Related terraform archetype skills: [`terraform-plan-gate-and-policy-as-code`](../terraform-plan-gate-and-policy-as-code/SKILL.md) (secret-scanning/policy gates), [`terraform-apply-and-promotion-mechanics`](../terraform-apply-and-promotion-mechanics/SKILL.md) (lock-recovery/partial-apply runbook), [`terraform-module-reuse-and-supply-chain`](../terraform-module-reuse-and-supply-chain/SKILL.md).
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md), [`multi-tenant-saas`](../../../../patterns/multi-tenant-saas/README.md).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md), [`multi-tenant-saas`](../../../../architecture-patterns/multi-tenant-saas/README.md).

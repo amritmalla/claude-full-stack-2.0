@@ -104,4 +104,4 @@ Output rules:
 
 - Upstream: [`architecture/performance`](../../../../architecture/performance/SKILL.md), [`architecture/data-architecture`](../../../../architecture/data-architecture/SKILL.md), [`architecture/backend-architecture`](../../../../architecture/backend-architecture/SKILL.md).
 - Related implementation skills: [`postgres-schema-and-migration`](../postgres-schema-and-migration/SKILL.md) (owns the index/schema DDL and migration mechanics this skill hands off).
-- Compatible patterns: [`modular-monolith`](../../../../patterns/modular-monolith/README.md), [`microservices`](../../../../patterns/microservices/README.md), [`cqrs`](../../../../patterns/cqrs/README.md) (read-model query tuning).
+- Compatible patterns: [`modular-monolith`](../../../../architecture-patterns/modular-monolith/README.md), [`microservices`](../../../../architecture-patterns/microservices/README.md), [`cqrs`](../../../../architecture-patterns/cqrs/README.md) (read-model query tuning).

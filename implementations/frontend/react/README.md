@@ -25,9 +25,9 @@ React is a **base** stack in the frontend layer model. It owns all 5 archetypes;
 
 ## Compatible patterns
 
-- [microservices](../../../patterns/microservices/README.md) (BFF-backed React SPA)
-- [cqrs](../../../patterns/cqrs/README.md) (read-model-driven UI)
-- [real-time-systems](../../../patterns/real-time-systems/README.md) (subscription-driven UI)
+- [microservices](../../../architecture-patterns/microservices/README.md) (BFF-backed React SPA)
+- [cqrs](../../../architecture-patterns/cqrs/README.md) (read-model-driven UI)
+- [real-time-systems](../../../architecture-patterns/real-time-systems/README.md) (subscription-driven UI)
 
 ## Skills
 

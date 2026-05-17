@@ -85,4 +85,4 @@ Upstream contract: `ai-architecture.md` is the source of truth for the tool surf
 - Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md) — tool surface, schemas, side-effect classes, idempotency rules.
 - Related architecture: [`architecture/security`](../../../../architecture/security/SKILL.md) — authorization model and trust boundaries for tool execution.
 - Related implementation skills: [`openai-structured-output-runtime`](../openai-structured-output-runtime/SKILL.md) (tool arguments are structured output), [`openai-evals-and-observability`](../openai-evals-and-observability/SKILL.md) (tool-failure and denial regression gates), [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) (agent tool registry builds on this provider mechanic).
-- Compatible patterns: [`event-driven`](../../../../patterns/event-driven/README.md) (tool side effects as domain events).
+- Compatible patterns: [`event-driven`](../../../../architecture-patterns/event-driven/README.md) (tool side effects as domain events).

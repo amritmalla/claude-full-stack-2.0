@@ -17,10 +17,10 @@ Architecture decisions (which bounded contexts own which data, consistency model
 
 ## Compatible patterns
 
-- [modular-monolith](../../../patterns/modular-monolith/README.md)
-- [microservices](../../../patterns/microservices/README.md)
-- [event-driven](../../../patterns/event-driven/README.md) (outbox tables live here)
-- [cqrs](../../../patterns/cqrs/README.md) (read-model projections)
+- [modular-monolith](../../../architecture-patterns/modular-monolith/README.md)
+- [microservices](../../../architecture-patterns/microservices/README.md)
+- [event-driven](../../../architecture-patterns/event-driven/README.md) (outbox tables live here)
+- [cqrs](../../../architecture-patterns/cqrs/README.md) (read-model projections)
 
 ## Engine family
 

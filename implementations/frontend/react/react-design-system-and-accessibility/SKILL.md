@@ -110,4 +110,4 @@ Output rules:
 - Builds on: [`react-app-scaffold-and-runtime`](../react-app-scaffold-and-runtime/SKILL.md).
 - Coordinates with: [`react-routing-and-rendering-strategy`](../react-routing-and-rendering-strategy/SKILL.md) (route-change focus handoff), [`react-state-management-and-data-fetching`](../react-state-management-and-data-fetching/SKILL.md) (theme-preference global state).
 - Inherited by meta-frameworks: the `nextjs` stack inherits this archetype; see the frontend layer README meta-framework strategy.
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md), [`cqrs`](../../../../patterns/cqrs/README.md), [`real-time-systems`](../../../../patterns/real-time-systems/README.md).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md), [`cqrs`](../../../../architecture-patterns/cqrs/README.md), [`real-time-systems`](../../../../architecture-patterns/real-time-systems/README.md).

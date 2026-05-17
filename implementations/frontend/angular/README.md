@@ -26,9 +26,9 @@ Angular is a **base** stack in the frontend layer model. It owns all 5 archetype
 
 ## Compatible patterns
 
-- [microservices](../../../patterns/microservices/README.md)
-- [cqrs](../../../patterns/cqrs/README.md)
-- [real-time-systems](../../../patterns/real-time-systems/README.md)
+- [microservices](../../../architecture-patterns/microservices/README.md)
+- [cqrs](../../../architecture-patterns/cqrs/README.md)
+- [real-time-systems](../../../architecture-patterns/real-time-systems/README.md)
 
 ## Skills
 

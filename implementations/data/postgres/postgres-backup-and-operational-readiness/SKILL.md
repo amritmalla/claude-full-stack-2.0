@@ -107,4 +107,4 @@ Output rules:
 
 - Upstream: [`architecture/operations`](../../../../architecture/operations/SKILL.md), [`architecture/reliability`](../../../../architecture/reliability/SKILL.md).
 - Related implementation skills: [`postgres-replication-and-ha-readiness`](../postgres-replication-and-ha-readiness/SKILL.md) (paired availability concern; failover topology is an input here), [`postgres-indexing-and-query-optimization`](../postgres-indexing-and-query-optimization/SKILL.md) (bloat/vacuum overlap), [`postgres-schema-and-migration`](../postgres-schema-and-migration/SKILL.md).
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md), [`modular-monolith`](../../../../patterns/modular-monolith/README.md).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md), [`modular-monolith`](../../../../architecture-patterns/modular-monolith/README.md).

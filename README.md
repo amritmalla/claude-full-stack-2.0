@@ -18,7 +18,7 @@ This repo is an AI-native engineering operating system. Skills are organized by 
 
 - **[architecture/](architecture/)** — technology-agnostic decision domains (product, architecture, backend, security, etc.).
 - **[implementations/](implementations/)** — ecosystem-specific execution (Spring Boot, Postgres, Kubernetes, GitHub Actions, ...).
-- **[patterns/](patterns/)** — reusable architectural strategies (event-driven, hexagonal, modular-monolith, ...).
+- **[architecture-patterns/](architecture-patterns/)** — reusable architectural strategies (event-driven, hexagonal, modular-monolith, ...).
 - **[standards/](standards/)** — shared interoperability contracts that everything above conforms to.
 - **[workflows/](workflows/)** — end-to-end execution flows that chain architecture + implementations.
 

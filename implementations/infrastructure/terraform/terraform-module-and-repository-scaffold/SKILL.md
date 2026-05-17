@@ -98,4 +98,4 @@ Output rules:
 
 - Upstream: [`architecture/infrastructure-platform`](../../../../architecture/infrastructure-platform/SKILL.md), [`architecture/operations`](../../../../architecture/operations/SKILL.md).
 - Related terraform archetype skills (downstream): [`terraform-state-and-secret-management`](../terraform-state-and-secret-management/SKILL.md), [`terraform-plan-gate-and-policy-as-code`](../terraform-plan-gate-and-policy-as-code/SKILL.md), [`terraform-apply-and-promotion-mechanics`](../terraform-apply-and-promotion-mechanics/SKILL.md), [`terraform-module-reuse-and-supply-chain`](../terraform-module-reuse-and-supply-chain/SKILL.md).
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md), [`modular-monolith`](../../../../patterns/modular-monolith/README.md), [`multi-tenant-saas`](../../../../patterns/multi-tenant-saas/README.md).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md), [`modular-monolith`](../../../../architecture-patterns/modular-monolith/README.md), [`multi-tenant-saas`](../../../../architecture-patterns/multi-tenant-saas/README.md).

@@ -22,9 +22,9 @@ Elasticsearch belongs to **Family D — Search** in the data layer model. See [`
 
 ## Compatible patterns
 
-- [microservices](../../../patterns/microservices/README.md)
-- [cqrs](../../../patterns/cqrs/README.md) (search-side read model)
-- [event-driven](../../../patterns/event-driven/README.md) (event-driven index updates)
+- [microservices](../../../architecture-patterns/microservices/README.md)
+- [cqrs](../../../architecture-patterns/cqrs/README.md) (search-side read model)
+- [event-driven](../../../architecture-patterns/event-driven/README.md) (event-driven index updates)
 
 ## Skills
 

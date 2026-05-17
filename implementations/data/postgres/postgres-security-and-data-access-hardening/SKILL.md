@@ -106,4 +106,4 @@ Output rules:
 
 - Upstream: [`architecture/security`](../../../../architecture/security/SKILL.md), [`architecture/data-architecture`](../../../../architecture/data-architecture/SKILL.md).
 - Related implementation skills: [`postgres-schema-and-migration`](../postgres-schema-and-migration/SKILL.md) (owns DDL/migration mechanics this skill hands off), [`postgres-backup-and-operational-readiness`](../postgres-backup-and-operational-readiness/SKILL.md) (backup-secret custody overlap), [`postgres-replication-and-ha-readiness`](../postgres-replication-and-ha-readiness/SKILL.md) (replication-user privilege scope).
-- Compatible patterns: [`multi-tenant-saas`](../../../../patterns/multi-tenant-saas/README.md), [`microservices`](../../../../patterns/microservices/README.md), [`modular-monolith`](../../../../patterns/modular-monolith/README.md).
+- Compatible patterns: [`multi-tenant-saas`](../../../../architecture-patterns/multi-tenant-saas/README.md), [`microservices`](../../../../architecture-patterns/microservices/README.md), [`modular-monolith`](../../../../architecture-patterns/modular-monolith/README.md).

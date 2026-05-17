@@ -23,9 +23,9 @@ ClickHouse belongs to **Family E — Columnar / OLAP** in the data layer model. 
 
 ## Compatible patterns
 
-- [event-driven](../../../patterns/event-driven/README.md) (event-stream ingest)
-- [cqrs](../../../patterns/cqrs/README.md) (analytical read side)
-- [microservices](../../../patterns/microservices/README.md) (per-domain analytical stores)
+- [event-driven](../../../architecture-patterns/event-driven/README.md) (event-stream ingest)
+- [cqrs](../../../architecture-patterns/cqrs/README.md) (analytical read side)
+- [microservices](../../../architecture-patterns/microservices/README.md) (per-domain analytical stores)
 
 ## Skills
 

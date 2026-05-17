@@ -22,9 +22,9 @@ Redis belongs to **Family C — Cache / KV** in the data layer model. See [`impl
 
 ## Compatible patterns
 
-- [microservices](../../../patterns/microservices/README.md) (per-service cache namespaces)
-- [event-driven](../../../patterns/event-driven/README.md) (Redis Streams as a lightweight broker)
-- [real-time-systems](../../../patterns/real-time-systems/README.md)
+- [microservices](../../../architecture-patterns/microservices/README.md) (per-service cache namespaces)
+- [event-driven](../../../architecture-patterns/event-driven/README.md) (Redis Streams as a lightweight broker)
+- [real-time-systems](../../../architecture-patterns/real-time-systems/README.md)
 
 ## Skills
 

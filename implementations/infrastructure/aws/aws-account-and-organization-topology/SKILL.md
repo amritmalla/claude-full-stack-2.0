@@ -100,4 +100,4 @@ Output rules:
 - Upstream: [`architecture/infrastructure-platform`](../../../../architecture/infrastructure-platform/SKILL.md), [`architecture/security`](../../../../architecture/security/SKILL.md).
 - Related aws archetype skills (downstream): [`aws-network-and-identity-foundation`](../aws-network-and-identity-foundation/SKILL.md), [`aws-workload-runtime-and-deployment`](../aws-workload-runtime-and-deployment/SKILL.md), [`aws-observability-and-cost-readiness`](../aws-observability-and-cost-readiness/SKILL.md), [`aws-dr-and-multi-region-readiness`](../aws-dr-and-multi-region-readiness/SKILL.md).
 - IaC mechanics handoff: the `terraform` Family H skills own module/state/plan/apply for these definitions.
-- Compatible patterns: [`multi-tenant-saas`](../../../../patterns/multi-tenant-saas/README.md) (account-per-tenant decisions), [`microservices`](../../../../patterns/microservices/README.md).
+- Compatible patterns: [`multi-tenant-saas`](../../../../architecture-patterns/multi-tenant-saas/README.md) (account-per-tenant decisions), [`microservices`](../../../../architecture-patterns/microservices/README.md).

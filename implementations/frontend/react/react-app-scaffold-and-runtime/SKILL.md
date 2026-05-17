@@ -37,7 +37,7 @@ Optional:
 - Observability is mandatory in the baseline: a structured logging client, RUM (`web-vitals`) wiring, and error-reporting with release/environment tagging and a top-level error boundary that reports.
 - Error boundaries are layered: one top-level boundary that reports and renders a safe fallback, plus the seam for route-level boundaries the routing skill will populate.
 - Config is environment-agnostic at build time. The same artifact runs in every environment; configuration arrives via runtime injection (`window.__ENV__`, `/config.json`, or platform env), never via per-environment builds.
-- Confirm the target directory before writing files. Recommend `apps/<app-name>/` in a monorepo or repo root for a single-app repo. Refuse to write into a plugin/skill repository (any directory containing `architecture/`, `implementations/`, `standards/`, `patterns/`, or `marketplace.json`) without explicit user override.
+- Confirm the target directory before writing files. Recommend `apps/<app-name>/` in a monorepo or repo root for a single-app repo. Refuse to write into a plugin/skill repository (any directory containing `architecture/`, `implementations/`, `standards/`, `architecture-patterns/`, or `marketplace.json`) without explicit user override.
 - A scaffold that does not build and does not pass its smoke test is not done. Run the build and a baseline render/e2e smoke before declaring completion; fix and re-run on failure.
 
 ## Output contract
@@ -98,4 +98,4 @@ Output rules:
 
 - Upstream: [`architecture/frontend-architecture`](../../../../architecture/frontend-architecture/SKILL.md), [`architecture/security`](../../../../architecture/security/SKILL.md).
 - Related react archetype skills (extend this baseline): [`react-routing-and-rendering-strategy`](../react-routing-and-rendering-strategy/SKILL.md), [`react-state-management-and-data-fetching`](../react-state-management-and-data-fetching/SKILL.md), [`react-design-system-and-accessibility`](../react-design-system-and-accessibility/SKILL.md), [`react-performance-and-delivery-optimization`](../react-performance-and-delivery-optimization/SKILL.md).
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md) (BFF-backed SPA), [`cqrs`](../../../../patterns/cqrs/README.md), [`real-time-systems`](../../../../patterns/real-time-systems/README.md).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md) (BFF-backed SPA), [`cqrs`](../../../../architecture-patterns/cqrs/README.md), [`real-time-systems`](../../../../architecture-patterns/real-time-systems/README.md).

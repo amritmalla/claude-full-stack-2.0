@@ -412,11 +412,11 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 - Flyway
 
 **Compatible patterns:**
-- [modular-monolith](../../patterns/modular-monolith/README.md)
-- [microservices](../../patterns/microservices/README.md)
-- [event-driven](../../patterns/event-driven/README.md)
-- [cqrs](../../patterns/cqrs/README.md)
-- [hexagonal-architecture](../../patterns/hexagonal-architecture/README.md)
+- [modular-monolith](../../architecture-patterns/modular-monolith/README.md)
+- [microservices](../../architecture-patterns/microservices/README.md)
+- [event-driven](../../architecture-patterns/event-driven/README.md)
+- [cqrs](../../architecture-patterns/cqrs/README.md)
+- [hexagonal-architecture](../../architecture-patterns/hexagonal-architecture/README.md)
 
 **Architecture domains implemented:**
 
@@ -488,10 +488,10 @@ Architecture decisions (which bounded contexts own which collections, consistenc
 - Testcontainers for migration dry-runs
 
 **Compatible patterns:**
-- [modular-monolith](../../patterns/modular-monolith/README.md)
-- [microservices](../../patterns/microservices/README.md)
-- [event-driven](../../patterns/event-driven/README.md) (change-stream consumers; outbox patterns)
-- [cqrs](../../patterns/cqrs/README.md) (read-model projections)
+- [modular-monolith](../../architecture-patterns/modular-monolith/README.md)
+- [microservices](../../architecture-patterns/microservices/README.md)
+- [event-driven](../../architecture-patterns/event-driven/README.md) (change-stream consumers; outbox patterns)
+- [cqrs](../../architecture-patterns/cqrs/README.md) (read-model projections)
 
 **Architecture domains implemented:**
 
@@ -520,10 +520,10 @@ Architecture decisions (which bounded contexts own which data, consistency model
 - `pg_dump` / logical replication for migration rehearsals
 
 **Compatible patterns:**
-- [modular-monolith](../../patterns/modular-monolith/README.md)
-- [microservices](../../patterns/microservices/README.md)
-- [event-driven](../../patterns/event-driven/README.md) (outbox tables live here)
-- [cqrs](../../patterns/cqrs/README.md) (read-model projections)
+- [modular-monolith](../../architecture-patterns/modular-monolith/README.md)
+- [microservices](../../architecture-patterns/microservices/README.md)
+- [event-driven](../../architecture-patterns/event-driven/README.md) (outbox tables live here)
+- [cqrs](../../architecture-patterns/cqrs/README.md) (read-model projections)
 
 **Architecture domains implemented:**
 

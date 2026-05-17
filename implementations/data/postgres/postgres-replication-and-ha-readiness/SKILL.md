@@ -105,4 +105,4 @@ Output rules:
 
 - Upstream: [`architecture/reliability`](../../../../architecture/reliability/SKILL.md), [`architecture/data-architecture`](../../../../architecture/data-architecture/SKILL.md).
 - Related implementation skills: [`postgres-backup-and-operational-readiness`](../postgres-backup-and-operational-readiness/SKILL.md) (paired durability/restore concern), [`postgres-indexing-and-query-optimization`](../postgres-indexing-and-query-optimization/SKILL.md) (read-replica query posture), [`postgres-schema-and-migration`](../postgres-schema-and-migration/SKILL.md).
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md), [`modular-monolith`](../../../../patterns/modular-monolith/README.md), [`cqrs`](../../../../patterns/cqrs/README.md) (read-model replica routing).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md), [`modular-monolith`](../../../../architecture-patterns/modular-monolith/README.md), [`cqrs`](../../../../architecture-patterns/cqrs/README.md) (read-model replica routing).

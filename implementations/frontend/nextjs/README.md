@@ -43,9 +43,9 @@ If a library is fundamentally incompatible with RSC (heavy reliance on `useLayou
 
 ## Compatible patterns
 
-- [microservices](../../../patterns/microservices/README.md) (Next as a frontend over multiple BFFs)
-- [cqrs](../../../patterns/cqrs/README.md) (RSC consuming a read model)
-- [event-driven](../../../patterns/event-driven/README.md) (revalidation triggered by upstream events)
+- [microservices](../../../architecture-patterns/microservices/README.md) (Next as a frontend over multiple BFFs)
+- [cqrs](../../../architecture-patterns/cqrs/README.md) (RSC consuming a read model)
+- [event-driven](../../../architecture-patterns/event-driven/README.md) (revalidation triggered by upstream events)
 
 ## Skills
 

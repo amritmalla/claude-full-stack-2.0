@@ -19,11 +19,11 @@ Implements backend architecture domains using the Spring ecosystem. This is the 
 
 ## Compatible patterns
 
-- [modular-monolith](../../../patterns/modular-monolith/README.md)
-- [microservices](../../../patterns/microservices/README.md)
-- [event-driven](../../../patterns/event-driven/README.md)
-- [cqrs](../../../patterns/cqrs/README.md)
-- [hexagonal-architecture](../../../patterns/hexagonal-architecture/README.md)
+- [modular-monolith](../../../architecture-patterns/modular-monolith/README.md)
+- [microservices](../../../architecture-patterns/microservices/README.md)
+- [event-driven](../../../architecture-patterns/event-driven/README.md)
+- [cqrs](../../../architecture-patterns/cqrs/README.md)
+- [hexagonal-architecture](../../../architecture-patterns/hexagonal-architecture/README.md)
 
 ## Skills
 

@@ -25,7 +25,7 @@ assets/       # optional templates or starter files
 checklists/   # optional quality gates
 ```
 
-`patterns/`, `standards/`, `workflows/`, `templates/`, and `shared/` support the skill system but do not define invocable skills unless they contain their own explicit spec.
+`architecture-patterns/`, `standards/`, `workflows/`, `templates/`, and `shared/` support the skill system but do not define invocable skills unless they contain their own explicit spec.
 
 ## SKILL.md Rules
 

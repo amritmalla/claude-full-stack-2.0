@@ -103,7 +103,7 @@ Responses include `RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset` he
 - Topic naming per `naming-conventions` (`domain.entity.event`).
 - Every event has a versioned schema owned by the producing service.
 - Producers MUST guarantee at-least-once delivery; consumers MUST be idempotent.
-- See `patterns/event-driven` once authored.
+- See `architecture-patterns/event-driven` once authored.
 
 ## Anti-patterns
 

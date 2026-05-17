@@ -109,4 +109,4 @@ Output rules:
 
 - Upstream: [`architecture/backend-architecture`](../../../../architecture/backend-architecture/SKILL.md) — event contracts and delivery semantics.
 - Related implementation skills: [`spring-boot-service-scaffold`](../spring-boot-service-scaffold/SKILL.md) (baseline this skill builds on), [`spring-boot-observability-readiness`](../spring-boot-observability-readiness/SKILL.md) (extends observability for event flows), [`postgres-schema-and-migration`](../../../data/postgres/postgres-schema-and-migration/SKILL.md) (outbox table DDL).
-- Compatible patterns: [`event-driven`](../../../../patterns/event-driven/README.md), [`cqrs`](../../../../patterns/cqrs/README.md).
+- Compatible patterns: [`event-driven`](../../../../architecture-patterns/event-driven/README.md), [`cqrs`](../../../../architecture-patterns/cqrs/README.md).

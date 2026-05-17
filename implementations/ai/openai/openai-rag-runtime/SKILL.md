@@ -85,4 +85,4 @@ Upstream contract: `ai-architecture.md` and the `data-architecture` handoff are 
 - Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md) — retrieval topology, grounding rules, citation requirements, budgets.
 - Related architecture: [`architecture/data-architecture`](../../../../architecture/data-architecture/SKILL.md) (corpus ownership, index, refresh cadence), [`architecture/security`](../../../../architecture/security/SKILL.md) (injection posture for retrieved content).
 - Related implementation skills: [`openai-structured-output-runtime`](../openai-structured-output-runtime/SKILL.md) (schema-bound grounded answers), [`openai-evals-and-observability`](../openai-evals-and-observability/SKILL.md) (groundedness regression gates), [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) (retrieval exposed as an agent tool).
-- Compatible patterns: [`ai-rag-platform`](../../../../patterns/ai-rag-platform/README.md).
+- Compatible patterns: [`ai-rag-platform`](../../../../architecture-patterns/ai-rag-platform/README.md).

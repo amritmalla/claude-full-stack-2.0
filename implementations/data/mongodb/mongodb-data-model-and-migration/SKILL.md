@@ -112,4 +112,4 @@ Output rules:
 
 - Upstream: [`architecture/system-design`](../../../../architecture/system-design/SKILL.md), [`architecture/data-architecture`](../../../../architecture/data-architecture/SKILL.md), [`architecture/backend-architecture`](../../../../architecture/backend-architecture/SKILL.md).
 - Related implementation skills: backend ecosystem skills consume this schema (ODM/repository wiring lives there, not here).
-- Compatible patterns: [`modular-monolith`](../../../../patterns/modular-monolith/README.md), [`microservices`](../../../../patterns/microservices/README.md), [`event-driven`](../../../../patterns/event-driven/README.md) (outbox or change-stream patterns), [`cqrs`](../../../../patterns/cqrs/README.md) (read-model projections).
+- Compatible patterns: [`modular-monolith`](../../../../architecture-patterns/modular-monolith/README.md), [`microservices`](../../../../architecture-patterns/microservices/README.md), [`event-driven`](../../../../architecture-patterns/event-driven/README.md) (outbox or change-stream patterns), [`cqrs`](../../../../architecture-patterns/cqrs/README.md) (read-model projections).

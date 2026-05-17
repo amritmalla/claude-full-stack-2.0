@@ -106,4 +106,4 @@ Output rules:
 - Upstream: [`architecture/infrastructure-platform`](../../../../architecture/infrastructure-platform/SKILL.md), [`architecture/reliability`](../../../../architecture/reliability/SKILL.md), [`architecture/operations`](../../../../architecture/operations/SKILL.md) (runbook operationalization).
 - Builds on: [`terraform-module-and-repository-scaffold`](../terraform-module-and-repository-scaffold/SKILL.md), [`terraform-state-and-secret-management`](../terraform-state-and-secret-management/SKILL.md), [`terraform-plan-gate-and-policy-as-code`](../terraform-plan-gate-and-policy-as-code/SKILL.md) (drift signal + reviewed plan).
 - Related: [`terraform-module-reuse-and-supply-chain`](../terraform-module-reuse-and-supply-chain/SKILL.md).
-- Compatible patterns: [`microservices`](../../../../patterns/microservices/README.md), [`multi-tenant-saas`](../../../../patterns/multi-tenant-saas/README.md).
+- Compatible patterns: [`microservices`](../../../../architecture-patterns/microservices/README.md), [`multi-tenant-saas`](../../../../architecture-patterns/multi-tenant-saas/README.md).
