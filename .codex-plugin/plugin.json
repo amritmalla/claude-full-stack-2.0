@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "AI-native software engineering skills from idea to production.",
   "author": {
-    "name": "Amrit Malla",
+    "name": "Yam Malla",
     "email": "amritmalla2021@gmail.com"
   },
   "homepage": "https://github.com/amritmalla/claude-full-stack-2.0",
@@ -18,7 +18,7 @@
     "displayName": "Claude Full Stack 2.0",
     "shortDescription": "AI-native engineering skills from idea to production",
     "longDescription": "Production-grade skills for product discovery, system design, backend architecture, quality, security, observability, data, infrastructure, CI/CD, and operations.",
-    "developerName": "Amrit Malla",
+    "developerName": "Yam Malla",
     "category": "Coding",
     "capabilities": [
       "Read",
