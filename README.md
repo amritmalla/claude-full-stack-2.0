@@ -52,9 +52,14 @@ calling, RAG runtime, evals/observability, and a LangChain agent runtime — all
 at canonical template parity and invocable. See
 [`implementations/ai`](implementations/ai/) for the archetype model and roadmap.
 
-## Workflow
+## Workflows
 
-[`idea-to-production-spring-boot`](workflows/idea-to-production-spring-boot/) chains all 12 skills with explicit Entry/Exit/Gate checkpoints across four phases: Define → Build → Ship → Operate.
+Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate checkpoints per phase:
+
+- [`idea-to-production-full-stack`](workflows/idea-to-production-full-stack/) — Spring Boot + Postgres backend and React web frontend, idea to production on Kubernetes (the backend+web capstone).
+- [`idea-to-production-flutter`](workflows/idea-to-production-flutter/) — a Flutter mobile app from idea to signed store release.
+- [`production-readiness-review`](workflows/production-readiness-review/) — a non-build hardening pass (reliability → security → performance → operations) for an existing service.
+- [`cloud-foundation-on-aws`](workflows/cloud-foundation-on-aws/) — an infrastructure-only AWS landing zone and Terraform delivery foundation.
 
 ## Reference example
 

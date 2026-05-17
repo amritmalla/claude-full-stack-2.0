@@ -21,7 +21,7 @@ The directory name matches the `name` field in frontmatter.
 
 A workflow has 2–6 phases. Each phase is a coherent stage of work that ends with an explicit checkpoint (PR review, smoke test, on-call handoff).
 
-Phases for the v0.1 capstone workflow `idea-to-production-spring-boot`: Define → Build → Ship → Operate.
+Phases for the capstone workflow `idea-to-production-full-stack`: Define → Build Backend → Build Frontend → Verify → Ship → Operate.
 
 ## 3. Fill the WORKFLOW.md template
 

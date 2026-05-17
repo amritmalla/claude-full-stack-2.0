@@ -28,7 +28,7 @@ Minimal e-commerce order service used as the canonical input for every skill in 
 
 ## Skill outputs
 
-Every skill in this plugin is exercised against `orders-api`. The output produced by each skill is committed under [`.skill-outputs/<skill-name>/`](.skill-outputs/) for reference. Running the [`idea-to-production-spring-boot`](../../../workflows/idea-to-production-spring-boot/) workflow chains all 12 skills against this service end-to-end.
+Every skill in this plugin is exercised against `orders-api`. The output produced by each skill is committed under [`.skill-outputs/<skill-name>/`](.skill-outputs/) for reference. The Build Backend phase of the [`idea-to-production-full-stack`](../../../workflows/idea-to-production-full-stack/) workflow chains the backend skills against this service end-to-end.
 
 ## Status
 
