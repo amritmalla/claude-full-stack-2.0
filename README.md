@@ -6,8 +6,11 @@ A Claude Code plugin: a curated set of production-grade Claude Skills that take 
 
 ## Install
 
-```bash
-/plugin install https://github.com/amritmalla/claude-full-stack-2.0
+Add the marketplace, then install the plugin from it:
+
+```text
+/plugin marketplace add amritmalla/claude-full-stack-2.0
+/plugin install claude-full-stack-2-0@amritmalla-plugins
 ```
 
 Once installed, the skills below become invocable by Claude Code's `Skill` tool whenever their `description` matches your request.
