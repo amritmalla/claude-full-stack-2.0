@@ -1,6 +1,6 @@
 # anthropic
 
-> Status: in progress — 1 of 5 archetypes authored.
+> Status: complete — 5 of 5 archetypes authored at mature tier; all registered.
 
 ## Purpose
 
@@ -17,24 +17,36 @@ and are taken as inputs here.
 
 ### Authored
 
-- [`anthropic-structured-output-runtime`](anthropic-structured-output-runtime/SKILL.md) — schema-bound JSON / typed objects / extraction / classification via forced tool use, prefill, or strict prompt; validation, prompt-cache placement, extended-thinking handling, retries, tests, and telemetry. At canonical template parity; registered.
+All five skills are authored at **mature tier** (`SKILL.md` + `references/<skill>-playbook.md` + `references/<skill>-quality-rubric.md` + `assets/<skill>.template.md`) and registered.
+
+- [`anthropic-structured-output-runtime`](anthropic-structured-output-runtime/SKILL.md) — schema-bound JSON / typed objects / extraction / classification via forced tool use, prefill, or strict prompt; validation, bounded repair, prompt-cache placement, extended-thinking handling, tests, telemetry.
+- [`anthropic-tool-use-runtime`](anthropic-tool-use-runtime/SKILL.md) — tool schemas, an authorization-enforcing execution adapter, idempotency, audit logging, the bounded tool loop, parallel-tool and `tool_choice` control, tool-definition-prefix caching, and tool-failure tests.
+- [`anthropic-rag-runtime`](anthropic-rag-runtime/SKILL.md) — retrieval adapter, long-context packing, grounding prompt, Citations-API source handling, hallucination/grounding gate, retrieved-context-prefix caching, and retrieval evals.
+- [`anthropic-evals-and-observability`](anthropic-evals-and-observability/SKILL.md) — eval datasets, scoring harness, regression gates, prompt/model versioning, Message Batches routing for offline runs, token/cost and cache telemetry, traces, runbook notes.
+- [`anthropic-prompt-caching-and-context-runtime`](anthropic-prompt-caching-and-context-runtime/SKILL.md) — `cache_control` breakpoint strategy, 5-minute-TTL warm/cold accounting, extended-thinking budget and retention, and long-context packing/truncation discipline.
 
 ### Archetype coverage
 
 | Archetype | Skill | Status |
 |---|---|---|
-| `structured-output-runtime` | [`anthropic-structured-output-runtime`](anthropic-structured-output-runtime/SKILL.md) | authored, registered |
-| `tool-calling-runtime` | `anthropic-tool-use-runtime` | planned |
-| `rag-runtime` | `anthropic-rag-runtime` | planned |
-| `evals-and-observability` | `anthropic-evals-and-observability` | planned |
-| `model-runtime` (context/caching) | `anthropic-prompt-caching-and-context-runtime` | planned |
+| `structured-output-runtime` | [`anthropic-structured-output-runtime`](anthropic-structured-output-runtime/SKILL.md) | authored (mature), registered |
+| `tool-calling-runtime` | [`anthropic-tool-use-runtime`](anthropic-tool-use-runtime/SKILL.md) | authored (mature), registered |
+| `rag-runtime` | [`anthropic-rag-runtime`](anthropic-rag-runtime/SKILL.md) | authored (mature), registered |
+| `evals-and-observability` | [`anthropic-evals-and-observability`](anthropic-evals-and-observability/SKILL.md) | authored (mature), registered |
+| `model-runtime` (context/caching) | [`anthropic-prompt-caching-and-context-runtime`](anthropic-prompt-caching-and-context-runtime/SKILL.md) | authored (mature), registered |
 
-### Planned skill scope (future work)
+### Tier note
 
-- **`anthropic-tool-use-runtime`** *(`tool-calling-runtime`)* — Anthropic tool-use wiring with tool schemas, execution adapter, authorization, idempotency, audit logging, and failure tests. Anthropic-specific surface folded into Operating rules: parallel tool use, `tool_choice` control, MCP connector tools where the architecture approves them, and prompt-cache placement on the tool-definition prefix.
-- **`anthropic-rag-runtime`** *(`rag-runtime`)* — retrieval adapter, context packing, grounding prompt, citations, hallucination checks, retrieval evals. Anthropic-specific surface folded in: the **Citations API** for source-grounded answers, long-context window discipline, and cache placement on the retrieved-context prefix when the corpus is stable within a session.
-- **`anthropic-evals-and-observability`** *(`evals-and-observability`)* — regression evals, prompt/model versioning, token and cost telemetry (including cache-read/write token accounting), tracing, dashboards, runbook notes. Anthropic-specific surface folded in: **Message Batches API** for offline eval runs and cost-efficient batch scoring.
-- **`anthropic-prompt-caching-and-context-runtime`** *(`model-runtime`, Anthropic-specific)* — owns the cross-cutting context surface: `cache_control` breakpoint strategy, cache-hit measurement and TTL behavior, extended-thinking budget and thinking-block retention, long-context packing discipline, and prompt-structure conventions the other anthropic skills reference rather than re-specify.
+This stack is authored at **mature tier**, intentionally diverging from the lean single-file `openai` mirror. The cross-provider archetype boundaries still match `openai` so skills stay swappable; only the artifact depth differs. The divergence is deliberate, not drift.
+
+### Self-contained design
+
+Each skill is self-contained: it self-specifies its own `cache_control` and
+extended-thinking discipline inline rather than deferring to a shared
+foundation skill. `anthropic-prompt-caching-and-context-runtime` is the
+specialist that owns the deep context/caching runtime job itself — it is a
+peer, not a base the other skills reference. This keeps every skill swappable
+against its `openai` counterpart without a hidden intra-stack dependency.
 
 ## Anthropic-specific surface
 
@@ -43,8 +55,8 @@ relevant mirrored skills rather than split into their own skills:
 
 | Feature | Home |
 |---|---|
-| Prompt caching (`cache_control`) | Operating rules of every anthropic skill; owned end-to-end by `anthropic-prompt-caching-and-context-runtime` |
-| Extended thinking | Operating rules of the skill that uses it; budget/retention owned by `anthropic-prompt-caching-and-context-runtime` |
+| Prompt caching (`cache_control`) | Self-specified inline in every anthropic skill's Operating rules; `anthropic-prompt-caching-and-context-runtime` is the specialist for the deep caching job |
+| Extended thinking | Self-specified inline in the Operating rules of each skill that uses it; `anthropic-prompt-caching-and-context-runtime` is the specialist for budget/retention |
 | Citations API | `anthropic-rag-runtime` |
 | Message Batches API | `anthropic-evals-and-observability` |
 | MCP connector tools | `anthropic-tool-use-runtime` |

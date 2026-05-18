@@ -1,6 +1,6 @@
 ---
 name: anthropic-structured-output-runtime
-description: Use when implementing an Anthropic-backed AI capability that must return schema-bound JSON, typed objects, classifications, or extraction results from an approved ai-architecture.md. Produces Messages API wiring, tool-use or prefill-based structured output, schema validation, prompt-cache placement, extended-thinking handling, retry and failure handling, malformed-output tests, and telemetry for latency, tokens, cache hits, and validation failures. Do not use for generic model selection, AI architecture, RAG, free-form tool execution, or agent workflow design.
+description: Use when an approved ai-architecture.md needs an Anthropic Claude capability returning schema-bound JSON, typed objects, classifications, or extractions. Produces Messages API wiring, schema validation, bounded repair, and tests. Not for RAG, tool execution, or agent control flow.
 ---
 
 # Anthropic Structured Output Runtime
@@ -55,6 +55,12 @@ The implementation MUST conform to:
 
 Upstream contract: `ai-architecture.md` is the source of truth for the capability, output schema, model tier, prompt-cache strategy, extended-thinking requirement, degradation behavior, and latency/cost budgets. If it is silent on any of these, this skill pauses and raises an ADR candidate rather than inventing the decision.
 
+## Progressive references
+
+- Read `references/anthropic-structured-output-runtime-playbook.md` when implementing any owned area or checking the anti-pattern list.
+- Read `references/anthropic-structured-output-runtime-quality-rubric.md` before declaring the integration complete.
+- Use `assets/anthropic-structured-output-runtime.template.md` as the request-shape, validation, telemetry, and test-matrix reference.
+
 ## Process
 
 1. Load `ai-architecture.md` and identify the capability, output schema, success criteria, failure modes, and prompt-cache strategy.
@@ -100,4 +106,5 @@ Output rules:
 - Upstream: [`architecture/ai-native-engineering`](../../../../architecture/ai-native-engineering/SKILL.md) — capability, model contract, output schema, cache strategy, degradation behavior, budgets.
 - Related architecture: [`architecture/quality-engineering`](../../../../architecture/quality-engineering/SKILL.md) — malformed-output and contract coverage.
 - Cross-provider counterpart: [`openai-structured-output-runtime`](../../openai/openai-structured-output-runtime/SKILL.md) — same archetype, OpenAI mechanics.
-- Related implementation skills: [`openai-evals-and-observability`](../../openai/openai-evals-and-observability/SKILL.md) (regression gates for output quality), [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) (when structured output is an agent step). Planned anthropic siblings are listed in the [anthropic stack README](../../README.md).
+- Related implementation skills: [`openai-evals-and-observability`](../../openai/openai-evals-and-observability/SKILL.md) (regression gates for output quality), [`langchain-agent-runtime`](../../langchain/langchain-agent-runtime/SKILL.md) (when structured output is an agent step). Sibling anthropic skills are listed in the [anthropic stack README](../README.md).
+- Standards: [`api-standards`](../../../../../standards/api-standards/README.md), [`security-standards`](../../../../../standards/security-standards/README.md), [`observability-standards`](../../../../../standards/observability-standards/README.md), [`deployment-standards`](../../../../../standards/deployment-standards/README.md), [`naming-conventions`](../../../../../standards/naming-conventions/README.md).
