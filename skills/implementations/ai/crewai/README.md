@@ -1,6 +1,6 @@
 # crewai
 
-> Status: scaffold (deferred — awaiting a reference agent workflow).
+> Status: complete — 2 skills authored at mature tier; registered.
 
 ## Purpose
 
@@ -10,7 +10,7 @@ Architecture decisions (whether a crew topology is warranted, the tool surface, 
 
 ## Strategy
 
-Per [`implementations/ai/README.md`](../README.md), CrewAI skills are **deferred until a concrete agent workflow exists** — without a reference use case the skills risk becoming generic framework advice. Direct provider skills (`openai`, `anthropic`) and the single-agent baseline (`langchain-agent-runtime`) are authored first to preserve a clear baseline.
+The un-deferral gate — a concrete agent workflow with a reference use case — is **satisfied**. Both skills are grounded in the shared **Research-and-synthesize** reference (Researcher / Critic-verifier / Writer; eval triplet: grounding score, citation correctness, answer correctness on a fixed eval set), so they teach a concrete realization rather than generic framework advice. The skills are authored at **mature tier** (`SKILL.md` + playbook + quality-rubric + asset template), intentionally diverging from the lean single-file `langchain-agent-runtime` framework precedent; the divergence is deliberate, not drift. The AutoGen stack mirrors the same reference and archetype boundaries so cross-framework skills stay swappable.
 
 ## Ecosystem (target)
 
@@ -24,19 +24,17 @@ Per [`implementations/ai/README.md`](../README.md), CrewAI skills are **deferred
 
 ### Authored
 
-_None._
+Both skills are authored at **mature tier** (`SKILL.md` + `references/<skill>-playbook.md` + `references/<skill>-quality-rubric.md` + `assets/<skill>.template.md`) and registered.
+
+- [`crewai-agent-workflow`](crewai-agent-workflow/SKILL.md) — Research-and-synthesize as a CrewAI crew: role/goal/backstory agents over a sequential or hierarchical process per the approved topology, critic-gated termination, max-step budgets in code, loop-safety tests, tracing, and the gated eval triplet.
+- [`crewai-task-and-tool-design`](crewai-task-and-tool-design/SKILL.md) — CrewAI task decomposition plus the closed tool registry and authorization-enforcing execution adapter for the Researcher's tools: tool schemas, idempotency, audit logging, and tool/task-failure tests.
 
 ### Archetype coverage
 
 | Archetype | Skill | Status |
 |---|---|---|
-| agent-runtime | `crewai-agent-workflow` | deferred |
-| tool-calling-runtime | `crewai-task-and-tool-design` | deferred |
-
-### Planned skill scope (future work)
-
-- **`crewai-agent-workflow`** *(`agent-runtime`)* — approved crew topology, role/task definitions, process selection (sequential/hierarchical), termination and max-step enforcement, loop-safety tests, tracing. Deferred until a concrete agent workflow example exists.
-- **`crewai-task-and-tool-design`** *(`tool-calling-runtime`)* — task decomposition, tool registry, execution adapter, authorization, idempotency, audit logging, failure tests. Deferred to avoid generic framework advice without a reference use case.
+| agent-runtime | [`crewai-agent-workflow`](crewai-agent-workflow/SKILL.md) | authored (mature), registered |
+| tool-calling-runtime | [`crewai-task-and-tool-design`](crewai-task-and-tool-design/SKILL.md) | authored (mature), registered |
 
 ## Architecture domains implemented
 
@@ -56,4 +54,4 @@ _None._
 ## Upstream inputs
 
 - Approved `ai-architecture.md` declaring crew topology, tool surface, task boundaries, stop conditions, and eval plan.
-- A concrete reference agent workflow (the gate for un-deferring these skills).
+- The un-deferral gate (a concrete reference agent workflow) is satisfied by the shared Research-and-synthesize reference.

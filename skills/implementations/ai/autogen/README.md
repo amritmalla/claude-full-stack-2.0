@@ -1,6 +1,6 @@
 # autogen
 
-> Status: scaffold (deferred — awaiting a reference multi-agent workflow).
+> Status: complete — 2 skills authored at mature tier; registered.
 
 ## Purpose
 
@@ -10,7 +10,7 @@ Architecture decisions (whether to use a multi-agent topology at all, the tool s
 
 ## Strategy
 
-Per [`implementations/ai/README.md`](../README.md), AutoGen skills are **deferred until a concrete multi-agent workflow with measurable eval criteria exists**. Authoring them earlier risks generic framework advice. Direct provider skills (`openai`, `anthropic`) and the single-agent baseline (`langchain-agent-runtime`) are authored first to preserve a clear baseline.
+The un-deferral gate — a concrete multi-agent workflow with measurable eval criteria — is **satisfied**. Both skills are grounded in the shared **Research-and-synthesize** reference (Researcher / Critic-verifier / Writer; eval triplet: grounding score, citation correctness, answer correctness on a fixed eval set), so they teach a concrete realization rather than generic framework advice. The skills are authored at **mature tier** (`SKILL.md` + playbook + quality-rubric + asset template), intentionally diverging from the lean single-file `langchain-agent-runtime` framework precedent; the divergence is deliberate, not drift. The CrewAI stack mirrors the same reference and archetype boundaries so cross-framework skills stay swappable.
 
 ## Ecosystem (target)
 
@@ -24,19 +24,17 @@ Per [`implementations/ai/README.md`](../README.md), AutoGen skills are **deferre
 
 ### Authored
 
-_None._
+Both skills are authored at **mature tier** (`SKILL.md` + `references/<skill>-playbook.md` + `references/<skill>-quality-rubric.md` + `assets/<skill>.template.md`) and registered.
+
+- [`autogen-multi-agent-workflow`](autogen-multi-agent-workflow/SKILL.md) — Research-and-synthesize as AutoGen group-chat/teams: role-to-agent mapping, critic-gated termination, max-turn/step budgets in code, loop-safety tests, tracing, and the gated eval triplet. The pinned exemplar for the framework stacks.
+- [`autogen-tool-orchestration`](autogen-tool-orchestration/SKILL.md) — AutoGen tool/function registration and execution adapter for the Researcher's tools: tool schemas, authorization enforced in the adapter, idempotency, audit logging, and tool-failure tests.
 
 ### Archetype coverage
 
 | Archetype | Skill | Status |
 |---|---|---|
-| agent-runtime | `autogen-multi-agent-workflow` | deferred |
-| tool-calling-runtime | `autogen-tool-orchestration` | deferred |
-
-### Planned skill scope (future work)
-
-- **`autogen-multi-agent-workflow`** *(`agent-runtime`)* — approved multi-agent topology (group chat / teams), role definitions, termination and max-turn enforcement, loop-safety tests, tracing. Deferred until a reference workflow with measurable eval criteria exists.
-- **`autogen-tool-orchestration`** *(`tool-calling-runtime`)* — tool registry, execution adapter, authorization, idempotency, audit logging, tool-failure tests. Depends on an approved tool surface and operational control model.
+| agent-runtime | [`autogen-multi-agent-workflow`](autogen-multi-agent-workflow/SKILL.md) | authored (mature), registered |
+| tool-calling-runtime | [`autogen-tool-orchestration`](autogen-tool-orchestration/SKILL.md) | authored (mature), registered |
 
 ## Architecture domains implemented
 
@@ -56,4 +54,4 @@ _None._
 ## Upstream inputs
 
 - Approved `ai-architecture.md` declaring agent topology, tool surface, memory/session policy, stop conditions, and eval plan.
-- A concrete reference multi-agent workflow with measurable eval criteria (the gate for un-deferring these skills).
+- The un-deferral gate (a concrete reference multi-agent workflow with measurable eval criteria) is satisfied by the shared Research-and-synthesize reference.
