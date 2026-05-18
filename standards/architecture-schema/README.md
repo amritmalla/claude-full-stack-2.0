@@ -449,6 +449,18 @@ Include if material; otherwise omit and add a one-line rationale under `## Omitt
 
 Use Mermaid (`graph`, `flowchart`, `sequenceDiagram`) inline. PNG/SVG only when Mermaid is insufficient; place under `assets/diagrams/`.
 
+`system-design.md` MUST contain at least:
+
+- a **context / bounded-context diagram** showing the system's bounded contexts and their dependencies, and
+- a **primary-workflow diagram** (data-flow or sequence) for the core workflow named in the PRD.
+
+Other architecture documents include the topology diagram their authoring skill's Outputs names *when it is material*; when omitted, list it under `## Omitted sections` with a one-line rationale (same conditional-omission rule as sections).
+
+**Diagram–prose consistency (required):**
+
+- Every node in a diagram MUST correspond to a named element in the document's prose (bounded context, component, datastore, or actor present in the relevant section). No phantom nodes.
+- Every entry in `## Bounded Contexts` MUST appear in the context / bounded-context diagram. Diagram and prose cannot disagree.
+
 ## Per-component breakout (optional escalation)
 
 For small systems, the inline `## Components` section is sufficient. Promote a component to its own file in `components/<name>.md` when ANY of the following hold:
@@ -530,6 +542,7 @@ Rules:
 - ADRs without "Alternatives considered" — the value of an ADR is the rejected options.
 - Components that write to another component's data (silent coupling).
 - Hand-drawn architecture images instead of Mermaid (cannot be diffed).
+- Diagram that names a component or context absent from the prose, or a `## Bounded Contexts` entry missing from the context diagram — diagram and prose must agree.
 - Generic failure-mode checklists ("queue backlog" listed when there is no queue).
 - Persistence Strategy section padded with "we use Postgres" when one paragraph in Components would do.
 - ADRs retrofitted from prose at the end of the design pass instead of drafted inline.

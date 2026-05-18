@@ -32,3 +32,4 @@ Use this before finalizing `backend-architecture.md`.
 - [ ] Backend scaffold, data, security, testing, observability, and deployment handoffs are concrete.
 - [ ] Implementation notes avoid prescribing frameworks unless the ecosystem is already chosen.
 - [ ] Open decisions have owners or escalation paths.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.

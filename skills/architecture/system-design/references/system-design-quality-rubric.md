@@ -24,6 +24,8 @@ Load this before emitting final artifacts. Revise until each check passes or the
 - [ ] Every ADR's Consequences section includes downsides and tradeoffs.
 - [ ] ADR Index lists every generated ADR.
 - [ ] At least one simplification was surfaced, or the intentional simplicity of the design was explained.
+- [ ] Required diagrams are present: a context / bounded-context diagram and a primary-workflow (data-flow or sequence) diagram, per `architecture-schema` §Diagrams.
+- [ ] Diagram–prose consistency holds: no diagram node is absent from the prose, and every `## Bounded Contexts` entry appears in the context / bounded-context diagram.
 
 ## Failure handling
 

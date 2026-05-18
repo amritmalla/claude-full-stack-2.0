@@ -49,6 +49,7 @@ Load this before emitting `security-architecture.md`. Revise until each check pa
 - [ ] Every ADR candidate has Context, Decision, Consequences (including downsides), and Alternatives considered.
 - [ ] Every control justifies the threat it mitigates and the operational tradeoff; no controls added for theater.
 - [ ] No tool configuration, scanner rules, or CVE-level fixes leaked into the architecture.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 

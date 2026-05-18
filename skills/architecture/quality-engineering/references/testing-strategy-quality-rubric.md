@@ -59,6 +59,7 @@ Load this before emitting `testing-strategy.md`. Revise until each check passes 
 - [ ] Frontmatter links the source `system-design.md` and PRD; bounded contexts, components, data flow, and contracts are consumed, not redefined.
 - [ ] Every non-obvious testing/tooling decision has an inline ADR referenced from the ADR Index.
 - [ ] At least one weak testing assumption was surfaced, or the quality posture of the system was explicitly affirmed.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 

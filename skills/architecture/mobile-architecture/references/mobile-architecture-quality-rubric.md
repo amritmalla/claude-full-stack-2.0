@@ -40,6 +40,7 @@ Load this before emitting `mobile-architecture.md`. Revise until each check pass
 - [ ] Every ADR candidate has Context, Decision, Consequences (including downsides), and Alternatives considered.
 - [ ] No vendor SDK implementation detail leaked into the architecture unless it materially changes architecture behavior.
 - [ ] At least one weak-architecture risk was surfaced, or the design's intentional simplicity was explained.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 

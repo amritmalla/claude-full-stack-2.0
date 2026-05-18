@@ -46,6 +46,7 @@ Load this before emitting `frontend-architecture.md`. Revise until each check pa
 - [ ] Every ADR candidate has Context, Decision, Consequences (including downsides), and Alternatives considered.
 - [ ] No framework-specific component code, build config, or vendor SDK calls leaked into the architecture.
 - [ ] At least one weak-architecture risk was surfaced, or the design's intentional simplicity was explained.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 

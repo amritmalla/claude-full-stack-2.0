@@ -51,6 +51,7 @@ Load this before emitting `performance-architecture.md`. Revise until each check
 - [ ] Every ADR candidate has Context, Decision, Consequences (including downsides), and Alternatives considered; ADRs share the system's monotonic numbering.
 - [ ] No profiler outputs, code-level micro-optimizations, or vendor-specific tuning flags leaked into the architecture.
 - [ ] At least one weak-performance risk was surfaced, or the design's intentional simplicity was explained.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 

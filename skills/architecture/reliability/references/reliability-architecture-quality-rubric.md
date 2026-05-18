@@ -45,6 +45,7 @@ Load this before emitting `reliability-architecture.md`. Revise until each check
 - [ ] Reliability tradeoffs with security, cost, or performance are surfaced explicitly.
 - [ ] No telemetry-pipeline configuration, runbook prose, or vendor SDK code leaked into the architecture.
 - [ ] At least one weak-reliability risk was surfaced, or the design's intentional simplicity was explained.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 

@@ -50,6 +50,7 @@ Load this before emitting `ai-architecture.md`. Revise until each check passes o
 - [ ] `ai-architecture.md` conforms to [architecture-schema](../../../../standards/architecture-schema/README.md): frontmatter complete, required sections present, conditional sections present or omitted with rationale.
 - [ ] Every ADR candidate has Context, Decision, Consequences (including downsides), and Alternatives considered.
 - [ ] Every capability traces to the approved system design or is marked as an open decision.
+- [ ] Any diagram present is prose-consistent: no node references an element absent from this document; if this domain's primary topology diagram (per its authoring skill's Outputs) is omitted, the omission is stated with a rationale.
 
 ## Failure handling
 
