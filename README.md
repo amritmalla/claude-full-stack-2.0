@@ -26,7 +26,7 @@ See the long-form rationale in [`docs/architecture/research.md`](docs/architectu
 
 ## Skills
 
-The repository ships 60+ skills across the architecture decision domains and ecosystem implementations (Spring Boot, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
+The repository ships 80+ skills across the architecture decision domains and ecosystem implementations (Spring Boot, FastAPI, Node.js, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, AutoGen, CrewAI, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
 
 A representative end-to-end lifecycle path on the Spring Boot reference stack:
 
@@ -56,9 +56,9 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 
 ## Scope
 
-**In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain), composed by end-to-end workflows.
+**In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot, FastAPI, Node.js), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain, AutoGen, CrewAI), composed by end-to-end workflows.
 
-**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. FastAPI, Go, Node, Vue, Azure, GCP), and an MCP server (only if a real need emerges).
+**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. Go, Django, .NET, Vue, Azure, GCP), and an MCP server (only if a real need emerges).
 
 ## Contributing
 
