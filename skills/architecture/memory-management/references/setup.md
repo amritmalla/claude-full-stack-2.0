@@ -3,15 +3,17 @@
 ## Install
 
 ```bash
-pip install claude-mem
+pip install claude-repo-mem
 ```
+
+The PyPI package is `claude-repo-mem`; the CLI installed by it is `claude-mem`.
 
 Requires Python 3.11+. On Windows, prefer a venv so the `claude-mem` script lands somewhere predictable:
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-pip install claude-mem
+pip install claude-repo-mem
 ```
 
 Confirm: `claude-mem --help`.

@@ -10,8 +10,10 @@ using claude-full-stack-2.0.
 ### Install (one-time, per machine)
 
 ```bash
-pip install claude-mem
+pip install claude-repo-mem
 ```
+
+> PyPI package is `claude-repo-mem`; the installed CLI is `claude-mem`.
 
 Requires Python 3.11+. See
 [`skills/architecture/memory-management/references/setup.md`](skills/architecture/memory-management/references/setup.md)

@@ -28,7 +28,7 @@ Optional:
 
 1. **Install claude-mem** (one-time per machine):
    ```bash
-   pip install claude-mem
+   pip install claude-repo-mem
    ```
    Verify: `claude-mem --help` prints the subcommand list (`index`, `serve`, `doctor`, `distill`, `install-hooks`, `bench`).
 
