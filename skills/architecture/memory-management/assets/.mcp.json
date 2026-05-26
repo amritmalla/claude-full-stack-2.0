@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "claude-mem": {
+      "command": "claude-mem",
+      "args": ["serve", "--watch"]
+    }
+  }
+}

@@ -57,6 +57,10 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 - [`production-readiness-review`](workflows/production-readiness-review/) — a non-build hardening pass (reliability → security → performance → operations) for an existing service.
 - [`cloud-foundation-on-aws`](workflows/cloud-foundation-on-aws/) — an infrastructure-only AWS landing zone and Terraform delivery foundation.
 
+## Memory
+
+For durable cross-session memory and hierarchical retrieval over a repo's code, docs, and decisions, install [claude-mem](https://github.com/amritmalla/claude-mem) and follow [`INTEGRATION.md`](INTEGRATION.md). The [`memory-management`](skills/architecture/memory-management/SKILL.md) skill defines when each claude-mem tool (`recall`, `trace`, `remember`, `plan_task`, `handoff`, `resume`, ...) is appropriate during architecture, implementation, and operations work.
+
 ## Scope
 
 **In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot, FastAPI, Node.js), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain, AutoGen, CrewAI), composed by end-to-end workflows.
