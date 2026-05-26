@@ -81,6 +81,18 @@ A single scaffold skill branches across the three common frameworks per the choi
 | async-and-event-integration | `golang-async-and-event-integration` *(sarama/kafka-go, NATS, SQS, workers, fan-out)* |
 | performance-and-resilience-engineering | `golang-performance-and-resilience` *(goroutine discipline, context propagation, rate limiting, circuit breakers, pprof)* |
 
+#### rust
+
+A single scaffold skill that branches across axum (default) and actix-web per the framework declared in `backend-architecture`. Rocket and warp are not first-class targets.
+
+| Archetype | Proposed skill |
+|---|---|
+| service-scaffold | `rust-service-scaffold` *(axum/actix-web per architecture; tokio runtime, `tracing`, `config`, graceful shutdown, `thiserror`/`anyhow`)* |
+| auth-and-security-review | `rust-auth-and-security-review` *(`tower-http` auth layers, `jsonwebtoken`, `oauth2`, rustls, `argon2`, secret handling)* |
+| observability-readiness | `rust-observability-readiness` *(`tracing` + `tracing-opentelemetry`, OTel Rust SDK, `metrics` + `metrics-exporter-prometheus`)* |
+| async-and-event-integration | `rust-async-and-event-integration` *(`rdkafka` / `lapin` / `aws-sdk-sqs`, workers via `tokio::spawn`, idempotency, outbox, retry/DLQ)* |
+| performance-and-resilience-engineering | `rust-performance-and-resilience` *(tokio runtime tuning, `tower` timeout/retry/concurrency-limit, circuit breakers, connection pools, `tokio-console`, `flamegraph`)* |
+
 #### dotnet (.NET 8+, ASP.NET Core)
 
 | Archetype | Proposed skill |

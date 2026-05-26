@@ -59,7 +59,7 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 
 ## Memory
 
-For durable cross-session memory and hierarchical retrieval over a repo's code, docs, and decisions, install [claude-mem](https://github.com/amritmalla/claude-mem) and follow [`INTEGRATION.md`](INTEGRATION.md). The [`memory-management`](skills/architecture/memory-management/SKILL.md) skill defines when each claude-mem tool (`recall`, `trace`, `remember`, `plan_task`, `handoff`, `resume`, ...) is appropriate during architecture, implementation, and operations work.
+For durable cross-session memory and hierarchical retrieval over a repo's code, docs, and decisions, install [claude-repo-mem](https://github.com/amritmalla/claude-repo-mem) and follow [`INTEGRATION.md`](INTEGRATION.md). The [`memory-management`](skills/architecture/memory-management/SKILL.md) skill defines when each claude-repo-mem tool (`recall`, `trace`, `remember`, `plan_task`, `handoff`, `resume`, ...) is appropriate during architecture, implementation, and operations work.
 
 ## Scope
 

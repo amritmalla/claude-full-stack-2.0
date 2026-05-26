@@ -1,12 +1,12 @@
-# claude-mem tools by claude-full-stack-2.0 workflow phase
+# claude-repo-mem tools by claude-full-stack-2.0 workflow phase
 
-claude-mem exposes 11 MCP tools. The right tool depends on what phase of the
+claude-repo-mem exposes 11 MCP tools. The right tool depends on what phase of the
 workflow you're in. Use this table as default operating procedure — replace
 `Grep`/`Read` with these tools whenever a match applies.
 
 | Phase | Skill examples | Tool | When to call |
 |---|---|---|---|
-| Idea development | `idea-development` | — | The repo usually has nothing to index. Skip claude-mem until system design produces artifacts. |
+| Idea development | `idea-development` | — | The repo usually has nothing to index. Skip claude-repo-mem until system design produces artifacts. |
 | System design | `system-design`, `backend-architecture`, `frontend-architecture`, `ai-native-engineering` | `recall(query, scopes=[<area>])` | Before writing an ADR, search for prior decisions in the same area. |
 | System design | (any architecture skill) | `remember(fact, scope, kind="decision")` | After an ADR lands, store the rationale as a `decision` memory in scope `architecture/<area>`. |
 | Implementation | `implementations/<category>/<ecosystem>/<skill>` | `recall(query)` | BEFORE any `Grep` — recall returns ranked, tier-aware results in one round-trip. |
@@ -15,15 +15,15 @@ workflow you're in. Use this table as default operating procedure — replace
 | Implementation | `quality-engineering`, `reliability` | `remember(fact, scope, kind="convention")` | When you discover a project-specific convention (testing style, naming, retry policy). |
 | Implementation | `plan_task(intent)` | `plan_task` | Before any multi-step feature. Produces 2-6 independent sub-tasks with attached context bundles. |
 | Implementation | `tasks()` | `tasks` | List in-flight or pending tasks; filter by scope/status. |
-| Implementation | (end of session) | `handoff(task_id)` | Before context bloat or task switching. Snapshots intent + decisions + open questions + context handles to `.claude-mem/handoffs/<id>.md`. |
+| Implementation | (end of session) | `handoff(task_id)` | Before context bloat or task switching. Snapshots intent + decisions + open questions + context handles to `.claude-repo-mem/handoffs/<id>.md`. |
 | Resume work | (start of fresh session) | `resume(task_id, budget=4000)` | First call in any session continuing prior work. Returns snapshot markdown + budgeted hydrated bundle. |
 | Operations | `operations` | `stats()` | Check index size, layer breakdown, T2 coverage, tool-call counters. |
 | Operations | `operations` | `scopes()` | Inventory known scopes with unit counts. |
-| Operations | (end of session, CLI) | `claude-mem distill --yes` | Extract durable knowledge from the Claude Code transcript and write to `memory://` units. |
+| Operations | (end of session, CLI) | `claude-repo-mem distill --yes` | Extract durable knowledge from the Claude Code transcript and write to `memory://` units. |
 
 ## Scope naming conventions
 
-claude-mem stores memory under `<repo>/.claude-mem/memory/<scope>/<slug>.md`. Match scopes to your repo's logical structure:
+claude-repo-mem stores memory under `<repo>/.claude-repo-mem/memory/<scope>/<slug>.md`. Match scopes to your repo's logical structure:
 
 - `architecture/<area>` — ADR-derived decisions. Examples: `architecture/auth`, `architecture/api-versioning`, `architecture/data-pipeline`.
 - `tooling/<area>` — build / test / CI conventions. Examples: `tooling/testing`, `tooling/ci`, `tooling/lint`.
@@ -51,7 +51,7 @@ Token usage is approximated as `len(text) // 4`. Overflow handles are always ret
 
 After any non-trivial session, before closing it:
 
-1. `claude-mem stats` — confirm counters reflect activity.
-2. `claude-mem doctor` — confirm index health.
+1. `claude-repo-mem stats` — confirm counters reflect activity.
+2. `claude-repo-mem doctor` — confirm index health.
 3. `handoff(active_task)` — snapshot for continuity.
-4. (optional) `claude-mem distill --yes` — extract any durable knowledge that wasn't `remember()`'d explicitly during the session.
+4. (optional) `claude-repo-mem distill --yes` — extract any durable knowledge that wasn't `remember()`'d explicitly during the session.
