@@ -1,6 +1,6 @@
 [project]
 name = "claude-full-stack-skills"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server exposing claude-full-stack-2.0's 83 architecture and implementation skills + 4 workflows as MCP tools — making them invocable from Claude Desktop and any MCP host."
 readme = "README.md"
 requires-python = ">=3.10"
