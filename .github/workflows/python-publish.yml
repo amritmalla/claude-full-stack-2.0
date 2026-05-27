@@ -1,0 +1,93 @@
+# Publish claude-full-stack-skills to PyPI when a GitHub Release is published.
+#
+# Uses PyPI Trusted Publishing (OIDC) — no API tokens stored as secrets.
+# Setup required ONCE on PyPI before the first publish:
+#   1. Visit https://pypi.org/manage/account/publishing/
+#   2. Add a "pending publisher" with:
+#        PyPI Project Name: claude-full-stack-skills
+#        Owner:             amritmalla
+#        Repository name:   claude-full-stack-2.0
+#        Workflow name:     python-publish.yml
+#        Environment name:  pypi
+#   3. After the first successful publish, the project moves out of "pending".
+#
+# Also create a GitHub Environment named "pypi" under
+# Settings -> Environments. Add deployment protection rules if you want gating.
+
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: {}  # allow manual dry-runs from the Actions tab
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pypi-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Run test suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+      - name: Run tests
+        run: pytest -q
+
+  build:
+    name: Build sdist + wheel
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install build tools
+        run: python -m pip install --upgrade build twine
+      - name: Build distributions
+        run: python -m build
+      - name: Validate distributions
+        run: twine check --strict dist/*
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    environment:
+      name: pypi
+      url: https://pypi.org/p/claude-full-stack-skills
+    permissions:
+      id-token: write
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          skip-existing: true
+          verbose: true

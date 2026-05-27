@@ -1,6 +1,91 @@
+[project]
+name = "claude-full-stack-skills"
+version = "0.1.0"
+description = "MCP server exposing claude-full-stack-2.0's 83 architecture and implementation skills + 4 workflows as MCP tools — making them invocable from Claude Desktop and any MCP host."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Yam Malla", email = "amritmalla2021@gmail.com" },
+]
+keywords = [
+    "claude",
+    "claude-desktop",
+    "claude-code",
+    "mcp",
+    "skills",
+    "anthropic",
+    "ai-engineering",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development",
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "build>=1.2",
+    "twine>=5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/amritmalla/claude-full-stack-2.0"
+Repository = "https://github.com/amritmalla/claude-full-stack-2.0"
+Issues = "https://github.com/amritmalla/claude-full-stack-2.0/issues"
+
+[project.scripts]
+claude-full-stack-skills = "claude_full_stack_skills.server:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/claude_full_stack_skills"]
+
+# Ship the skill + workflow markdown alongside the package so the MCP server
+# can find them at runtime without needing the repo to be cloned.
+[tool.hatch.build.targets.wheel.force-include]
+"skills" = "claude_full_stack_skills/_bundled/skills"
+"workflows" = "claude_full_stack_skills/_bundled/workflows"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/claude_full_stack_skills",
+    "skills",
+    "workflows",
+    "README.md",
+    "LICENSE",
+    "pyproject.toml",
+]
+exclude = [
+    "tests/",
+    "docs/",
+    "case-studies/",
+    "standards/",
+    "architecture-patterns/",
+    "templates/",
+]
+
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
+asyncio_mode = "auto"
 addopts = "-q"
-

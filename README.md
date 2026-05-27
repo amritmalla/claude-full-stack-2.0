@@ -57,6 +57,31 @@ Workflows sequence skills into lifecycle paths with explicit Entry/Exit/Gate che
 - [`production-readiness-review`](workflows/production-readiness-review/) — a non-build hardening pass (reliability → security → performance → operations) for an existing service.
 - [`cloud-foundation-on-aws`](workflows/cloud-foundation-on-aws/) — an infrastructure-only AWS landing zone and Terraform delivery foundation.
 
+## Claude Desktop
+
+Claude Desktop doesn't load Claude Code plugins, but you can expose the 83
+skills + 4 workflows as MCP tools via the companion package:
+
+```bash
+pip install claude-full-stack-skills
+```
+
+Then add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "claude-full-stack-skills": {
+      "command": "claude-full-stack-skills"
+    }
+  }
+}
+```
+
+Restart Claude Desktop. Skills become invocable by description match — same
+routing logic as Claude Code's Skill tool. Full setup steps and reference-file
+lookup are documented in [`INTEGRATION.md`](INTEGRATION.md).
+
 ## Memory
 
 For durable cross-session memory and hierarchical retrieval over a repo's code, docs, and decisions, install [claude-repo-mem](https://github.com/amritmalla/claude-repo-mem) and follow [`INTEGRATION.md`](INTEGRATION.md). The [`memory-management`](skills/architecture/memory-management/SKILL.md) skill defines when each claude-repo-mem tool (`recall`, `trace`, `remember`, `plan_task`, `handoff`, `resume`, ...) is appropriate during architecture, implementation, and operations work.
