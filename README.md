@@ -29,7 +29,7 @@ See the long-form rationale in [`docs/architecture/research.md`](docs/architectu
 
 ## Skills
 
-The repository ships 80+ skills across the architecture decision domains and ecosystem implementations (Spring Boot, FastAPI, Node.js, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, AutoGen, CrewAI, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
+The repository ships 83 skills and 4 workflows across the architecture decision domains and ecosystem implementations (Spring Boot, FastAPI, Node.js, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, AutoGen, CrewAI, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
 
 A representative end-to-end lifecycle path on the Spring Boot reference stack:
 
@@ -90,7 +90,9 @@ For durable cross-session memory and hierarchical retrieval over a repo's code, 
 
 **In:** the full "Full Stack 2.0" surface — architecture decision domains plus ecosystem execution across backend (Spring Boot, FastAPI, Node.js), frontend (React), mobile (Flutter), data (Postgres, MongoDB), infrastructure (Kubernetes, AWS, Terraform, GitHub Actions), and AI (OpenAI, Anthropic, LangChain, AutoGen, CrewAI), composed by end-to-end workflows.
 
-**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. Go, Django, .NET, Vue, Azure, GCP), and an MCP server (only if a real need emerges).
+**Not yet:** several ecosystem directories are taxonomy placeholders awaiting skills (e.g. Go, Django, .NET, Vue, Azure, GCP).
+
+**Companion package:** [`claude-full-stack-skills`](https://pypi.org/p/claude-full-stack-skills) (source under [`src/claude_full_stack_skills/`](src/claude_full_stack_skills/)) is the MCP server that exposes every skill + workflow as an MCP tool for Claude Desktop and other MCP hosts. See the **Claude Desktop** section above.
 
 ## Contributing
 
