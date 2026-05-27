@@ -12,11 +12,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: pip
+          cache-dependency-path: pyproject.toml
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: Install test dependencies
-        run: python -m pip install -r requirements-dev.txt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
       - name: Validate repository standards
         run: python scripts/validate_skills.py
       - name: Run repository integrity tests
