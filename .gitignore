@@ -9,3 +9,6 @@ build/
 *.egg-info/
 .ruff_cache/
 .mypy_cache/
+
+# claude-repo-mem index
+.claude-repo-mem/
