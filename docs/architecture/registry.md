@@ -854,6 +854,55 @@ Architecture-domain level. The *strategy* and *coverage decisions* are ecosystem
 
 ---
 
+### backend/rust
+
+**Status:** draft
+
+**Purpose:** Implements backend architecture domains using the Rust ecosystem. This is the *how* layer — framework-specific scaffolding, configuration, and hardening. Architecture decisions (domain modeling, auth strategy, SLOs, budgets) come from [skills/architecture/](../../skills/architecture/) and are taken as inputs here. One scaffold branches across axum and actix-web per the framework declared in `backend-architecture.md`.
+
+Partially built: only the service scaffold exists today. The remaining four skills in the [backend skillset taxonomy](../../skills/implementations/backend/README.md) — auth-and-security-review, observability-readiness, async-and-event-integration, and performance-and-resilience-engineering — are planned.
+
+**Ecosystem:**
+- Rust stable, 2021 edition
+- axum (default) / actix-web, tokio multi-thread runtime
+- `sqlx` / `sea-orm` / `diesel` (or the data layer declared by architecture)
+- `tracing` + `tracing-opentelemetry`, `metrics-exporter-prometheus`
+- `thiserror` for typed errors, `config` for layered configuration
+- `tokio::test` + `testcontainers-rs`
+
+**Compatible patterns:**
+- [microservices](../../architecture-patterns/microservices/README.md)
+- [modular-monolith](../../architecture-patterns/modular-monolith/README.md)
+- [event-driven](../../architecture-patterns/event-driven/README.md)
+
+**Architecture domains implemented:**
+
+| Architecture domain | How |
+|---|---|
+| [backend-architecture](#backend-architecture) | Service scaffold follows backend boundaries, contracts, and runtime shape. |
+| [security](#security) | Secure defaults in the scaffold: no `unsafe`, no permissive CORS, no panicking request paths, rustls for service-to-service TLS. |
+| [reliability](#reliability) | Health probes, graceful shutdown, structured `tracing` per [observability-standards](../../standards/observability-standards/README.md). |
+
+**Standards this implementation conforms to:**
+- [api-standards](../../standards/api-standards/README.md) — error envelope, pagination, rate-limit headers, OpenAPI consumption.
+- [security-standards](../../standards/security-standards/README.md) — secrets, CORS, TLS, `cargo-audit`/`cargo-deny` scanning.
+- [observability-standards](../../standards/observability-standards/README.md) — structured JSON `tracing` logs, RED metrics, W3C `traceparent`.
+- [deployment-standards](../../standards/deployment-standards/README.md) — env-agnostic image, config injected at deploy time, readiness/liveness probes.
+- [naming-conventions](../../standards/naming-conventions/README.md) — Cargo package `kebab-case`, Rust modules `snake_case`, env vars `SCREAMING_SNAKE_CASE`.
+
+**Upstream inputs:**
+- Approved `backend-architecture.md` from [backend-architecture](../../skills/architecture/backend-architecture/SKILL.md) (framework choice, domain boundaries, data layer, API/event contracts).
+- `openapi.yaml` when a contract exists — handlers and DTOs derive from it, not the reverse.
+
+**Downstream consumers:**
+- [skills/implementations/data/postgres](../../skills/implementations/data/postgres/) — migrations land in the scaffold's data layer.
+- [skills/implementations/infrastructure/*](../../skills/implementations/infrastructure/) — built non-root images are deployed through the platform stack.
+
+**Skills:**
+- [rust-service-scaffold](../../skills/implementations/backend/rust/rust-service-scaffold/SKILL.md) — produces a framework-aware service shell: layered `config` loading, structured `tracing`, health probes, one typed error enum implementing `IntoResponse`, `/metrics`, graceful shutdown, and non-root container packaging, verified by `cargo build`/`test`/`clippy`.
+
+---
+
 ### backend/spring-boot
 
 **Status:** draft

@@ -47,7 +47,12 @@ class Finding:
 
 
 def rel(path: Path) -> str:
-    return path.resolve().relative_to(REPO_ROOT).as_posix()
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        # Paths outside the repository (e.g. a manifest under test) report as-is.
+        return resolved.as_posix()
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str] | tuple[None, str]:
@@ -218,6 +223,42 @@ def validate_plugin(path: Path) -> list[Finding]:
     return findings
 
 
+def validate_plugin_coverage(path: Path, skill_files: list[Path]) -> list[Finding]:
+    """Report skills present on disk but absent from an explicit plugin manifest.
+
+    Manifests that list directory roots (e.g. ``./skills/architecture``) cover
+    everything beneath them and are skipped; only manifests enumerating leaf
+    skill directories are checked for drift.
+    """
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+
+    entries = data.get("skills")
+    if not isinstance(entries, list) or not entries:
+        return []
+
+    listed: set[str] = set()
+    for entry in entries:
+        if not isinstance(entry, str):
+            continue
+        listed.add(entry.removeprefix("./").rstrip("/"))
+
+    on_disk = {rel(skill_file.parent) for skill_file in skill_files}
+
+    # A manifest listing roots covers its subtree; only enumerated manifests drift.
+    if any(root not in on_disk for root in listed):
+        return []
+
+    findings: list[Finding] = []
+    for skill_dir in sorted(on_disk - listed):
+        findings.append(Finding(rel(path), f"skill not listed in manifest: ./{skill_dir}"))
+    return findings
+
+
 def validate_repository() -> list[Finding]:
     findings: list[Finding] = []
     skills = find_skill_files()
@@ -230,6 +271,8 @@ def validate_repository() -> list[Finding]:
         findings.extend(validate_workflow(workflow_file, valid_skills))
     findings.extend(validate_plugin(REPO_ROOT / ".claude-plugin" / "plugin.json"))
     findings.extend(validate_plugin(REPO_ROOT / ".codex-plugin" / "plugin.json"))
+    findings.extend(validate_plugin_coverage(REPO_ROOT / ".claude-plugin" / "plugin.json", skills))
+    findings.extend(validate_plugin_coverage(REPO_ROOT / ".codex-plugin" / "plugin.json", skills))
     return findings
 
 
