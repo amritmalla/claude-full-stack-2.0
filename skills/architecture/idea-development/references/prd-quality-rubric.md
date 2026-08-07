@@ -18,6 +18,7 @@ The rubric has two parts:
 - [ ] Non-goals include at least three explicit exclusions with rationale.
 - [ ] Constraints are documented separately from assumptions and risks.
 - [ ] Assumptions are explicit and testable.
+- [ ] Any assumption tagged `validated` cites its evidence — the validation brief's evidence tier and source, or an equivalent named source. An assumption asserted confidently but never checked is `unvalidated`.
 - [ ] Risks (if present) include why each matters and at least one mitigation or narrowing recommendation. The Risks section may be omitted only if no material risks remain after scope narrowing, with the omission noted.
 - [ ] Distribution and Adoption is addressed for external products **or** replaced with integration and rollout for internal tools / reference workloads / system components.
 - [ ] Every success metric has a unit, target, and timeframe.
@@ -30,7 +31,8 @@ The rubric has two parts:
 - [ ] At least one meaningful critique or scope risk was surfaced, or the PRD explains why no major issue remains.
 - [ ] Conflicting personas, workflows, or sales motions raised during discovery are either resolved in the PRD or listed in Open Questions.
 - [ ] Multi-persona scope, if it surfaced, was narrowed to one v1 persona with user confirmation.
-- [ ] The credibility gate (process step 7) was passed with user confirmation, not skipped.
+- [ ] The credibility gate (process step 7) was passed with user confirmation, not skipped — or satisfied by an approved validation brief with verdict `proceed` or `proceed-with-pivot`.
+- [ ] If a validation brief was supplied, its findings were imported rather than re-derived, and no decision it settled with `tested` evidence was silently re-opened.
 
 ## Failure handling
 

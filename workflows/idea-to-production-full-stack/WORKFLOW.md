@@ -14,11 +14,13 @@ This workflow is the full-stack capstone: it chains the idea-to-production skill
 
 ## Phases
 
-### Phase 1 — Define (skills: `idea-development`, `system-design`)
+### Phase 1 — Define (skills: `saas-idea-validation`, `idea-development`, `system-design`)
 
 **Entry:** A 1–5 sentence informal idea.
 **Exit:** `PRD.md` plus `system-design.md` and the initial `adrs/` directory committed.
 **Gate:** Stakeholder sign-off on scope, non-goals, and chosen architecture style.
+
+`saas-idea-validation` is conditional: run it first when the product is a commercial SaaS whose viability is still unproven, and require a `proceed` or `proceed-with-pivot` verdict before `idea-development`. Skip it for internal tools, funded mandates, and any build where the decision to proceed is already made.
 
 ### Phase 2 — Build Backend (skills: `backend-architecture`, `spring-boot-service-scaffold`, `postgres-schema-and-migration`, `spring-security-auth-review`)
 

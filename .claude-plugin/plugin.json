@@ -22,6 +22,7 @@
     "./skills/architecture/performance",
     "./skills/architecture/quality-engineering",
     "./skills/architecture/reliability",
+    "./skills/architecture/saas-idea-validation",
     "./skills/architecture/security",
     "./skills/architecture/system-design",
     "./skills/implementations/ai/anthropic/anthropic-evals-and-observability",

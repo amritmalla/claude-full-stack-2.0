@@ -30,7 +30,7 @@ last_reviewed: YYYY-MM-DD
 | `## Scope` | 3-5 v1 outcomes (not feature catalogs) | Outcomes, ranked |
 | `## Non-goals` | Explicit exclusions with rationale | At least 3 entries |
 | `## Constraints` | Known limits that shape the PRD | Budget, regulatory, technical, timeline |
-| `## Assumptions` | Testable beliefs that must be true for success | Each tagged `validated` / `unvalidated` |
+| `## Assumptions` | Testable beliefs that must be true for success | Each tagged `validated` / `unvalidated`; `validated` cites its evidence |
 | `## Success Metrics` | How "shipped" becomes "working" | 2-4 metrics: name, unit, target, timeframe, measurement source |
 | `## Open Questions` | Intentionally deferred decisions | Each with owner and decision deadline |
 
@@ -52,6 +52,10 @@ Include if material; otherwise omit and add a one-line rationale under a final `
 - Bump **minor** for added non-goals, metrics, or risks.
 - Bump **major** when Scope changes — requires re-approval.
 
+## Upstream input
+
+An approved [validation-brief-schema](../validation-brief-schema/README.md) brief is an optional upstream input. When one exists with verdict `proceed` or `proceed-with-pivot`, the PRD imports its Problem Statement, Value Proposition, Current Alternatives, and Channel and CAC rather than re-deriving them, and carries its evidence tiers into `Assumptions`. A brief with verdict `not-yet` or `kill` MUST NOT be used to justify a PRD.
+
 ## Linkage contract
 
 A PRD with `status: approved` is the sole upstream input to:
@@ -67,5 +71,6 @@ Downstream skills MUST NOT proceed if the PRD is `draft` or `review`.
 - Multi-persona v1 PRDs. Split into two products instead.
 - Success metrics without a measurement source. "Users will be happy" is not a metric.
 - "TBD" left in approved PRDs — convert to an Open Question with an owner and deadline.
+- Assumptions tagged `validated` with no cited evidence. Confidence is not validation; tag it `unvalidated`.
 - Scope written as a feature catalog instead of user-visible outcomes.
 - Conditional sections kept around as empty headings instead of being omitted with rationale.

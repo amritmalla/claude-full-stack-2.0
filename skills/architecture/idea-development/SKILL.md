@@ -11,6 +11,8 @@ Invoke when the user describes an informal product idea and needs help discoveri
 
 Do not use for editing an existing PRD, architecture planning, implementation planning, sprint breakdowns, roadmap prioritization, UX copy, marketing copy, or broad brainstorming.
 
+For a commercial SaaS idea whose viability is still in question — whether it is worth building at all, what it should cost, or how big the market is — run [saas-idea-validation](../saas-idea-validation/SKILL.md) first and bring its brief here. This skill scopes v1; that one decides whether there should be a v1.
+
 ## Inputs
 
 Required:
@@ -19,6 +21,7 @@ Required:
 
 Optional:
 
+- An approved `validation-brief.md` conforming to [standards/validation-brief-schema](../../../standards/validation-brief-schema/README.md), produced by [saas-idea-validation](../saas-idea-validation/SKILL.md). Import it rather than re-deriving its findings.
 - Target users or customer segment.
 - Business model assumptions.
 - Budget, staffing, or timeline constraints.
@@ -63,7 +66,11 @@ Five phases. Do not advance past the credibility gate (step 7) unless the idea i
 - [ ] Step 6. Test the workflow's path to users.
   - External products (SaaS, consumer, marketplace, AI tool): how the first 100 users realistically discover, adopt, or are required to use it.
   - Internal tools / reference workloads / system components: which upstream/downstream services or teams consume it, and how cutover is staged.
-- [ ] Step 7. **Credibility gate.** Test the idea against pain severity, frequency, willingness or mandate to adopt, operational burden, and plausible alternatives. Choose one:
+- [ ] Step 7. **Credibility gate.** Test the idea against pain severity, frequency, willingness or mandate to adopt, operational burden, and plausible alternatives.
+
+  **If a validation brief is available:** a brief with `status: approved` and verdict `proceed` or `proceed-with-pivot` satisfies this gate. Import its Problem Statement, Value Proposition, Current Alternatives, Channel and CAC, and Evidence Log instead of re-deriving them, and carry its evidence tiers forward into Assumptions. Do not re-open decisions the brief settled with `tested` evidence. A brief with verdict `not-yet` or `kill` does not satisfy the gate — stop and return to [saas-idea-validation](../saas-idea-validation/SKILL.md).
+
+  **Otherwise**, run the gate on judgment and choose one:
   - **Proceed** — pain, adoption, and wedge are credible. Continue to Specification.
   - **Narrow / reframe** — recommend a tighter wedge, different persona, or different problem. Return to step 1 with the user's confirmation.
   - **Abandon** — the idea is structurally weak (no urgent pain, no adoption path, no wedge). State this directly and stop. Do not produce a PRD.

@@ -29,12 +29,13 @@ See the long-form rationale in [`docs/architecture/research.md`](docs/architectu
 
 ## Skills
 
-The repository ships 83 skills and 4 workflows across the architecture decision domains and ecosystem implementations (Spring Boot, FastAPI, Node.js, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, AutoGen, CrewAI, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
+The repository ships 84 skills and 4 workflows across the architecture decision domains and ecosystem implementations (Spring Boot, FastAPI, Node.js, React, Flutter, Postgres, MongoDB, Kubernetes, AWS, Terraform, GitHub Actions, OpenAI, Anthropic, LangChain, AutoGen, CrewAI, ...). Browse the full catalog under [`skills/architecture/`](skills/architecture/) and [`skills/implementations/`](skills/implementations/).
 
 A representative end-to-end lifecycle path on the Spring Boot reference stack:
 
 | Stage | Skill | What it produces |
 |---|---|---|
+| Validation | [`saas-idea-validation`](skills/architecture/saas-idea-validation/SKILL.md) | Evidence-scored validation brief with a proceed / pivot / kill verdict (SaaS ideas; optional) |
 | Idea | [`idea-development`](skills/architecture/idea-development/SKILL.md) | Discovery, refinement, validation, PRD specification, and execution readiness |
 | Architecture | [`system-design`](skills/architecture/system-design/SKILL.md) | System design + ADRs |
 | Backend architecture | [`backend-architecture`](skills/architecture/backend-architecture/SKILL.md) | Backend boundaries, domain behavior, contracts, transactions, handoff notes |

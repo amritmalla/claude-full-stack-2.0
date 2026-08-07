@@ -56,18 +56,19 @@ Six weighted dimensions, each scored 0–5, each multiplied by the evidence tier
 
 ### Hard floors
 
-Floors override the total. Either condition caps the verdict at `not-yet` regardless of score:
+Floors override the total. Any one caps the verdict at `not-yet` regardless of score:
 
-- Pain severity raw score < 3/5
-- Reachable channel raw score < 2/5
+| Floor | Condition |
+|---|---|
+| Pain floor | Dimension 1 raw < 3 |
+| Channel floor | Dimension 3 raw < 2 |
+| Interview floor | Fewer than 10 qualifying target-user interviews |
 
-This blocks the failure mode where strong economics and a clever solution paper over a problem nobody has, or a product nobody can be sold to.
+The pain floor blocks strong economics and a clever solution from papering over a problem nobody has. The channel floor blocks a real problem that cannot be sold to.
 
-### Interview gate
+The interview floor is a **gate, not an arithmetic consequence**. Fewer than 10 interviews additionally caps pain and willingness-to-pay at the `researched` multiplier, but that alone does not prevent a `proceed`: with strong tested evidence on the other four dimensions the score can still reach the mid-eighties. Since none of that non-interview evidence establishes that *these* buyers feel *this* pain, the floor is enforced directly on the verdict.
 
-Fewer than 10 target-user interviews caps **pain severity** and **willingness to pay** at the `researched` multiplier. With both capped, the arithmetic ceiling is ~68/100 — under the 70 threshold. No idea reaches `proceed` without primary conversations.
-
-Interviews follow Mom Test discipline: ask about past behavior and actual spend, never about hypothetical interest. Record themes, the saturation point, and verbatim quotes.
+Interviews qualify only under Mom Test discipline: past behavior and actual spend, never hypothetical interest. Record themes, the saturation point, and verbatim quotes.
 
 ## Process — 5 phases, 13 steps
 

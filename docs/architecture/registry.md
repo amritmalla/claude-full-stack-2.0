@@ -209,6 +209,11 @@ Frontend architecture produced here is the source of truth for:
 
 **Purpose:** Develops an idea through discovery, refinement, validation, specification, and execution readiness for a product, feature, workflow, SaaS, AI tool, internal tool, marketplace, or service. Produces a concise, decision-oriented PRD or readiness brief that narrows v1 scope, names user pain, documents assumptions and risks, defines success metrics, and leaves only intentionally deferred questions open.
 
+For commercial SaaS ideas whose viability is unproven, [saas-idea-validation](#saas-idea-validation) runs first and its brief satisfies this domain's credibility gate.
+
+**Upstream inputs:**
+- [skills/architecture/saas-idea-validation](#saas-idea-validation) — optional `validation-brief.md`; a `proceed` or `proceed-with-pivot` verdict satisfies the credibility gate and supplies problem, alternatives, value proposition, channel, and evidence.
+
 **Owns:**
 - PRDs
 - Idea discovery
@@ -483,6 +488,46 @@ Reliability architecture produced here is the source of truth for:
 
 **Skills:**
 - [reliability](../../skills/architecture/reliability/SKILL.md) — turns an approved system design into reliability architecture: SLOs, error budgets, dependency criticality, failure modes, degradation, redundancy, isolation, disaster recovery, chaos validation, release safety, and implementation handoffs.
+
+---
+
+### saas-idea-validation
+
+**Status:** draft
+
+**Purpose:** Decides whether a commercial SaaS idea is worth building, before any PRD or design work. Establishes the problem, market alternatives, bottom-up sizing, value proposition, pricing and willingness to pay, acquisition channel and CAC ceiling, and unit economics, then scores six weighted dimensions against the evidence actually gathered and returns a proceed / pivot / not-yet / kill verdict.
+
+Upstream of [idea-development](#idea-development) and optional. Owns *whether to build*; `idea-development` owns *what v1 is*. Evidence tiers (`assumed` / `researched` / `tested`) are load-bearing: an idea supported only by assertion cannot reach a proceed verdict, and fewer than ten target-user interviews caps the verdict at `not-yet`.
+
+**Owns:**
+- Idea kill/pivot decisions
+- Problem and pain evidence
+- Competitive and alternatives teardown
+- Bottom-up market sizing
+- Value proposition and differentiation defensibility
+- SaaS pricing model and willingness to pay
+- Acquisition channel and CAC ceiling
+- Unit economics (payback, gross margin, tolerable churn)
+- Customer interview and demand-test design
+- Evidence tiering
+
+**Produces:**
+
+| Artifact | Conforms to |
+|---|---|
+| `validation-brief.md` | [validation-brief-schema](../../standards/validation-brief-schema/README.md) |
+| Verdict and next action | — |
+
+**Standards this architecture domain conforms to:**
+- [validation-brief-schema](../../standards/validation-brief-schema/README.md)
+- [documentation-standards](../../standards/documentation-standards/README.md)
+- [naming-conventions](../../standards/naming-conventions/README.md)
+
+**Downstream consumers:**
+- [skills/architecture/idea-development](#idea-development)
+
+**Skills:**
+- [saas-idea-validation](../../skills/architecture/saas-idea-validation/SKILL.md) — validates a commercial SaaS idea through framing, market teardown, economics, and primary evidence; emits an evidence-scored `validation-brief.md` conforming to validation-brief-schema plus a proceed / pivot / not-yet / kill verdict.
 
 ---
 
