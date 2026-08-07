@@ -17,19 +17,36 @@ def test_build_server_succeeds():
 @pytest.mark.asyncio
 async def test_list_tools_returns_skills_workflows_and_meta():
     server = build_server()
-    handlers = getattr(server, "request_handlers", None)
-    assert handlers, "server has no request handlers"
-    from mcp.types import ListToolsRequest
-    handler = handlers[ListToolsRequest]
-    res = await handler(ListToolsRequest(method="tools/list", params=None))
-    tools = list(res.root.tools)
+    tools = await server.list_tools()
     names = [t.name for t in tools]
-    # Each skill + workflow exposed as a tool, plus two meta tools.
+    # Each skill + workflow exposed as a tool, plus the two meta tools.
     assert "system-design" in names
     assert "memory-management" in names
     assert "list_skills" in names
     assert "get_skill_reference" in names
-    assert len(tools) >= 85  # 83 skills + 4 workflows + 2 meta
+    assert len(tools) == len(load_entries()) + 2
+
+
+@pytest.mark.asyncio
+async def test_skill_tool_returns_body_without_duplicating_it():
+    """A skill tool returns its body as text content only.
+
+    structured_output is disabled on purpose: leaving it on repeats the whole
+    document in structured_content, doubling the payload for every skill.
+    """
+    server = build_server()
+    result = await server.call_tool("system-design", {})
+    assert result.structured_content is None
+    assert len(result.content) == 1
+    entry = {e.name: e for e in load_entries()}["system-design"]
+    assert result.content[0].text == entry.body
+
+
+@pytest.mark.asyncio
+async def test_reference_tool_schema_is_derived_from_signature():
+    server = build_server()
+    tool = next(t for t in await server.list_tools() if t.name == "get_skill_reference")
+    assert set(tool.input_schema["required"]) == {"skill", "reference"}
 
 
 def test_list_skills_filters_by_kind():

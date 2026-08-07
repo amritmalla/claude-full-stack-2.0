@@ -15,9 +15,10 @@ import asyncio
 import json
 from typing import Any
 
-from mcp.server import Server
-from mcp.types import Tool, TextContent
+from mcp.server import MCPServer
+from mcp.types import TextContent
 
+from . import __version__
 from .loader import SkillEntry, load_entries, reference_files
 
 
@@ -41,107 +42,74 @@ To browse the catalog, call `list_skills`.
 """
 
 
-def _entry_to_tool(e: SkillEntry) -> Tool:
-    return Tool(
-        name=e.name,
-        description=e.description,
-        inputSchema={
-            "type": "object",
-            "properties": {},
-            "additionalProperties": False,
-        },
-    )
+LIST_SKILLS_DESCRIPTION = (
+    "List available skills and workflows. Use to browse the catalog "
+    "when no single skill description matches the user's request. "
+    "Returns names + descriptions grouped by kind."
+)
+
+GET_REFERENCE_DESCRIPTION = (
+    "Fetch a named reference markdown file from a skill's references/ "
+    "directory. Use when a skill body links to references/<name>.md and "
+    "you need its full content."
+)
 
 
-def _list_skills_tool() -> Tool:
-    return Tool(
-        name="list_skills",
-        description=(
-            "List available skills and workflows. Use to browse the catalog "
-            "when no single skill description matches the user's request. "
-            "Returns names + descriptions grouped by kind."
-        ),
-        inputSchema={
-            "type": "object",
-            "properties": {
-                "kind": {
-                    "type": "string",
-                    "enum": ["skill", "workflow"],
-                    "description": "Filter to only skills or only workflows.",
-                },
-                "contains": {
-                    "type": "string",
-                    "description": "Case-insensitive substring match against names + descriptions.",
-                },
-            },
-            "additionalProperties": False,
-        },
-    )
+def _make_body_tool(entry: SkillEntry):
+    """Build a zero-argument tool returning one skill/workflow body verbatim.
+
+    A factory (rather than a closure written inline in the registration loop)
+    binds `entry` per iteration and keeps the generated function free of
+    parameters — `add_tool` derives each tool's schema from the signature and
+    rejects parameter names starting with an underscore.
+    """
+
+    async def _tool() -> str:
+        return entry.body
+
+    return _tool
 
 
-def _get_reference_tool() -> Tool:
-    return Tool(
-        name="get_skill_reference",
-        description=(
-            "Fetch a named reference markdown file from a skill's references/ "
-            "directory. Use when a skill body links to references/<name>.md and "
-            "you need its full content."
-        ),
-        inputSchema={
-            "type": "object",
-            "properties": {
-                "skill": {
-                    "type": "string",
-                    "description": "The skill or workflow name (kebab-case).",
-                },
-                "reference": {
-                    "type": "string",
-                    "description": "Reference filename, with or without .md suffix (e.g. 'setup' or 'setup.md').",
-                },
-            },
-            "required": ["skill", "reference"],
-            "additionalProperties": False,
-        },
-    )
-
-
-def build_server() -> Server:
+def build_server() -> MCPServer:
     """Construct the MCP server with all skill/workflow tools wired up."""
     entries = load_entries()
     by_name: dict[str, SkillEntry] = {e.name: e for e in entries}
 
-    try:
-        server = Server(name="claude-full-stack-skills", instructions=SERVER_INSTRUCTIONS)
-    except TypeError:
-        server = Server(name="claude-full-stack-skills")
-        try:
-            server.instructions = SERVER_INSTRUCTIONS
-        except AttributeError:
-            pass
+    server = MCPServer(
+        name="claude-full-stack-skills",
+        version=__version__,
+        instructions=SERVER_INSTRUCTIONS,
+    )
 
-    @server.list_tools()
-    async def _list() -> list[Tool]:
-        tools = [_entry_to_tool(e) for e in entries]
-        tools.append(_list_skills_tool())
-        tools.append(_get_reference_tool())
-        return tools
+    # One tool per SKILL.md / WORKFLOW.md, registered dynamically.
+    # structured_output=False keeps the body in `content` only; leaving it on
+    # would repeat every document verbatim in `structured_content`.
+    for entry in entries:
+        server.add_tool(
+            _make_body_tool(entry),
+            name=entry.name,
+            description=entry.description,
+            structured_output=False,
+        )
 
-    @server.call_tool()
-    async def _call(name: str, arguments: dict[str, Any]) -> list[TextContent]:
-        # Per-skill tool: return the body verbatim.
-        if name in by_name:
-            return [TextContent(type="text", text=by_name[name].body)]
+    async def list_skills(kind: str | None = None, contains: str | None = None) -> str:
+        return _do_list_skills(entries, {"kind": kind, "contains": contains})[0].text
 
-        if name == "list_skills":
-            return _do_list_skills(entries, arguments)
+    async def get_skill_reference(skill: str, reference: str) -> str:
+        return _do_get_reference(by_name, {"skill": skill, "reference": reference})[0].text
 
-        if name == "get_skill_reference":
-            return _do_get_reference(by_name, arguments)
-
-        return [TextContent(
-            type="text",
-            text=json.dumps({"error": f"unknown tool: {name}"}),
-        )]
+    server.add_tool(
+        list_skills,
+        name="list_skills",
+        description=LIST_SKILLS_DESCRIPTION,
+        structured_output=False,
+    )
+    server.add_tool(
+        get_skill_reference,
+        name="get_skill_reference",
+        description=GET_REFERENCE_DESCRIPTION,
+        structured_output=False,
+    )
 
     return server
 
@@ -197,10 +165,7 @@ def _do_get_reference(
 
 
 async def serve_stdio() -> None:
-    from mcp.server.stdio import stdio_server
-    server = build_server()
-    async with stdio_server() as (reader, writer):
-        await server.run(reader, writer, server.create_initialization_options())
+    await build_server().run_stdio_async()
 
 
 def run() -> None:

@@ -1,0 +1,39 @@
+# Early warning for breaking releases of the `mcp` SDK.
+#
+# pyproject pins mcp to a major version on purpose — the SDK has broken across
+# majors before (2.0 removed the low-level Server decorator API that this
+# project used to depend on). That pin means a new major is invisible until
+# someone lifts it.
+#
+# This job ignores the pin and installs the latest mcp against the current
+# test suite. It never blocks a merge: it runs on a schedule, and a failure
+# is the signal to plan a port, not to stop work.
+name: mcp-canary
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Mondays, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  latest-mcp:
+    name: tests against latest mcp
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install with the mcp pin lifted
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m pip install --upgrade "mcp"
+      - name: Report resolved version
+        run: python -c "import importlib.metadata as m; print('mcp==' + m.version('mcp'))"
+      - name: Run test suite
+        run: python -m pytest -q

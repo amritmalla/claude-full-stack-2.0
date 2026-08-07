@@ -1,6 +1,6 @@
 [project]
 name = "claude-full-stack-skills"
-version = "0.2.1"
+version = "0.3.0"
 description = "MCP server exposing claude-full-stack-2.0's 84 architecture and implementation skills + 4 workflows as MCP tools — making them invocable from Claude Desktop and any MCP host."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -31,11 +31,12 @@ classifiers = [
     "Topic :: Software Development",
 ]
 dependencies = [
-    # Upper bound is load-bearing: mcp 2.0.0 removed the decorator-registration
-    # API on the low-level Server (list_tools/call_tool/read_resource/...) in
-    # favour of add_request_handler. server.py targets the 1.x decorator API.
-    # Lifting this bound requires porting server.py, not just bumping the pin.
-    "mcp>=1.0.0,<2",
+    # server.py targets the high-level MCPServer API introduced in mcp 2.0
+    # (named FastMCP in 1.x). The major-version bound is deliberate: the SDK
+    # has broken across majors before. See the weekly `mcp-canary` CI job,
+    # which tests against the latest release so the next break surfaces there
+    # rather than in an unrelated pull request.
+    "mcp>=2,<3",
     "pyyaml>=6.0",
 ]
 
