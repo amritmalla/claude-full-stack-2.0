@@ -48,6 +48,7 @@
     "./skills/implementations/backend/nodejs/nodejs-performance-and-resilience",
     "./skills/implementations/backend/nodejs/nodejs-queue-and-event-integration",
     "./skills/implementations/backend/nodejs/nodejs-service-scaffold",
+    "./skills/implementations/backend/rust/rust-service-scaffold",
     "./skills/implementations/backend/spring-boot/spring-boot-observability-readiness",
     "./skills/implementations/backend/spring-boot/spring-boot-performance-and-resilience",
     "./skills/implementations/backend/spring-boot/spring-boot-service-scaffold",
