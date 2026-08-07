@@ -31,7 +31,11 @@ classifiers = [
     "Topic :: Software Development",
 ]
 dependencies = [
-    "mcp>=1.0.0",
+    # Upper bound is load-bearing: mcp 2.0.0 removed the decorator-registration
+    # API on the low-level Server (list_tools/call_tool/read_resource/...) in
+    # favour of add_request_handler. server.py targets the 1.x decorator API.
+    # Lifting this bound requires porting server.py, not just bumping the pin.
+    "mcp>=1.0.0,<2",
     "pyyaml>=6.0",
 ]
 
