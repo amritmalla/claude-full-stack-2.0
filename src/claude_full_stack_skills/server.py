@@ -22,7 +22,7 @@ from .loader import SkillEntry, load_entries, reference_files
 
 
 SERVER_INSTRUCTIONS = """\
-claude-full-stack-skills exposes 87 reusable engineering skills + workflows
+claude-full-stack-skills exposes 88 reusable engineering skills + workflows
 from the claude-full-stack-2.0 project as MCP tools.
 
 Each tool is a self-contained recipe — architecture domains (system-design,
